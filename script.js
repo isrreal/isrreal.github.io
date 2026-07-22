@@ -6,6 +6,253 @@ const navMenu = document.querySelector('.nav-menu');
 const nav = document.querySelector('.nav');
 const header = document.querySelector('.site-header');
 const year = document.querySelector('#current-year');
+const languageToggle = document.querySelector('.language-toggle');
+const languageCode = document.querySelector('.language-code');
+const page = root.dataset.page;
+
+const interfaceText = {
+  pt: {
+    openMenu: 'Abrir menu',
+    closeMenu: 'Fechar menu',
+    lightTheme: 'Ativar tema claro',
+    darkTheme: 'Ativar tema escuro',
+    switchLanguage: 'Mudar para inglês',
+  },
+  en: {
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    lightTheme: 'Use light theme',
+    darkTheme: 'Use dark theme',
+    switchLanguage: 'Switch to Portuguese',
+  },
+};
+
+const englishPages = {
+  home: {
+    title: 'Israel Souza Ferreira | Portfolio',
+    description: 'Portfolio of Israel Souza Ferreira — machine learning engineering, NLP, information retrieval, MLOps, and time-series forecasting.',
+    content: [
+      ['.skip-link', 'Skip to content'],
+      ['.nav-menu a[href="#sobre"]', 'About'],
+      ['.nav-menu a[href="#experiencia"]', 'Experience'],
+      ['.nav-menu a[href="#projetos"]', 'Projects'],
+      ['.nav-menu a[href="#competencias"]', 'Skills'],
+      ['.nav-menu a[href="#curriculo"]', 'Résumé'],
+      ['.nav-menu a[href="#contato"]', 'Contact'],
+      ['.hero .eyebrow', 'Machine Learning · NLP · Information Retrieval · MLOps'],
+      ['.hero h1', 'I turn complex problems into data-driven solutions.'],
+      ['.hero-description', 'I am <strong>Israel Souza Ferreira</strong>, a machine learning researcher with hands-on experience in multimodal systems, information retrieval, time-series forecasting, and end-to-end MLOps.'],
+      ['.hero-actions a:nth-child(1)', 'View projects'],
+      ['.hero-actions a:nth-child(2)', 'View résumé'],
+      ['.hero-meta li:nth-child(1)', '📍 Fortaleza, Ceará, Brazil'],
+      ['.hero-meta li:nth-child(2)', '● Open to opportunities'],
+      ['.terminal-card code', '<span class="terminal-muted">$</span> profile --summary\n\n<span class="terminal-key">focus</span>: ML engineering and research\n<span class="terminal-key">languages</span>: Python, C++, and SQL\n<span class="terminal-key">interests</span>:\n  - multimodal multitask regressors\n  - MLOps and inference APIs\n  - representation learning\n  - time-series forecasting\n\n<span class="terminal-success">status: building solutions</span>'],
+      ['#sobre .section-kicker', 'About me'],
+      ['#sobre h2', 'Applied research with practical impact.'],
+      ['#sobre .lead', 'My path combines academic research and the development of projects aimed at real-world problems. I strive to build technically sound, reproducible, and well-documented solutions.'],
+      ['#sobre .lead + p', 'I build and deploy machine learning systems by combining reproducible experimentation, inference APIs, and rigorous model evaluation.'],
+      ['#experiencia .experience-layout > div:first-child .section-kicker', 'Experience'],
+      ['#experiencia .experience-layout > div:first-child h2', 'Applied research with engineering depth.'],
+      ['#experiencia .experience-layout > div:first-child .lead', 'From literature review to multimodal systems and reproducible pipeline implementation.'],
+      ['.experience-heading h3', 'Machine Learning Researcher'],
+      ['.experience-company', 'Tieta Artificial Intelligence · CNPq RHAE Fellow'],
+      ['.experience-period', 'Apr 2025 — present'],
+      ['.experience-facts div:nth-child(1) dd', 'ENEM questions'],
+      ['.experience-facts div:nth-child(2) dd', 'simultaneous tasks'],
+      ['.experience-facts div:nth-child(3) dd', 'dataset period'],
+      ['.experience-list li:nth-child(1)', 'Developed a <strong>multimodal multitask regressor</strong> to estimate IRT parameters, reconstruct the ICC curve, predict success rate, and classify pedagogical area, competency, and skill.'],
+      ['.experience-list li:nth-child(2)', 'Designed text–image fusion with MoE/MMoE, attention, and <i>cross-attention</i>, using Portulan Serafim-900M embeddings and DCAE-compressed visual representations.'],
+      ['.experience-list li:nth-child(3)', 'Implemented a <strong>supervised reasoning channel</strong> with local LLMs, DSPy, and <i>Chain of Thought</i>, incorporating justified solutions as a third regressor modality.'],
+      ['.experience-list li:nth-child(4)', 'Delivered a <strong>multimodal top-k search API</strong> with FastAPI, RelRep, BERTScore, and FAISS for question retrieval and ranking.'],
+      ['.experience-list li:nth-child(5)', 'Built reproducible training and evaluation workflows in PyTorch with Docker, Git, GitLab CI/CD, and statistical tests.'],
+      ['#projetos .section-kicker', 'Selected projects'],
+      ['#projetos .section-heading h2', 'Work that shows how I think and build.'],
+      ['#projetos .section-heading .text-link', 'All repositories →'],
+      ['#projetos .project-card:nth-child(1) .status', 'Under acceptance testing'],
+      ['#projetos .project-card:nth-child(1) > p', 'Facial biometric time-tracking system in final acceptance testing for an educational institution, combining face recognition, geofencing, medical-document classification, and a secure backend.'],
+      ['#projetos .project-card:nth-child(1) .project-links a', 'View technical showcase →'],
+      ['#projetos .project-card:nth-child(2) .status', 'In development'],
+      ['#projetos .project-card:nth-child(2) > p', 'An MLOps system under development for forecasting dengue notifications by state, with data pipelines, experimentation, and an inference service.'],
+      ['#projetos .project-card:nth-child(2) .project-links a', 'Code →'],
+      ['#projetos .project-card:nth-child(3) .status', 'Completed'],
+      ['#projetos .project-card:nth-child(3) h3', 'Triple Roman Domination'],
+      ['#projetos .project-card:nth-child(3) > p', 'The first GA- and ACO-based metaheuristics in the literature for the TRDP, together with a corrected ILP formulation for exact solutions.'],
+      ['#projetos .project-card:nth-child(3) .tag-list li:nth-child(3)', 'Graph Theory'],
+      ['#projetos .project-card:nth-child(3) .tag-list li:nth-child(4)', 'Metaheuristics'],
+      ['#projetos .project-card:nth-child(3) .project-links a:nth-child(1)', 'Explore project →'],
+      ['#projetos .project-card:nth-child(3) .project-links a:nth-child(2)', 'Code →'],
+      ['#projetos .project-card:nth-child(3) .project-links a:nth-child(3)', 'Read thesis →'],
+      ['#projetos .project-card:nth-child(4) .status', 'Being reworked'],
+      ['#projetos .project-card:nth-child(4) h3', 'Brazilian Emergency Aid — Query Benchmark'],
+      ['#projetos .project-card:nth-child(4) > p', 'A system for evaluating SQL indexing strategies over 257,170,290 public records — a 31.6 GB dataset. It compares indexed and non-indexed search, aggregation, and JOIN workloads.'],
+      ['#projetos .project-card:nth-child(4) .project-links a', 'Code and documentation →'],
+      ['#competencias .section-kicker', 'Skills'],
+      ['#competencias h2', 'Tools for investigating, modeling, and communicating.'],
+      ['#competencias .lead', 'A technical foundation covering the full data-project lifecycle, from initial analysis to communicating results.'],
+      ['#competencias .skill-group:nth-child(1) h3', 'Languages and data'],
+      ['#competencias .skill-group:nth-child(1) p', 'Python, C++, SQL, Bash, Pandas, NumPy, PostgreSQL, and Git'],
+      ['#competencias .skill-group:nth-child(2) h3', 'Modeling and research'],
+      ['#competencias .skill-group:nth-child(2) p', 'PyTorch, MMoE, MoE, PLE, Transformers, DSPy, information retrieval, time series, and metaheuristics'],
+      ['#competencias .skill-group:nth-child(3) h3', 'Engineering and MLOps'],
+      ['#competencias .skill-group:nth-child(4) h3', 'Communication and practices'],
+      ['#competencias .skill-group:nth-child(4) p', 'Data visualization, technical documentation, scientific writing, testing, and reproducibility'],
+      ['#curriculo .section-kicker', 'Résumé'],
+      ['#curriculo h2', 'Experience in applied research and machine learning engineering.'],
+      ['#curriculo .contact-card > div:first-child > p:last-child', 'Read the complete PDF version generated from my LaTeX résumé. It covers professional experience, education, projects, and technical skills.'],
+      ['#curriculo .contact-actions a:nth-child(1)', 'Open PDF'],
+      ['#curriculo .contact-actions a:nth-child(2)', 'Download PDF'],
+      ['#curriculo .contact-actions a:nth-child(3)', 'LaTeX source'],
+      ['#contato .section-kicker', 'Contact'],
+      ['#contato h2', 'Let’s talk about data, research, or opportunities.'],
+      ['#contato .contact-card > div:first-child > p:last-child', 'Send me a message or visit my professional profiles.'],
+      ['#contato .contact-actions a:nth-child(1)', 'Send email'],
+      ['footer .footer-content > p:last-child', 'Built with HTML, CSS, and JavaScript.'],
+    ],
+    attributes: [
+      ['nav', 'aria-label', 'Main navigation'],
+      ['.brand', 'aria-label', 'Home page'],
+      ['.hero-meta', 'aria-label', 'Professional information'],
+      ['.terminal-card', 'aria-label', 'Professional summary'],
+      ['.experience-facts', 'aria-label', 'Research project scale'],
+      ['#experiencia .tag-list', 'aria-label', 'Experience technologies'],
+      ['#projetos .project-card:nth-child(1) .tag-list', 'aria-label', 'Project technologies'],
+      ['#projetos .project-card:nth-child(2) .tag-list', 'aria-label', 'Project technologies'],
+      ['#projetos .project-card:nth-child(3) .tag-list', 'aria-label', 'Project technologies'],
+      ['#projetos .project-card:nth-child(4) .tag-list', 'aria-label', 'Project technologies'],
+      ['#curriculo .contact-actions', 'aria-label', 'Résumé actions'],
+    ],
+  },
+  'triple-roman': {
+    title: 'Triple Roman Domination | Israel Souza Ferreira',
+    description: 'Undergraduate thesis case study by Israel Souza Ferreira: the first metaheuristics and a corrected ILP formulation for the Triple Roman Domination Problem.',
+    content: [
+      ['.skip-link', 'Skip to content'],
+      ['.nav-menu a[href="../../index.html#projetos"]', 'Projects'],
+      ['.nav-menu a[href*="Triple-Roman"]', 'Repository'],
+      ['.case-breadcrumb', '← Back to projects'],
+      ['.case-hero .eyebrow', 'Undergraduate thesis · Combinatorial optimization · Completed'],
+      ['.case-title', 'Triple Roman Domination in graphs'],
+      ['.case-intro', 'The first Genetic Algorithm- and Ant Colony Optimization-based metaheuristics for the TRDP, with a corrected Integer Linear Programming formulation for exact solutions.'],
+      ['.case-hero .hero-actions a:nth-child(1)', 'View code on GitHub'],
+      ['.case-hero .hero-actions a:nth-child(2)', 'Read thesis'],
+      ['.case-hero .hero-actions a:nth-child(3)', 'View contributions'],
+      ['.case-meta li:nth-child(2)', 'Genetic Algorithm'],
+      ['.case-meta li:nth-child(4)', 'Integer Linear Programming'],
+      ['.case-block:nth-of-type(1) .section-kicker', 'The problem'],
+      ['.case-block:nth-of-type(1) h2', 'Minimum-cost network protection.'],
+      ['.case-block:nth-of-type(1) .lead', 'Triple Roman Domination models how to distribute protection levels among graph vertices, ensuring vulnerable regions are covered by their neighbors while minimizing total cost.'],
+      ['.case-block:nth-of-type(1) .case-prose > p:nth-child(2)', 'The idea originated in defense problems and also relates to scenarios such as server allocation and network coverage. Because the decision version is NP-complete, finding an optimal solution becomes difficult as instances grow. This motivates approximation methods that can produce good solutions in practical time.'],
+      ['.case-formula .section-kicker', 'The rule, in one line'],
+      ['.case-formula p:nth-child(2)', '<strong>Each region must receive enough protection from its neighborhood.</strong>'],
+      ['.case-formula code', 'Σ protection in the neighborhood of v ≥ 3 + number of active neighbors'],
+      ['.case-formula p:last-child', 'Formally, each vertex receives a value from 0 to 4. The total weight is the sum of these values; the goal is to find a valid configuration with the smallest possible weight.'],
+      ['.case-figure figcaption', 'Example of an optimal Triple Roman Domination function. Vertices represent regions and edges represent their connections; the numbers indicate the protection level assigned to each region. Source: author’s thesis.'],
+      ['#contribuicoes .section-kicker', 'Contributions'],
+      ['#contribuicoes h2', 'What this work adds.'],
+      ['#contribuicoes .case-list li:nth-child(1)', '<strong>First metaheuristics for the TRDP:</strong> implementation and evaluation of GA- and ACO-based approaches.'],
+      ['#contribuicoes .case-list li:nth-child(2)', '<strong>Corrected ILP:</strong> an Integer Linear Programming formulation that fixes inconsistencies in a previous proposal and serves as an exact reference.'],
+      ['#contribuicoes .case-list li:nth-child(3)', '<strong>Experimental benchmark:</strong> generation of 30 random graphs and computation of exact γ<sub>3R</sub>(G) values, along with exact solutions for most other evaluated instances.'],
+      ['#contribuicoes .case-list li:nth-child(4)', '<strong>Comparative analysis:</strong> evaluation of four GA heuristics, the impact of RVNS on ACO, and relative gaps against optimal solutions.'],
+      ['.case-highlight .section-kicker', 'Scientific contribution'],
+      ['.case-highlight .lead', 'The work not only proposes novel approximation methods for the TRDP; it also establishes a corrected exact reference and expands the set of instances with known values for future research.'],
+      ['.case-block:nth-of-type(3) .section-kicker', 'Results'],
+      ['.case-block:nth-of-type(3) h2', 'Performance with nuance.'],
+      ['.case-block:nth-of-type(3) .case-prose > p:nth-child(1)', '<strong>ACO-FL</strong>, combining ACO and RVNS, outperformed <strong>GA-FL</strong> in most cases in both runtime and solution quality. GA-FL nevertheless remained competitive in specific scenarios, especially on smaller and structured graphs.'],
+      ['.case-block:nth-of-type(3) .case-prose > p:nth-child(2)', 'The comparison used the relative gap against optimal ILP solutions. Among all evaluated graphs, only six had a gap above 50%; all others remained below that threshold.'],
+      ['.case-result:nth-child(1) span', 'random graphs generated with exact values computed'],
+      ['.case-result:nth-child(2) span', 'best performance in most evaluated cases'],
+      ['.case-result:nth-child(3) strong', '6 graphs'],
+      ['.case-result:nth-child(3) span', 'with a relative gap above 50% in the experimental set'],
+      ['.case-block:nth-of-type(4) .section-kicker', 'Next steps'],
+      ['.case-block:nth-of-type(4) h2', 'Where the research can go next.'],
+      ['.case-block:nth-of-type(4) .case-prose p', 'The work proposes expanding hyperparameter search and investigating new selection, crossover, mutation, and elitism strategies for GA. For ACO, it suggests evaluating other selection and exploration methods, as well as implementation and compiler optimizations to reduce runtime.'],
+      ['.case-cta .section-kicker', 'Code and experiments'],
+      ['.case-cta h2', 'Explore the implementation and full thesis.'],
+      ['.case-cta .contact-actions a:nth-child(1)', 'Open repository'],
+      ['.case-cta .contact-actions a:nth-child(2)', 'Open thesis'],
+      ['footer .text-link', 'Back to portfolio'],
+    ],
+    attributes: [
+      ['nav', 'aria-label', 'Main navigation'],
+      ['.brand', 'aria-label', 'Back to portfolio'],
+      ['.case-meta', 'aria-label', 'Project information'],
+      ['.case-figure img', 'alt', 'Map of the Roman Empire represented as a graph, with the labels of an optimal Triple Roman Domination function on its vertices.'],
+      ['.case-results', 'aria-label', 'Results summary'],
+    ],
+  },
+};
+
+const originalContent = new Map();
+const originalAttributes = new Map();
+const pageTranslations = englishPages[page];
+
+pageTranslations?.content.forEach(([selector]) => {
+  const element = document.querySelector(selector);
+  if (element) originalContent.set(element, element.innerHTML);
+});
+
+pageTranslations?.attributes.forEach(([selector, attribute]) => {
+  const element = document.querySelector(selector);
+  if (element) originalAttributes.set(selector + ':' + attribute, element.getAttribute(attribute));
+});
+
+const originalTitle = document.title;
+const descriptionMeta = document.querySelector('meta[name="description"]');
+const originalDescription = descriptionMeta?.getAttribute('content');
+
+let currentLanguage = 'pt';
+
+function applyLanguage(language) {
+  currentLanguage = language;
+  root.lang = language === 'en' ? 'en' : 'pt-BR';
+
+  pageTranslations?.content.forEach(([selector, english]) => {
+    const element = document.querySelector(selector);
+    if (!element) return;
+    element.innerHTML = language === 'en' ? english : originalContent.get(element);
+  });
+
+  pageTranslations?.attributes.forEach(([selector, attribute, english]) => {
+    const element = document.querySelector(selector);
+    if (!element) return;
+    const original = originalAttributes.get(selector + ':' + attribute);
+    element.setAttribute(attribute, language === 'en' ? english : original);
+  });
+
+  document.title = language === 'en' ? pageTranslations?.title || originalTitle : originalTitle;
+  if (descriptionMeta) {
+    descriptionMeta.setAttribute(
+      'content',
+      language === 'en' ? pageTranslations?.description || originalDescription : originalDescription
+    );
+  }
+
+  languageCode.textContent = language === 'en' ? 'PT' : 'EN';
+  const languageLabel = interfaceText[language].switchLanguage;
+  languageToggle.setAttribute('aria-label', languageLabel);
+  languageToggle.setAttribute('title', languageLabel);
+
+  const menuIsOpen = navToggle.getAttribute('aria-expanded') === 'true';
+  const menuLabel = menuIsOpen
+    ? interfaceText[language].closeMenu
+    : interfaceText[language].openMenu;
+  navToggle.setAttribute('aria-label', menuLabel);
+  navToggle.querySelector('.sr-only').textContent = menuLabel;
+
+  try {
+    localStorage.setItem('portfolio-language', language);
+  } catch {
+    // Language switching remains available when storage is unavailable.
+  }
+}
+
+let savedLanguage;
+try {
+  savedLanguage = localStorage.getItem('portfolio-language');
+} catch {
+  savedLanguage = null;
+}
+applyLanguage(savedLanguage === 'en' ? 'en' : 'pt');
 
 function setTheme(theme) {
   root.dataset.theme = theme;
@@ -15,10 +262,11 @@ function setTheme(theme) {
     // O tema continua funcional quando o armazenamento está indisponível.
   }
   themeIcon.textContent = theme === 'dark' ? '☀' : '☾';
-  themeToggle.setAttribute(
-    'aria-label',
-    theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'
-  );
+  const themeLabel = theme === 'dark'
+    ? interfaceText[currentLanguage].lightTheme
+    : interfaceText[currentLanguage].darkTheme;
+  themeToggle.setAttribute('aria-label', themeLabel);
+  themeToggle.setAttribute('title', themeLabel);
 }
 
 let savedTheme;
@@ -34,17 +282,28 @@ themeToggle.addEventListener('click', () => {
   setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
 });
 
+languageToggle.addEventListener('click', () => {
+  applyLanguage(currentLanguage === 'pt' ? 'en' : 'pt');
+  setTheme(root.dataset.theme);
+  closeMenu();
+});
+
 function closeMenu() {
   navMenu.classList.remove('open');
   navToggle.setAttribute('aria-expanded', 'false');
-  navToggle.setAttribute('aria-label', 'Abrir menu');
+  navToggle.setAttribute('aria-label', interfaceText[currentLanguage].openMenu);
+  navToggle.querySelector('.sr-only').textContent = interfaceText[currentLanguage].openMenu;
 }
 
 navToggle.addEventListener('click', () => {
   const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
   navToggle.setAttribute('aria-expanded', String(!isOpen));
   navMenu.classList.toggle('open', !isOpen);
-  navToggle.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu');
+  const menuLabel = isOpen
+    ? interfaceText[currentLanguage].openMenu
+    : interfaceText[currentLanguage].closeMenu;
+  navToggle.setAttribute('aria-label', menuLabel);
+  navToggle.querySelector('.sr-only').textContent = menuLabel;
 });
 
 navMenu.querySelectorAll('a').forEach((link) => {
@@ -60,7 +319,7 @@ document.addEventListener('click', (event) => {
 });
 
 window.addEventListener('resize', () => {
-  if (window.innerWidth > 720) closeMenu();
+  if (window.innerWidth > 820) closeMenu();
 });
 
 window.addEventListener(
