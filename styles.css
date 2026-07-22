@@ -1222,10 +1222,8 @@ h3 {
   }
 
   .project-card-clickable:active {
-    transform: scale(0.985);
+    transform: scale(0.995);
     border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
-    background-color: color-mix(in srgb, var(--accent-soft) 24%, var(--surface));
-    box-shadow: var(--shadow);
   }
 
   .project-card-clickable:active h3 {
