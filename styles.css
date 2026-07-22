@@ -432,6 +432,37 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.project-card-clickable {
+  position: relative;
+  cursor: pointer;
+}
+
+.project-card-clickable h3 {
+  transition: color 180ms ease;
+}
+
+.project-card-clickable:hover h3 {
+  color: var(--accent);
+}
+
+.project-primary-link::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: var(--radius-md);
+}
+
+.project-card-clickable .project-links a:not(.project-primary-link) {
+  position: relative;
+  z-index: 2;
+}
+
+.project-card-clickable:has(.project-primary-link:focus-visible) {
+  outline: 3px solid color-mix(in srgb, var(--accent) 70%, white);
+  outline-offset: 3px;
+}
+
 .project-featured {
   grid-row: span 2;
   min-height: 805px;
