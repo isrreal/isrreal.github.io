@@ -134,6 +134,45 @@
           </ol>
         </article>
 
+        <article class="case-block" id="maquina-estados">
+          <div>
+            <p class="section-kicker">Comportamento do totem</p>
+            <h2>Um fluxo controlado por máquina de estados.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              Cada momento da interação é representado por um estado explícito. Isso impede
+              que a interface pule etapas, faça análises sem um rosto presente ou dispare
+              registros duplicados.
+            </p>
+            <p>
+              Depois de uma falha, o totem não encerra a sessão nem envia requisições em vazio:
+              ele retorna à detecção e aguarda um rosto antes de tentar novamente. Essa modelagem
+              torna o comportamento previsível tanto para quem utiliza quanto para quem mantém o sistema.
+            </p>
+            <div class="state-machine" role="img" aria-label="Máquina de estados do totem: repouso, detecção, análise, confirmação e retorno ao repouso; em caso de erro, uma nova tentativa retorna à detecção.">
+              <div class="state-main-flow">
+                <span class="state-node">Repouso</span>
+                <span class="state-arrow" aria-hidden="true">→</span>
+                <span class="state-node">Detecção</span>
+                <span class="state-arrow" aria-hidden="true">→</span>
+                <span class="state-node">Análise</span>
+                <span class="state-arrow" aria-hidden="true">→</span>
+                <span class="state-node state-success">Confirmação</span>
+                <span class="state-arrow" aria-hidden="true">→</span>
+                <span class="state-node">Repouso</span>
+              </div>
+              <div class="state-retry-flow">
+                <span class="state-branch" aria-hidden="true">↳</span>
+                <span class="state-node state-error">Erro</span>
+                <span class="state-arrow" aria-hidden="true">→</span>
+                <span class="state-node">Nova tentativa</span>
+                <span class="state-return">retorna à detecção ↖</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
         <article class="case-block" id="arquitetura">
           <div>
             <p class="section-kicker">Arquitetura</p>
