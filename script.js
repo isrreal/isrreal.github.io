@@ -462,4 +462,14 @@ const sectionObserver = new IntersectionObserver(
 
 sections.forEach((section) => sectionObserver.observe(section));
 
+document.querySelectorAll('.project-card-clickable').forEach((card) => {
+  const primaryLink = card.querySelector('.project-primary-link');
+  if (!primaryLink) return;
+
+  card.addEventListener('click', (event) => {
+    if (event.target.closest('a, button')) return;
+    window.location.assign(primaryLink.href);
+  });
+});
+
 year.textContent = new Date().getFullYear();

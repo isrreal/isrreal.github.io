@@ -435,6 +435,7 @@ h3 {
 .project-card-clickable {
   position: relative;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .project-card-clickable h3 {
@@ -1062,6 +1063,23 @@ h3 {
   .nav-toggle:hover,
   .button-secondary:hover {
     border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .project-card:hover {
+    transform: none;
+  }
+
+  .project-card-clickable:active {
+    transform: scale(0.985);
+    border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
+    background-color: color-mix(in srgb, var(--accent-soft) 24%, var(--surface));
+    box-shadow: var(--shadow);
+  }
+
+  .project-card-clickable:active h3 {
+    color: var(--accent);
   }
 }
 
