@@ -1,0 +1,263 @@
+\documentclass[a4paper,10pt]{article}
+
+% --- PREÂMBULO ---
+\usepackage[a4paper, top=0.9cm, bottom=0.8cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+
+% O template usa fonte serifada (Times-like); mantemos a família padrão
+% do LaTeX substituída por Times para fidelidade visual ao modelo.
+\usepackage{mathptmx}
+
+\usepackage{enumitem}
+\setlist[itemize]{
+    label=\textbullet,
+    leftmargin=1.5em,
+    itemsep=1pt,
+    topsep=2pt,
+    parsep=0pt
+}
+
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage[svgnames]{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\definecolor{linkcolor}{RGB}{0, 0, 238}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=linkcolor,
+    linkcolor=linkcolor,
+    pdftitle={Israel Souza Ferreira - CV},
+    pdfauthor={Israel Souza Ferreira},
+}
+
+% --- SEÇÕES NO ESTILO DO TEMPLATE ---
+% Título em negrito, caixa alta, alinhado à esquerda, com régua fina abaixo.
+\titleformat{\section}
+  {\normalsize\bfseries}
+  {}
+  {0em}
+  {\MakeUppercase}
+  [\vspace{-1.2ex}\rule{\linewidth}{0.4pt}]
+
+\titlespacing{\section}{0pt}{1.6ex}{0.8ex}
+
+% --- MACRO DE ENTRADA (Empresa/Universidade + local + cargo + datas) ---
+% #1 = Empresa (negrito, esq.)   #2 = (regime) - país (negrito, dir.)
+% #3 = Cargo (itálico, esq.)     #4 = Datas (itálico, dir.)
+\newcommand{\entrada}[4]{%
+    \noindent\textbf{#1} \hfill \textbf{#2}\\
+    \textit{#3} \hfill \textit{#4}\par
+}
+
+\pagestyle{empty}
+\raggedbottom
+\linespread{0.98}
+
+\begin{document}
+
+% ---------- CABEÇALHO ----------
+\begin{center}
+    {\LARGE \textbf{Israel Souza Ferreira}} \\[3pt]
+
+    {\small
+    Fortaleza, Ceará, Brasil (Disponível para trabalho remoto)
+    \; | \;
+    +55 (85) 984332790
+    \; | \;
+    \href{mailto:israel.souza.dev@gmail.com}{e-mail}
+    \; | \;
+    \href{https://www.linkedin.com/in/isrreal/}{LinkedIn}
+    \; | \;
+    \href{https://github.com/isrreal}{GitHub}
+    }
+\end{center}
+
+% ---------- RESUMO PROFISSIONAL ----------
+\section*{Resumo Profissional}
+
+Pesquisador de \textit{Machine Learning} e graduando em Ciência da Computação
+pela Universidade Federal do Ceará (conclusão em julho de 2026). Combino
+rigor matemático e profundidade de engenharia em PyTorch, C++, sistemas
+multimodais e MLOps. Desenvolvi um regressor multitarefa multimodal para
+2.580 questões do ENEM, estimando simultaneamente parâmetros da TRI, curva
+ICC, taxa de acerto e classificações pedagógicas. Possuo experiência no ciclo
+completo de pesquisa aplicada e engenharia de ML, incluindo a primeira
+abordagem meta-heurística da literatura para um problema NP-completo em
+grafos e a entrega solo de um produto de visão computacional em produção
+para um cliente real.
+
+% ---------- EXPERIÊNCIA PROFISSIONAL ----------
+\section*{Experiência Profissional}
+
+\entrada
+    {Tieta Artificial Intelligence}
+    {(remoto) -- Brasil}
+    {Pesquisador de Machine Learning (Bolsista CNPq RHAE)}
+    {Abr 2025 -- Presente}
+
+\begin{itemize}
+
+    \item Atuei em pesquisa aplicada de \textit{Machine Learning} e
+    engenharia de dados, abrangendo um sistema de recuperação multimodal e
+    um regressor multitarefa para análise de questões do ENEM; realocado em
+    jul/2026 para novo projeto de pesquisa com continuidade até dez/2026.
+
+    \item Desenvolvi um \textbf{regressor multitarefa multimodal} para
+    2.580 questões do ENEM, executando simultaneamente seis tarefas:
+    predição dos parâmetros da TRI $(a,b,c)$, reconstrução da curva ICC,
+    estimativa da taxa de acerto e classificação de área, competência e
+    habilidade pedagógica.
+
+    \item Modelei a arquitetura com princípios de \textbf{MoE/MMoE}
+    (\textit{experts}, redes de \textit{gating}, atenção e
+    \textit{cross-attention}) e implementei redutores vetoriais baseados em
+    LSTM e \textit{Attention Heads} para condensar representações
+    multimodais antes das cabeças de cada tarefa.
+
+    \item Estruturei a entrada multimodal com \textit{embeddings} textuais do
+    Portulan Serafim-900M e representações visuais compactadas pelo DCAE,
+    avaliando estratégias de redução e fusão texto--imagem.
+
+    \item Concebi um canal de \textbf{raciocínio supervisionado} com DSPy
+    (\texttt{Predict} + \texttt{ChainOfThought}), no qual LLMs locais
+    resolvem e justificam as questões; as cadeias geradas alimentam o
+    regressor como representação adicional, com ganho consistente validado
+    pelo teste de Wilcoxon na estimativa de dificuldade latente.
+
+    \item Conduzi \textit{feature engineering} sobre a geometria das
+    trajetórias inferenciais (comprimento, curvatura, linearidade),
+    diagnostiquei a incompatibilidade do \textit{zero-padding} no espaço
+    RelRep, propus injeção lateral via MLP e demonstrei por ablação a
+    redundância dessas métricas frente ao canal de raciocínio.
+
+    \item Entreguei uma \textbf{API de busca multimodal top-$k$} em FastAPI
+    com representações relativas (RelRep), similaridade BERTScore, fusão
+    \textit{early}/\textit{late} e indexação vetorial em FAISS, atingindo
+    \textbf{Recall@1 $\approx$ 0,97} no componente textual.
+
+    \item Formulei um arcabouço de métricas geométricas para seleção de
+    âncoras (cobertura, posto efetivo, número de condição,
+    \textit{kNN-overlap}), comparando \textit{k-center greedy}, LogDet e
+    seleção aleatória, com escolha por dominância de Pareto e validação por
+    Recall@K.
+
+    \item Implementei o pipeline de treinamento em PyTorch (Focal Loss, BCE,
+    MSE, Adam/AdamW, Cosine Annealing) e análises estatísticas (Wilcoxon,
+    Qui-quadrado, McNemar, Pearson/Spearman, ROC, KDE), com experimentos
+    reprodutíveis via Docker, Git e GitLab CI/CD.
+
+\end{itemize}
+
+\vspace{4pt}
+
+\entrada
+    {Cliente autônomo (instituição de ensino)}
+    {(remoto) -- Brasil}
+    {Desenvolvedor de Machine Learning --- Ponto com Biometria Facial}
+    {2026 -- Presente}
+
+\begin{itemize}
+
+    \item Entreguei \textbf{sozinho} um sistema completo de registro de
+    ponto por reconhecimento facial --- modelagem de ML, \textit{backend},
+    segurança, banco de dados e \textit{deploy} --- atualmente em operação
+    para o cliente.
+
+    \item Implementei reconhecimento facial 1:1 e 1:N com
+    \textit{embeddings} InsightFace (\texttt{buffalo\_l}) em
+    $\mathbb{R}^{512}$, verificação por similaridade de cosseno e
+    identificação por KNN executada no PostgreSQL via pgvector; robustez por
+    agregação \textit{multi-frame}, \textit{liveness} e proteção anti-replay
+    com SHA-256.
+
+    \item Treinei um classificador de atestados EfficientNet-B0
+    ($\sim$85\% de acurácia) com \textit{fine-tuning} seletivo, Optuna/TPE,
+    Stratified K-Fold e AMP; decisão híbrida CNN + OCR isolada em
+    microsserviço de inferência.
+
+    \item Construí \textit{backend} FastAPI com concorrência sync/async por
+    perfil de carga, JWT com revogação persistida, \textit{geofencing}
+    (Haversine + perímetro elíptico) e \textit{hardening} de segurança
+    (PIN de provisionamento, comparação em tempo constante, anti-IDOR);
+    persistência com SQLAlchemy, Alembic e PostgreSQL.
+
+    \item Estruturei MLOps de ponta a ponta: realimentação contínua de
+    re-treino por concordância humano-modelo, entrega Dockerizada com HTTPS
+    via Cloudflare Tunnel, 115 testes automatizados e integração contínua no
+    GitHub Actions.
+
+\end{itemize}
+
+\vspace{4pt}
+
+\entrada
+    {Universidade Federal do Ceará --- Campus Quixadá}
+    {(presencial) -- Brasil}
+    {Monitor de Algoritmos, Cálculo e Pré-Cálculo}
+    {2022 -- 2024}
+
+\begin{itemize}
+    \item Ministrei sessões de apoio em estruturas de dados, algoritmos e
+    análise de complexidade, além de Cálculo Diferencial e Integral aplicado
+    à Computação.
+\end{itemize}
+
+% ---------- HABILIDADES ----------
+\section*{Habilidades}
+
+\noindent
+\textbf{Linguagens:} Python, C++, SQL, Bash.\\[2pt]
+\textbf{Frameworks \& Bibliotecas:} PyTorch, Scikit-learn, DSPy, FAISS,
+Optuna, InsightFace, OpenCV, FastAPI, SQLAlchemy, Alembic, Pandas, NumPy,
+SciPy, Matplotlib.\\[2pt]
+\textbf{Ferramentas \& Plataformas:} Docker, Git, GitLab CI/CD,
+GitHub Actions, PostgreSQL, pgvector, MLflow.\\[2pt]
+\textbf{Arquiteturas \& Métodos:} MMoE, MoE, PLE, LSTM, atenção e
+\textit{cross-attention}, RelRep, BERTScore, busca vetorial top-$k$,
+testes de hipótese, TRI/ICC, ROC, KDE, SVD, matriz de Gram, Nyström.
+
+% ---------- IDIOMAS ----------
+\section*{Idiomas}
+
+\noindent
+\textbf{Português:} Nativo \; | \;
+\textbf{Inglês:} Leitura técnica fluente (artigos científicos e
+documentações)
+
+% ---------- FORMAÇÃO ----------
+\section*{Formação Acadêmica}
+
+\entrada
+    {Universidade Federal do Ceará --- Campus Quixadá}
+    {Brasil}
+    {Bacharelado em Ciência da Computação}
+    {2021 -- Jul 2026}
+
+% ---------- DESENVOLVIMENTO PROFISSIONAL ----------
+\section*{Desenvolvimento Profissional (Projetos e Atividades)}
+
+\begin{itemize}
+
+    \item \textbf{\href{https://github.com/isrreal/Triple-Roman-Domination-in-graphs}
+    {3RDF --- Triple Roman Domination Problem (TCC, 2024--2025):}}
+    primeira abordagem meta-heurística da literatura para este problema
+    NP-completo em grafos (C++), com Algoritmo Genético, ACO
+    (MAX-MIN Ant System + RVNS) e formulação de Programação Linear Inteira
+    como \textit{baseline} ótimo de validação experimental.
+
+    \item \textbf{\href{https://github.com/isrreal/Dengue-Forecasting-System}
+    {Dengue Forecasting System (2025):}}
+    sistema MLOps ponta a ponta para previsão de notificações de dengue por
+    estado, comparando LSTM e PLE (redução do RMSE de $\sim$98 para
+    $\sim$83 na série do Ceará); ETL do SINAN via pySUS, PostgreSQL, MLflow,
+    FastAPI, \textit{dashboard} Streamlit/Plotly, pytest, mypy e
+    Docker Compose.
+
+\end{itemize}
+
+\end{document}
