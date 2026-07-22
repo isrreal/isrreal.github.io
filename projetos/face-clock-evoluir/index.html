@@ -154,30 +154,54 @@
               entrar, fazer uma ou mais pausas e só encerra o expediente depois de um retorno válido.
             </p>
             <div class="state-machine" role="img" aria-label="Fluxo de ponto: sem batida leva à entrada; entrada leva ao início da pausa ou à saída; pausa leva ao retorno; retorno leva a outra pausa ou à saída.">
-              <div class="state-main-flow">
-                <span class="state-node">Sem batida</span>
-                <span class="state-arrow" aria-hidden="true">→</span>
-                <span class="state-node state-success">Entrada</span>
-                <span class="state-arrow" aria-hidden="true">→</span>
-                <span class="state-node">Início da pausa</span>
-                <span class="state-arrow" aria-hidden="true">→</span>
-                <span class="state-node">Retorno</span>
-                <span class="state-arrow" aria-hidden="true">→</span>
-                <span class="state-node state-success">Saída</span>
-              </div>
-              <div class="state-retry-flow">
-                <span class="state-branch" aria-hidden="true">↳</span>
-                <span class="state-node state-success">Entrada</span>
-                <span class="state-arrow" aria-hidden="true">→</span>
-                <span class="state-node state-success">Saída</span>
-                <span class="state-return">saída direta</span>
-              </div>
-              <div class="state-extra-flow">
-                <span class="state-branch" aria-hidden="true">↳</span>
-                <span class="state-node">Retorno</span>
-                <span class="state-arrow" aria-hidden="true">→</span>
-                <span class="state-node">Início da pausa</span>
-                <span class="state-return">outra pausa</span>
+              <svg class="fsm-automaton" viewBox="0 0 960 250" role="img" aria-labelledby="fsm-title fsm-description">
+                <title id="fsm-title">Autômato do registro de ponto</title>
+                <desc id="fsm-description">Estados representados por círculos. O caminho principal vai de sem batida para entrada, início da pausa, retorno e saída. Há um atalho de entrada para saída e uma transição de retorno para outra pausa.</desc>
+                <defs>
+                  <marker id="fsm-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" />
+                  </marker>
+                </defs>
+
+                <g class="fsm-main-arrows" aria-hidden="true">
+                  <path d="M 132 92 H 238" />
+                  <path d="M 322 92 H 428" />
+                  <path d="M 512 92 H 618" />
+                  <path d="M 702 92 H 808" />
+                </g>
+                <g class="fsm-branch-arrows" aria-hidden="true">
+                  <path d="M 280 138 C 280 205, 850 220, 850 138" />
+                  <path d="M 660 138 C 660 238, 470 238, 470 138" />
+                </g>
+
+                <g class="fsm-state fsm-state-neutral">
+                  <circle cx="90" cy="92" r="42" />
+                  <text x="90" y="87" text-anchor="middle"><tspan id="fsm-empty-line-1">Sem</tspan><tspan id="fsm-empty-line-2" x="90" dy="17">batida</tspan></text>
+                </g>
+                <g class="fsm-state fsm-state-success">
+                  <circle cx="280" cy="92" r="42" />
+                  <text id="fsm-entry" x="280" y="97" text-anchor="middle">Entrada</text>
+                </g>
+                <g class="fsm-state fsm-state-neutral">
+                  <circle cx="470" cy="92" r="42" />
+                  <text x="470" y="87" text-anchor="middle"><tspan id="fsm-break-line-1">Início da</tspan><tspan id="fsm-break-line-2" x="470" dy="17">pausa</tspan></text>
+                </g>
+                <g class="fsm-state fsm-state-neutral">
+                  <circle cx="660" cy="92" r="42" />
+                  <text id="fsm-return" x="660" y="97" text-anchor="middle">Retorno</text>
+                </g>
+                <g class="fsm-state fsm-state-success">
+                  <circle cx="850" cy="92" r="42" />
+                  <text id="fsm-exit" x="850" y="97" text-anchor="middle">Saída</text>
+                </g>
+
+                <text class="fsm-path-label" id="fsm-direct-label" x="565" y="190" text-anchor="middle">saída direta</text>
+                <text class="fsm-path-label" id="fsm-break-again-label" x="565" y="239" text-anchor="middle">outra pausa</text>
+              </svg>
+              <div class="fsm-legend" aria-label="Legenda do autômato">
+                <span><i class="fsm-legend-circle" aria-hidden="true"></i><strong id="fsm-legend-state">Círculo:</strong> <span id="fsm-legend-state-copy">estado da última batida</span></span>
+                <span><i class="fsm-legend-arrow" aria-hidden="true">→</i><strong id="fsm-legend-arrow">Seta:</strong> <span id="fsm-legend-arrow-copy">próxima batida permitida</span></span>
+                <span><i class="fsm-legend-dashed" aria-hidden="true"></i><strong id="fsm-legend-branch">Caminho curvo:</strong> <span id="fsm-legend-branch-copy">atalho ou nova pausa</span></span>
               </div>
             </div>
           </div>
