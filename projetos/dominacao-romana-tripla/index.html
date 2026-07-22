@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estudo de caso do TCC de Israel Souza Ferreira: primeiras meta-heurísticas e formulação PLI corrigida para o Problema de Dominação Romana Tripla.">
+  <meta name="author" content="Israel Souza Ferreira">
+  <meta name="theme-color" content="#0b1020">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Dominação Romana Tripla | Israel Souza Ferreira">
+  <meta property="og:description" content="Primeiras meta-heurísticas GA e ACO e uma formulação PLI corrigida para o PDRT.">
+  <meta property="og:url" content="https://isrreal.github.io/projetos/dominacao-romana-tripla/">
+  <meta property="og:locale" content="pt_BR">
+
+  <title>Dominação Romana Tripla | Israel Souza Ferreira</title>
+  <link rel="canonical" href="https://isrreal.github.io/projetos/dominacao-romana-tripla/">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="../../script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header" id="inicio">
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="brand" href="../../index.html" aria-label="Voltar ao portfólio">
+        <span aria-hidden="true">&lt;/&gt;</span>
+        <span>Israel Souza Ferreira</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
+        <span class="sr-only">Abrir menu</span>
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu">
+        <a href="../../index.html#projetos">Projetos</a>
+        <a href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" target="_blank" rel="noreferrer">Repositório</a>
+        <button class="theme-toggle" type="button" aria-label="Alternar tema" title="Alternar tema">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="case-hero">
+      <div class="container">
+        <a class="case-breadcrumb" href="../../index.html#projetos">← Voltar aos projetos</a>
+        <p class="eyebrow">TCC · Otimização combinatória · Concluído</p>
+        <h1 class="case-title">Dominação Romana Tripla em grafos</h1>
+        <p class="hero-description case-intro">
+          As primeiras meta-heurísticas baseadas em Algoritmos Genéticos e Otimização
+          por Colônia de Formigas para o PDRT, com uma formulação corrigida de
+          Programação Linear Inteira para obter soluções exatas.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" target="_blank" rel="noreferrer">Ver código no GitHub</a>
+          <a class="button button-secondary" href="#contribuicoes">Ver contribuições</a>
+        </div>
+        <ul class="case-meta" aria-label="Informações do projeto">
+          <li>C++</li>
+          <li>Algoritmo Genético</li>
+          <li>ACO + RVNS</li>
+          <li>Programação Linear Inteira</li>
+          <li>2024–2025</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container case-content">
+        <article class="case-block">
+          <div>
+            <p class="section-kicker">O problema</p>
+            <h2>Proteção em rede com custo mínimo.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              A Dominação Romana Tripla modela como distribuir níveis de proteção entre
+              os vértices de um grafo, garantindo que regiões vulneráveis sejam cobertas
+              por seus vizinhos enquanto o custo total é minimizado.
+            </p>
+            <p>
+              A ideia nasce de problemas de defesa e também se relaciona a cenários como
+              alocação de servidores e cobertura de redes. Como a versão de decisão do
+              problema é NP-completa, encontrar a solução ótima torna-se difícil à medida
+              que as instâncias crescem. Isso motiva métodos aproximados capazes de produzir
+              boas soluções em tempo viável.
+            </p>
+          </div>
+        </article>
+
+        <article class="case-block" id="contribuicoes">
+          <div>
+            <p class="section-kicker">Contribuições</p>
+            <h2>O que o trabalho acrescenta.</h2>
+          </div>
+          <div class="case-prose">
+            <ul class="case-list">
+              <li><strong>Primeiras meta-heurísticas para o PDRT:</strong> implementação e avaliação de abordagens baseadas em GA e ACO.</li>
+              <li><strong>PLI corrigida:</strong> uma formulação de Programação Linear Inteira que corrige inconsistências de uma proposta anterior e serve como referência exata.</li>
+              <li><strong>Base experimental:</strong> geração de 30 grafos aleatórios e cálculo dos valores exatos de γ<sub>3R</sub>(G), além da solução exata da maioria das demais instâncias avaliadas.</li>
+              <li><strong>Análise comparativa:</strong> avaliação de quatro heurísticas do GA, do impacto da busca RVNS no ACO e do gap relativo em relação às soluções ótimas.</li>
+            </ul>
+          </div>
+        </article>
+
+        <aside class="case-highlight">
+          <p class="section-kicker">Contribuição científica</p>
+          <p class="lead">
+            O trabalho não apenas propõe métodos aproximados inéditos para o PDRT:
+            ele também estabelece uma referência exata corrigida e amplia o conjunto
+            de instâncias com valores conhecidos para pesquisas futuras.
+          </p>
+        </aside>
+
+        <article class="case-block">
+          <div>
+            <p class="section-kicker">Resultados</p>
+            <h2>Desempenho com nuances.</h2>
+          </div>
+          <div class="case-prose">
+            <p>
+              O <strong>ACO-FL</strong>, que combina ACO e busca RVNS, superou o
+              <strong>GA-FL</strong> na maioria dos casos em tempo de execução e
+              qualidade das soluções. O GA-FL, porém, permaneceu competitivo em
+              cenários específicos, especialmente em grafos menores e estruturados.
+            </p>
+            <p>
+              A comparação usou o gap relativo em relação às soluções ótimas da PLI.
+              Entre todos os grafos avaliados, apenas seis apresentaram gap acima de
+              50%; os demais ficaram abaixo desse limiar.
+            </p>
+            <div class="case-results" aria-label="Resumo dos resultados">
+              <div class="case-result">
+                <strong>30</strong>
+                <span>grafos aleatórios gerados com valor exato calculado</span>
+              </div>
+              <div class="case-result">
+                <strong>ACO-FL</strong>
+                <span>melhor desempenho na maioria dos casos avaliados</span>
+              </div>
+              <div class="case-result">
+                <strong>6 grafos</strong>
+                <span>com gap relativo acima de 50% no conjunto experimental</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-block">
+          <div>
+            <p class="section-kicker">Próximos passos</p>
+            <h2>Onde a pesquisa pode avançar.</h2>
+          </div>
+          <div class="case-prose">
+            <p>
+              O trabalho propõe ampliar a busca de hiperparâmetros e investigar novas
+              estratégias de seleção, cruzamento, mutação e elitismo no GA. Para o ACO,
+              sugere avaliar outros métodos de seleção e exploração, além de otimizações
+              de implementação e compilação para reduzir o tempo de execução.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container case-cta">
+        <div>
+          <p class="section-kicker">Código e experimentos</p>
+          <h2>Veja a implementação completa.</h2>
+        </div>
+        <a class="button button-primary" href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" target="_blank" rel="noreferrer">Abrir repositório</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="current-year"></span> Israel Souza Ferreira.</p>
+      <p><a class="text-link" href="../../index.html">Voltar ao portfólio</a></p>
+    </div>
+  </footer>
+</body>
+</html>
