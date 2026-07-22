@@ -856,6 +856,10 @@ h3 {
   overflow: visible;
 }
 
+.fsm-mobile-flow {
+  display: none;
+}
+
 .fsm-main-arrows path,
 .fsm-branch-arrows path {
   fill: none;
@@ -1560,6 +1564,70 @@ h3 {
 
   .soft-skills-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .state-machine {
+    overflow: hidden;
+  }
+
+  .fsm-automaton,
+  .fsm-legend {
+    display: none;
+  }
+
+  .fsm-mobile-flow {
+    display: grid;
+    justify-items: center;
+    gap: 0.45rem;
+  }
+
+  .fsm-mobile-node {
+    width: min(100%, 15rem);
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    background: var(--background);
+    color: var(--text);
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .fsm-mobile-success {
+    border-color: var(--success);
+    background: color-mix(in srgb, var(--success) 12%, var(--background));
+    color: var(--success);
+  }
+
+  .fsm-mobile-arrow {
+    color: var(--accent);
+    font-size: 1.35rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .fsm-mobile-branches {
+    display: grid;
+    width: 100%;
+    gap: 0.65rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border);
+  }
+
+  .fsm-mobile-branches p {
+    margin: 0;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .fsm-mobile-branches strong {
+    color: var(--accent);
   }
 }
 

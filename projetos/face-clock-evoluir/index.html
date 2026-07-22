@@ -198,6 +198,21 @@
                 <text class="fsm-path-label" id="fsm-direct-label" x="565" y="190" text-anchor="middle">saída direta</text>
                 <text class="fsm-path-label" id="fsm-break-again-label" x="565" y="239" text-anchor="middle">outra pausa</text>
               </svg>
+              <div class="fsm-mobile-flow" role="img" aria-label="Fluxo vertical do registro de ponto">
+                <div class="fsm-mobile-node">Sem batida</div>
+                <span class="fsm-mobile-arrow" aria-hidden="true">↓</span>
+                <div class="fsm-mobile-node fsm-mobile-success">Entrada</div>
+                <span class="fsm-mobile-arrow" aria-hidden="true">↓</span>
+                <div class="fsm-mobile-node">Início da pausa</div>
+                <span class="fsm-mobile-arrow" aria-hidden="true">↓</span>
+                <div class="fsm-mobile-node">Retorno</div>
+                <span class="fsm-mobile-arrow" aria-hidden="true">↓</span>
+                <div class="fsm-mobile-node fsm-mobile-success">Saída</div>
+                <div class="fsm-mobile-branches">
+                  <p><strong id="fsm-mobile-direct-title">Atalho:</strong> <span id="fsm-mobile-direct-copy">Entrada → Saída (saída direta)</span></p>
+                  <p><strong id="fsm-mobile-break-title">Repetição:</strong> <span id="fsm-mobile-break-copy">Retorno → Início da pausa (outra pausa)</span></p>
+                </div>
+              </div>
               <div class="fsm-legend" aria-label="Legenda do autômato">
                 <span><i class="fsm-legend-circle" aria-hidden="true"></i><strong id="fsm-legend-state">Círculo:</strong> <span id="fsm-legend-state-copy">estado da última batida</span></span>
                 <span><i class="fsm-legend-arrow" aria-hidden="true">→</i><strong id="fsm-legend-arrow">Seta:</strong> <span id="fsm-legend-arrow-copy">próxima batida permitida</span></span>
