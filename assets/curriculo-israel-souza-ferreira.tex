@@ -4,7 +4,7 @@
 \usepackage[a4paper, top=0.9cm, bottom=0.8cm, left=1.5cm, right=1.5cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[portuguese]{babel}
+\usepackage[provide=*,portuguese]{babel}
 
 % O template usa fonte serifada (Times-like); mantemos a família padrão
 % do LaTeX substituída por Times para fidelidade visual ao modelo.
@@ -88,8 +88,8 @@ multimodais e MLOps. Desenvolvi um regressor multitarefa multimodal para
 ICC, taxa de acerto e classificações pedagógicas. Possuo experiência no ciclo
 completo de pesquisa aplicada e engenharia de ML, incluindo a primeira
 abordagem meta-heurística da literatura para um problema NP-completo em
-grafos e a entrega solo de um produto de visão computacional em produção
-para um cliente real.
+grafos e o desenvolvimento solo de um produto de visão computacional em
+fase final de homologação para um cliente real.
 
 % ---------- EXPERIÊNCIA PROFISSIONAL ----------
 \section*{Experiência Profissional}
@@ -135,10 +135,10 @@ para um cliente real.
     RelRep, propus injeção lateral via MLP e demonstrei por ablação a
     redundância dessas métricas frente ao canal de raciocínio.
 
-    \item Entreguei uma \textbf{API de busca multimodal top-$k$} em FastAPI
+    \item Desenvolvi uma \textbf{API de busca multimodal top-$k$} em FastAPI
     com representações relativas (RelRep), similaridade BERTScore, fusão
-    \textit{early}/\textit{late} e indexação vetorial em FAISS, atingindo
-    \textbf{Recall@1 $\approx$ 0,97} no componente textual.
+    \textit{early}/\textit{late} e indexação vetorial em FAISS para
+    recuperação e ranqueamento de questões.
 
     \item Formulei um arcabouço de métricas geométricas para seleção de
     âncoras (cobertura, posto efetivo, número de condição,
@@ -163,10 +163,10 @@ para um cliente real.
 
 \begin{itemize}
 
-    \item Entreguei \textbf{sozinho} um sistema completo de registro de
+    \item Desenvolvi \textbf{sozinho} um sistema completo de registro de
     ponto por reconhecimento facial --- modelagem de ML, \textit{backend},
-    segurança, banco de dados e \textit{deploy} --- atualmente em operação
-    para o cliente.
+    segurança, banco de dados e \textit{deploy} --- atualmente em fase final
+    de homologação para o cliente.
 
     \item Implementei reconhecimento facial 1:1 e 1:N com
     \textit{embeddings} InsightFace (\texttt{buffalo\_l}) em
@@ -252,9 +252,8 @@ documentações)
 
     \item \textbf{\href{https://github.com/isrreal/Dengue-Forecasting-System}
     {Dengue Forecasting System (2025):}}
-    sistema MLOps ponta a ponta para previsão de notificações de dengue por
-    estado, comparando LSTM e PLE (redução do RMSE de $\sim$98 para
-    $\sim$83 na série do Ceará); ETL do SINAN via pySUS, PostgreSQL, MLflow,
+    sistema MLOps em desenvolvimento para previsão de notificações de dengue
+    por estado; ETL do SINAN via pySUS, PostgreSQL, MLflow,
     FastAPI, \textit{dashboard} Streamlit/Plotly, pytest, mypy e
     Docker Compose.
 
