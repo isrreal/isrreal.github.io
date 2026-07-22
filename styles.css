@@ -163,7 +163,7 @@ svg {
   color: var(--muted);
   font-size: 0.94rem;
   font-weight: 650;
-  transition: color 150ms ease;
+  transition: color 150ms ease, transform 180ms ease;
 }
 
 .nav-menu > a:hover,
@@ -320,7 +320,7 @@ h3 {
   border: 1px solid transparent;
   border-radius: 0.9rem;
   font-weight: 750;
-  transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease;
+  transition: transform 180ms ease, background-color 150ms ease, border-color 150ms ease, box-shadow 180ms ease;
 }
 
 .button:hover {
@@ -359,6 +359,7 @@ h3 {
   background: #080c14;
   box-shadow: var(--shadow);
   transform: rotate(1.2deg);
+  transition: transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 220ms ease, box-shadow 280ms ease;
 }
 
 .terminal-bar {
@@ -405,8 +406,10 @@ h3 {
 
 .text-link,
 .project-links a {
+  display: inline-flex;
   color: var(--accent);
   font-weight: 750;
+  transition: color 180ms ease, transform 180ms ease;
 }
 
 .projects-grid {
@@ -540,6 +543,7 @@ h3 {
   border-radius: 999px;
   color: var(--muted);
   font-size: 0.78rem;
+  transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background-color 180ms ease;
 }
 
 .project-links {
@@ -582,6 +586,7 @@ h3 {
   color: var(--muted);
   font-size: 0.84rem;
   font-weight: 700;
+  transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background-color 180ms ease;
 }
 
 .case-content {
@@ -631,6 +636,7 @@ h3 {
   padding: 1.5rem;
   border-left: 3px solid var(--accent);
   background: var(--surface);
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
 }
 
 .case-formula p {
@@ -658,6 +664,7 @@ h3 {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow);
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 220ms ease, box-shadow 300ms ease;
 }
 
 .case-figure figcaption {
@@ -679,6 +686,7 @@ h3 {
   border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--border));
   border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--accent-soft) 55%, var(--surface));
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 220ms ease, box-shadow 240ms ease;
 }
 
 .case-highlight p:last-child {
@@ -697,6 +705,7 @@ h3 {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface);
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 180ms ease, box-shadow 220ms ease;
 }
 
 .case-result strong {
@@ -705,6 +714,7 @@ h3 {
   color: var(--accent);
   font-size: 1.6rem;
   line-height: 1.15;
+  transition: transform 220ms ease, color 180ms ease;
 }
 
 .case-result span {
@@ -729,6 +739,7 @@ h3 {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface);
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 180ms ease, box-shadow 240ms ease, background-color 180ms ease;
 }
 
 .flow-step:not(:last-child)::after {
@@ -747,6 +758,7 @@ h3 {
   color: var(--accent);
   font-weight: 900;
   transform: translateY(-50%);
+  transition: transform 220ms ease, border-color 180ms ease, background-color 180ms ease;
 }
 
 .flow-index,
@@ -757,12 +769,14 @@ h3 {
   font: 800 0.76rem/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  transition: transform 220ms ease, color 180ms ease;
 }
 
 .flow-step strong {
   display: block;
   margin-bottom: 0.7rem;
   font-size: 1.08rem;
+  transition: color 180ms ease, transform 220ms ease;
 }
 
 .flow-step p,
@@ -783,11 +797,13 @@ h3 {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface);
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 180ms ease, box-shadow 240ms ease, background-color 180ms ease;
 }
 
 .architecture-card h3 {
   margin-bottom: 0.7rem;
   font-size: 1.2rem;
+  transition: color 180ms ease, transform 220ms ease;
 }
 
 .state-machine {
@@ -801,6 +817,7 @@ h3 {
   background:
     radial-gradient(circle at 75% 20%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 40%),
     var(--surface);
+  transition: border-color 220ms ease, box-shadow 240ms ease;
 }
 
 .state-main-flow,
@@ -832,6 +849,7 @@ h3 {
   font-weight: 800;
   text-align: center;
   white-space: nowrap;
+  transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
 }
 
 .state-success {
@@ -848,12 +866,14 @@ h3 {
 .state-branch {
   color: var(--accent);
   font-weight: 900;
+  transition: transform 180ms ease, color 180ms ease;
 }
 
 .state-return {
   color: var(--muted);
   font-size: 0.76rem;
   font-weight: 700;
+  transition: transform 180ms ease, color 180ms ease;
 }
 
 .case-cta {
@@ -866,6 +886,7 @@ h3 {
   border-radius: var(--radius-lg);
   background: var(--surface);
   box-shadow: var(--shadow);
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 220ms ease, box-shadow 240ms ease;
 }
 
 .case-cta h2 {
@@ -893,6 +914,7 @@ h3 {
   border-radius: var(--radius-md);
   background: var(--surface);
   box-shadow: var(--shadow);
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 180ms ease, box-shadow 240ms ease;
 }
 
 .experience-heading {
@@ -930,6 +952,7 @@ h3 {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--surface-alt);
+  transition: transform 200ms ease, border-color 180ms ease, background-color 180ms ease;
 }
 
 .experience-facts dt {
@@ -937,6 +960,7 @@ h3 {
   font-size: 1.25rem;
   font-weight: 850;
   line-height: 1.2;
+  transition: transform 200ms ease;
 }
 
 .experience-facts dd {
@@ -965,12 +989,14 @@ h3 {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface);
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 180ms ease, box-shadow 220ms ease, background-color 180ms ease;
 }
 
 .skill-group h3 {
   margin-bottom: 0.75rem;
   font-size: 1.05rem;
   letter-spacing: -0.02em;
+  transition: color 180ms ease, transform 200ms ease;
 }
 
 .skill-group p,
@@ -1007,12 +1033,14 @@ h3 {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface);
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 180ms ease, box-shadow 220ms ease, background-color 180ms ease;
 }
 
 .soft-skill-card h3 {
   margin-bottom: 0.75rem;
   font-size: 1.05rem;
   letter-spacing: -0.02em;
+  transition: color 180ms ease, transform 200ms ease;
 }
 
 .soft-skill-card p {
@@ -1034,6 +1062,7 @@ h3 {
   border-radius: var(--radius-lg);
   background: var(--surface);
   box-shadow: var(--shadow);
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 220ms ease, box-shadow 240ms ease;
 }
 
 .contact-card h2 {
@@ -1063,6 +1092,127 @@ h3 {
   .nav-toggle:hover,
   .button-secondary:hover {
     border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  }
+
+  .nav-menu > a:hover {
+    transform: translateY(-2px);
+  }
+
+  .button:hover {
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 20%, transparent);
+    transform: translateY(-3px) scale(1.015);
+  }
+
+  .terminal-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+    box-shadow: 0 34px 100px rgba(0, 0, 0, 0.42);
+    transform: rotate(0deg) translateY(-7px) scale(1.012);
+  }
+
+  .tag-list li:hover,
+  .case-meta li:hover {
+    border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 48%, transparent);
+    color: var(--text);
+    transform: translateY(-3px);
+  }
+
+  .case-formula:hover {
+    background: color-mix(in srgb, var(--accent-soft) 28%, var(--surface));
+    box-shadow: 0 18px 45px color-mix(in srgb, var(--accent) 12%, transparent);
+    transform: translateX(6px);
+  }
+
+  .case-figure:hover img {
+    border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+    box-shadow: 0 32px 90px color-mix(in srgb, var(--accent) 18%, transparent);
+    transform: scale(1.012);
+  }
+
+  .case-highlight:hover,
+  .case-cta:hover,
+  .contact-card:hover,
+  .experience-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 70%, var(--border));
+    box-shadow: 0 28px 75px color-mix(in srgb, var(--accent) 15%, transparent);
+    transform: translateY(-5px);
+  }
+
+  .flow-step:hover,
+  .architecture-card:hover,
+  .case-result:hover,
+  .skill-group:hover,
+  .soft-skill-card:hover {
+    z-index: 2;
+    border-color: color-mix(in srgb, var(--accent) 65%, var(--border));
+    background-color: color-mix(in srgb, var(--accent-soft) 22%, var(--surface));
+    box-shadow: 0 22px 55px color-mix(in srgb, var(--accent) 16%, transparent);
+    transform: translateY(-7px) scale(1.015);
+  }
+
+  .flow-step:hover .flow-index,
+  .architecture-card:hover > span {
+    color: var(--accent-strong);
+    transform: translateX(5px);
+  }
+
+  .flow-step:hover strong,
+  .architecture-card:hover h3,
+  .skill-group:hover h3,
+  .soft-skill-card:hover h3 {
+    color: var(--accent);
+    transform: translateX(3px);
+  }
+
+  .flow-step:not(:last-child):hover::after {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .case-result:hover strong {
+    color: var(--accent-strong);
+    transform: translateY(-2px) scale(1.04);
+    transform-origin: left center;
+  }
+
+  .state-machine:hover {
+    border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+    box-shadow: 0 20px 55px color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+
+  .state-node:hover {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent-soft) 55%, var(--background));
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--accent) 20%, transparent);
+    color: var(--accent-strong);
+    transform: translateY(-4px) scale(1.04);
+  }
+
+  .state-node:hover + .state-arrow,
+  .state-node:hover + .state-return {
+    color: var(--accent-strong);
+    transform: translateX(3px);
+  }
+
+  .experience-facts div:hover {
+    border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 32%, var(--surface-alt));
+    transform: translateY(-4px);
+  }
+
+  .experience-facts div:hover dt {
+    transform: translateY(-2px) scale(1.04);
+    transform-origin: left center;
+  }
+
+  .text-link:hover,
+  .project-links a:hover {
+    color: var(--accent-strong);
+  }
+
+  .project-links a:not(.project-primary-link):hover {
+    transform: translateX(3px);
   }
 }
 
