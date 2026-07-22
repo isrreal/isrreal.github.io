@@ -429,6 +429,11 @@ h3 {
     var(--surface);
 }
 
+.project-wide {
+  grid-column: 1 / -1;
+  min-height: 320px;
+}
+
 .project-topline {
   display: flex;
   align-items: center;
@@ -823,6 +828,10 @@ h3 {
   .project-featured {
     grid-row: auto;
     min-height: 460px;
+  }
+
+  .project-wide {
+    grid-column: auto;
   }
 
   .contact-card {
