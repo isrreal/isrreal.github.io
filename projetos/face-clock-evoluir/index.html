@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark" data-page="face-clock">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estudo de caso do Face Clock Evoluir: sistema de gestão de ponto com biometria facial, geofencing, classificação de atestados e engenharia de produção.">
+  <meta name="author" content="Israel Souza Ferreira">
+  <meta name="theme-color" content="#0b1020">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Face Clock Evoluir | Israel Souza Ferreira">
+  <meta property="og:description" content="Biometria facial, geofencing e aprendizado de máquina aplicados a um sistema real de gestão de ponto.">
+  <meta property="og:url" content="https://isrreal.github.io/projetos/face-clock-evoluir/">
+  <meta property="og:locale" content="pt_BR">
+
+  <title>Face Clock Evoluir | Israel Souza Ferreira</title>
+  <link rel="canonical" href="https://isrreal.github.io/projetos/face-clock-evoluir/">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="../../script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header" id="inicio">
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="brand" href="../../index.html" aria-label="Voltar ao portfólio">
+        <span aria-hidden="true">&lt;/&gt;</span>
+        <span>Israel Souza Ferreira</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
+        <span class="sr-only">Abrir menu</span>
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu">
+        <a href="../../index.html#projetos">Projetos</a>
+        <a href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Apresentação técnica</a>
+        <button class="language-toggle" type="button" aria-label="Mudar para inglês" title="Mudar para inglês">
+          <span class="language-code" aria-hidden="true">EN</span>
+        </button>
+        <button class="theme-toggle" type="button" aria-label="Alternar tema" title="Alternar tema">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="case-hero">
+      <div class="container">
+        <a class="case-breadcrumb" href="../../index.html#projetos">← Voltar aos projetos</a>
+        <p class="eyebrow">Produto aplicado · Visão computacional · Em homologação</p>
+        <h1 class="case-title">Face Clock Evoluir</h1>
+        <p class="hero-description case-intro">
+          Sistema de gestão de ponto desenvolvido para uma instituição de ensino,
+          combinando biometria facial, validação de localização e classificação de
+          documentos médicos em uma arquitetura preparada para uso real.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Ver apresentação técnica</a>
+          <a class="button button-secondary" href="#como-funciona">Entender o sistema</a>
+          <a class="button button-secondary" href="#engenharia">Ver decisões de engenharia</a>
+        </div>
+        <ul class="case-meta" aria-label="Informações do projeto">
+          <li>InsightFace</li>
+          <li>FastAPI</li>
+          <li>PostgreSQL + pgvector</li>
+          <li>EfficientNet-B0</li>
+          <li>Docker</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container case-content">
+        <article class="case-block" id="problema">
+          <div>
+            <p class="section-kicker">O problema</p>
+            <h2>Registrar presença sem criar atrito.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              Um sistema de ponto precisa reconhecer a pessoa certa, confirmar que ela
+              está no local permitido e continuar simples o bastante para o uso diário.
+            </p>
+            <p>
+              O Face Clock Evoluir substitui identificadores compartilháveis, como cartões
+              e senhas, por uma verificação biométrica contextual. A solução atende tanto
+              ao registro individual quanto a um modo totem e integra o ponto a turnos,
+              banco de horas e envio de atestados.
+            </p>
+            <p>
+              A decisão de produto mais importante foi separar observação de punição:
+              uma batida fora do horário previsto é registrada e sinalizada, não bloqueada.
+              Assim, o sistema informa o desvio sem inventar regras de folha de pagamento.
+            </p>
+          </div>
+        </article>
+
+        <article id="como-funciona">
+          <div class="case-section-heading">
+            <p class="section-kicker">Como funciona</p>
+            <h2>Da câmera ao registro de ponto.</h2>
+            <p class="lead">O reconhecimento é apenas uma etapa de um fluxo que também considera qualidade, segurança e contexto.</p>
+          </div>
+          <ol class="system-flow" aria-label="Fluxo do reconhecimento facial ao registro de ponto">
+            <li class="flow-step">
+              <span class="flow-index">01</span>
+              <strong>Captura</strong>
+              <p>Múltiplos quadros reduzem a dependência de uma única imagem e permitem filtrar amostras ruins.</p>
+            </li>
+            <li class="flow-step">
+              <span class="flow-index">02</span>
+              <strong>Representação</strong>
+              <p>O InsightFace transforma cada rosto em um vetor normalizado de 512 dimensões.</p>
+            </li>
+            <li class="flow-step">
+              <span class="flow-index">03</span>
+              <strong>Busca</strong>
+              <p>O pgvector compara embeddings por similaridade de cosseno nos modos 1:1 e 1:N.</p>
+            </li>
+            <li class="flow-step">
+              <span class="flow-index">04</span>
+              <strong>Contexto</strong>
+              <p>Geofencing, vivacidade e proteção contra repetição reforçam a validade da tentativa.</p>
+            </li>
+            <li class="flow-step">
+              <span class="flow-index">05</span>
+              <strong>Registro</strong>
+              <p>A batida é persistida e eventuais desvios de turno são apresentados sem impedir o ponto.</p>
+            </li>
+          </ol>
+        </article>
+
+        <article class="case-block" id="arquitetura">
+          <div>
+            <p class="section-kicker">Arquitetura</p>
+            <h2>Componentes separados por responsabilidade.</h2>
+          </div>
+          <div class="architecture-grid">
+            <section class="architecture-card">
+              <span>Interface</span>
+              <h3>Web e modo totem</h3>
+              <p>Captura de câmera e localização, fluxos responsivos e provisionamento seguro do dispositivo.</p>
+            </section>
+            <section class="architecture-card">
+              <span>Aplicação</span>
+              <h3>FastAPI</h3>
+              <p>Autenticação, regras de negócio, turnos, banco de horas e APIs organizadas por serviços.</p>
+            </section>
+            <section class="architecture-card">
+              <span>Dados</span>
+              <h3>PostgreSQL + pgvector</h3>
+              <p>Dados transacionais e busca vetorial no mesmo banco, com migrações e persistência controlada.</p>
+            </section>
+            <section class="architecture-card">
+              <span>Machine learning</span>
+              <h3>Serviço de inferência</h3>
+              <p>Reconhecimento facial e classificador de atestados isolados do núcleo transacional.</p>
+            </section>
+          </div>
+        </article>
+
+        <article class="case-block" id="atestados">
+          <div>
+            <p class="section-kicker">Além da biometria</p>
+            <h2>Triagem inteligente de atestados.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              Um pipeline híbrido combina EfficientNet-B0 e OCR para apoiar a identificação
+              de documentos médicos enviados pela plataforma.
+            </p>
+            <p>
+              O classificador vive em um serviço próprio e foi estruturado com fine-tuning
+              seletivo, busca de hiperparâmetros e validação estratificada. A decisão final
+              continua humana: o modelo auxilia a triagem, mas não substitui a análise administrativa.
+            </p>
+            <p>
+              As decisões humanas também podem alimentar re-treinamentos futuros. Para evitar
+              rótulos incorretos, documentos rejeitados só entram como exemplos negativos quando
+              há concordância entre pessoa e modelo; casos ambíguos são descartados da base de treino.
+            </p>
+          </div>
+        </article>
+
+        <article class="case-block" id="engenharia">
+          <div>
+            <p class="section-kicker">Engenharia e segurança</p>
+            <h2>Confiabilidade construída em camadas.</h2>
+          </div>
+          <div class="case-prose">
+            <ul class="case-list">
+              <li><strong>Biometria protegida:</strong> validação de qualidade, controles de acesso e tratamento cuidadoso de dados sensíveis.</li>
+              <li><strong>Autenticação consistente:</strong> revogação persistente de JWT, proteção contra IDOR e comparação de segredos em tempo constante.</li>
+              <li><strong>Totem provisionado:</strong> dispositivos são ativados por um fluxo próprio; segredos não são incorporados ao HTML entregue ao navegador.</li>
+              <li><strong>Implantação restrita:</strong> backend acessível apenas localmente e publicação HTTPS por túnel, necessária também para câmera e geolocalização no navegador.</li>
+              <li><strong>Dados duráveis:</strong> migrações versionadas, volumes dedicados e verificação da instalação a partir de uma base vazia.</li>
+            </ul>
+          </div>
+        </article>
+
+        <aside class="case-highlight">
+          <p class="section-kicker">Decisão de arquitetura</p>
+          <p class="lead">
+            Operações de inferência, limitadas por CPU, permanecem síncronas; concorrência
+            assíncrona é reservada para esperas de I/O. A escolha evita complexidade sem ganho
+            e deixa explícito onde cada modelo de execução realmente ajuda.
+          </p>
+        </aside>
+
+        <article class="case-block" id="qualidade">
+          <div>
+            <p class="section-kicker">Qualidade</p>
+            <h2>Validado além do ambiente de desenvolvimento.</h2>
+          </div>
+          <div class="case-prose">
+            <p>
+              A aplicação foi testada como uma stack de produção real, sem os atalhos de
+              desenvolvimento que poderiam mascarar arquivos ausentes, permissões incorretas
+              ou falhas de inicialização. Testes de navegador também revelaram problemas que
+              a leitura estática do código não detectou.
+            </p>
+            <div class="case-results" aria-label="Indicadores de engenharia">
+              <div class="case-result">
+                <strong>116</strong>
+                <span>testes automatizados passando no pipeline Docker</span>
+              </div>
+              <div class="case-result">
+                <strong>CPU/GPU</strong>
+                <span>inferência portátil, com aceleração opcional quando disponível</span>
+              </div>
+              <div class="case-result">
+                <strong>HTTPS</strong>
+                <span>acesso remoto seguro sem expor diretamente o backend</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-block" id="status">
+          <div>
+            <p class="section-kicker">Status atual</p>
+            <h2>Em fase final de homologação.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              O sistema ainda não está concluído nem entregue: encontra-se na etapa final
+              de validação antes da implantação definitiva na instituição.
+            </p>
+            <p>
+              Por se tratar de um produto desenvolvido para um cliente, o código-fonte é
+              proprietário. O repositório público apresenta arquitetura, tecnologias e decisões
+              técnicas sem expor dados institucionais, credenciais ou detalhes operacionais.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container case-cta">
+        <div>
+          <p class="section-kicker">Apresentação pública</p>
+          <h2>Explore a arquitetura e a documentação técnica.</h2>
+        </div>
+        <div class="contact-actions">
+          <a class="button button-primary" href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Abrir no GitHub</a>
+          <a class="button button-secondary" href="../../index.html#projetos">Ver outros projetos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="current-year"></span> Israel Souza Ferreira.</p>
+      <p><a class="text-link" href="../../index.html">Voltar ao portfólio</a></p>
+    </div>
+  </footer>
+</body>
+</html>

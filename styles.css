@@ -557,6 +557,19 @@ h3 {
   gap: 5rem;
 }
 
+.case-section-heading {
+  max-width: 780px;
+  margin-bottom: 2rem;
+}
+
+.case-section-heading h2 {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+}
+
+.case-section-heading .lead {
+  color: var(--muted);
+}
+
 .case-block {
   display: grid;
   grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.35fr);
@@ -665,6 +678,84 @@ h3 {
 .case-result span {
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.system-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: flow;
+}
+
+.flow-step {
+  position: relative;
+  min-height: 240px;
+  padding: 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.flow-step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: -0.72rem;
+  display: grid;
+  width: 1.35rem;
+  height: 1.35rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--background);
+  color: var(--accent);
+  font-weight: 900;
+  transform: translateY(-50%);
+}
+
+.flow-index,
+.architecture-card > span {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--accent);
+  font: 800 0.76rem/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flow-step strong {
+  display: block;
+  margin-bottom: 0.7rem;
+  font-size: 1.08rem;
+}
+
+.flow-step p,
+.architecture-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.architecture-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.architecture-card {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.architecture-card h3 {
+  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
 }
 
 .case-cta {
@@ -937,9 +1028,30 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .system-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-step {
+    min-height: 0;
+  }
+
+  .flow-step:not(:last-child)::after {
+    top: auto;
+    right: 50%;
+    bottom: -0.72rem;
+    transform: translateX(50%) rotate(90deg);
+  }
+
   .case-cta {
     align-items: start;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .architecture-grid {
+    grid-template-columns: 1fr;
   }
 }
 
