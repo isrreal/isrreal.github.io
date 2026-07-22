@@ -72,6 +72,7 @@
           <li>FastAPI</li>
           <li>PostgreSQL + pgvector</li>
           <li>EfficientNet-B0</li>
+          <li>JWT + OAuth2 Bearer</li>
           <li>Docker</li>
         </ul>
       </div>
@@ -280,12 +281,28 @@
             <h2>Confiabilidade construída em camadas.</h2>
           </div>
           <div class="case-prose">
-            <ul class="case-list">
-              <li><strong>Biometria protegida:</strong> validação de qualidade, controles de acesso e tratamento cuidadoso de dados sensíveis.</li>
-              <li><strong>Autenticação consistente:</strong> revogação persistente de JWT, proteção contra IDOR e comparação de segredos em tempo constante.</li>
-              <li><strong>Totem provisionado:</strong> dispositivos são ativados por um fluxo próprio; segredos não são incorporados ao HTML entregue ao navegador.</li>
-              <li><strong>Implantação restrita:</strong> backend acessível apenas localmente e publicação HTTPS por túnel, necessária também para câmera e geolocalização no navegador.</li>
-              <li><strong>Dados duráveis:</strong> migrações versionadas, volumes dedicados e verificação da instalação a partir de uma base vazia.</li>
+            <p class="lead">
+              A identidade é validada em diferentes níveis: usuário, sessão, autorização,
+              dispositivo e tentativa biométrica. Cada camada reduz um tipo distinto de risco.
+            </p>
+            <div class="case-formula auth-summary">
+              <p class="section-kicker">Em termos simples</p>
+              <p><strong>O login gera uma credencial temporária assinada; as rotas protegidas validam essa credencial antes de executar qualquer ação.</strong></p>
+              <code>Login → JWT assinado → Bearer token → claims validadas → rota autorizada</code>
+              <p>
+                O <code>OAuth2PasswordBearer</code> do FastAPI padroniza como a API recebe o token.
+                Neste projeto, ele não representa login social por Google ou Microsoft.
+              </p>
+            </div>
+            <ul class="case-list security-list" aria-label="Camadas de segurança da aplicação">
+              <li><strong>JWT com claims tipadas:</strong> o token assinado carrega identidade, perfil de acesso, modalidade de trabalho e expiração, sem confiar em um <code>user_id</code> enviado pelo cliente.</li>
+              <li><strong>Logout persistente:</strong> tokens revogados ficam no PostgreSQL, permanecendo inválidos após reinícios e entre múltiplos processos da aplicação.</li>
+              <li><strong>Senhas com bcrypt:</strong> hashes são produzidos pelo Passlib com custo computacional deliberado; a senha original nunca é armazenada ou recuperada.</li>
+              <li><strong>Recuperação controlada:</strong> redefinições usam tokens de uso único, com expiração e marcação de utilização.</li>
+              <li><strong>Autorização e anti-IDOR:</strong> além de autenticar, a API verifica se o usuário pode acessar cada recurso, inclusive documentos médicos sensíveis.</li>
+              <li><strong>Totem provisionado:</strong> cada dispositivo usa API key obtida por ativação com PIN e proteção contra força bruta; a chave não é incorporada ao HTML público.</li>
+              <li><strong>Biometria protegida:</strong> múltiplos frames, vivacidade, impressão SHA-256 anti-replay e controles para dados sensíveis segundo a LGPD.</li>
+              <li><strong>Implantação restrita:</strong> backend exposto apenas localmente, HTTPS por túnel, migrações versionadas e volumes persistentes.</li>
             </ul>
           </div>
         </article>
