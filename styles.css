@@ -186,6 +186,7 @@ svg {
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
 
 .theme-toggle {
@@ -197,15 +198,34 @@ svg {
 }
 
 .language-toggle {
-  min-width: 2.8rem;
+  min-width: 6.1rem;
   height: 2.5rem;
-  display: grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.42rem;
   padding: 0 0.7rem;
   border-radius: 999px;
   font-size: 0.76rem;
   font-weight: 850;
   letter-spacing: 0.06em;
+}
+
+.language-label {
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+}
+
+.language-code {
+  color: var(--accent);
+}
+
+.language-arrow {
+  color: var(--accent);
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: transform 180ms ease;
 }
 
 .nav-toggle {
@@ -1096,6 +1116,15 @@ h3 {
 
   .nav-menu > a:hover {
     transform: translateY(-2px);
+  }
+
+  .language-toggle:hover {
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 18%, transparent);
+    transform: translateY(-2px);
+  }
+
+  .language-toggle:hover .language-arrow {
+    transform: rotate(180deg) scale(1.1);
   }
 
   .button:hover {

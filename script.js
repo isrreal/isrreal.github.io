@@ -8,6 +8,7 @@ const header = document.querySelector('.site-header');
 const year = document.querySelector('#current-year');
 const languageToggle = document.querySelector('.language-toggle');
 const languageCode = document.querySelector('.language-code');
+const languageName = document.querySelector('.language-label');
 const page = root.dataset.page;
 
 const interfaceText = {
@@ -17,6 +18,7 @@ const interfaceText = {
     lightTheme: 'Ativar tema claro',
     darkTheme: 'Ativar tema escuro',
     switchLanguage: 'Mudar para inglês',
+    languageName: 'Idioma',
   },
   en: {
     openMenu: 'Open menu',
@@ -24,6 +26,7 @@ const interfaceText = {
     lightTheme: 'Use light theme',
     darkTheme: 'Use dark theme',
     switchLanguage: 'Switch to Portuguese',
+    languageName: 'Language',
   },
 };
 
@@ -340,6 +343,7 @@ function applyLanguage(language) {
   }
 
   languageCode.textContent = language === 'en' ? 'PT' : 'EN';
+  languageName.textContent = interfaceText[language].languageName;
   const languageLabel = interfaceText[language].switchLanguage;
   languageToggle.setAttribute('aria-label', languageLabel);
   languageToggle.setAttribute('title', languageLabel);
