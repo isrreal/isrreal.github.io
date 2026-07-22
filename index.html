@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfólio de Israel Souza Ferreira — pesquisa e engenharia de machine learning, ciência de dados, MLOps e otimização.">
+  <meta name="description" content="Portfólio de Israel Souza Ferreira — engenharia de machine learning, PLN, recuperação de informação, MLOps e previsão de séries temporais.">
   <meta name="author" content="Israel Souza Ferreira">
   <meta name="theme-color" content="#0b1020">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Israel Souza Ferreira | Portfólio">
-  <meta property="og:description" content="Pesquisa e engenharia de machine learning, ciência de dados, MLOps e otimização.">
+  <meta property="og:description" content="Engenharia de machine learning, PLN, recuperação de informação, MLOps e previsão de séries temporais.">
   <meta property="og:url" content="https://isrreal.github.io/">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Israel Souza Ferreira">
@@ -38,6 +38,7 @@
 
       <div class="nav-menu" id="nav-menu">
         <a href="#sobre">Sobre</a>
+        <a href="#experiencia">Experiência</a>
         <a href="#projetos">Projetos</a>
         <a href="#competencias">Competências</a>
         <a href="#curriculo">Currículo</a>
@@ -53,12 +54,12 @@
     <section class="hero section">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Machine Learning · MLOps · Otimização · Pesquisa</p>
+          <p class="eyebrow">Machine Learning · PLN · Information Retrieval · MLOps</p>
           <h1>Transformo problemas complexos em soluções orientadas por dados.</h1>
           <p class="hero-description">
             Sou <strong>Israel Souza Ferreira</strong>, pesquisador de machine learning e
-            graduando em Ciência da Computação, com experiência em sistemas multimodais,
-            visão computacional, MLOps e otimização combinatória.
+            com experiência prática em sistemas multimodais, recuperação de informação,
+            previsão de séries temporais e MLOps de ponta a ponta.
           </p>
 
           <div class="hero-actions">
@@ -79,13 +80,13 @@
           </div>
           <pre><code><span class="terminal-muted">$</span> perfil --resumo
 
-<span class="terminal-key">foco</span>: pesquisa e engenharia de ML
+<span class="terminal-key">foco</span>: engenharia e pesquisa em ML
 <span class="terminal-key">linguagens</span>: Python, C++ e SQL
 <span class="terminal-key">interesses</span>:
-  - sistemas multimodais
-  - MLOps e APIs
-  - visão computacional
-  - otimização combinatória
+  - regressores multitarefa multimodais
+  - MLOps e APIs de inferência
+  - aprendizado de representações
+  - previsão de séries temporais
 
 <span class="terminal-success">status: construindo soluções</span></code></pre>
         </aside>
@@ -102,13 +103,41 @@
           reproduzíveis e bem documentadas.
         </p>
         <p>
-          Atualmente, desenvolvo projetos relacionados a previsão epidemiológica e análise
-          de políticas públicas, além de pesquisas em otimização combinatória.
+          Atuo na construção e implantação de sistemas de machine learning, unindo
+          experimentação reproduzível, APIs de inferência e avaliação rigorosa de modelos.
         </p>
       </div>
     </section>
 
-    <section class="section section-alt" id="projetos">
+    <section class="section section-alt" id="experiencia">
+      <div class="container experience-layout">
+        <div>
+          <p class="section-kicker">Experiência</p>
+          <h2>Pesquisa que chega à produção.</h2>
+          <p class="lead">Pesquisa aplicada em sistemas multimodais, recuperação de informação e engenharia de ML reproduzível.</p>
+        </div>
+        <article class="experience-card">
+          <div class="experience-heading">
+            <div>
+              <h3>Pesquisador de Machine Learning</h3>
+              <p class="experience-company">Tieta Artificial Intelligence · Bolsista CNPq RHAE</p>
+            </div>
+            <p class="experience-period">abr. 2025 — presente</p>
+          </div>
+          <ul class="experience-list">
+            <li>Desenvolvi um <strong>regressor multitarefa multimodal</strong> para 2.580 questões do ENEM, estimando parâmetros TRI, curva ICC, taxa de acerto e classificações pedagógicas.</li>
+            <li>Modelei fusão texto–imagem com MoE/MMoE, atenção e <i>cross-attention</i>, usando embeddings Portulan Serafim-900M e representações visuais compactadas por DCAE.</li>
+            <li>Entreguei uma <strong>API de busca multimodal top-k</strong> com FastAPI, RelRep, BERTScore e FAISS para recuperação e ranqueamento de questões.</li>
+            <li>Estruturei treinamento e avaliação reprodutíveis em PyTorch, com Docker, Git, GitLab CI/CD e testes estatísticos.</li>
+          </ul>
+          <ul class="tag-list" aria-label="Tecnologias da experiência">
+            <li>PyTorch</li><li>MMoE</li><li>DSPy</li><li>FAISS</li><li>FastAPI</li><li>GitLab CI/CD</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="projetos">
       <div class="container">
         <div class="section-heading">
           <div>
@@ -124,20 +153,16 @@
               <span class="status status-done">Concluído</span>
               <span class="project-number">01</span>
             </div>
-            <h3>Triple Roman Domination</h3>
+            <h3>Dengue Forecasting System</h3>
             <p>
-              Meta-heurísticas baseadas em Algoritmos Genéticos e Otimização por Colônia
-              de Formigas para um problema de dominação em grafos.
+              Sistema MLOps ponta a ponta para previsão de notificações de dengue por estado,
+              comparando modelos LSTM e PLE.
             </p>
             <ul class="tag-list" aria-label="Tecnologias do projeto">
-              <li>C++</li>
-              <li>Algoritmos Genéticos</li>
-              <li>ACO</li>
-              <li>Programação Inteira</li>
+              <li>PyTorch</li><li>PLE</li><li>MLflow</li><li>FastAPI</li><li>PostgreSQL</li><li>Docker</li>
             </ul>
             <div class="project-links">
-              <a href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" target="_blank" rel="noreferrer">Código →</a>
-              <a href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs#readme" target="_blank" rel="noopener noreferrer">Documentação →</a>
+              <a href="https://github.com/isrreal/Dengue-Forecasting-System" target="_blank" rel="noreferrer">Código →</a>
             </div>
           </article>
 
@@ -146,19 +171,16 @@
               <span class="status status-progress">Em desenvolvimento</span>
               <span class="project-number">02</span>
             </div>
-            <h3>Dengue Forecasting</h3>
+            <h3>Recuperação de Informação Neural</h3>
             <p>
-              Projeto de previsão de casos de dengue utilizando séries temporais,
-              variáveis epidemiológicas e avaliação comparativa de modelos.
+              Estudo e implementação de recuperação neural com BERT e ColBERT, embeddings
+              contextualizados, busca vetorial top-k e estratégias de indexação com FAISS.
             </p>
             <ul class="tag-list" aria-label="Tecnologias do projeto">
-              <li>Python</li>
-              <li>Time Series</li>
-              <li>Machine Learning</li>
-              <li>Saúde Pública</li>
+              <li>BERT</li><li>ColBERT</li><li>FAISS</li><li>Ranqueamento Neural</li>
             </ul>
             <div class="project-links">
-              <a href="https://github.com/isrreal/Dengue-Forecasting-System" target="_blank" rel="noreferrer">Acompanhar desenvolvimento →</a>
+              <a href="https://github.com/isrreal?tab=repositories" target="_blank" rel="noreferrer">Ver repositórios →</a>
             </div>
           </article>
 
@@ -167,18 +189,16 @@
               <span class="status status-paused">Em reformulação</span>
               <span class="project-number">03</span>
             </div>
-            <h3>Auxílio Emergencial</h3>
+            <h3>Dominação Romana Tripla</h3>
             <p>
-              Análise de dados sobre o programa de auxílio emergencial, com foco em
-              organização, exploração e comunicação de indicadores públicos.
+              Heurística de alto desempenho em C++ para um problema NP-difícil de teoria
+              dos grafos, comparada em conjuntos de dados padrão.
             </p>
             <ul class="tag-list" aria-label="Tecnologias do projeto">
-              <li>Python</li>
-              <li>Análise de Dados</li>
-              <li>Dados Públicos</li>
+              <li>C++</li><li>Python</li><li>Teoria dos Grafos</li><li>Meta-heurísticas</li>
             </ul>
             <div class="project-links">
-              <a href="https://github.com/isrreal?tab=repositories" target="_blank" rel="noreferrer">Ver repositórios →</a>
+              <a href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" target="_blank" rel="noreferrer">Código →</a>
             </div>
           </article>
         </div>
@@ -199,15 +219,15 @@
         <div class="skills-grid">
           <div class="skill-group">
             <h3>Linguagens e dados</h3>
-            <p>Python, C++, SQL, Bash, Pandas, NumPy e Git</p>
+            <p>Python, C++, SQL, Bash, Pandas, NumPy, PostgreSQL e Git</p>
           </div>
           <div class="skill-group">
             <h3>Modelagem e pesquisa</h3>
-            <p>PyTorch, scikit-learn, sistemas multimodais, séries temporais, otimização e meta-heurísticas</p>
+            <p>PyTorch, MMoE, MoE, PLE, Transformers, DSPy, recuperação de informação, séries temporais e meta-heurísticas</p>
           </div>
           <div class="skill-group">
             <h3>Engenharia e MLOps</h3>
-            <p>FastAPI, Docker, PostgreSQL, pgvector, MLflow, GitHub Actions e GitLab CI/CD</p>
+            <p>FastAPI, Docker, PostgreSQL, pgvector, FAISS, MLflow, GitHub Actions e GitLab CI/CD</p>
           </div>
           <div class="skill-group">
             <h3>Comunicação e práticas</h3>
