@@ -145,33 +145,39 @@
           </div>
           <div class="case-prose">
             <p class="lead">
-              Cada momento da interação é representado por um estado explícito. Isso impede
-              que a interface pule etapas, faça análises sem um rosto presente ou dispare
-              registros duplicados.
+              A máquina de estados controla os tipos de batida e impede sequências incoerentes:
+              cada novo registro é validado em relação ao estado anterior.
             </p>
             <p>
-              Depois de uma falha, o totem não encerra a sessão nem envia requisições em vazio:
-              ele retorna à detecção e aguarda um rosto antes de tentar novamente. Essa modelagem
-              torna o comportamento previsível tanto para quem utiliza quanto para quem mantém o sistema.
+              Depois da autenticação facial e da validação de localização, o sistema resolve a
+              próxima ação com o <code>PontoFSM</code>. Assim, a pessoa pode sair diretamente após
+              entrar, fazer uma ou mais pausas e só encerra o expediente depois de um retorno válido.
             </p>
-            <div class="state-machine" role="img" aria-label="Máquina de estados do totem: repouso, detecção, análise, confirmação e retorno ao repouso; em caso de erro, uma nova tentativa retorna à detecção.">
+            <div class="state-machine" role="img" aria-label="Fluxo de ponto: sem batida leva à entrada; entrada leva ao início da pausa ou à saída; pausa leva ao retorno; retorno leva a outra pausa ou à saída.">
               <div class="state-main-flow">
-                <span class="state-node">Repouso</span>
+                <span class="state-node">Sem batida</span>
                 <span class="state-arrow" aria-hidden="true">→</span>
-                <span class="state-node">Detecção</span>
+                <span class="state-node state-success">Entrada</span>
                 <span class="state-arrow" aria-hidden="true">→</span>
-                <span class="state-node">Análise</span>
+                <span class="state-node">Início da pausa</span>
                 <span class="state-arrow" aria-hidden="true">→</span>
-                <span class="state-node state-success">Confirmação</span>
+                <span class="state-node">Retorno</span>
                 <span class="state-arrow" aria-hidden="true">→</span>
-                <span class="state-node">Repouso</span>
+                <span class="state-node state-success">Saída</span>
               </div>
               <div class="state-retry-flow">
                 <span class="state-branch" aria-hidden="true">↳</span>
-                <span class="state-node state-error">Erro</span>
+                <span class="state-node state-success">Entrada</span>
                 <span class="state-arrow" aria-hidden="true">→</span>
-                <span class="state-node">Nova tentativa</span>
-                <span class="state-return">retorna à detecção ↖</span>
+                <span class="state-node state-success">Saída</span>
+                <span class="state-return">saída direta</span>
+              </div>
+              <div class="state-extra-flow">
+                <span class="state-branch" aria-hidden="true">↳</span>
+                <span class="state-node">Retorno</span>
+                <span class="state-arrow" aria-hidden="true">→</span>
+                <span class="state-node">Início da pausa</span>
+                <span class="state-return">outra pausa</span>
               </div>
             </div>
           </div>

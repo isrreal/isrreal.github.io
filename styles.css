@@ -847,7 +847,8 @@ h3 {
 }
 
 .state-main-flow,
-.state-retry-flow {
+.state-retry-flow,
+.state-extra-flow {
   display: flex;
   align-items: center;
   gap: 0.55rem;
@@ -857,7 +858,8 @@ h3 {
   justify-content: space-between;
 }
 
-.state-retry-flow {
+.state-retry-flow,
+.state-extra-flow {
   margin-left: 38%;
 }
 
@@ -1342,7 +1344,8 @@ h3 {
   }
 
   .state-main-flow,
-  .state-retry-flow {
+  .state-retry-flow,
+  .state-extra-flow {
     flex-wrap: wrap;
     justify-content: flex-start;
   }
@@ -1351,6 +1354,10 @@ h3 {
     margin-left: 0;
     padding-top: 1rem;
     border-top: 1px solid var(--border);
+  }
+
+  .state-extra-flow {
+    margin-left: 0;
   }
 
   .case-cta {
