@@ -159,6 +159,12 @@ svg {
   gap: 1.5rem;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
 .nav-menu > a {
   color: var(--muted);
   font-size: 0.94rem;
@@ -1397,13 +1403,8 @@ h3 {
     text-underline-offset: 0.3rem;
   }
 
-  .theme-toggle {
-    margin: 0.5rem 0.75rem;
-  }
-
-  .language-toggle {
-    width: fit-content;
-    margin: 0.5rem 0.75rem 0;
+  .nav-actions {
+    margin-left: auto;
   }
 
   .nav-toggle[aria-expanded="true"] span:nth-child(2) {
