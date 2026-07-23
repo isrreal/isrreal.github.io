@@ -145,6 +145,25 @@
             <li>Entreguei uma <strong>API de busca multimodal top-k</strong> com FastAPI, RelRep, BERTScore e FAISS para recuperação e ranqueamento de questões.</li>
             <li>Organizei inferência, experimentos e verificações de consistência em um fluxo reproduzível com PyTorch, FastAPI, Docker, Git e GitLab CI/CD.</li>
           </ul>
+          <section class="experience-evaluation" aria-labelledby="regressor-evaluation-title">
+            <h4 id="regressor-evaluation-title">Como o regressor é avaliado</h4>
+            <p>O protocolo acompanha cada saída com métricas adequadas ao seu tipo, sem reduzir tarefas diferentes a um único indicador.</p>
+            <ul class="experience-metric-grid">
+              <li>
+                <strong>Regressão psicométrica</strong>
+                <span>MAE e R² para os parâmetros TRI e a taxa de acerto, além da correlação de Pearson para <i>a</i>, <i>b</i> e <i>c</i>.</span>
+              </li>
+              <li>
+                <strong>Curva ICC</strong>
+                <span>MAE, R² por questão e NLL para avaliar a reconstrução da curva e sua calibração probabilística.</span>
+              </li>
+              <li>
+                <strong>Classificação pedagógica</strong>
+                <span>Acurácia e F1-macro para área, competência e habilidade, considerando o desbalanceamento entre classes.</span>
+              </li>
+            </ul>
+            <p class="evaluation-note">As métricas são monitoradas por tarefa e em um score de validação multitarefa. Valores de desempenho serão publicados após a conclusão dos testes.</p>
+          </section>
           <ul class="tag-list" aria-label="Tecnologias da experiência">
             <li>PyTorch</li><li>MTL</li><li>MoE/MMoE</li><li>RelRep</li><li>DSPy</li><li>FAISS</li><li>FastAPI</li><li>Docker</li><li>GitLab CI/CD</li>
           </ul>
