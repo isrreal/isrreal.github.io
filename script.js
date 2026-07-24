@@ -47,7 +47,7 @@ const englishPages = {
       ['.hero-description', 'I am <strong>Israel Souza Ferreira</strong>, a machine learning researcher with hands-on experience in multimodal systems, information retrieval, time-series forecasting, and end-to-end MLOps.'],
       ['.hero-actions a:nth-child(1)', 'View projects'],
       ['.hero-actions a:nth-child(2)', 'View résumé'],
-      ['.hero-meta li:nth-child(1)', '📍 Fortaleza, Ceará, Brazil'],
+      ['.hero-meta li:nth-child(1)', '<span class="location-icon" aria-hidden="true">⌖</span> Fortaleza, Ceará, Brazil'],
       ['.hero-meta li:nth-child(2)', '● Open to opportunities'],
       ['.terminal-card code', '<span class="terminal-muted">$</span> profile --summary\n\n<span class="terminal-key">focus</span>: ML engineering and research\n<span class="terminal-key">languages</span>: Python, C++, and SQL\n<span class="terminal-key">interests</span>:\n  - multimodal multitask regressors\n  - MLOps and inference APIs\n  - representation learning\n  - time-series forecasting\n\n<span class="terminal-success">status: building solutions</span>'],
       ['#sobre .section-kicker', 'About me'],
@@ -373,6 +373,32 @@ function applyLanguage(language) {
       language === 'en' ? pageTranslations?.description || originalDescription : originalDescription
     );
   }
+
+  const resumeFiles = language === 'en'
+    ? {
+        pdf: 'assets/resume-israel-souza-ferreira.pdf',
+        tex: 'assets/resume-israel-souza-ferreira.tex',
+        download: 'Israel-Souza-Ferreira-Resume.pdf',
+      }
+    : {
+        pdf: 'assets/curriculo-israel-souza-ferreira.pdf',
+        tex: 'assets/curriculo-israel-souza-ferreira.tex',
+        download: 'Israel-Souza-Ferreira-Curriculo.pdf',
+      };
+
+  document.querySelectorAll('.hero-actions a[href*="curriculo-israel"], .hero-actions a[href*="resume-israel"], #curriculo .contact-actions a').forEach((link) => {
+    if (link.closest('#curriculo') && link === link.parentElement.children[3]) return;
+    const actionIndex = link.closest('#curriculo') ? Array.from(link.parentElement.children).indexOf(link) : 0;
+    if (actionIndex === 2) {
+      link.href = resumeFiles.tex;
+      link.removeAttribute('target');
+      link.removeAttribute('rel');
+      return;
+    }
+    if (actionIndex === 3) return;
+    link.href = resumeFiles.pdf;
+    if (actionIndex === 1) link.download = resumeFiles.download;
+  });
 
   languageCode.textContent = language === 'en' ? 'PT' : 'EN';
   languageName.textContent = interfaceText[language].languageName;

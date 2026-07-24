@@ -369,6 +369,14 @@ h3 {
   background: var(--surface);
 }
 
+.location-icon {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 1.15em;
+  line-height: 0;
+  transform: translateY(0.05em);
+}
+
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
