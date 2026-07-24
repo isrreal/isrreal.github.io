@@ -372,9 +372,15 @@ h3 {
 .location-icon {
   display: inline-block;
   color: var(--accent);
-  font-size: 1.15em;
-  line-height: 0;
-  transform: translateY(0.05em);
+  width: 1.05em;
+  height: 1.05em;
+  margin-right: 0.25em;
+  vertical-align: -0.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
 }
 
 .hero-meta {
