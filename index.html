@@ -121,7 +121,7 @@
         <div>
           <p class="section-kicker">Experiência</p>
           <h2>Pesquisa aplicada com profundidade de engenharia.</h2>
-          <p class="lead">Da modelagem psicométrica à entrega de serviços de inferência e busca: pesquisa aplicada para transformar protótipos de ML em sistemas multimodais reproduzíveis.</p>
+          <p class="lead">Pesquisa aplicada para transformar protótipos de machine learning em sistemas reprodutíveis.</p>
         </div>
         <article class="experience-card">
           <div class="experience-heading">
@@ -131,41 +131,19 @@
             </div>
             <p class="experience-period">abr. 2025 — presente</p>
           </div>
-          <dl class="experience-facts" aria-label="Resumo do sistema de pesquisa">
-            <div><dt>3</dt><dd>modalidades integradas</dd></div>
-            <div><dt>6</dt><dd>tarefas simultâneas</dd></div>
-            <div><dt>Ponta a ponta</dt><dd>do dado à inferência</dd></div>
+          <dl class="experience-facts" aria-label="Resumo da experiência de pesquisa">
+            <div><dt>Pesquisa aplicada</dt><dd>modelagem e experimentação</dd></div>
+            <div><dt>Sistemas de ML</dt><dd>do protótipo à avaliação</dd></div>
+            <div><dt>Colaboração</dt><dd>em ambiente de pesquisa</dd></div>
           </dl>
           <ul class="experience-list">
-            <li>Desenvolvi um <strong>regressor multitarefa multimodal</strong> para estimar propriedades psicométricas de questões: parâmetros TRI, curva ICC, taxa de acerto, área do conhecimento, competência e habilidade pedagógica.</li>
-            <li>Estruturei um pipeline de ponta a ponta que integra texto, imagens opcionais e um <strong>canal de raciocínio supervisionado</strong> produzido com LLMs locais e DSPy, tratando modalidades ausentes por mascaramento.</li>
-            <li>Alinhei representações heterogêneas com <strong>RelRep</strong> e estratégias de seleção de âncoras, combinando embeddings textuais e visuais antes da fusão multimodal.</li>
-            <li>Implementei e comparei redutores configuráveis — de pooling e fusão com gates a atenção, <i>cross-attention</i>, recorrência e conexões residuais — sobre uma arquitetura MoE/MMoE com especialistas e gates por tarefa.</li>
-            <li>Projetei um treinamento multitarefa robusto, com perdas ponderadas, aquecimento por etapas, controle de gradientes, ajuste da taxa de aprendizado, parada antecipada, precisão mista e retomada por checkpoints.</li>
-            <li>Entreguei uma <strong>API de busca multimodal top-k</strong> com FastAPI, RelRep, BERTScore e FAISS para recuperação e ranqueamento de questões.</li>
-            <li>Organizei inferência, experimentos e verificações de consistência em um fluxo reproduzível com PyTorch, FastAPI, Docker, Git e GitLab CI/CD.</li>
+            <li>Desenvolvi modelos de machine learning para investigar características de questões educacionais e apoiar pesquisas em avaliação.</li>
+            <li>Contribuí para experimentos com dados textuais e visuais, explorando abordagens multimodais e multitarefa.</li>
+            <li>Prototipei soluções de recuperação e ranqueamento de questões para apoiar análise e pesquisa.</li>
+            <li>Estruturei experimentos reprodutíveis, avaliações e documentação técnica para apoiar o ciclo de pesquisa.</li>
           </ul>
-          <section class="experience-evaluation" aria-labelledby="regressor-evaluation-title">
-            <h4 id="regressor-evaluation-title">Como o regressor é avaliado</h4>
-            <p>O protocolo acompanha cada saída com métricas adequadas ao seu tipo, sem reduzir tarefas diferentes a um único indicador.</p>
-            <ul class="experience-metric-grid">
-              <li>
-                <strong>Regressão psicométrica</strong>
-                <span>MAE e R² para os parâmetros TRI e a taxa de acerto, além da correlação de Pearson para <i>a</i>, <i>b</i> e <i>c</i>.</span>
-              </li>
-              <li>
-                <strong>Curva ICC</strong>
-                <span>MAE, R² por questão e NLL para avaliar a reconstrução da curva e sua calibração probabilística.</span>
-              </li>
-              <li>
-                <strong>Classificação pedagógica</strong>
-                <span>Acurácia e F1-macro para área, competência e habilidade, considerando o desbalanceamento entre classes.</span>
-              </li>
-            </ul>
-            <p class="evaluation-note">As métricas são monitoradas por tarefa e em um score de validação multitarefa. Valores de desempenho serão publicados após a conclusão dos testes.</p>
-          </section>
           <ul class="tag-list" aria-label="Tecnologias da experiência">
-            <li>PyTorch</li><li>MTL</li><li>MoE/MMoE</li><li>RelRep</li><li>DSPy</li><li>FAISS</li><li>FastAPI</li><li>Docker</li><li>GitLab CI/CD</li>
+            <li>Machine Learning</li><li>Pesquisa aplicada</li><li>PLN</li><li>Visão computacional</li><li>APIs</li><li>Docker</li>
           </ul>
         </article>
       </div>
