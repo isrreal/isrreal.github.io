@@ -1,0 +1,261 @@
+\documentclass[a4paper,10pt]{article}
+
+% ---------- CONFIGURAÇÃO ----------
+\usepackage[
+    a4paper,
+    top=0.65cm,
+    bottom=0.65cm,
+    left=1.25cm,
+    right=1.25cm
+]{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese,provide=*]{babel}
+\IfFileExists{newtxtext.sty}{
+  \usepackage{newtxtext}
+  \usepackage{newtxmath}
+}{
+  \usepackage{mathptmx}
+}
+\usepackage{amssymb}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{xcolor}
+
+\definecolor{linkcolor}{RGB}{0, 0, 160}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=linkcolor,
+    linkcolor=linkcolor,
+    pdftitle={Israel Souza Ferreira - Currículo},
+    pdfauthor={Israel Souza Ferreira}
+}
+
+\urlstyle{same}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\pagestyle{empty}
+\raggedbottom
+\emergencystretch=1em
+
+% ---------- LISTAS COMPACTAS ----------
+\setlist[itemize]{
+    label=\textbullet,
+    leftmargin=1.2em,
+    itemsep=0.25pt,
+    topsep=1pt,
+    parsep=0pt,
+    partopsep=0pt
+}
+
+% ---------- SEÇÕES ----------
+\titleformat{\section}
+  {\normalsize\bfseries}
+  {}
+  {0em}
+  {\MakeUppercase}
+  [\vspace{-1.1ex}\rule{\linewidth}{0.35pt}]
+
+\titlespacing{\section}{0pt}{1.05ex}{0.4ex}
+
+% #1 Organização
+% #2 Local
+% #3 Cargo ou formação
+% #4 Período
+\newcommand{\entrada}[4]{%
+    \noindent
+    \textbf{#1}
+    \hfill
+    \textbf{#2}\\[-1pt]
+    \textit{#3}
+    \hfill
+    \textit{#4}\par
+}
+
+\begin{document}
+
+% ---------- CABEÇALHO ----------
+\begin{center}
+
+    {\LARGE\textbf{Israel Souza Ferreira}}\\[1pt]
+
+    {\normalsize
+        \textbf{Pesquisador de Machine Learning
+        \enspace $|$ \enspace
+        Engenheiro de ML}
+    }\\[2pt]
+
+    {\small
+        Fortaleza, CE
+        \enspace $|$ \enspace
+        Remoto
+        \enspace $|$ \enspace
+        +55 85 98433-2790
+        \enspace $|$ \enspace
+        \href{mailto:israel.souza.dev@gmail.com}
+        {israel.souza.dev@gmail.com}
+        \enspace $|$ \enspace
+        \href{https://www.linkedin.com/in/isrreal/}
+        {LinkedIn}
+        \enspace $|$ \enspace
+        \href{https://github.com/isrreal}
+        {GitHub}
+    }
+
+\end{center}
+
+\vspace{-3pt}
+\small
+
+% ---------- PORTFÓLIO ----------
+\section*{Portfólio}
+
+\href{https://isrreal.github.io/}
+{\textbf{isrreal.github.io}}
+--- projetos, documentação técnica, demonstrações e currículo completo.
+
+% ---------- EXPERIÊNCIA ----------
+\section*{Experiência Profissional}
+
+\entrada
+    {Tieta Artificial Intelligence}
+    {Remoto, Brasil}
+    {Pesquisador de Machine Learning --- Bolsista CNPq RHAE}
+    {Abr 2025 -- Presente}
+
+\begin{itemize}
+
+    \item Desenvolvi modelos de \textbf{machine learning} para investigar
+    características de questões educacionais e apoiar pesquisas em avaliação.
+
+    \item Contribuí para experimentos com dados textuais e visuais,
+    explorando abordagens multimodais e multitarefa.
+
+    \item Prototipei soluções de recuperação e ranqueamento de questões
+    para apoiar análise e pesquisa.
+
+    \item Estruturei experimentos reprodutíveis, avaliações e documentação
+    técnica para apoiar o ciclo de pesquisa.
+
+\end{itemize}
+
+\entrada
+    {Projeto contratado --- Instituição de ensino}
+    {Remoto, Brasil}
+    {Desenvolvedor de Machine Learning e Backend}
+    {2026 -- Presente}
+
+\begin{itemize}
+
+    \item Entreguei \textbf{individualmente} um sistema de registro de
+    ponto por reconhecimento facial, atualmente em produção, cobrindo ML,
+    backend, banco de dados, segurança, testes e deploy.
+
+    \item Implementei identificação facial 1:1 e 1:N com InsightFace,
+    embeddings em $\mathbb{R}^{512}$, pgvector, agregação
+    \textit{multi-frame}, \textit{liveness} e proteção anti-replay.
+
+    \item Treinei um classificador EfficientNet-B0 para validação de
+    atestados, alcançando aproximadamente \textbf{85\% de acurácia}, com
+    Optuna, validação estratificada, AMP e decisão híbrida CNN + OCR.
+
+    \item Construí backend FastAPI com JWT, geofencing, PostgreSQL,
+    SQLAlchemy e Alembic; entreguei infraestrutura Dockerizada com HTTPS,
+    GitHub Actions e \textbf{115 testes automatizados}.
+
+\end{itemize}
+
+\entrada
+    {Universidade Federal do Ceará --- Campus Quixadá}
+    {Presencial, Brasil}
+    {Monitor de Algoritmos, Cálculo e Pré-Cálculo}
+    {2022 -- 2024}
+
+\begin{itemize}
+
+    \item Ministrei apoio em estruturas de dados, algoritmos, análise de
+    complexidade e Cálculo aplicado à Computação.
+
+\end{itemize}
+
+% ---------- PROJETOS ----------
+\section*{Projetos Selecionados}
+
+\begin{itemize}
+
+    \item
+    \textbf{
+        \href
+        {https://github.com/isrreal/Triple-Roman-Domination-in-graphs}
+        {Triple Roman Domination in Graphs:}
+    }
+    primeira abordagem meta-heurística apresentada na literatura para o
+    problema, com Algoritmo Genético, MAX-MIN Ant System, RVNS e
+    Programação Linear Inteira para validação.
+
+    \item
+    \textbf{
+        \href
+        {https://github.com/isrreal/Dengue-Forecasting-System}
+        {Dengue Forecasting System:}
+    }
+    pipeline MLOps em desenvolvimento para previsão de dengue, com ETL do
+    SINAN, LSTM, PLE, PostgreSQL, MLflow, FastAPI e Docker; redução do RMSE
+    de aproximadamente 98 para 83 na série do Ceará.
+
+    \item
+    \textbf{
+        \href
+        {https://github.com/isrreal/AuxilioEmergencialQueries}
+        {Auxílio Emergencial --- Benchmark de Consultas:}
+    }
+    sistema em reformulação para comparar estratégias de indexação SQL
+    sobre \textbf{257.170.290 registros, totalizando 31,6 GB}, avaliando
+    B-Tree e GIN/TRGM em buscas, agregações e JOINs com PostgreSQL,
+    FastAPI, Streamlit e Docker.
+
+\end{itemize}
+
+% ---------- HABILIDADES ----------
+\section*{Habilidades Técnicas}
+
+\textbf{Linguagens:}
+Python, C++, SQL e Bash.\\[1pt]
+
+\textbf{Machine Learning:}
+PyTorch, Scikit-learn, DSPy, FAISS, Optuna, InsightFace, OpenCV,
+Pandas, NumPy e SciPy.\\[1pt]
+
+\textbf{Backend, Dados e MLOps:}
+FastAPI, PostgreSQL, pgvector, SQLAlchemy, Alembic, Streamlit, Docker,
+Git, GitHub Actions, GitLab CI/CD, MLflow, pytest e mypy.\\[1pt]
+
+\textbf{Métodos:}
+aprendizagem multimodal e multitarefa, MoE/MMoE, LSTM, atenção,
+busca vetorial, TRI, indexação B-Tree e GIN/TRGM, testes de hipótese
+e análise de ablação.
+
+% ---------- FORMAÇÃO ----------
+\section*{Formação Acadêmica}
+
+\entrada
+    {Universidade Federal do Ceará --- Campus Quixadá}
+    {Brasil}
+    {Bacharelado em Ciência da Computação}
+    {Conclusão prevista: Jul 2026}
+
+% ---------- IDIOMAS ----------
+\section*{Idiomas}
+
+\textbf{Português:} nativo
+\enspace $|$ \enspace
+\textbf{Inglês:} leitura técnica fluente de artigos e documentações
+
+\end{document}
+```
