@@ -59,7 +59,7 @@ const englishPages = {
       ['#experiencia .experience-layout > div:first-child .lead', 'Research and development of artificial intelligence for educational proficiency analysis and exam performance prediction.'],
       ['.experience-heading h3', 'R&amp;D Researcher — AI for proficiency analysis'],
       ['.experience-company', 'Tieta Artificial Intelligence · CNPq RHAE Fellow'],
-      ['.experience-period', 'Apr 2025 — present'],
+      ['.experience-period', 'Apr 2025 — Jul 2026'],
       ['.experience-facts div:nth-child(1) dt', 'Applied research'],
       ['.experience-facts div:nth-child(1) dd', 'modeling and experimentation'],
       ['.experience-facts div:nth-child(2) dt', 'ML systems'],
