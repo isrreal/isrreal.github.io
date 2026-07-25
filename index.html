@@ -222,17 +222,17 @@
 
           <article class="project-card project-wide">
             <div class="project-topline">
-              <span class="status status-paused">Em reformulação</span>
+              <span class="status status-progress">Em desenvolvimento</span>
               <span class="project-number">04</span>
             </div>
-            <h3>Auxílio Emergencial — Benchmark de Consultas</h3>
+            <h3>Auxílio Emergencial — Ingestão e experimentos de desempenho</h3>
             <p>
-              Sistema para avaliar estratégias de indexação em consultas SQL sobre
-              257.170.290 registros públicos — um conjunto de dados de 31,6 GB.
-              Compara cenários com e sem índices em operações de busca, agregação e JOIN.
+              Retomado por iniciativa própria após a entrega acadêmica. Ingestão em blocos
+              com <code>COPY</code> binário sobre 31,6 GB públicos; a instrumentação ligou o
+              crescimento de memória aos identificadores de deduplicação retidos (r = 0,99).
             </p>
             <ul class="tag-list" aria-label="Tecnologias do projeto">
-              <li>PostgreSQL</li><li>B-Tree</li><li>GIN/TRGM</li><li>FastAPI</li><li>Streamlit</li><li>Docker</li>
+              <li>PostgreSQL</li><li>asyncpg</li><li>Alembic</li><li>Pandas</li><li>Docker</li><li>Streamlit</li>
             </ul>
             <div class="project-links">
               <a href="https://github.com/isrreal/AuxilioEmergencialQueries" target="_blank" rel="noreferrer">Código e documentação →</a>
