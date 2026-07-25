@@ -78,6 +78,45 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="container case-content">
+        <article class="case-block" id="resumo">
+          <div>
+            <p class="section-kicker">Resumo</p>
+            <h2>O essencial em cinco pontos.</h2>
+          </div>
+          <div class="case-prose">
+            <ul class="case-list" aria-label="Resumo do projeto">
+              <li>
+                <strong>Problema e usuário:</strong> uma instituição de ensino precisava
+                registrar a jornada de seus funcionários sem cartão, senha ou fila —
+                incluindo quem trabalha fora da sede.
+              </li>
+              <li>
+                <strong>Minha responsabilidade:</strong> entrega individual de ponta a ponta —
+                modelos, backend, banco de dados, segurança, testes e implantação.
+              </li>
+              <li>
+                <strong>Arquitetura:</strong> biometria facial com embeddings de 512 dimensões
+                e busca vetorial em PostgreSQL com <code>pgvector</code>, geofencing por GPS,
+                triagem de atestados por CNN combinada a OCR, e backend FastAPI em Docker.
+              </li>
+              <li>
+                <strong>Evidências:</strong> 142 testes automatizados em pipeline Docker;
+                468 documentos triados por sinais objetivos de qualidade; correção de
+                orientação de imagem e redução de <em>augmentation</em> que elevaram a
+                acurácia de validação em treze pontos percentuais.
+              </li>
+              <li>
+                <strong>Status:</strong> sistema contratado, funcional e em fase final de
+                homologação para implantação.
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="section section-alt">
       <div class="container case-content">
         <article class="case-block" id="problema">
@@ -271,6 +310,21 @@
               As decisões humanas também podem alimentar re-treinamentos futuros. Para evitar
               rótulos incorretos, documentos rejeitados só entram como exemplos negativos quando
               há concordância entre pessoa e modelo; casos ambíguos são descartados da base de treino.
+            </p>
+          </div>
+        </article>
+
+        <article class="case-block" id="deep-dive">
+          <div>
+            <p class="section-kicker">Deep dive técnico</p>
+            <h2>A partir daqui, o detalhe.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              As duas seções seguintes documentam a investigação por trás dos números do
+              resumo: como um bug silencioso foi diagnosticado e como a causa do subajuste
+              do classificador foi isolada por experimento. São leitura opcional — o
+              essencial já está acima.
             </p>
           </div>
         </article>
