@@ -275,6 +275,65 @@
           </div>
         </article>
 
+        <article class="case-block" id="metodo">
+          <div>
+            <p class="section-kicker">Método de investigação</p>
+            <h2>Medir antes de concluir.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              O OCR do pipeline vinha entregando resultados ruins em parte dos documentos.
+              Em vez de trocar a ferramenta, a origem do problema foi investigada — e não
+              estava no OCR.
+            </p>
+            <div class="case-results" aria-label="Indicadores da investigação">
+              <div class="case-result">
+                <strong>468</strong>
+                <span>documentos triados automaticamente por sinais objetivos de qualidade</span>
+              </div>
+              <div class="case-result">
+                <strong>38</strong>
+                <span>imagens chegavam rotacionadas ao modelo por metadado EXIF ignorado</span>
+              </div>
+              <div class="case-result">
+                <strong>2.071</strong>
+                <span>linhas removidas ao concluir que a premissa de um experimento não se sustentava</span>
+              </div>
+            </div>
+            <ul class="case-list" aria-label="Decisões técnicas da investigação">
+              <li>
+                <strong>Diagnóstico do bug silencioso:</strong> fotos de celular carregam na tag EXIF
+                <code>Orientation</code> a rotação necessária para exibição. Visualizadores aplicam essa
+                tag; a biblioteca de imagem usada no pipeline, não. O documento chegava deitado à rede
+                neural e ao OCR sem gerar erro algum — apenas texto ilegível. Nas amostras verificadas,
+                normalizar a orientação levou a extração de nenhum termo reconhecido para a identificação
+                correta do documento.
+              </li>
+              <li>
+                <strong>Descarte do próprio falso positivo:</strong> o detector de orientação do OCR
+                apontava rotação em 45% da base. O cruzamento com o tipo de arquivo mostrou que 91 dos
+                109 casos de “180°” eram capturas de tela — que nunca estão de cabeça para baixo. O sinal
+                era ruído do detector, não característica do dado; a hipótese só foi confirmada pelo
+                metadado EXIF.
+              </li>
+              <li>
+                <strong>Correção sem desalinhar treino e produção:</strong> normalizar a orientação apenas
+                na inferência criaria <em>train/serve skew</em>, já que o modelo havia sido treinado com as
+                mesmas imagens rotacionadas. A correção foi centralizada em um único ponto de leitura,
+                aplicada também ao carregador de dados do treino, seguida de re-treinamento — cujo efeito
+                sobre o classificador foi reportado como neutro, não como ganho.
+              </li>
+              <li>
+                <strong>Escolha de métrica por adequação, não por sofisticação:</strong> a divergência de
+                Jensen-Shannon foi cogitada para comparar dois pipelines e descartada após demonstração
+                numérica: em um caso construído com discordância em 100% dos documentos, a divergência
+                entre as distribuições marginais resulta exatamente zero. A comparação passou a usar
+                instrumentos pareados, que enxergam a discordância documento a documento.
+              </li>
+            </ul>
+          </div>
+        </article>
+
         <article class="case-block" id="engenharia">
           <div>
             <p class="section-kicker">Engenharia e segurança</p>
@@ -330,7 +389,7 @@
             </p>
             <div class="case-results" aria-label="Indicadores de engenharia">
               <div class="case-result">
-                <strong>116</strong>
+                <strong>142</strong>
                 <span>testes automatizados passando no pipeline Docker</span>
               </div>
               <div class="case-result">
