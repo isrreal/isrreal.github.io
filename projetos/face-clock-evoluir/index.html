@@ -355,8 +355,8 @@
                 <span>épocas para os mesmos parâmetros ajustarem por completo um subconjunto, refutando falta de capacidade</span>
               </div>
               <div class="case-result">
-                <strong>9</strong>
-                <span>configurações de limiar simuladas antes de alterar qualquer parâmetro em produção</span>
+                <strong>+13</strong>
+                <span>pontos percentuais de acurácia em validação depois que o experimento isolou a causa real</span>
               </div>
             </div>
             <ul class="case-list" aria-label="Experimentos conduzidos">
@@ -380,6 +380,15 @@
                 mostrou o oposto: reduzir o valor melhora o classificador isolado e degrada o resultado
                 final, porque passa a dar voz ao componente menos preciso. A medição evitou uma
                 regressão em produção.
+              </li>
+              <li>
+                <strong>A causa real, e uma segunda hipótese corrigida:</strong> restava o conjunto de
+                transformações aplicadas às imagens de treino. A suspeita era o espelhamento horizontal,
+                inválido para documentos porque texto espelhado não existe entre as entradas reais.
+                Removê-lo isoladamente não mudou nada mensurável; reduzir a carga completa de
+                transformações elevou a acurácia de validação em treze pontos percentuais e manteve o
+                modelo aprendendo por vinte e três épocas, contra quatro antes. O problema era o volume
+                agregado, não a transformação que a intuição apontava.
               </li>
             </ul>
           </div>
