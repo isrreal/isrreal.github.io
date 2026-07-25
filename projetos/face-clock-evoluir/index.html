@@ -334,6 +334,57 @@
           </div>
         </article>
 
+        <article class="case-block" id="diagnostico">
+          <div>
+            <p class="section-kicker">Diagnóstico experimental</p>
+            <h2>Descartar hipóteses, inclusive as próprias.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              O classificador não estava aprendendo o quanto deveria. Em vez de partir para o
+              palpite usual — modelo maior — cada causa candidata virou um experimento controlado,
+              com grupo de controle e uma variável por vez.
+            </p>
+            <div class="case-results" aria-label="Indicadores do diagnóstico">
+              <div class="case-result">
+                <strong>3</strong>
+                <span>hipóteses descartadas por experimento: capacidade, sobreajuste e regularização da perda</span>
+              </div>
+              <div class="case-result">
+                <strong>4</strong>
+                <span>épocas para os mesmos parâmetros ajustarem por completo um subconjunto, refutando falta de capacidade</span>
+              </div>
+              <div class="case-result">
+                <strong>9</strong>
+                <span>configurações de limiar simuladas antes de alterar qualquer parâmetro em produção</span>
+              </div>
+            </div>
+            <ul class="case-list" aria-label="Experimentos conduzidos">
+              <li>
+                <strong>A resposta óbvia, testada e rejeitada:</strong> a reação padrão a um modelo que
+                não aprende é aumentar a capacidade. O teste de memorização mostrou que os mesmos
+                parâmetros treináveis ajustam integralmente um subconjunto pequeno em quatro épocas
+                quando a regularização é retirada. Capacidade existia de sobra — parâmetros adicionais
+                custariam treino mais lento sem mover o resultado.
+              </li>
+              <li>
+                <strong>Uma hipótese própria, derrubada pelo experimento:</strong> a suspeita inicial era
+                que a suavização de rótulos impunha um teto de confiança, já que o teto teórico ficava
+                logo acima do máximo observado. O experimento controlado removeu a suavização e o teto
+                não subiu. A proximidade entre os dois números era coincidência, não causa — e a
+                conclusão anterior foi revista.
+              </li>
+              <li>
+                <strong>A correção intuitiva pioraria o sistema:</strong> o limiar de decisão parecia alto
+                demais e baixá-lo seria o ajuste natural. Simular o pipeline completo em nove limiares
+                mostrou o oposto: reduzir o valor melhora o classificador isolado e degrada o resultado
+                final, porque passa a dar voz ao componente menos preciso. A medição evitou uma
+                regressão em produção.
+              </li>
+            </ul>
+          </div>
+        </article>
+
         <article class="case-block" id="engenharia">
           <div>
             <p class="section-kicker">Engenharia e segurança</p>
