@@ -86,9 +86,9 @@
     {\LARGE\textbf{Israel Souza Ferreira}}\\[1pt]
 
     {\normalsize
-        \textbf{Machine Learning Researcher
+        \textbf{Data Scientist
         \enspace $|$ \enspace
-        ML Engineer}
+        Machine Learning}
     }\\[2pt]
 
     {\small
@@ -100,12 +100,15 @@
         \enspace $|$ \enspace
         \href{mailto:israel.souza.dev@gmail.com}
         {israel.souza.dev@gmail.com}
-        \enspace $|$ \enspace
+        \\[1pt]
         \href{https://www.linkedin.com/in/isrreal/}
         {LinkedIn}
         \enspace $|$ \enspace
         \href{https://github.com/isrreal}
         {GitHub}
+        \enspace $|$ \enspace
+        \href{https://isrreal.github.io/}
+        {Portfolio: isrreal.github.io}
     }
 
 \end{center}
@@ -113,12 +116,17 @@
 \vspace{-3pt}
 \small
 
-% ---------- PORTFOLIO ----------
-\section*{Portfolio}
+% ---------- PROFILE ----------
+\section*{Profile}
 
-\href{https://isrreal.github.io/}
-{\textbf{isrreal.github.io}}
---- projects, technical documentation, demos, and full resume.
+Data scientist working across the full problem cycle: extracting and preparing
+data at scale, statistical and predictive modeling, experimental design, and
+communicating results. R\&D experience as a CNPq research fellow applying
+\textbf{Item Response Theory}, \textbf{time-series forecasting},
+\textbf{language models}, and rigorous model evaluation to problems in
+education and public health. Computer Science background with solid grounding in
+statistics, optimization, and SQL. What sets me apart is evaluation: measure
+before concluding, and distrust your own result.
 
 % ---------- PROFESSIONAL EXPERIENCE ----------
 \section*{Professional Experience}
@@ -126,59 +134,58 @@
 \entry
     {Tieta Artificial Intelligence}
     {Remote, Brazil}
-    {R\&D Researcher, AI for Proficiency Analysis --- CNPq RHAE Research Fellow}
+    {Data Scientist / R\&D Researcher --- CNPq RHAE Research Fellow}
     {Apr 2025 -- Jul 2026}
 
 \begin{itemize}
 
-    \item Modeled characteristics of educational questions with \textbf{Item
-    Response Theory}, validating model-estimated signals against reference
-    psychometric parameters.
+    \item Modeled latent psychometric parameters of educational items with
+    \textbf{Item Response Theory}, validating model estimates against reference
+    parameters.
 
-    \item Built inference pipelines with \textbf{language models} orchestrated
-    by \textbf{DSPy}, including procedural dialogue generation and
+    \item Designed \textbf{paired evaluations} over the same items to compare
+    competing approaches, quantifying both the correlation of each estimated
+    signal with reference parameters and its inference cost --- the evidence
+    behind the decision on which approach to carry forward.
+
+    \item Built signal-extraction pipelines with \textbf{language models}
+    orchestrated by \textbf{DSPy}, including procedural dialogue generation and
     cognitive-trajectory tracking.
 
-    \item Compared alternative approaches through paired evaluation on the same
-    items, measuring both the correlation of the resulting signals with
-    reference parameters and the inference cost of each.
+    \item Tested relative representations and attention-based reducers in
+    \textbf{multitask regression} models over textual and visual data.
 
-    \item Experimented with relative representations and attention-based
-    reducers in \textbf{multitask regression} architectures over textual and
-    visual data.
-
-    \item Structured reproducible experiments, evaluations, and technical
-    documentation to support the research cycle.
+    \item Structured reproducible experiments, evaluation metrics, and technical
+    documentation to support the conclusions of the research cycle.
 
 \end{itemize}
 
 \entry
     {Contract Project --- Educational Institution}
     {Remote, Brazil}
-    {Machine Learning and Backend Developer}
+    {Data Scientist and Machine Learning Developer}
     {2026 -- Present}
 
 \begin{itemize}
 
     \item Independently delivered a contracted end-to-end facial recognition
     attendance system, functional and in final acceptance testing before
-    deployment, covering machine learning, backend development, databases,
-    security, testing, and deployment.
+    deployment, covering modeling, data, backend, testing, and deployment.
 
-    \item Implemented 1:1 verification and 1:N facial identification using
-    InsightFace, embeddings in $\mathbb{R}^{512}$, pgvector,
-    \textit{multi-frame} aggregation, \textit{liveness} detection, and
-    anti-replay protection.
+    \item Trained an EfficientNet-B0 classifier for automated medical-document
+    triage using \textbf{hyperparameter search} (Optuna), stratified
+    cross-validation, and a hybrid CNN + OCR decision pipeline; diagnosed
+    underfitting through \textbf{controlled ablation} and raised validation
+    accuracy by \textbf{13 percentage points}.
 
-    \item Trained an EfficientNet-B0 classifier for medical-document triage
-    using Optuna, stratified validation, AMP, and a hybrid CNN + OCR decision
-    pipeline; diagnosed underfitting through controlled ablation and raised
-    validation accuracy by \textbf{13 percentage points}.
+    \item Implemented 1:N \textbf{vector search} and 1:1 verification over
+    facial embeddings in $\mathbb{R}^{512}$ with InsightFace and pgvector,
+    aggregating \textit{multi-frame} decisions to reduce false positives, with
+    \textit{liveness} detection and anti-replay protection.
 
-    \item Built a FastAPI backend with JWT authentication, geofencing,
-    PostgreSQL, SQLAlchemy, and Alembic; delivered Dockerized
-    infrastructure with HTTPS, GitHub Actions, and
-    \textbf{142 automated tests}.
+    \item Built the data layer and inference service with PostgreSQL,
+    SQLAlchemy, Alembic, and FastAPI; delivered Dockerized infrastructure with
+    HTTPS, GitHub Actions, and \textbf{142 automated tests}.
 
 \end{itemize}
 
@@ -190,8 +197,9 @@
 
 \begin{itemize}
 
-    \item Provided academic support in data structures, algorithms,
-    complexity analysis, and calculus applied to Computer Science.
+    \item Provided academic support in data structures, algorithms, and
+    complexity analysis, translating quantitative material for undergraduate
+    classes.
 
 \end{itemize}
 
@@ -203,56 +211,60 @@
     \item
     \textbf{
         \href
-        {https://github.com/isrreal/Triple-Roman-Domination-in-graphs}
-        {Triple Roman Domination in Graphs:}
-    }
-    first metaheuristic approaches reported in the literature for the
-    problem, using a Genetic Algorithm, MAX-MIN Ant System, RVNS, and
-    Integer Linear Programming for experimental validation.
-
-    \item
-    \textbf{
-        \href
         {https://github.com/isrreal/Dengue-Forecasting-System}
-        {Dengue Forecasting System:}
+        {Dengue Case Forecasting (time series):}
     }
-    MLOps pipeline under development for dengue case forecasting using
-    Brazilian SINAN surveillance data, LSTM, PLE, PostgreSQL, MLflow,
-    FastAPI, and Docker; reduced RMSE from approximately 98 to 83 for the
-    Ceará time series.
+    forecasting case notifications from Brazilian SINAN surveillance
+    microdata, with ETL, LSTM and PLE models, experiment tracking in MLflow,
+    and an inference service; reduced \textbf{RMSE from $\approx$98 to 83} on
+    the Ceará series ($\approx$15\% drop). PostgreSQL, PyTorch, FastAPI, and
+    Docker.
 
     \item
     \textbf{
         \href
         {https://github.com/isrreal/AuxilioEmergencialQueries}
-        {Brazilian Emergency Aid --- Ingestion and Performance:}
+        {Brazilian Emergency Aid --- Performance Analysis over 31.6 GB:}
     }
     university assignment picked back up on my own initiative and rebuilt for
-    real scale over \textbf{31.6 GB} of public data; chunked ingestion through
-    asynchronous binary \texttt{COPY} and per-stage instrumentation that
+    real scale over \textbf{31.6 GB} of public data; per-stage instrumentation
     correlated memory growth with retained deduplication identifiers
-    (\textbf{r = 0.99}), using PostgreSQL, Alembic, and Docker.
+    (\textbf{r = 0.99}), isolating the root cause of the bottleneck. Chunked
+    ingestion through asynchronous binary \texttt{COPY}, PostgreSQL, Pandas,
+    and Streamlit.
+
+    \item
+    \textbf{
+        \href
+        {https://github.com/isrreal/Triple-Roman-Domination-in-graphs}
+        {Triple Roman Domination in Graphs (undergraduate thesis):}
+    }
+    first metaheuristic approaches reported in the literature for the problem,
+    using a Genetic Algorithm, MAX-MIN Ant System, and RVNS, with Integer
+    Linear Programming as an exact validation \textit{baseline}.
 
 \end{itemize}
 
 % ---------- SKILLS ----------
 \section*{Technical Skills}
 
-\textbf{Languages:}
-Python, C++, SQL, and Bash.\\[1pt]
+\textbf{Languages and querying:}
+Python, SQL, C++, and Bash.\\[1pt]
 
-\textbf{Machine Learning:}
-PyTorch, Scikit-learn, DSPy, FAISS, Optuna, InsightFace, OpenCV,
-Pandas, NumPy, and SciPy.\\[1pt]
+\textbf{Analysis and statistics:}
+Pandas, NumPy, SciPy, Scikit-learn, hypothesis testing, correlation analysis,
+cross-validation, model calibration, ablation analysis, and Item Response
+Theory.\\[1pt]
 
-\textbf{Backend, Data, and MLOps:}
-FastAPI, PostgreSQL, pgvector, SQLAlchemy, Alembic, Streamlit, Docker,
-Git, GitHub Actions, GitLab CI/CD, MLflow, pytest, and mypy.\\[1pt]
+\textbf{Modeling and machine learning:}
+PyTorch, Optuna, DSPy, FAISS, InsightFace, OpenCV; time series (LSTM, PLE),
+multitask and multimodal regression, MoE/MMoE, attention, vector search, and
+metaheuristics.\\[1pt]
 
-\textbf{Methods:}
-multimodal and multitask learning, MoE/MMoE, LSTM, attention,
-vector search, Item Response Theory, model calibration,
-hypothesis testing, and ablation analysis.
+\textbf{Data, MLOps, and communication:}
+PostgreSQL, pgvector, SQLAlchemy, Alembic, MLflow, Docker, Git, GitHub Actions,
+GitLab CI/CD, FastAPI, pytest, mypy, Streamlit, data visualization, and
+technical documentation.
 
 % ---------- EDUCATION ----------
 \section*{Education}
@@ -272,4 +284,3 @@ hypothesis testing, and ablation analysis.
 documentation
 
 \end{document}
-```

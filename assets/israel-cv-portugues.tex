@@ -86,9 +86,9 @@
     {\LARGE\textbf{Israel Souza Ferreira}}\\[1pt]
 
     {\normalsize
-        \textbf{Pesquisador de Machine Learning
+        \textbf{Cientista de Dados
         \enspace $|$ \enspace
-        Engenheiro de ML}
+        Machine Learning}
     }\\[2pt]
 
     {\small
@@ -100,12 +100,15 @@
         \enspace $|$ \enspace
         \href{mailto:israel.souza.dev@gmail.com}
         {israel.souza.dev@gmail.com}
-        \enspace $|$ \enspace
+        \\[1pt]
         \href{https://www.linkedin.com/in/isrreal/}
         {LinkedIn}
         \enspace $|$ \enspace
         \href{https://github.com/isrreal}
         {GitHub}
+        \enspace $|$ \enspace
+        \href{https://isrreal.github.io/}
+        {Portfólio: isrreal.github.io}
     }
 
 \end{center}
@@ -113,12 +116,17 @@
 \vspace{-3pt}
 \small
 
-% ---------- PORTFÓLIO ----------
-\section*{Portfólio}
+% ---------- PERFIL ----------
+\section*{Perfil}
 
-\href{https://isrreal.github.io/}
-{\textbf{isrreal.github.io}}
---- projetos, documentação técnica, demonstrações e currículo completo.
+Cientista de dados com atuação no ciclo completo do problema: extração e
+tratamento de dados em escala, modelagem estatística e preditiva, desenho de
+experimentos e comunicação de resultados. Experiência em P\&D com bolsa CNPq
+aplicando \textbf{Teoria de Resposta ao Item}, \textbf{séries temporais},
+\textbf{modelos de linguagem} e avaliação rigorosa de modelos a problemas de
+educação e saúde pública. Formação em Ciência da Computação com base sólida em
+estatística, otimização e SQL. O diferencial está na avaliação: medir antes de
+concluir e desconfiar do próprio resultado.
 
 % ---------- EXPERIÊNCIA ----------
 \section*{Experiência Profissional}
@@ -126,56 +134,59 @@
 \entrada
     {Tieta Artificial Intelligence}
     {Remoto, Brasil}
-    {Pesquisador de P\&D em IA para Análise de Proficiência --- Bolsista CNPq RHAE}
+    {Cientista de Dados / Pesquisador de P\&D --- Bolsista CNPq RHAE}
     {Abr 2025 -- Jul 2026}
 
 \begin{itemize}
 
-    \item Modelei características de questões educacionais com \textbf{Teoria
-    de Resposta ao Item}, validando os sinais estimados por modelos contra
-    parâmetros psicométricos de referência.
+    \item Modelei parâmetros psicométricos latentes de itens educacionais com
+    \textbf{Teoria de Resposta ao Item}, validando as estimativas dos modelos
+    contra parâmetros de referência.
 
-    \item Construí pipelines de inferência com \textbf{modelos de linguagem}
-    orquestrados por \textbf{DSPy}, incluindo geração procedural de diálogos e
-    rastreamento de trajetória cognitiva.
+    \item Desenhei \textbf{avaliações pareadas} sobre os mesmos itens para
+    comparar abordagens concorrentes, quantificando a correlação de cada sinal
+    estimado com os parâmetros de referência e o custo de inferência
+    associado --- evidência que embasou a escolha da abordagem adotada.
 
-    \item Comparei abordagens alternativas por avaliação pareada sobre os
-    mesmos itens, medindo a correlação dos sinais com os parâmetros de
-    referência e o custo de inferência de cada uma.
+    \item Construí pipelines de extração de sinais com \textbf{modelos de
+    linguagem} orquestrados por \textbf{DSPy}, incluindo geração procedural de
+    diálogos e rastreamento de trajetória cognitiva.
 
-    \item Experimentei representações relativas e redutores por atenção em
-    arquiteturas de \textbf{regressão multitarefa} sobre dados textuais e visuais.
+    \item Testei representações relativas e redutores por atenção em modelos de
+    \textbf{regressão multitarefa} sobre dados textuais e visuais.
 
-    \item Estruturei experimentos reprodutíveis, avaliações e documentação
-    técnica para apoiar o ciclo de pesquisa.
+    \item Estruturei experimentos reprodutíveis, métricas de avaliação e
+    documentação técnica para sustentar as conclusões do ciclo de pesquisa.
 
 \end{itemize}
 
 \entrada
     {Projeto contratado --- Instituição de ensino}
     {Remoto, Brasil}
-    {Desenvolvedor de Machine Learning e Backend}
+    {Cientista de Dados e Desenvolvedor de Machine Learning}
     {2026 -- Presente}
 
 \begin{itemize}
 
     \item Entreguei \textbf{individualmente} um sistema contratado de registro
     de ponto por reconhecimento facial, funcional e em fase final de
-    homologação para implantação, cobrindo ML, backend, banco de dados,
-    segurança, testes e deploy.
+    homologação para implantação, cobrindo modelagem, dados, backend, testes e
+    deploy.
 
-    \item Implementei identificação facial 1:1 e 1:N com InsightFace,
-    embeddings em $\mathbb{R}^{512}$, pgvector, agregação
-    \textit{multi-frame}, \textit{liveness} e proteção anti-replay.
+    \item Treinei um classificador EfficientNet-B0 para triagem automática de
+    atestados com \textbf{busca de hiperparâmetros} (Optuna), validação
+    cruzada estratificada e decisão híbrida CNN + OCR; diagnostiquei o
+    subajuste por \textbf{ablação controlada} e elevei a acurácia de validação
+    em \textbf{13 pontos percentuais}.
 
-    \item Treinei um classificador EfficientNet-B0 para triagem de atestados
-    com Optuna, validação estratificada, AMP e decisão híbrida CNN + OCR;
-    diagnostiquei o subajuste por ablação controlada e elevei a acurácia de
-    validação em \textbf{13 pontos percentuais}.
+    \item Implementei \textbf{busca vetorial} 1:N e verificação 1:1 sobre
+    embeddings faciais em $\mathbb{R}^{512}$ com InsightFace e pgvector,
+    agregando decisões \textit{multi-frame} para reduzir falsos positivos, com
+    \textit{liveness} e proteção anti-replay.
 
-    \item Construí backend FastAPI com JWT, geofencing, PostgreSQL,
-    SQLAlchemy e Alembic; entreguei infraestrutura Dockerizada com HTTPS,
-    GitHub Actions e \textbf{142 testes automatizados}.
+    \item Construí a camada de dados e o serviço de inferência com PostgreSQL,
+    SQLAlchemy, Alembic e FastAPI; entreguei infraestrutura Dockerizada com
+    HTTPS, GitHub Actions e \textbf{142 testes automatizados}.
 
 \end{itemize}
 
@@ -188,7 +199,8 @@
 \begin{itemize}
 
     \item Ministrei apoio em estruturas de dados, algoritmos, análise de
-    complexidade e Cálculo aplicado à Computação.
+    complexidade e Cálculo, traduzindo conteúdo quantitativo para turmas de
+    graduação.
 
 \end{itemize}
 
@@ -200,55 +212,59 @@
     \item
     \textbf{
         \href
-        {https://github.com/isrreal/Triple-Roman-Domination-in-graphs}
-        {Triple Roman Domination in Graphs:}
-    }
-    primeira abordagem meta-heurística apresentada na literatura para o
-    problema, com Algoritmo Genético, MAX-MIN Ant System, RVNS e
-    Programação Linear Inteira para validação.
-
-    \item
-    \textbf{
-        \href
         {https://github.com/isrreal/Dengue-Forecasting-System}
-        {Dengue Forecasting System:}
+        {Previsão de Casos de Dengue (séries temporais):}
     }
-    pipeline MLOps em desenvolvimento para previsão de dengue, com ETL do
-    SINAN, LSTM, PLE, PostgreSQL, MLflow, FastAPI e Docker; redução do RMSE
-    de aproximadamente 98 para 83 na série do Ceará.
+    previsão de notificações a partir dos microdados do SINAN, com ETL,
+    modelos LSTM e PLE, rastreio de experimentos em MLflow e serviço de
+    inferência; reduzi o \textbf{RMSE de $\approx$98 para 83} na série do
+    Ceará (queda de $\approx$15\%). PostgreSQL, PyTorch, FastAPI e Docker.
 
     \item
     \textbf{
         \href
         {https://github.com/isrreal/AuxilioEmergencialQueries}
-        {Auxílio Emergencial --- Ingestão e Desempenho:}
+        {Auxílio Emergencial --- Análise de Desempenho em 31,6 GB:}
     }
     trabalho acadêmico retomado por iniciativa própria e reconstruído para
-    escala real sobre \textbf{31,6 GB} de dados públicos; ingestão em blocos
-    com \texttt{COPY} binário assíncrono e instrumentação por etapa que
-    correlacionou o crescimento de memória aos identificadores de
-    deduplicação retidos (\textbf{r = 0,99}), com PostgreSQL, Alembic e Docker.
+    escala real sobre \textbf{31,6 GB} de dados públicos; a instrumentação por
+    etapa correlacionou o crescimento de memória aos identificadores de
+    deduplicação retidos (\textbf{r = 0,99}), isolando a causa raiz do gargalo.
+    Ingestão em blocos com \texttt{COPY} binário assíncrono, PostgreSQL,
+    Pandas e Streamlit.
+
+    \item
+    \textbf{
+        \href
+        {https://github.com/isrreal/Triple-Roman-Domination-in-graphs}
+        {Triple Roman Domination in Graphs (TCC):}
+    }
+    primeira abordagem meta-heurística apresentada na literatura para o
+    problema, com Algoritmo Genético, MAX-MIN Ant System e RVNS, usando
+    Programação Linear Inteira como \textit{baseline} exato de validação.
 
 \end{itemize}
 
 % ---------- HABILIDADES ----------
 \section*{Habilidades Técnicas}
 
-\textbf{Linguagens:}
-Python, C++, SQL e Bash.\\[1pt]
+\textbf{Linguagens e consultas:}
+Python, SQL, C++ e Bash.\\[1pt]
 
-\textbf{Machine Learning:}
-PyTorch, Scikit-learn, DSPy, FAISS, Optuna, InsightFace, OpenCV,
-Pandas, NumPy e SciPy.\\[1pt]
+\textbf{Análise e estatística:}
+Pandas, NumPy, SciPy, Scikit-learn, testes de hipótese, análise de correlação,
+validação cruzada, calibração de modelos, análise de ablação e Teoria de
+Resposta ao Item.\\[1pt]
 
-\textbf{Backend, Dados e MLOps:}
-FastAPI, PostgreSQL, pgvector, SQLAlchemy, Alembic, Streamlit, Docker,
-Git, GitHub Actions, GitLab CI/CD, MLflow, pytest e mypy.\\[1pt]
+\textbf{Modelagem e machine learning:}
+PyTorch, Optuna, DSPy, FAISS, InsightFace, OpenCV; séries temporais (LSTM,
+PLE), regressão multitarefa e multimodal, MoE/MMoE, atenção, busca vetorial e
+meta-heurísticas.\\[1pt]
 
-\textbf{Métodos:}
-aprendizagem multimodal e multitarefa, MoE/MMoE, LSTM, atenção,
-busca vetorial, TRI, calibração de modelos, testes de hipótese
-e análise de ablação.
+\textbf{Dados, MLOps e comunicação:}
+PostgreSQL, pgvector, SQLAlchemy, Alembic, MLflow, Docker, Git, GitHub Actions,
+GitLab CI/CD, FastAPI, pytest, mypy, Streamlit, visualização de dados e
+documentação técnica.
 
 % ---------- FORMAÇÃO ----------
 \section*{Formação Acadêmica}
@@ -267,4 +283,3 @@ e análise de ablação.
 \textbf{Inglês:} leitura técnica fluente de artigos e documentações
 
 \end{document}
-```
