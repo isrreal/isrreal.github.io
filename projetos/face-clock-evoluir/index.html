@@ -409,8 +409,8 @@
                 <span>épocas para os mesmos parâmetros ajustarem por completo um subconjunto, refutando falta de capacidade</span>
               </div>
               <div class="case-result">
-                <strong>+13</strong>
-                <span>pontos percentuais de acurácia em validação depois que o experimento isolou a causa real</span>
+                <strong>+16</strong>
+                <span>pontos percentuais de acurácia em validação, somando duas causas isoladas por experimento</span>
               </div>
             </div>
             <ul class="case-list" aria-label="Experimentos conduzidos">
@@ -445,14 +445,21 @@
                 agregado, não a transformação que a intuição apontava.
               </li>
               <li>
-                <strong>A conclusão anterior, invalidada pela própria correção:</strong> enquanto o
+                <strong>Um segundo gargalo, exposto pela primeira correção:</strong> com o modelo já
+                melhor, notei que o treino parava enquanto ainda melhorava — o critério de parada
+                media acurácia, que num conjunto pequeno de validação avança em saltos grandes e
+                satura. Comparei três critérios em treinos isolados; o que eu havia apostado ficou em
+                último, e o vencedor levou o modelo a treinar três vezes mais tempo antes de parar.
+              </li>
+              <li>
+                <strong>A conclusão anterior, invalidada pelas próprias correções:</strong> enquanto o
                 classificador estava travado, a medição indicava que ele quase não contribuía — o OCR
-                sustentava o resultado sozinho. Refazer a mesma avaliação depois da correção inverteu o
-                quadro: a rede passou a cruzar o limiar de decisão em 19,7% dos documentos contra 0,6%
-                antes, a concordância entre os dois componentes saiu do nível do acaso para moderada, e
-                o erro quadrático das probabilidades caiu pela metade. A conclusão valia para o modelo
-                defeituoso, não para o problema. Como os instrumentos de avaliação já estavam prontos,
-                reverificar custou uma reexecução, sem escrever código novo.
+                sustentava o resultado sozinho. Refazer a mesma avaliação inverteu o quadro: a rede
+                passou a cruzar o limiar de decisão em 23,7% dos documentos contra 0,6% antes, a
+                concordância entre os dois componentes saiu do nível do acaso para moderada, e o erro
+                quadrático das probabilidades caiu a menos de um quarto do valor original. A conclusão
+                valia para o modelo defeituoso, não para o problema. Como os instrumentos de avaliação
+                já estavam prontos, reverificar custou uma reexecução, sem escrever código novo.
               </li>
             </ul>
           </div>
