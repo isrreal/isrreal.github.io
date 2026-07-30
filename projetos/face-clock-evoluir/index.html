@@ -36,7 +36,8 @@
 
       <div class="nav-menu" id="nav-menu">
         <a href="../../index.html#projetos">Projetos</a>
-        <a href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Apresentação técnica</a>
+        <a href="tecnico.html">Estrutura técnica</a>
+        <a href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Repositório público</a>
       </div>
       <div class="nav-actions">
         <button class="language-toggle" type="button" aria-label="Mudar para inglês" title="Mudar para inglês">
@@ -63,9 +64,9 @@
           documentos médicos em uma arquitetura preparada para uso real.
         </p>
         <div class="hero-actions">
-          <a class="button button-primary" href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Ver apresentação técnica</a>
-          <a class="button button-secondary" href="#como-funciona">Entender o sistema</a>
-          <a class="button button-secondary" href="#engenharia">Ver decisões de engenharia</a>
+          <a class="button button-primary" href="#como-funciona">Entender o sistema</a>
+          <a class="button button-secondary" href="tecnico.html">Ver estrutura técnica nos detalhes</a>
+          <a class="button button-secondary" href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Repositório público</a>
         </div>
         <ul class="case-meta" aria-label="Informações do projeto">
           <li>InsightFace</li>
@@ -98,10 +99,9 @@
                 modelos, backend, banco de dados, segurança, testes e implantação.
               </li>
               <li>
-                <strong>Arquitetura:</strong> biometria facial com embeddings de 512 dimensões
-                e busca vetorial em PostgreSQL com <code>pgvector</code>, geofencing por GPS,
-                triagem de atestados por CNN como extratora de embeddings mais Regressão Logística,
-                combinada a OCR, e backend FastAPI em Docker.
+                <strong>Arquitetura:</strong> biometria facial com busca vetorial em PostgreSQL
+                (<code>pgvector</code>), geofencing por GPS, triagem de atestados combinando
+                rede neural e OCR, e backend FastAPI em Docker.
               </li>
               <li>
                 <strong>Evidências:</strong> 142 testes automatizados em pipeline Docker;
@@ -302,104 +302,16 @@
           </div>
           <div class="case-prose">
             <p class="lead" id="atestado-lead">
-              Um pipeline híbrido combina EfficientNet-B0, Regressão Logística e OCR para apoiar a identificação
-              de documentos médicos enviados pela plataforma.
+              Quando alguém envia um atestado pelo sistema, um modelo de visão computacional
+              e uma leitura automática do texto conferem se o documento é mesmo um atestado
+              médico, antes de ele chegar à mesa de quem aprova.
             </p>
-            <p id="atestado-dados">
-              O classificador vive em um serviço próprio e foi estruturado com fine-tuning
-              seletivo e uma comparação reproduzível entre abordagens. A partição é estratificada,
-              gerada por script com semente fixa e versionada: 297 documentos para treino, 64 para
-              validação e 64 para teste final; o conjunto de teste não participou nem do early
-              stopping nem da escolha de hiperparâmetros.
-            </p>
-            <p id="atestado-metodo">
-              A comparação foi montada como uma escada de baselines, do trivial ao híbrido. Cada
-              candidato teve seus hiperparâmetros escolhidos por busca em grade com validação cruzada
-              estratificada de cinco dobras <em>dentro do treino</em>, otimizando F1 da classe minoritária
-              — atestado representa 31% da base. Nenhuma imagem de teste participou da busca; ela só
-              foi usada na medição final. O piso é dado por um classificador que sempre responde a classe majoritária:
-              68,8% de accuracy com F1 zero, o que já mostra que accuracy isolada não descreve
-              este problema.
-            </p>
-            <figure class="case-table-wrapper">
-              <div class="case-table-scroll">
-                <table class="case-table" id="tabela-baselines">
-                  <caption id="tabela-baselines-titulo">Escada de baselines no teste reservado</caption>
-                  <thead>
-                    <tr id="tabela-baselines-cabecalho">
-                      <th scope="col">Abordagem</th>
-                      <th scope="col">Accuracy</th>
-                      <th scope="col">Precisão</th>
-                      <th scope="col">Recall</th>
-                      <th scope="col">F1</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr id="tabela-linha-dummy">
-                      <th scope="row">Classe majoritária (piso)</th>
-                      <td>0,688</td><td>0,000</td><td>0,000</td><td>0,000</td>
-                    </tr>
-                    <tr id="tabela-linha-hog-svm">
-                      <th scope="row">HOG + SVM linear</th>
-                      <td>0,750</td><td>0,583</td><td>0,700</td><td>0,636</td>
-                    </tr>
-                    <tr id="tabela-linha-hog-rbf">
-                      <th scope="row">HOG + SVM RBF</th>
-                      <td>0,797</td><td>0,733</td><td>0,550</td><td>0,629</td>
-                    </tr>
-                    <tr id="tabela-linha-cnn">
-                      <th scope="row">EfficientNet, cabeça original</th>
-                      <td>0,766</td><td>0,609</td><td>0,700</td><td>0,651</td>
-                    </tr>
-                    <tr class="case-table-highlight" id="tabela-linha-embeddings">
-                      <th scope="row">Embeddings + Regressão Logística</th>
-                      <td>0,875</td><td>0,875</td><td>0,700</td><td>0,778</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <figcaption id="tabela-baselines-nota">
-                64 documentos de teste, avaliados uma única vez. Precisão, recall e F1 referem-se
-                à classe atestado; o limiar é o padrão de 0,5.
-              </figcaption>
-            </figure>
-            <div class="case-results" aria-label="Resultados do experimento de classificação de atestados">
-              <div class="case-result">
-                <strong>0,778</strong>
-                <span>F1 para atestado da solução vencedora: EfficientNet como extratora de embeddings + Regressão Logística</span>
-              </div>
-              <div class="case-result">
-                <strong>0,875</strong>
-                <span>accuracy da solução híbrida no teste reservado, acima da cabeça original da rede (0,766)</span>
-              </div>
-              <div class="case-result">
-                <strong>−7</strong>
-                <span>falsos positivos em relação à cabeça neural original, preservando o mesmo recall de 0,700</span>
-              </div>
-            </div>
-            <p id="atestado-hog">
-              O experimento evitou uma conclusão superficial em duas direções. HOG + SVM, uma
-              abordagem inteiramente clássica, chegou a F1 0,636 — melhor que o piso, mas abaixo
-              da cabeça original da rede (0,651): bordas e layout não bastam para separar os
-              documentos. E o ganho da alternativa vencedora não veio de trocar a rede por um
-              método clássico, e sim de recombiná-los: a EfficientNet fornece os embeddings de
-              1.280 dimensões e a Regressão Logística faz a decisão final. O OCR continua como
-              camada de revisão por regras.
-            </p>
-            <p id="atestado-precisao">
-              As duas cabeças recuperam a mesma quantidade de atestados, 14 dos 20 do teste; o que
-              muda é o custo dessa recuperação, de 9 falsos positivos para 2. E a melhora não é
-              apenas escolha de limiar: a ordenação dos documentos por probabilidade também ficou
-              melhor, com ROC AUC de 0,814 para 0,892 e PR AUC de 0,697 para 0,823.
-            </p>
-            <p id="atestado-ressalvas">
-              Com 64 documentos de teste, diferenças pequenas de F1 não sustentam ranking. Entre os
-              três classificadores sobre embeddings, a validação cruzada ficou dentro de 0,004
-              (0,904 a 0,908) e a ordem observada no teste não é significativa; nos baselines HOG, o
-              melhor em validação cruzada nem foi o melhor no teste. A validação cruzada dos embeddings
-              também não é comparável de igual para igual com a do HOG: o backbone foi ajustado nessas
-              mesmas imagens de treino, então seu número interno é otimista por construção. A comparação
-              justa entre as duas famílias é a do teste, onde nenhuma delas tinha visto os documentos.
+            <p id="atestado-resumo">
+              A triagem não decide sozinha: ela organiza a fila e sinaliza o que parece fora
+              do lugar, e a palavra final continua sendo de uma pessoa. Na avaliação com
+              documentos que o modelo nunca tinha visto, a versão escolhida acerta 87,5% dos
+              casos e comete sete enganos a menos que a alternativa anterior, sem reconhecer
+              menos atestados do que ela.
             </p>
             <p id="atestado-rotulos">
               As decisões humanas também podem alimentar re-treinamentos futuros. Para evitar
@@ -411,195 +323,25 @@
 
         <article class="case-block" id="deep-dive">
           <div>
-            <p class="section-kicker">Deep dive técnico</p>
+            <p class="section-kicker">Aprofundamento</p>
             <h2>A partir daqui, o detalhe.</h2>
           </div>
           <div class="case-prose">
-            <p class="lead">
-              As duas seções seguintes documentam a investigação por trás dos números do
-              resumo: como um bug silencioso foi diagnosticado e como a causa do subajuste
-              do classificador foi isolada por experimento. São leitura opcional — o
-              essencial já está acima.
+            <p class="lead" id="ponte-lead">
+              Cada número desta página veio de uma medição, e nenhuma delas cabe em um resumo.
+              A página técnica documenta a comparação entre as abordagens de classificação, o
+              diagnóstico de um bug silencioso, os experimentos que isolaram a causa do subajuste
+              do modelo e as camadas de segurança da aplicação.
             </p>
-          </div>
-        </article>
-
-        <article class="case-block" id="metodo">
-          <div>
-            <p class="section-kicker">Método de investigação</p>
-            <h2>Medir antes de concluir.</h2>
-          </div>
-          <div class="case-prose">
-            <p class="lead">
-              O OCR do pipeline vinha entregando resultados ruins em parte dos documentos.
-              Em vez de trocar a ferramenta, a origem do problema foi investigada — e não
-              estava no OCR.
+            <p id="ponte-aviso">
+              É leitura opcional e escrita para quem quer ver o método: protocolo de avaliação,
+              tabelas de resultado e hipóteses descartadas — inclusive as minhas.
             </p>
-            <div class="case-results" aria-label="Indicadores da investigação">
-              <div class="case-result">
-                <strong>468</strong>
-                <span>documentos triados automaticamente por sinais objetivos de qualidade</span>
-              </div>
-              <div class="case-result">
-                <strong>38</strong>
-                <span>imagens chegavam rotacionadas ao modelo por metadado EXIF ignorado</span>
-              </div>
-              <div class="case-result">
-                <strong>2.071</strong>
-                <span>linhas removidas ao concluir que a premissa de um experimento não se sustentava</span>
-              </div>
+            <div class="hero-actions">
+              <a class="button button-primary" href="tecnico.html">Ver estrutura técnica nos detalhes →</a>
             </div>
-            <ul class="case-list" aria-label="Decisões técnicas da investigação">
-              <li>
-                <strong>Diagnóstico do bug silencioso:</strong> fotos de celular carregam na tag EXIF
-                <code>Orientation</code> a rotação necessária para exibição. Visualizadores aplicam essa
-                tag; a biblioteca de imagem usada no pipeline, não. O documento chegava deitado à rede
-                neural e ao OCR sem gerar erro algum — apenas texto ilegível. Nas amostras verificadas,
-                normalizar a orientação levou a extração de nenhum termo reconhecido para a identificação
-                correta do documento.
-              </li>
-              <li>
-                <strong>Descarte do próprio falso positivo:</strong> o detector de orientação do OCR
-                apontava rotação em 45% da base. O cruzamento com o tipo de arquivo mostrou que 91 dos
-                109 casos de “180°” eram capturas de tela — que nunca estão de cabeça para baixo. O sinal
-                era ruído do detector, não característica do dado; a hipótese só foi confirmada pelo
-                metadado EXIF.
-              </li>
-              <li>
-                <strong>Correção sem desalinhar treino e produção:</strong> normalizar a orientação apenas
-                na inferência criaria <em>train/serve skew</em>, já que o modelo havia sido treinado com as
-                mesmas imagens rotacionadas. A correção foi centralizada em um único ponto de leitura,
-                aplicada também ao carregador de dados do treino, seguida de re-treinamento — cujo efeito
-                sobre o classificador foi reportado como neutro, não como ganho.
-              </li>
-              <li>
-                <strong>Escolha de métrica por adequação, não por sofisticação:</strong> a divergência de
-                Jensen-Shannon foi cogitada para comparar dois pipelines e descartada após demonstração
-                numérica: em um caso construído com discordância em 100% dos documentos, a divergência
-                entre as distribuições marginais resulta exatamente zero. A comparação passou a usar
-                instrumentos pareados, que enxergam a discordância documento a documento.
-              </li>
-            </ul>
           </div>
         </article>
-
-        <article class="case-block" id="diagnostico">
-          <div>
-            <p class="section-kicker">Diagnóstico experimental</p>
-            <h2>Descartar hipóteses, inclusive as próprias.</h2>
-          </div>
-          <div class="case-prose">
-            <p class="lead">
-              O classificador não estava aprendendo o quanto deveria. Em vez de partir para o
-              palpite usual — modelo maior — cada causa candidata virou um experimento controlado,
-              com grupo de controle e uma variável por vez.
-            </p>
-            <div class="case-results" aria-label="Indicadores do diagnóstico">
-              <div class="case-result">
-                <strong>3</strong>
-                <span>hipóteses descartadas por experimento: capacidade, sobreajuste e regularização da perda</span>
-              </div>
-              <div class="case-result">
-                <strong>4</strong>
-                <span>épocas para os mesmos parâmetros ajustarem por completo um subconjunto, refutando falta de capacidade</span>
-              </div>
-              <div class="case-result">
-                <strong>+16</strong>
-                <span>pontos percentuais de acurácia em validação, somando duas causas isoladas por experimento</span>
-              </div>
-            </div>
-            <ul class="case-list" aria-label="Experimentos conduzidos">
-              <li>
-                <strong>A resposta óbvia, testada e rejeitada:</strong> a reação padrão a um modelo que
-                não aprende é aumentar a capacidade. O teste de memorização mostrou que os mesmos
-                parâmetros treináveis ajustam integralmente um subconjunto pequeno em quatro épocas
-                quando a regularização é retirada. Capacidade existia de sobra — parâmetros adicionais
-                custariam treino mais lento sem mover o resultado.
-              </li>
-              <li>
-                <strong>Uma hipótese própria, derrubada pelo experimento:</strong> a suspeita inicial era
-                que a suavização de rótulos impunha um teto de confiança, já que o teto teórico ficava
-                logo acima do máximo observado. O experimento controlado removeu a suavização e o teto
-                não subiu. A proximidade entre os dois números era coincidência, não causa — e a
-                conclusão anterior foi revista.
-              </li>
-              <li>
-                <strong>A correção intuitiva pioraria o sistema:</strong> o limiar de decisão parecia alto
-                demais e baixá-lo seria o ajuste natural. Simular o pipeline completo em nove limiares
-                mostrou o oposto: reduzir o valor melhora o classificador isolado e degrada o resultado
-                final, porque passa a dar voz ao componente menos preciso. A medição evitou uma
-                regressão em produção.
-              </li>
-              <li>
-                <strong>A causa real, e uma segunda hipótese corrigida:</strong> restava o conjunto de
-                transformações aplicadas às imagens de treino. A suspeita era o espelhamento horizontal,
-                inválido para documentos porque texto espelhado não existe entre as entradas reais.
-                Removê-lo isoladamente não mudou nada mensurável; reduzir a carga completa de
-                transformações elevou a acurácia de validação em treze pontos percentuais e manteve o
-                modelo aprendendo por vinte e três épocas, contra quatro antes. O problema era o volume
-                agregado, não a transformação que a intuição apontava.
-              </li>
-              <li>
-                <strong>Um segundo gargalo, exposto pela primeira correção:</strong> com o modelo já
-                melhor, notei que o treino parava enquanto ainda melhorava — o critério de parada
-                media acurácia, que num conjunto pequeno de validação avança em saltos grandes e
-                satura. Comparei três critérios em treinos isolados; o que eu havia apostado ficou em
-                último, e o vencedor levou o modelo a treinar três vezes mais tempo antes de parar.
-              </li>
-              <li>
-                <strong>A conclusão anterior, invalidada pelas próprias correções:</strong> enquanto o
-                classificador estava travado, a medição indicava que ele quase não contribuía — o OCR
-                sustentava o resultado sozinho. Refazer a mesma avaliação inverteu o quadro: a rede
-                passou a cruzar o limiar de decisão em 23,7% dos documentos contra 0,6% antes, a
-                concordância entre os dois componentes saiu do nível do acaso para moderada, e o erro
-                quadrático das probabilidades caiu a menos de um quarto do valor original. A conclusão
-                valia para o modelo defeituoso, não para o problema. Como os instrumentos de avaliação
-                já estavam prontos, reverificar custou uma reexecução, sem escrever código novo.
-              </li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="case-block" id="engenharia">
-          <div>
-            <p class="section-kicker">Engenharia e segurança</p>
-            <h2>Confiabilidade construída em camadas.</h2>
-          </div>
-          <div class="case-prose">
-            <p class="lead">
-              A identidade é validada em diferentes níveis: usuário, sessão, autorização,
-              dispositivo e tentativa biométrica. Cada camada reduz um tipo distinto de risco.
-            </p>
-            <div class="case-formula auth-summary">
-              <p class="section-kicker">Em termos simples</p>
-              <p><strong>O login gera uma credencial temporária assinada; as rotas protegidas validam essa credencial antes de executar qualquer ação.</strong></p>
-              <code>Login → JWT assinado → Bearer token → claims validadas → rota autorizada</code>
-              <p>
-                O <code>OAuth2PasswordBearer</code> do FastAPI padroniza como a API recebe o token.
-                Neste projeto, ele não representa login social por Google ou Microsoft.
-              </p>
-            </div>
-            <ul class="case-list security-list" aria-label="Camadas de segurança da aplicação">
-              <li><strong>JWT com claims tipadas:</strong> o token assinado carrega identidade, perfil de acesso, modalidade de trabalho e expiração, sem confiar em um <code>user_id</code> enviado pelo cliente.</li>
-              <li><strong>Logout persistente:</strong> tokens revogados ficam no PostgreSQL, permanecendo inválidos após reinícios e entre múltiplos processos da aplicação.</li>
-              <li><strong>Senhas com bcrypt:</strong> hashes são produzidos pelo Passlib com custo computacional deliberado; a senha original nunca é armazenada ou recuperada.</li>
-              <li><strong>Recuperação controlada:</strong> redefinições usam tokens de uso único, com expiração e marcação de utilização.</li>
-              <li><strong>Autorização e anti-IDOR:</strong> além de autenticar, a API verifica se o usuário pode acessar cada recurso, inclusive documentos médicos sensíveis.</li>
-              <li><strong>Totem provisionado:</strong> cada dispositivo usa API key obtida por ativação com PIN e proteção contra força bruta; a chave não é incorporada ao HTML público.</li>
-              <li><strong>Biometria protegida:</strong> múltiplos frames, vivacidade, impressão SHA-256 anti-replay e controles para dados sensíveis segundo a LGPD.</li>
-              <li><strong>Implantação restrita:</strong> backend exposto apenas localmente, HTTPS por túnel, migrações versionadas e volumes persistentes.</li>
-            </ul>
-          </div>
-        </article>
-
-        <aside class="case-highlight">
-          <p class="section-kicker">Decisão de arquitetura</p>
-          <p class="lead">
-            Operações de inferência, limitadas por CPU, permanecem síncronas; concorrência
-            assíncrona é reservada para esperas de I/O. A escolha evita complexidade sem ganho
-            e deixa explícito onde cada modelo de execução realmente ajuda.
-          </p>
-        </aside>
 
         <article class="case-block" id="qualidade">
           <div>
@@ -657,7 +399,8 @@
           <h2>Explore a arquitetura e a documentação técnica.</h2>
         </div>
         <div class="contact-actions">
-          <a class="button button-primary" href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Abrir no GitHub</a>
+          <a class="button button-primary" href="tecnico.html">Ver estrutura técnica nos detalhes</a>
+          <a class="button button-secondary" href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Abrir no GitHub</a>
           <a class="button button-secondary" href="../../index.html#projetos">Ver outros projetos</a>
         </div>
       </div>
