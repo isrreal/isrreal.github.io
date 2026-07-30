@@ -33,7 +33,7 @@ const interfaceText = {
 const englishPages = {
   home: {
     title: 'Israel Souza Ferreira | Data Scientist',
-    description: 'Portfolio of Israel Souza Ferreira — data science, statistical modeling, time-series forecasting, machine learning, and MLOps.',
+    description: 'Portfolio of Israel Souza Ferreira — data science, statistical modeling, controlled experimentation, machine learning, and MLOps.',
     content: [
       ['.skip-link', 'Skip to content'],
       ['.nav-menu a[href="#sobre"]', 'About'],
@@ -42,14 +42,14 @@ const englishPages = {
       ['.nav-menu a[href="#competencias"]', 'Skills'],
       ['.nav-menu a[href="#curriculo"]', 'Résumé'],
       ['.nav-menu a[href="#contato"]', 'Contact'],
-      ['.hero .eyebrow', 'Data Science · Statistics · Time Series · Machine Learning'],
+      ['.hero .eyebrow', 'Data Science · Statistics · Experimentation · Machine Learning'],
       ['.hero h1', 'I turn data into decisions — and measure whether they actually hold up.'],
-      ['.hero-description', 'I am <strong>Israel Souza Ferreira</strong>, a data scientist with hands-on experience in statistical modeling, time-series forecasting, controlled experimentation, and end-to-end MLOps. What sets me apart is evaluation: measure before concluding, and distrust your own result.'],
+      ['.hero-description', 'I am <strong>Israel Souza Ferreira</strong>, a data scientist with hands-on experience in statistical modeling, controlled experimentation, and end-to-end MLOps. What sets me apart is evaluation: measure before concluding, and distrust your own result.'],
       ['.hero-actions a:nth-child(1)', 'View projects'],
       ['.hero-actions a:nth-child(2)', 'View résumé'],
       ['.hero-meta li:nth-child(1)', '<svg class="location-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M12 21s7-6.1 7-12A7 7 0 1 0 5 9c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg> Fortaleza, Ceará, Brazil'],
       ['.hero-meta li:nth-child(2)', '● Open to opportunities'],
-      ['.terminal-card code', '<span class="terminal-muted">$</span> profile --summary\n\n<span class="terminal-key">focus</span>: data science and machine learning\n<span class="terminal-key">languages</span>: Python, SQL, and C++\n<span class="terminal-key">interests</span>:\n  - statistical modeling and experiments\n  - time-series forecasting\n  - multimodal multitask regressors\n  - MLOps and inference APIs\n\n<span class="terminal-success">status: measuring before concluding</span>'],
+      ['.terminal-card code', '<span class="terminal-muted">$</span> profile --summary\n\n<span class="terminal-key">focus</span>: data science and machine learning\n<span class="terminal-key">languages</span>: Python, SQL, and C++\n<span class="terminal-key">interests</span>:\n  - statistical modeling and experiments\n  - multimodal multitask regressors\n  - MLOps and inference APIs\n\n<span class="terminal-success">status: measuring before concluding</span>'],
       ['#sobre .section-kicker', 'About me'],
       ['#sobre h2', 'Rigorous analysis with practical impact.'],
       ['#sobre .lead', 'My path combines academic research and the development of projects aimed at real-world problems in education and public health. I strive to produce technically sound, reproducible, and well-documented analysis.'],
