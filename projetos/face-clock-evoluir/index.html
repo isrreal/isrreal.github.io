@@ -298,13 +298,35 @@
           </div>
           <div class="case-prose">
             <p class="lead">
-              Um pipeline híbrido combina EfficientNet-B0 e OCR para apoiar a identificação
+              Um pipeline híbrido combina EfficientNet-B0, Regressão Logística e OCR para apoiar a identificação
               de documentos médicos enviados pela plataforma.
             </p>
             <p>
               O classificador vive em um serviço próprio e foi estruturado com fine-tuning
-              seletivo, busca de hiperparâmetros e validação estratificada. A decisão final
-              continua humana: o modelo auxilia a triagem, mas não substitui a análise administrativa.
+              seletivo e uma comparação reproduzível entre abordagens. A avaliação separou
+              297 documentos para treino, 64 para validação e 64 para teste final; o conjunto
+              de teste não participou nem do early stopping nem da escolha de hiperparâmetros.
+            </p>
+            <div class="case-results" aria-label="Resultados do experimento de classificação de atestados">
+              <div class="case-result">
+                <strong>0,778</strong>
+                <span>F1 para atestado da solução vencedora: EfficientNet como extratora de embeddings + Regressão Logística</span>
+              </div>
+              <div class="case-result">
+                <strong>0,875</strong>
+                <span>accuracy da solução híbrida no teste reservado, acima da cabeça original da rede (0,766)</span>
+              </div>
+              <div class="case-result">
+                <strong>−7</strong>
+                <span>falsos positivos em relação à cabeça neural original, preservando o mesmo recall de 0,700</span>
+              </div>
+            </div>
+            <p>
+              O experimento também evitou uma conclusão superficial: HOG + SVM, uma abordagem
+              inteiramente clássica, alcançou F1 de 0,636; a cabeça original da EfficientNet,
+              0,651. A melhor alternativa foi híbrida — a rede preserva sua capacidade de
+              representar o documento e a Regressão Logística faz a decisão final sobre os
+              embeddings de 1.280 dimensões. O OCR continua como camada de revisão por regras.
             </p>
             <p>
               As decisões humanas também podem alimentar re-treinamentos futuros. Para evitar
