@@ -721,6 +721,79 @@ h3 {
   text-align: center;
 }
 
+.case-table-wrapper {
+  margin: 2rem 0 0;
+}
+
+.case-table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.case-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  text-align: right;
+}
+
+.case-table caption {
+  padding: 1rem 1.1rem 0.75rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.case-table th,
+.case-table td {
+  padding: 0.7rem 1.1rem;
+  white-space: nowrap;
+}
+
+.case-table thead th {
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.case-table tbody th {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.case-table th:first-child {
+  text-align: left;
+}
+
+.case-table tbody td {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.case-table tbody tr + tr th,
+.case-table tbody tr + tr td {
+  border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+}
+
+.case-table .case-table-highlight th,
+.case-table .case-table-highlight td {
+  background: color-mix(in srgb, var(--accent-soft) 30%, transparent);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.case-table-wrapper figcaption {
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
 .case-list {
   display: grid;
   gap: 1rem;

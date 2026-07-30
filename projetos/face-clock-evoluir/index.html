@@ -72,6 +72,7 @@
           <li>FastAPI</li>
           <li>PostgreSQL + pgvector</li>
           <li>EfficientNet-B0</li>
+          <li>scikit-learn</li>
           <li>JWT + OAuth2 Bearer</li>
           <li>Docker</li>
         </ul>
@@ -99,13 +100,16 @@
               <li>
                 <strong>Arquitetura:</strong> biometria facial com embeddings de 512 dimensões
                 e busca vetorial em PostgreSQL com <code>pgvector</code>, geofencing por GPS,
-                triagem de atestados por CNN combinada a OCR, e backend FastAPI em Docker.
+                triagem de atestados por CNN como extratora de embeddings mais Regressão Logística,
+                combinada a OCR, e backend FastAPI em Docker.
               </li>
               <li>
                 <strong>Evidências:</strong> 142 testes automatizados em pipeline Docker;
                 468 documentos triados por sinais objetivos de qualidade; correção de
                 orientação de imagem e redução de <em>augmentation</em> que elevaram a
-                acurácia de validação em treze pontos percentuais.
+                acurácia de validação em treze pontos percentuais; cinco abordagens de
+                classificação comparadas sob o mesmo protocolo, do classificador trivial
+                ao híbrido vencedor.
               </li>
               <li>
                 <strong>Status:</strong> sistema contratado, funcional e em fase final de
@@ -297,16 +301,68 @@
             <h2>Triagem inteligente de atestados.</h2>
           </div>
           <div class="case-prose">
-            <p class="lead">
+            <p class="lead" id="atestado-lead">
               Um pipeline híbrido combina EfficientNet-B0, Regressão Logística e OCR para apoiar a identificação
               de documentos médicos enviados pela plataforma.
             </p>
-            <p>
+            <p id="atestado-dados">
               O classificador vive em um serviço próprio e foi estruturado com fine-tuning
-              seletivo e uma comparação reproduzível entre abordagens. A avaliação separou
-              297 documentos para treino, 64 para validação e 64 para teste final; o conjunto
-              de teste não participou nem do early stopping nem da escolha de hiperparâmetros.
+              seletivo e uma comparação reproduzível entre abordagens. A partição é estratificada,
+              gerada por script com semente fixa e versionada: 297 documentos para treino, 64 para
+              validação e 64 para teste final; o conjunto de teste não participou nem do early
+              stopping nem da escolha de hiperparâmetros.
             </p>
+            <p id="atestado-metodo">
+              A comparação foi montada como uma escada de baselines, do trivial ao híbrido. Cada
+              candidato teve seus hiperparâmetros escolhidos por busca em grade com validação cruzada
+              estratificada de cinco dobras <em>dentro do treino</em>, otimizando F1 da classe minoritária
+              — atestado representa 31% da base. Nenhuma imagem de teste participou da busca; ela só
+              foi usada na medição final. O piso é dado por um classificador que sempre responde a classe majoritária:
+              68,8% de accuracy com F1 zero, o que já mostra que accuracy isolada não descreve
+              este problema.
+            </p>
+            <figure class="case-table-wrapper">
+              <div class="case-table-scroll">
+                <table class="case-table" id="tabela-baselines">
+                  <caption id="tabela-baselines-titulo">Escada de baselines no teste reservado</caption>
+                  <thead>
+                    <tr id="tabela-baselines-cabecalho">
+                      <th scope="col">Abordagem</th>
+                      <th scope="col">Accuracy</th>
+                      <th scope="col">Precisão</th>
+                      <th scope="col">Recall</th>
+                      <th scope="col">F1</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="tabela-linha-dummy">
+                      <th scope="row">Classe majoritária (piso)</th>
+                      <td>0,688</td><td>0,000</td><td>0,000</td><td>0,000</td>
+                    </tr>
+                    <tr id="tabela-linha-hog-svm">
+                      <th scope="row">HOG + SVM linear</th>
+                      <td>0,750</td><td>0,583</td><td>0,700</td><td>0,636</td>
+                    </tr>
+                    <tr id="tabela-linha-hog-rbf">
+                      <th scope="row">HOG + SVM RBF</th>
+                      <td>0,797</td><td>0,733</td><td>0,550</td><td>0,629</td>
+                    </tr>
+                    <tr id="tabela-linha-cnn">
+                      <th scope="row">EfficientNet, cabeça original</th>
+                      <td>0,766</td><td>0,609</td><td>0,700</td><td>0,651</td>
+                    </tr>
+                    <tr class="case-table-highlight" id="tabela-linha-embeddings">
+                      <th scope="row">Embeddings + Regressão Logística</th>
+                      <td>0,875</td><td>0,875</td><td>0,700</td><td>0,778</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <figcaption id="tabela-baselines-nota">
+                64 documentos de teste, avaliados uma única vez. Precisão, recall e F1 referem-se
+                à classe atestado; o limiar é o padrão de 0,5.
+              </figcaption>
+            </figure>
             <div class="case-results" aria-label="Resultados do experimento de classificação de atestados">
               <div class="case-result">
                 <strong>0,778</strong>
@@ -321,14 +377,31 @@
                 <span>falsos positivos em relação à cabeça neural original, preservando o mesmo recall de 0,700</span>
               </div>
             </div>
-            <p>
-              O experimento também evitou uma conclusão superficial: HOG + SVM, uma abordagem
-              inteiramente clássica, alcançou F1 de 0,636; a cabeça original da EfficientNet,
-              0,651. A melhor alternativa foi híbrida — a rede preserva sua capacidade de
-              representar o documento e a Regressão Logística faz a decisão final sobre os
-              embeddings de 1.280 dimensões. O OCR continua como camada de revisão por regras.
+            <p id="atestado-hog">
+              O experimento evitou uma conclusão superficial em duas direções. HOG + SVM, uma
+              abordagem inteiramente clássica, chegou a F1 0,636 — melhor que o piso, mas abaixo
+              da cabeça original da rede (0,651): bordas e layout não bastam para separar os
+              documentos. E o ganho da alternativa vencedora não veio de trocar a rede por um
+              método clássico, e sim de recombiná-los: a EfficientNet fornece os embeddings de
+              1.280 dimensões e a Regressão Logística faz a decisão final. O OCR continua como
+              camada de revisão por regras.
             </p>
-            <p>
+            <p id="atestado-precisao">
+              As duas cabeças recuperam a mesma quantidade de atestados, 14 dos 20 do teste; o que
+              muda é o custo dessa recuperação, de 9 falsos positivos para 2. E a melhora não é
+              apenas escolha de limiar: a ordenação dos documentos por probabilidade também ficou
+              melhor, com ROC AUC de 0,814 para 0,892 e PR AUC de 0,697 para 0,823.
+            </p>
+            <p id="atestado-ressalvas">
+              Com 64 documentos de teste, diferenças pequenas de F1 não sustentam ranking. Entre os
+              três classificadores sobre embeddings, a validação cruzada ficou dentro de 0,004
+              (0,904 a 0,908) e a ordem observada no teste não é significativa; nos baselines HOG, o
+              melhor em validação cruzada nem foi o melhor no teste. A validação cruzada dos embeddings
+              também não é comparável de igual para igual com a do HOG: o backbone foi ajustado nessas
+              mesmas imagens de treino, então seu número interno é otimista por construção. A comparação
+              justa entre as duas famílias é a do teste, onde nenhuma delas tinha visto os documentos.
+            </p>
+            <p id="atestado-rotulos">
               As decisões humanas também podem alimentar re-treinamentos futuros. Para evitar
               rótulos incorretos, documentos rejeitados só entram como exemplos negativos quando
               há concordância entre pessoa e modelo; casos ambíguos são descartados da base de treino.
