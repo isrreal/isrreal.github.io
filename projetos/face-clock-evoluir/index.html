@@ -199,13 +199,13 @@
             </p>
             <p>
               Depois da autenticação facial e da validação de localização, o <code>PontoFSM</code>
-              resolve a próxima ação: dá para sair logo após entrar, fazer pausas e só encerrar o
-              expediente depois de um retorno válido.
+              resolve a próxima ação: dá para sair logo após entrar, fazer pausas e encerrar o
+              expediente durante o intervalo, sem registrar um retorno que não aconteceu.
             </p>
-            <div class="state-machine" role="img" aria-label="Fluxo de ponto: sem batida leva à entrada; entrada leva ao início da pausa ou à saída; pausa leva ao retorno; retorno leva a outra pausa ou à saída.">
-              <svg class="fsm-automaton" viewBox="0 0 960 250" role="img" aria-labelledby="fsm-title fsm-description">
+            <div class="state-machine" role="img" aria-label="Fluxo de ponto: sem batida leva à entrada; entrada leva ao início da pausa ou à saída; pausa leva ao retorno ou à saída; retorno leva a outra pausa ou à saída.">
+              <svg class="fsm-automaton" viewBox="0 -52 960 302" role="img" aria-labelledby="fsm-title fsm-description">
                 <title id="fsm-title">Autômato do registro de ponto</title>
-                <desc id="fsm-description">Estados representados por círculos. O caminho principal vai de sem batida para entrada, início da pausa, retorno e saída. Há um atalho de entrada para saída e uma transição de retorno para outra pausa.</desc>
+                <desc id="fsm-description">Estados representados por círculos. O caminho principal vai de sem batida para entrada, início da pausa, retorno e saída. Há um atalho de entrada para saída, uma transição de retorno para outra pausa e uma saída direta a partir da pausa.</desc>
                 <defs>
                   <marker id="fsm-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                     <path d="M 0 0 L 10 5 L 0 10 z" />
@@ -221,6 +221,7 @@
                 <g class="fsm-branch-arrows" aria-hidden="true">
                   <path d="M 280 138 C 280 205, 850 220, 850 138" />
                   <path d="M 660 138 C 660 238, 470 238, 470 138" />
+                  <path d="M 470 46 C 470 -26, 850 -26, 850 46" />
                 </g>
 
                 <g class="fsm-state fsm-state-neutral">
@@ -246,6 +247,7 @@
 
                 <text class="fsm-path-label" id="fsm-direct-label" x="565" y="190" text-anchor="middle">saída direta</text>
                 <text class="fsm-path-label" id="fsm-break-again-label" x="565" y="239" text-anchor="middle">outra pausa</text>
+                <text class="fsm-path-label" id="fsm-exit-on-break-label" x="660" y="-20" text-anchor="middle">saída na pausa</text>
               </svg>
               <div class="fsm-mobile-flow" role="img" aria-label="Fluxo vertical do registro de ponto">
                 <div class="fsm-mobile-node">Sem batida</div>
@@ -260,12 +262,13 @@
                 <div class="fsm-mobile-branches">
                   <p><strong id="fsm-mobile-direct-title">Atalho:</strong> <span id="fsm-mobile-direct-copy">Entrada → Saída (saída direta)</span></p>
                   <p><strong id="fsm-mobile-break-title">Repetição:</strong> <span id="fsm-mobile-break-copy">Retorno → Início da pausa (outra pausa)</span></p>
+                  <p><strong id="fsm-mobile-exit-break-title">Encerramento:</strong> <span id="fsm-mobile-exit-break-copy">Início da pausa → Saída (saída na pausa)</span></p>
                 </div>
               </div>
               <div class="fsm-legend" aria-label="Legenda do autômato">
                 <span><i class="fsm-legend-circle" aria-hidden="true"></i><strong id="fsm-legend-state">Círculo:</strong> <span id="fsm-legend-state-copy">estado da última batida</span></span>
                 <span><i class="fsm-legend-arrow" aria-hidden="true">→</i><strong id="fsm-legend-arrow">Seta:</strong> <span id="fsm-legend-arrow-copy">próxima batida permitida</span></span>
-                <span><i class="fsm-legend-dashed" aria-hidden="true"></i><strong id="fsm-legend-branch">Caminho curvo:</strong> <span id="fsm-legend-branch-copy">atalho ou nova pausa</span></span>
+                <span><i class="fsm-legend-dashed" aria-hidden="true"></i><strong id="fsm-legend-branch">Caminho curvo:</strong> <span id="fsm-legend-branch-copy">caminho alternativo permitido</span></span>
               </div>
             </div>
           </div>
