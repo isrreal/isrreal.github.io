@@ -88,7 +88,7 @@ const englishPages = {
       ['#fc-exp-lista li:nth-child(2)', 'Implemented 1:N vector search and 1:1 verification over 512-dimensional facial embeddings with InsightFace and pgvector, aggregating multi-frame decisions, liveness, and anti-replay protection.'],
       ['#fc-exp-lista li:nth-child(3)', 'Trained an EfficientNet-B0 classifier for medical-document triage with hyperparameter search, stratified cross-validation, and a hybrid CNN + OCR decision; diagnosed its underfitting through controlled ablation.'],
       ['#fc-exp-lista li:nth-child(4)', 'Built the data layer and the inference service with PostgreSQL, SQLAlchemy, Alembic, and FastAPI, with Dockerized infrastructure, HTTPS, and GitHub Actions.'],
-      ['#experiencia-face-clock .experience-links a:nth-child(1)', 'See the case study →'],
+      ['#experiencia-face-clock .experience-links a:nth-child(1)', 'See the case study <span class="card-link-arrow" aria-hidden="true">→</span>'],
       ['#experiencia-face-clock .experience-links a:nth-child(2)', 'See the technical breakdown →'],
       ['#experiencia-face-clock .experience-links a:nth-child(3)', 'Public repository →'],
       ['#projetos .section-kicker', 'Selected projects'],
@@ -99,7 +99,7 @@ const englishPages = {
       ['#projetos .project-card:nth-child(1) > p', 'The first GA- and ACO-based metaheuristics in the literature for the TRDP, together with a corrected ILP formulation for exact solutions.'],
       ['#projetos .project-card:nth-child(1) .tag-list li:nth-child(3)', 'Graph Theory'],
       ['#projetos .project-card:nth-child(1) .tag-list li:nth-child(4)', 'Metaheuristics'],
-      ['#projetos .project-card:nth-child(1) .project-links a:nth-child(1)', 'Explore project →'],
+      ['#projetos .project-card:nth-child(1) .project-links a:nth-child(1)', 'Explore project <span class="card-link-arrow" aria-hidden="true">→</span>'],
       ['#projetos .project-card:nth-child(1) .project-links a:nth-child(2)', 'View technical breakdown →'],
       ['#projetos .project-card:nth-child(1) .project-links a:nth-child(3)', 'Code →'],
       ['#projetos .project-card:nth-child(1) .project-links a:nth-child(4)', 'Read thesis →'],
@@ -825,12 +825,14 @@ const sectionObserver = new IntersectionObserver(
 
 sections.forEach((section) => sectionObserver.observe(section));
 
-document.querySelectorAll('.project-card-clickable').forEach((card) => {
-  const primaryLink = card.querySelector('.project-primary-link');
+document.querySelectorAll('.card-clickable').forEach((card) => {
+  const primaryLink = card.querySelector('.card-primary-link');
   if (!primaryLink) return;
 
   card.addEventListener('click', (event) => {
     if (event.target.closest('a, button')) return;
+    // Não navega quando o clique apenas encerra uma seleção de texto do card.
+    if (window.getSelection()?.toString()) return;
     window.location.assign(primaryLink.href);
   });
 });

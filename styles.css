@@ -477,21 +477,21 @@ h3 {
   box-shadow: var(--shadow);
 }
 
-.project-card-clickable {
+.card-clickable {
   position: relative;
   cursor: pointer;
   touch-action: manipulation;
 }
 
-.project-card-clickable h3 {
+.card-clickable h3 {
   transition: color 180ms ease;
 }
 
-.project-card-clickable:hover h3 {
+.card-clickable:hover h3 {
   color: var(--accent);
 }
 
-.project-primary-link::after {
+.project-card .card-primary-link::after {
   content: '';
   position: absolute;
   z-index: 1;
@@ -499,12 +499,17 @@ h3 {
   border-radius: var(--radius-md);
 }
 
-.project-card-clickable .project-links a:not(.project-primary-link) {
+.card-clickable .project-links a:not(.card-primary-link) {
   position: relative;
   z-index: 2;
 }
 
-.project-card-clickable:has(.project-primary-link:focus-visible) {
+.card-link-arrow {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+
+.card-clickable:has(.card-primary-link:focus-visible) {
   outline: 3px solid color-mix(in srgb, var(--accent) 70%, white);
   outline-offset: 3px;
 }
@@ -1544,8 +1549,12 @@ h3 {
     color: var(--accent-strong);
   }
 
-  .project-links a:not(.project-primary-link):hover {
+  .project-links a:not(.card-primary-link):hover {
     transform: translateX(3px);
+  }
+
+  .card-clickable:hover .card-link-arrow {
+    transform: translateX(4px);
   }
 }
 
@@ -1554,12 +1563,12 @@ h3 {
     transform: none;
   }
 
-  .project-card-clickable:active {
+  .card-clickable:active {
     transform: scale(0.995);
     border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
   }
 
-  .project-card-clickable:active h3 {
+  .card-clickable:active h3 {
     color: var(--accent);
   }
 }
