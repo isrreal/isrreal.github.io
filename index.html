@@ -122,32 +122,68 @@
         <div>
           <p class="section-kicker">Experiência</p>
           <h2>Ciência de dados com profundidade de engenharia.</h2>
-          <p class="lead">Modelagem estatística e experimentação aplicadas à análise de proficiência educacional e à predição de desempenho em exames.</p>
+          <p class="lead">Modelagem estatística e experimentação aplicadas à análise de proficiência educacional, e entrega individual de um sistema de machine learning contratado por uma instituição de ensino.</p>
         </div>
-        <article class="experience-card">
-          <div class="experience-heading">
-            <div>
-              <h3>Cientista de dados — IA para análise de proficiência</h3>
-              <p class="experience-company">Tieta Artificial Intelligence · Bolsista CNPq RHAE</p>
+        <div class="experience-stack">
+          <article class="experience-card">
+            <div class="experience-heading">
+              <div>
+                <h3>Cientista de dados — IA para análise de proficiência</h3>
+                <p class="experience-company">Tieta Artificial Intelligence · Bolsista CNPq RHAE</p>
+              </div>
+              <p class="experience-period">abr. 2025 — jul. 2026</p>
             </div>
-            <p class="experience-period">abr. 2025 — jul. 2026</p>
-          </div>
-          <dl class="experience-facts" aria-label="Resumo da experiência de pesquisa">
-            <div><dt>Modelagem estatística</dt><dd>TRI e regressão multitarefa</dd></div>
-            <div><dt>Experimentação</dt><dd>avaliação pareada e ablação</dd></div>
-            <div><dt>Comunicação</dt><dd>resultados reprodutíveis</dd></div>
-          </dl>
-          <ul class="experience-list">
-            <li>Modelei parâmetros psicométricos latentes de itens educacionais com Teoria de Resposta ao Item, validando as estimativas dos modelos contra parâmetros de referência.</li>
-            <li>Desenhei avaliações pareadas sobre os mesmos itens para comparar abordagens concorrentes, quantificando a correlação de cada sinal estimado com os parâmetros de referência e o custo de inferência associado — evidência que embasou a escolha da abordagem adotada.</li>
-            <li>Construí pipelines de extração de sinais com modelos de linguagem orquestrados por DSPy, incluindo geração procedural de diálogos e rastreamento de trajetória cognitiva.</li>
-            <li>Testei representações relativas e redutores por atenção em modelos de regressão multitarefa sobre dados textuais e visuais.</li>
-            <li>Estruturei experimentos reprodutíveis, métricas de avaliação e documentação técnica para sustentar as conclusões do ciclo de pesquisa.</li>
-          </ul>
-          <ul class="tag-list" aria-label="Tecnologias da experiência">
-            <li>Ciência de Dados</li><li>Estatística</li><li>Teoria de Resposta ao Item</li><li>LLMs</li><li>DSPy</li><li>PyTorch</li><li>PLN</li>
-          </ul>
-        </article>
+            <dl class="experience-facts" aria-label="Resumo da experiência de pesquisa">
+              <div><dt>Modelagem estatística</dt><dd>TRI e regressão multitarefa</dd></div>
+              <div><dt>Experimentação</dt><dd>avaliação pareada e ablação</dd></div>
+              <div><dt>Comunicação</dt><dd>resultados reprodutíveis</dd></div>
+            </dl>
+            <ul class="experience-list">
+              <li>Modelei parâmetros psicométricos latentes de itens educacionais com Teoria de Resposta ao Item, validando as estimativas dos modelos contra parâmetros de referência.</li>
+              <li>Desenhei avaliações pareadas sobre os mesmos itens para comparar abordagens concorrentes, quantificando a correlação de cada sinal estimado com os parâmetros de referência e o custo de inferência associado — evidência que embasou a escolha da abordagem adotada.</li>
+              <li>Construí pipelines de extração de sinais com modelos de linguagem orquestrados por DSPy, incluindo geração procedural de diálogos e rastreamento de trajetória cognitiva.</li>
+              <li>Testei representações relativas e redutores por atenção em modelos de regressão multitarefa sobre dados textuais e visuais.</li>
+              <li>Estruturei experimentos reprodutíveis, métricas de avaliação e documentação técnica para sustentar as conclusões do ciclo de pesquisa.</li>
+            </ul>
+            <ul class="tag-list" aria-label="Tecnologias da experiência">
+              <li>Ciência de Dados</li><li>Estatística</li><li>Teoria de Resposta ao Item</li><li>LLMs</li><li>DSPy</li><li>PyTorch</li><li>PLN</li>
+            </ul>
+          </article>
+
+          <article class="experience-card" id="experiencia-face-clock">
+            <div class="experience-heading">
+              <div>
+                <h3 id="fc-exp-cargo">Cientista de dados e desenvolvedor de machine learning</h3>
+                <p class="experience-company" id="fc-exp-empresa">Consultoria autônoma · Instituição de ensino · Remoto</p>
+              </div>
+              <p class="experience-period" id="fc-exp-periodo">2026 — presente</p>
+            </div>
+            <p class="lead" id="fc-exp-lead">
+              Face Clock Evoluir: sistema de registro de ponto por reconhecimento facial
+              contratado por uma instituição de ensino, entregue de ponta a ponta e hoje em
+              fase final de homologação.
+            </p>
+            <dl class="experience-facts" aria-label="Resumo da consultoria" id="fc-exp-facts">
+              <div><dt>Ponta a ponta</dt><dd>modelos, backend, dados e implantação</dd></div>
+              <div><dt>142</dt><dd>testes automatizados em pipeline Docker</dd></div>
+              <div><dt>+13 p.p.</dt><dd>de acurácia de validação após ablação controlada</dd></div>
+            </dl>
+            <ul class="experience-list" id="fc-exp-lista">
+              <li>Entreguei individualmente o sistema contratado, cobrindo modelagem, camada de dados, backend, testes e implantação.</li>
+              <li>Implementei busca vetorial 1:N e verificação 1:1 sobre embeddings faciais de 512 dimensões com InsightFace e pgvector, agregando decisões multi-frame, vivacidade e proteção anti-replay.</li>
+              <li>Treinei um classificador EfficientNet-B0 para triagem de atestados com busca de hiperparâmetros, validação cruzada estratificada e decisão híbrida CNN + OCR; diagnostiquei o subajuste por ablação controlada.</li>
+              <li>Construí a camada de dados e o serviço de inferência com PostgreSQL, SQLAlchemy, Alembic e FastAPI, com infraestrutura Dockerizada, HTTPS e GitHub Actions.</li>
+            </ul>
+            <ul class="tag-list" aria-label="Tecnologias da consultoria">
+              <li>InsightFace</li><li>EfficientNet-B0</li><li>FastAPI</li><li>pgvector</li><li>JWT/OAuth2</li><li>Docker</li>
+            </ul>
+            <div class="project-links experience-links">
+              <a href="projetos/face-clock-evoluir/index.html">Ver estudo de caso →</a>
+              <a href="projetos/face-clock-evoluir/tecnico.html">Ver estrutura técnica →</a>
+              <a href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Repositório público →</a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -162,31 +198,10 @@
         </div>
 
         <div class="projects-grid">
-          <article class="project-card project-featured project-card-clickable">
-            <div class="project-topline">
-              <span class="status status-progress">Em homologação</span>
-              <span class="project-number">01</span>
-            </div>
-            <h3>Face Clock Evoluir</h3>
-            <p>
-              Sistema de ponto com biometria facial em fase final de homologação para uma
-              instituição de ensino, reunindo reconhecimento facial, geofencing,
-              classificação de atestados e backend seguro.
-            </p>
-            <ul class="tag-list" aria-label="Tecnologias do projeto">
-              <li>InsightFace</li><li>EfficientNet-B0</li><li>FastAPI</li><li>pgvector</li><li>JWT/OAuth2</li><li>Docker</li>
-            </ul>
-            <div class="project-links">
-              <a class="project-primary-link" href="projetos/face-clock-evoluir/index.html">Conhecer o projeto →</a>
-              <a href="projetos/face-clock-evoluir/tecnico.html">Ver estrutura técnica →</a>
-              <a href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Repositório público →</a>
-            </div>
-          </article>
-
           <article class="project-card project-card-clickable">
             <div class="project-topline">
               <span class="status status-done">Concluído</span>
-              <span class="project-number">02</span>
+              <span class="project-number">01</span>
             </div>
             <h3>Dominação Romana Tripla</h3>
             <p>
@@ -198,15 +213,16 @@
             </ul>
             <div class="project-links">
               <a class="project-primary-link" href="projetos/dominacao-romana-tripla/index.html">Conhecer o projeto →</a>
+              <a href="projetos/dominacao-romana-tripla/tecnico.html">Ver estrutura técnica →</a>
               <a href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" target="_blank" rel="noreferrer">Código →</a>
               <a href="https://drive.google.com/file/d/1IxBw_odR99kklE6b3ANmi-9bubvGC4mp/view?usp=sharing" target="_blank" rel="noopener noreferrer">Ler TCC →</a>
             </div>
           </article>
 
-          <article class="project-card project-wide">
+          <article class="project-card">
             <div class="project-topline">
               <span class="status status-progress">Em desenvolvimento</span>
-              <span class="project-number">03</span>
+              <span class="project-number">02</span>
             </div>
             <h3>Auxílio Emergencial — Ingestão e experimentos de desempenho</h3>
             <p>

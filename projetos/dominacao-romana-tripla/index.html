@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Estudo de caso do TCC de Israel Souza Ferreira: primeiras meta-heurísticas e formulação PLI corrigida para o Problema de Dominação Romana Tripla.">
+  <meta name="description" content="Como defender um império com metade das tropas: a estratégia de Constantino explicada de forma visual e o TCC que propôs os primeiros algoritmos para o problema.">
   <meta name="author" content="Israel Souza Ferreira">
   <meta name="theme-color" content="#0b1020">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="Dominação Romana Tripla | Israel Souza Ferreira">
-  <meta property="og:description" content="Primeiras meta-heurísticas GA e ACO e uma formulação PLI corrigida para o PDRT.">
+  <meta property="og:description" content="A estratégia de defesa de Constantino virou um problema de matemática. Meu TCC propôs os primeiros algoritmos para resolvê-lo.">
   <meta property="og:url" content="https://isrreal.github.io/projetos/dominacao-romana-tripla/">
   <meta property="og:locale" content="pt_BR">
 
@@ -36,6 +36,7 @@
 
       <div class="nav-menu" id="nav-menu">
         <a href="../../index.html#projetos">Projetos</a>
+        <a href="tecnico.html">Estrutura técnica</a>
         <a href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" target="_blank" rel="noreferrer">Repositório</a>
       </div>
       <div class="nav-actions">
@@ -56,153 +57,416 @@
       <div class="container">
         <a class="case-breadcrumb" href="../../index.html#projetos">← Voltar aos projetos</a>
         <p class="eyebrow">TCC · Otimização combinatória · Concluído</p>
-        <h1 class="case-title">Dominação Romana Tripla em grafos</h1>
-        <p class="hero-description case-intro">
-          As primeiras meta-heurísticas baseadas em Algoritmos Genéticos e Otimização
-          por Colônia de Formigas para o PDRT, com uma formulação corrigida de
-          Programação Linear Inteira para obter soluções exatas.
+        <h1 class="case-title">Como defender um império inteiro com metade das tropas?</h1>
+        <p class="hero-description case-intro" id="trd-intro">
+          Constantino enfrentou essa pergunta no século IV. Ela virou um problema de
+          matemática que, mil e setecentos anos depois, nenhum computador sabe resolver
+          rápido. Meu TCC atacou esse problema com algoritmos inspirados em formigas e
+          em evolução — e corrigiu um modelo publicado que estava errado.
         </p>
         <div class="hero-actions">
-          <a class="button button-primary" href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" target="_blank" rel="noreferrer">Ver código no GitHub</a>
-          <a class="button button-secondary" href="https://drive.google.com/file/d/1IxBw_odR99kklE6b3ANmi-9bubvGC4mp/view?usp=sharing" target="_blank" rel="noopener noreferrer">Ler o TCC</a>
-          <a class="button button-secondary" href="#contribuicoes">Ver contribuições</a>
+          <a class="button button-primary" href="#estrategia">Ver a estratégia</a>
+          <a class="button button-secondary" href="tecnico.html">Ver a estrutura técnica</a>
+          <a class="button button-secondary" href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" target="_blank" rel="noreferrer">Repositório</a>
         </div>
         <ul class="case-meta" aria-label="Informações do projeto">
           <li>C++</li>
           <li>Algoritmo Genético</li>
-          <li>ACO + RVNS</li>
+          <li>Colônia de Formigas</li>
           <li>Programação Linear Inteira</li>
           <li>2024–2025</li>
         </ul>
       </div>
     </section>
 
-    <section class="section section-alt">
-      <div class="container case-content">
-        <article class="case-block">
+    <section class="case-summary-band">
+      <div class="container">
+        <article class="case-summary" id="resumo">
           <div>
-            <p class="section-kicker">O problema</p>
-            <h2>Proteção em rede com custo mínimo.</h2>
+            <p class="section-kicker">Resumo</p>
+            <h2 id="trd-resumo-titulo">O essencial em cinco pontos.</h2>
           </div>
           <div class="case-prose">
-            <p class="lead">
-              A Dominação Romana Tripla modela como distribuir níveis de proteção entre
-              os vértices de um grafo, garantindo que regiões vulneráveis sejam cobertas
-              por seus vizinhos enquanto o custo total é minimizado.
-            </p>
-            <p>
-              A ideia nasce de problemas de defesa e também se relaciona a cenários como
-              alocação de servidores e cobertura de redes. Como a versão de decisão do
-              problema é NP-completa, encontrar a solução ótima torna-se difícil à medida
-              que as instâncias crescem. Isso motiva métodos aproximados capazes de produzir
-              boas soluções em tempo viável.
-            </p>
-            <div class="case-formula">
-              <p class="section-kicker">A regra, em uma linha</p>
-              <p><strong>Cada região precisa receber proteção suficiente de sua vizinhança.</strong></p>
-              <code>Σ proteção na vizinhança de v ≥ 3 + número de vizinhos ativos</code>
-              <p>
-                Em termos formais, cada vértice recebe um valor de 0 a 4. O peso total
-                é a soma desses valores; o objetivo é encontrar uma configuração válida
-                com o menor peso possível.
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <figure class="case-figure">
-          <img src="../../assets/triple-roman-optimal-solution.png" alt="Mapa do Império Romano representado como um grafo, com rótulos de uma função de Dominação Romana Tripla ótima nos vértices.">
-          <figcaption>
-            Exemplo de uma função de Dominação Romana Tripla ótima. Os vértices representam
-            regiões e as arestas representam suas interligações; os números indicam o nível
-            de proteção atribuído a cada região. Fonte: TCC do autor.
-          </figcaption>
-        </figure>
-
-        <article class="case-block" id="contribuicoes">
-          <div>
-            <p class="section-kicker">Contribuições</p>
-            <h2>O que o trabalho acrescenta.</h2>
-          </div>
-          <div class="case-prose">
-            <ul class="case-list">
-              <li><strong>Primeiras meta-heurísticas para o PDRT:</strong> implementação e avaliação de abordagens baseadas em GA e ACO.</li>
-              <li><strong>PLI corrigida:</strong> uma formulação de Programação Linear Inteira que corrige inconsistências de uma proposta anterior e serve como referência exata.</li>
-              <li><strong>Base experimental:</strong> geração de 30 grafos aleatórios e cálculo dos valores exatos de γ<sub>3R</sub>(G), além da solução exata da maioria das demais instâncias avaliadas.</li>
-              <li><strong>Análise comparativa:</strong> avaliação de quatro heurísticas do GA, do impacto da busca RVNS no ACO e do gap relativo em relação às soluções ótimas.</li>
+            <ul class="case-list" aria-label="Resumo do projeto">
+              <li id="trd-resumo-1">
+                <strong>O problema:</strong> distribuir proteção entre as regiões de um grafo
+                com o menor custo total, garantindo que toda região desguarnecida possa ser
+                socorrida pelos vizinhos. É NP-completo.
+              </li>
+              <li id="trd-resumo-2">
+                <strong>Minha contribuição:</strong> as duas primeiras meta-heurísticas
+                propostas na literatura para este problema — colônia de formigas e algoritmo
+                genético — implementadas em C++.
+              </li>
+              <li id="trd-resumo-3">
+                <strong>A correção:</strong> a formulação exata publicada antes aceitava
+                soluções inválidas. Apresento o contraexemplo e a primeira formulação
+                correta, que serve de referência para medir tudo o mais.
+              </li>
+              <li id="trd-resumo-4">
+                <strong>Evidências:</strong> 362 grafos avaliados sob três métricas declaradas
+                antes dos experimentos; a colônia de formigas com busca local venceu na maioria
+                dos casos e apenas 6 grafos ficaram a mais de 50% do valor de referência.
+              </li>
+              <li id="trd-resumo-5">
+                <strong>Formato:</strong> Trabalho de Conclusão de Curso em Ciência da
+                Computação na UFC Quixadá, defendido em fevereiro de 2025.
+              </li>
             </ul>
           </div>
         </article>
+      </div>
+    </section>
 
-        <aside class="case-highlight">
-          <p class="section-kicker">Contribuição científica</p>
-          <p class="lead">
-            O trabalho não apenas propõe métodos aproximados inéditos para o PDRT:
-            ele também estabelece uma referência exata corrigida e amplia o conjunto
-            de instâncias com valores conhecidos para pesquisas futuras.
-          </p>
-        </aside>
+    <section class="section section-alt">
+      <div class="container case-content">
+        <article id="estrategia">
+          <div class="case-section-heading">
+            <p class="section-kicker" id="trd-estrategia-kicker">A estratégia de Constantino</p>
+            <h2 id="trd-estrategia-titulo">Metade das legiões, o mesmo território.</h2>
+            <p class="lead" id="trd-estrategia-lead">
+              O império tinha oito regiões e cinquenta legiões. Quando sobraram vinte e cinco,
+              guarnecer tudo deixou de ser possível — e o imperador mudou a pergunta.
+            </p>
+          </div>
+          <ol class="system-flow flow-three" aria-label="Três passos da estratégia de defesa">
+            <li class="flow-step">
+              <span class="flow-index">01</span>
+              <strong id="trd-passo1-titulo">Oito regiões vizinhas</strong>
+              <p id="trd-passo1-texto">Gália, Roma, Constantinopla, Ibéria, Ásia Menor, Egito, África do Norte e Britânia, ligadas por fronteiras.</p>
+            </li>
+            <li class="flow-step">
+              <span class="flow-index">02</span>
+              <strong id="trd-passo2-titulo">Metade da força</strong>
+              <p id="trd-passo2-texto">De cinquenta legiões para cerca de vinte e cinco. Não havia tropa suficiente para ocupar todas as regiões.</p>
+            </li>
+            <li class="flow-step">
+              <span class="flow-index">03</span>
+              <strong id="trd-passo3-titulo">Defesa em profundidade</strong>
+              <p id="trd-passo3-texto">Uma região pode ficar sem tropas, desde que os vizinhos consigam socorrê-la sem se desguarnecer.</p>
+            </li>
+          </ol>
+        </article>
+      </div>
+    </section>
 
-        <article class="case-block">
+    <section class="section">
+      <div class="container case-content">
+        <article class="case-block" id="regra">
           <div>
-            <p class="section-kicker">Resultados</p>
-            <h2>Desempenho com nuances.</h2>
+            <p class="section-kicker" id="trd-regra-kicker">A regra do jogo</p>
+            <h2 id="trd-regra-titulo">Três legiões de defesa para cada região.</h2>
           </div>
           <div class="case-prose">
-            <p>
-              O <strong>ACO-FL</strong>, que combina ACO e busca RVNS, superou o
-              <strong>GA-FL</strong> na maioria dos casos em tempo de execução e
-              qualidade das soluções. O GA-FL, porém, permaneceu competitivo em
-              cenários específicos, especialmente em grafos menores e estruturados.
-            </p>
-            <p>
-              A comparação usou o gap relativo em relação às soluções ótimas da PLI.
-              Entre todos os grafos avaliados, apenas seis apresentaram gap acima de
-              50%; os demais ficaram abaixo desse limiar.
-            </p>
-            <div class="case-results" aria-label="Resumo dos resultados">
-              <div class="case-result">
-                <strong>30</strong>
-                <span>grafos aleatórios gerados com valor exato calculado</span>
-              </div>
-              <div class="case-result">
-                <strong>ACO-FL</strong>
-                <span>melhor desempenho na maioria dos casos avaliados</span>
-              </div>
-              <div class="case-result">
-                <strong>6 grafos</strong>
-                <span>com gap relativo acima de 50% no conjunto experimental</span>
-              </div>
+            <div class="case-formula">
+              <p class="section-kicker" id="trd-formula-kicker">A regra inteira, em uma frase</p>
+              <p id="trd-formula-frase">
+                <strong>Cada região precisa somar três legiões de defesa: as que já estão lá
+                mais as que os vizinhos podem enviar — e todo vizinho que envia precisa deixar
+                uma legião para trás.</strong>
+              </p>
+              <code id="trd-formula-codigo">tropas na região + (tropas de cada vizinho − 1) ≥ 3</code>
+              <p id="trd-formula-nota">
+                Cada região recebe 0, 2, 3 ou 4 legiões. O custo é a soma de todas elas.
+                O problema é encontrar a distribuição válida mais barata.
+              </p>
             </div>
+            <p id="trd-regra-texto">
+              É só isso. Uma região com 4 legiões sozinha já salva qualquer vizinho: manda 3,
+              fica com 1. Uma com 2 legiões só consegue mandar 1 — precisa de companhia.
+            </p>
           </div>
         </article>
 
-        <article class="case-block">
+        <section class="trd-lab" id="laboratorio" aria-labelledby="trd-lab-titulo">
+          <div class="trd-lab-heading">
+            <p class="section-kicker" id="trd-lab-kicker">Experimente</p>
+            <h3 id="trd-lab-titulo">Distribua as legiões do império.</h3>
+            <p id="trd-help" class="trd-lab-help">
+              Clique em uma região para mudar as tropas dela: 0 → 2 → 3 → 4 → 0.
+              O mapa avisa na hora quem ficou desprotegido.
+            </p>
+          </div>
+
+          <div class="trd-board">
+            <div class="trd-map-frame">
+            <svg class="trd-map" viewBox="0 0 720 400" role="group" aria-labelledby="trd-map-titulo trd-map-desc">
+              <title id="trd-map-titulo">Mapa interativo das oito regiões do império</title>
+              <desc id="trd-map-desc">Cada círculo é uma região e cada linha é uma fronteira. O número dentro do círculo é a quantidade de legiões. Use Tab para percorrer as regiões e Enter para alterar as tropas.</desc>
+
+              <g class="trd-edges" aria-hidden="true">
+                <line x1="110" y1="60" x2="215" y2="130"></line>
+                <line x1="110" y1="60" x2="85" y2="235"></line>
+                <line x1="215" y1="130" x2="85" y2="235"></line>
+                <line x1="215" y1="130" x2="330" y2="200"></line>
+                <line x1="85" y1="235" x2="330" y2="200"></line>
+                <line x1="85" y1="235" x2="215" y2="330"></line>
+                <line x1="330" y1="200" x2="215" y2="330"></line>
+                <line x1="330" y1="200" x2="500" y2="145"></line>
+                <line x1="330" y1="200" x2="470" y2="330"></line>
+                <line x1="215" y1="330" x2="470" y2="330"></line>
+                <line x1="500" y1="145" x2="630" y2="205"></line>
+                <line x1="500" y1="145" x2="470" y2="330"></line>
+                <line x1="630" y1="205" x2="470" y2="330"></line>
+              </g>
+
+              <g class="trd-nodes">
+                <g class="trd-node" data-region="britania" data-x="110" data-y="60" tabindex="0" role="button">
+                  <circle cx="110" cy="60" r="30"></circle>
+                  <text class="trd-node-value" x="110" y="66" text-anchor="middle">0</text>
+                  <text class="trd-node-name" x="110" y="16" text-anchor="middle">Britânia</text>
+                </g>
+                <g class="trd-node" data-region="galia" data-x="215" data-y="130" tabindex="0" role="button">
+                  <circle cx="215" cy="130" r="30"></circle>
+                  <text class="trd-node-value" x="215" y="136" text-anchor="middle">0</text>
+                  <text class="trd-node-name" x="215" y="86" text-anchor="middle">Gália</text>
+                </g>
+                <g class="trd-node" data-region="iberia" data-x="85" data-y="235" tabindex="0" role="button">
+                  <circle cx="85" cy="235" r="30"></circle>
+                  <text class="trd-node-value" x="85" y="241" text-anchor="middle">4</text>
+                  <text class="trd-node-name" x="85" y="285" text-anchor="middle">Ibéria</text>
+                </g>
+                <g class="trd-node" data-region="roma" data-x="330" data-y="200" tabindex="0" role="button">
+                  <circle cx="330" cy="200" r="30"></circle>
+                  <text class="trd-node-value" x="330" y="206" text-anchor="middle">0</text>
+                  <text class="trd-node-name" x="330" y="156" text-anchor="middle">Roma</text>
+                </g>
+                <g class="trd-node" data-region="africa" data-x="215" data-y="330" tabindex="0" role="button">
+                  <circle cx="215" cy="330" r="30"></circle>
+                  <text class="trd-node-value" x="215" y="336" text-anchor="middle">0</text>
+                  <text class="trd-node-name" x="215" y="380" text-anchor="middle">África do Norte</text>
+                </g>
+                <g class="trd-node" data-region="constantinopla" data-x="500" data-y="145" tabindex="0" role="button">
+                  <circle cx="500" cy="145" r="30"></circle>
+                  <text class="trd-node-value" x="500" y="151" text-anchor="middle">4</text>
+                  <text class="trd-node-name" x="500" y="101" text-anchor="middle">Constantinopla</text>
+                </g>
+                <g class="trd-node" data-region="asiamenor" data-x="630" data-y="205" tabindex="0" role="button">
+                  <circle cx="630" cy="205" r="30"></circle>
+                  <text class="trd-node-value" x="630" y="211" text-anchor="middle">0</text>
+                  <text class="trd-node-name" x="630" y="161" text-anchor="middle">Ásia Menor</text>
+                </g>
+                <g class="trd-node" data-region="egito" data-x="470" data-y="330" tabindex="0" role="button">
+                  <circle cx="470" cy="330" r="30"></circle>
+                  <text class="trd-node-value" x="470" y="336" text-anchor="middle">0</text>
+                  <text class="trd-node-name" x="470" y="380" text-anchor="middle">Egito</text>
+                </g>
+              </g>
+            </svg>
+            </div>
+
+            <div class="trd-panel">
+              <p class="trd-status" id="trd-status" role="status" aria-live="polite">
+                <span class="trd-status-dot" aria-hidden="true"></span>
+                <span id="trd-status-text">Império protegido.</span>
+              </p>
+              <dl class="trd-scores">
+                <div>
+                  <dt id="trd-score-custo-rotulo">Custo</dt>
+                  <dd><strong id="trd-score-custo">8</strong> <span id="trd-score-custo-unidade">legiões</span></dd>
+                </div>
+                <div>
+                  <dt id="trd-score-otimo-rotulo">Melhor possível</dt>
+                  <dd><strong>8</strong> <span id="trd-score-otimo-unidade">legiões</span></dd>
+                </div>
+              </dl>
+              <div class="trd-actions">
+                <button class="button button-secondary" type="button" data-trd-action="optimal" id="trd-botao-otimo">Ver uma solução ótima</button>
+                <button class="button button-secondary" type="button" data-trd-action="clear" id="trd-botao-limpar">Esvaziar o mapa</button>
+              </div>
+              <p class="trd-lab-note" id="trd-lab-nota">
+                Este mapa começa em uma das cinco soluções ótimas: oito legiões, nenhuma
+                região desprotegida. Não existe arranjo válido mais barato.
+              </p>
+            </div>
+          </div>
+
+          <ul class="trd-legend" aria-label="Legenda do mapa">
+            <li><span class="trd-chip trd-chip-empty" aria-hidden="true">0</span><span id="trd-legenda-vazio">sem tropas, depende dos vizinhos</span></li>
+            <li><span class="trd-chip trd-chip-troops" aria-hidden="true">2</span><span id="trd-legenda-tropas">com tropas, envia uma a menos do que tem</span></li>
+            <li><span class="trd-chip trd-chip-exposed" aria-hidden="true">!</span><span id="trd-legenda-exposto">desprotegida: não chega a três legiões de defesa</span></li>
+          </ul>
+        </section>
+
+        <figure class="case-figure">
+          <img src="../../assets/triple-roman-optimal-solution.png" alt="Mapa do Império Romano representado como um grafo, com os rótulos de uma solução ótima de Dominação Romana Tripla nos vértices.">
+          <figcaption id="trd-figura-legenda">
+            A mesma solução sobre o mapa original: duas regiões com quatro legiões cobrem
+            as outras seis. Figura do TCC, elaborada pelo autor com base em Gray (2015).
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container case-content">
+        <article class="case-block" id="dificuldade">
           <div>
-            <p class="section-kicker">Próximos passos</p>
-            <h2>Onde a pesquisa pode avançar.</h2>
+            <p class="section-kicker" id="trd-dificuldade-kicker">Por que é difícil</p>
+            <h2 id="trd-dificuldade-titulo">Fácil de conferir, difícil de achar.</h2>
           </div>
           <div class="case-prose">
-            <p>
-              O trabalho propõe ampliar a busca de hiperparâmetros e investigar novas
-              estratégias de seleção, cruzamento, mutação e elitismo no GA. Para o ACO,
-              sugere avaliar outros métodos de seleção e exploração, além de otimizações
-              de implementação e compilação para reduzir o tempo de execução.
+            <p class="lead" id="trd-dificuldade-lead">
+              Conferir se uma distribuição funciona leva um instante. Encontrar a mais barata
+              entre todas as possíveis é outra história.
             </p>
+            <p id="trd-dificuldade-texto">
+              Com oito regiões existem 65.536 distribuições. Com cem regiões, o número passa
+              de sessenta dígitos: nenhum computador percorre isso. E o problema é
+              <strong>NP-completo</strong> — não se conhece método exato e rápido, e a suspeita
+              da área é que não exista. Sobra buscar boas soluções em tempo aceitável.
+            </p>
+            <div class="case-results" aria-label="A dificuldade em números">
+              <div class="case-result">
+                <strong>65.536</strong>
+                <span id="trd-numero-1">distribuições possíveis em um mapa de apenas oito regiões</span>
+              </div>
+              <div class="case-result">
+                <strong>4<sup>100</sup></strong>
+                <span id="trd-numero-2">distribuições em uma rede de cem pontos: um número de sessenta e um dígitos</span>
+              </div>
+              <div class="case-result">
+                <strong>NP-completo</strong>
+                <span id="trd-numero-3">nenhum algoritmo exato e rápido é conhecido para o problema</span>
+              </div>
+            </div>
           </div>
         </article>
       </div>
     </section>
 
     <section class="section">
+      <div class="container case-content">
+        <article class="case-block" id="trabalho">
+          <div>
+            <p class="section-kicker" id="trd-trabalho-kicker">O que eu fiz</p>
+            <h2 id="trd-trabalho-titulo">Três formas de atacar, e uma correção.</h2>
+          </div>
+          <div class="architecture-grid">
+            <section class="architecture-card">
+              <span id="trd-card1-tag">Meta-heurística</span>
+              <h3 id="trd-card1-titulo">Colônia de formigas</h3>
+              <p id="trd-card1-texto">Formigas artificiais montam distribuições e deixam rastro nas escolhas que deram certo; as próximas tendem a seguir esse rastro. Foi o método que se saiu melhor.</p>
+            </section>
+            <section class="architecture-card">
+              <span id="trd-card2-tag">Meta-heurística</span>
+              <h3 id="trd-card2-titulo">Algoritmo genético</h3>
+              <p id="trd-card2-texto">Uma população de soluções que se cruzam, sofrem mutações e competem entre si. As mais baratas sobrevivem para a geração seguinte.</p>
+            </section>
+            <section class="architecture-card">
+              <span id="trd-card3-tag">Método exato</span>
+              <h3 id="trd-card3-titulo">Programação linear inteira</h3>
+              <p id="trd-card3-texto">O problema descrito como um sistema de restrições e entregue a um solver, que devolve a resposta ótima enquanto o grafo é pequeno o bastante. É a régua para medir os outros dois.</p>
+            </section>
+            <section class="architecture-card">
+              <span id="trd-card4-tag">Correção</span>
+              <h3 id="trd-card4-titulo">Um modelo publicado que falhava</h3>
+              <p id="trd-card4-texto">A formulação exata que existia aceitava distribuições inválidas. Mostrei um contraexemplo concreto e propus a primeira formulação correta da literatura.</p>
+            </section>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container case-content">
+        <article class="case-block" id="resultados">
+          <div>
+            <p class="section-kicker" id="trd-resultados-kicker">Resultados</p>
+            <h2 id="trd-resultados-titulo">362 grafos, medidos contra o ótimo.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead" id="trd-resultados-lead">
+              Os dois algoritmos foram testados em bases clássicas, redes reais e grafos
+              gerados para o trabalho. Onde o solver exato conseguiu responder, a comparação
+              é contra o valor ótimo.
+            </p>
+            <div class="case-results" aria-label="Resumo dos resultados">
+              <div class="case-result">
+                <strong>362</strong>
+                <span id="trd-resultado-1">grafos avaliados, entre bases clássicas, redes reais e instâncias geradas</span>
+              </div>
+              <div class="case-result">
+                <strong>ACO</strong>
+                <span id="trd-resultado-2">a colônia de formigas venceu na maioria dos casos, em tempo e em qualidade</span>
+              </div>
+              <div class="case-result">
+                <strong>6</strong>
+                <span id="trd-resultado-3">grafos, entre todos os avaliados, ficaram a mais de 50% do ótimo</span>
+              </div>
+            </div>
+            <p id="trd-resultados-texto">
+              O algoritmo genético não foi descartado: ele continuou competitivo em grafos
+              menores e mais estruturados, e em alguns casos chegou ao ótimo onde a colônia
+              de formigas não chegou.
+            </p>
+          </div>
+        </article>
+
+        <aside class="case-highlight">
+          <p class="section-kicker" id="trd-destaque-kicker">O que fica para a área</p>
+          <p class="lead" id="trd-destaque-texto">
+            Além dos dois primeiros algoritmos aproximados propostos para este problema,
+            o trabalho deixa uma referência exata corrigida e um conjunto de instâncias com
+            valor ótimo já calculado, que outras pesquisas podem usar como comparação.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container case-content">
+        <article class="case-block" id="aplicacoes">
+          <div>
+            <p class="section-kicker" id="trd-aplicacoes-kicker">Onde isso aparece hoje</p>
+            <h2 id="trd-aplicacoes-titulo">O mesmo problema, sem legiões.</h2>
+          </div>
+          <div class="case-prose">
+            <ul class="case-list" aria-label="Aplicações do problema">
+              <li id="trd-aplicacao-1"><strong>Servidores:</strong> onde instalar servidores para que toda a rede continue atendida, mesmo quando um ponto sai do ar.</li>
+              <li id="trd-aplicacao-2"><strong>Cobertura de redes:</strong> garantir que cada ponto tenha socorro suficiente vindo da vizinhança, e não apenas um único vizinho disponível.</li>
+              <li id="trd-aplicacao-3"><strong>Alocação de recursos:</strong> distribuir equipes ou equipamentos escassos entre regiões que conseguem se apoiar mutuamente.</li>
+            </ul>
+            <p id="trd-aplicacoes-nota">
+              A literatura da área cita esses três cenários. O trabalho em si é sobre o
+              problema matemático: não há aqui um estudo de caso aplicado a uma rede real.
+            </p>
+          </div>
+        </article>
+
+        <article class="case-block" id="aprofundamento">
+          <div>
+            <p class="section-kicker" id="trd-ponte-kicker">Aprofundamento</p>
+            <h2 id="trd-ponte-titulo">A partir daqui, o detalhe.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead" id="trd-ponte-lead">
+              A página técnica traz a definição formal, o contraexemplo que derruba a
+              formulação anterior, os dois algoritmos passo a passo e as tabelas de resultado
+              com os valores medidos.
+            </p>
+            <p id="trd-ponte-aviso">
+              É leitura opcional, escrita para quem quer ver o método — inclusive os limites
+              do que foi medido.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="tecnico.html">Ver a estrutura técnica →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-alt">
       <div class="container case-cta">
         <div>
-          <p class="section-kicker">Código e experimentos</p>
-          <h2>Veja a implementação e o TCC completo.</h2>
+          <p class="section-kicker" id="trd-cta-kicker">Código e experimentos</p>
+          <h2 id="trd-cta-titulo">Veja a implementação e o TCC completo.</h2>
         </div>
         <div class="contact-actions">
           <a class="button button-primary" href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" target="_blank" rel="noreferrer">Abrir repositório</a>
           <a class="button button-secondary" href="https://drive.google.com/file/d/1IxBw_odR99kklE6b3ANmi-9bubvGC4mp/view?usp=sharing" target="_blank" rel="noopener noreferrer">Abrir TCC</a>
+          <a class="button button-secondary" href="tecnico.html">Estrutura técnica</a>
         </div>
       </div>
     </section>

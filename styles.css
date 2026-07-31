@@ -1853,3 +1853,380 @@ h3 {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Dominação Romana Tripla — mapa interativo, diagramas e apoios */
+
+.system-flow.flow-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.trd-lab {
+  display: grid;
+  gap: 1.5rem;
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 78% 12%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 45%),
+    var(--surface);
+}
+
+.trd-lab-heading {
+  max-width: 620px;
+}
+
+.trd-lab-heading h3 {
+  margin-bottom: 0.6rem;
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+}
+
+.trd-lab-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.trd-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(240px, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items: center;
+}
+
+.trd-map-frame {
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.trd-map {
+  width: 100%;
+  min-width: 520px;
+  height: auto;
+  overflow: visible;
+  touch-action: manipulation;
+}
+
+.trd-edges line {
+  stroke: var(--border);
+  stroke-linecap: round;
+  stroke-width: 2.5;
+}
+
+.trd-node {
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.trd-node circle {
+  fill: var(--background);
+  stroke: var(--border);
+  stroke-width: 2.5;
+  transition: fill 180ms ease, stroke 180ms ease, stroke-width 180ms ease;
+}
+
+.trd-node-value {
+  fill: var(--muted);
+  font: 800 19px/1 Inter, ui-sans-serif, system-ui, sans-serif;
+  transition: fill 180ms ease;
+}
+
+.trd-node-name {
+  fill: var(--muted);
+  font: 600 13px/1 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.trd-node.is-troops circle {
+  fill: color-mix(in srgb, var(--accent) 20%, var(--background));
+  stroke: var(--accent);
+}
+
+.trd-node.is-troops .trd-node-value {
+  fill: var(--accent-strong);
+}
+
+.trd-node.is-exposed circle {
+  fill: color-mix(in srgb, var(--warning) 16%, var(--background));
+  stroke: var(--warning);
+  stroke-dasharray: 6 5;
+}
+
+.trd-node.is-exposed .trd-node-value,
+.trd-node.is-exposed .trd-node-name {
+  fill: var(--warning);
+}
+
+.trd-node:focus-visible {
+  outline: none;
+}
+
+.trd-node:focus-visible circle {
+  stroke: var(--accent-strong);
+  stroke-width: 5;
+}
+
+.trd-panel {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.trd-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.trd-status-dot {
+  flex: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--success);
+  transition: background-color 180ms ease;
+}
+
+.trd-status.is-exposed {
+  color: var(--warning);
+}
+
+.trd-status.is-exposed .trd-status-dot {
+  background: var(--warning);
+}
+
+.trd-scores {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.trd-scores > div {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--background);
+}
+
+.trd-scores dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.trd-scores dd {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.trd-scores dd strong {
+  color: var(--accent);
+  font-size: 1.7rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.trd-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.trd-actions .button {
+  min-height: 2.6rem;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.87rem;
+}
+
+.trd-lab-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.87rem;
+}
+
+.trd-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.4rem;
+  margin: 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.82rem;
+  list-style: none;
+}
+
+.trd-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trd-chip {
+  flex: none;
+  display: grid;
+  width: 1.6rem;
+  height: 1.6rem;
+  place-items: center;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  color: var(--muted);
+  font: 800 0.78rem/1 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.trd-chip-troops {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  color: var(--accent-strong);
+}
+
+.trd-chip-exposed {
+  border-style: dashed;
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+.trd-diagram {
+  margin: 2rem 0 0;
+  padding: clamp(1.1rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.trd-diagram svg {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  margin-inline: auto;
+}
+
+.trd-diagram-edges {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 2.5;
+}
+
+.trd-diagram-node circle {
+  fill: color-mix(in srgb, var(--accent) 20%, var(--background));
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.trd-diagram-node text {
+  fill: var(--accent-strong);
+  font: 800 16px/1 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.trd-diagram-node.is-exposed circle {
+  fill: color-mix(in srgb, var(--warning) 16%, var(--background));
+  stroke: var(--warning);
+  stroke-dasharray: 6 5;
+}
+
+.trd-diagram-node.is-exposed text {
+  fill: var(--warning);
+}
+
+.trd-diagram figcaption {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.case-table.trd-table-left {
+  text-align: left;
+}
+
+.case-table.trd-table-left code {
+  font-size: 0.86em;
+}
+
+@media (hover: hover) {
+  .trd-node:hover {
+    transform: scale(1.07);
+  }
+
+  .trd-node:hover circle {
+    stroke: var(--accent);
+  }
+}
+
+@media (max-width: 900px) {
+  .system-flow.flow-three {
+    grid-template-columns: 1fr;
+  }
+
+  .trd-board {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .trd-scores {
+    grid-template-columns: 1fr;
+  }
+
+  .trd-actions .button {
+    width: 100%;
+  }
+}
+
+.experience-stack {
+  display: grid;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.experience-links {
+  margin-top: 1.75rem;
+}
+
+.case-summary-band {
+  padding: 1rem 0 0;
+}
+
+.case-summary {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.6fr) minmax(0, 1.4fr);
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+  align-items: start;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.case-summary h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.5rem, 3vw, 2.15rem);
+}
+
+.case-summary .case-prose {
+  max-width: none;
+}
+
+.case-summary .case-list {
+  gap: 0.85rem;
+  font-size: 0.97rem;
+}
+
+@media (max-width: 900px) {
+  .case-summary {
+    grid-template-columns: 1fr;
+  }
+}

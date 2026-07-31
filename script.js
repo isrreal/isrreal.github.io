@@ -56,7 +56,7 @@ const englishPages = {
       ['#sobre .lead + p', 'I work across the full data problem cycle: extracting and preparing data at scale, statistical and predictive modeling, experimental design, and communicating results to the people who have to decide with them.'],
       ['#experiencia .experience-layout > div:first-child .section-kicker', 'Experience'],
       ['#experiencia .experience-layout > div:first-child h2', 'Data science with engineering depth.'],
-      ['#experiencia .experience-layout > div:first-child .lead', 'Statistical modeling and experimentation applied to educational proficiency analysis and exam performance prediction.'],
+      ['#experiencia .experience-layout > div:first-child .lead', 'Statistical modeling and experimentation applied to educational proficiency analysis, plus the individual delivery of a machine learning system contracted by an educational institution.'],
       ['.experience-heading h3', 'Data Scientist — AI for proficiency analysis'],
       ['.experience-company', 'Tieta Artificial Intelligence · CNPq RHAE Fellow'],
       ['.experience-period', 'Apr 2025 — Jul 2026'],
@@ -75,26 +75,38 @@ const englishPages = {
       ['#experiencia .tag-list li:nth-child(2)', 'Statistics'],
       ['#experiencia .tag-list li:nth-child(3)', 'Item Response Theory'],
       ['#experiencia .tag-list li:nth-child(7)', 'NLP'],
+      ['#fc-exp-cargo', 'Data scientist and machine learning developer'],
+      ['#fc-exp-empresa', 'Independent consulting · Educational institution · Remote'],
+      ['#fc-exp-periodo', '2026 — present'],
+      ['#fc-exp-lead', 'Face Clock Evoluir: a facial-recognition time-tracking system contracted by an educational institution, delivered end to end and currently in final acceptance testing.'],
+      ['#fc-exp-facts div:nth-child(1) dt', 'End to end'],
+      ['#fc-exp-facts div:nth-child(1) dd', 'models, backend, data, and deployment'],
+      ['#fc-exp-facts div:nth-child(2) dd', 'automated tests in a Docker pipeline'],
+      ['#fc-exp-facts div:nth-child(3) dt', '+13 pp'],
+      ['#fc-exp-facts div:nth-child(3) dd', 'of validation accuracy after controlled ablation'],
+      ['#fc-exp-lista li:nth-child(1)', 'Delivered the contracted system on my own, covering modeling, the data layer, the backend, testing, and deployment.'],
+      ['#fc-exp-lista li:nth-child(2)', 'Implemented 1:N vector search and 1:1 verification over 512-dimensional facial embeddings with InsightFace and pgvector, aggregating multi-frame decisions, liveness, and anti-replay protection.'],
+      ['#fc-exp-lista li:nth-child(3)', 'Trained an EfficientNet-B0 classifier for medical-document triage with hyperparameter search, stratified cross-validation, and a hybrid CNN + OCR decision; diagnosed its underfitting through controlled ablation.'],
+      ['#fc-exp-lista li:nth-child(4)', 'Built the data layer and the inference service with PostgreSQL, SQLAlchemy, Alembic, and FastAPI, with Dockerized infrastructure, HTTPS, and GitHub Actions.'],
+      ['#experiencia-face-clock .experience-links a:nth-child(1)', 'See the case study →'],
+      ['#experiencia-face-clock .experience-links a:nth-child(2)', 'See the technical breakdown →'],
+      ['#experiencia-face-clock .experience-links a:nth-child(3)', 'Public repository →'],
       ['#projetos .section-kicker', 'Selected projects'],
       ['#projetos .section-heading h2', 'Work that shows how I think and build.'],
       ['#projetos .section-heading .text-link', 'All repositories →'],
-      ['#projetos .project-card:nth-child(1) .status', 'Under acceptance testing'],
-      ['#projetos .project-card:nth-child(1) > p', 'Facial biometric time-tracking system in final acceptance testing for an educational institution, combining face recognition, geofencing, medical-document classification, and a secure backend.'],
+      ['#projetos .project-card:nth-child(1) .status', 'Completed'],
+      ['#projetos .project-card:nth-child(1) h3', 'Triple Roman Domination'],
+      ['#projetos .project-card:nth-child(1) > p', 'The first GA- and ACO-based metaheuristics in the literature for the TRDP, together with a corrected ILP formulation for exact solutions.'],
+      ['#projetos .project-card:nth-child(1) .tag-list li:nth-child(3)', 'Graph Theory'],
+      ['#projetos .project-card:nth-child(1) .tag-list li:nth-child(4)', 'Metaheuristics'],
       ['#projetos .project-card:nth-child(1) .project-links a:nth-child(1)', 'Explore project →'],
       ['#projetos .project-card:nth-child(1) .project-links a:nth-child(2)', 'View technical breakdown →'],
-      ['#projetos .project-card:nth-child(1) .project-links a:nth-child(3)', 'Public repository →'],
-      ['#projetos .project-card:nth-child(2) .status', 'Completed'],
-      ['#projetos .project-card:nth-child(2) h3', 'Triple Roman Domination'],
-      ['#projetos .project-card:nth-child(2) > p', 'The first GA- and ACO-based metaheuristics in the literature for the TRDP, together with a corrected ILP formulation for exact solutions.'],
-      ['#projetos .project-card:nth-child(2) .tag-list li:nth-child(3)', 'Graph Theory'],
-      ['#projetos .project-card:nth-child(2) .tag-list li:nth-child(4)', 'Metaheuristics'],
-      ['#projetos .project-card:nth-child(2) .project-links a:nth-child(1)', 'Explore project →'],
-      ['#projetos .project-card:nth-child(2) .project-links a:nth-child(2)', 'Code →'],
-      ['#projetos .project-card:nth-child(2) .project-links a:nth-child(3)', 'Read thesis →'],
-      ['#projetos .project-card:nth-child(3) .status', 'In development'],
-      ['#projetos .project-card:nth-child(3) h3', 'Brazilian Emergency Aid — Ingestion and performance experiments'],
-      ['#projetos .project-card:nth-child(3) > p', 'Picked back up on my own initiative after the academic submission. Chunked ingestion through binary <code>COPY</code> over 31.6 GB of public data; instrumentation tied memory growth to retained deduplication identifiers (r = 0.99).'],
-      ['#projetos .project-card:nth-child(3) .project-links a', 'Code and documentation →'],
+      ['#projetos .project-card:nth-child(1) .project-links a:nth-child(3)', 'Code →'],
+      ['#projetos .project-card:nth-child(1) .project-links a:nth-child(4)', 'Read thesis →'],
+      ['#projetos .project-card:nth-child(2) .status', 'In development'],
+      ['#projetos .project-card:nth-child(2) h3', 'Brazilian Emergency Aid — Ingestion and performance experiments'],
+      ['#projetos .project-card:nth-child(2) > p', 'Picked back up on my own initiative after the academic submission. Chunked ingestion through binary <code>COPY</code> over 31.6 GB of public data; instrumentation tied memory growth to retained deduplication identifiers (r = 0.99).'],
+      ['#projetos .project-card:nth-child(2) .project-links a', 'Code and documentation →'],
       ['#competencias .section-kicker', 'Skills'],
       ['#competencias h2', 'Tools for investigating, modeling, and communicating.'],
       ['#competencias .lead', 'A technical foundation covering the full data-project lifecycle, from initial analysis to communicating results.'],
@@ -137,7 +149,8 @@ const englishPages = {
       ['#experiencia .tag-list', 'aria-label', 'Experience technologies'],
       ['#projetos .project-card:nth-child(1) .tag-list', 'aria-label', 'Project technologies'],
       ['#projetos .project-card:nth-child(2) .tag-list', 'aria-label', 'Project technologies'],
-      ['#projetos .project-card:nth-child(3) .tag-list', 'aria-label', 'Project technologies'],
+      ['#experiencia-face-clock .experience-facts', 'aria-label', 'Consulting engagement summary'],
+      ['#experiencia-face-clock .tag-list', 'aria-label', 'Consulting technologies'],
       ['#curriculo .contact-actions', 'aria-label', 'Résumé actions'],
     ],
   },
@@ -349,60 +362,258 @@ const englishPages = {
   },
   'triple-roman': {
     title: 'Triple Roman Domination | Israel Souza Ferreira',
-    description: 'Undergraduate thesis case study by Israel Souza Ferreira: the first metaheuristics and a corrected ILP formulation for the Triple Roman Domination Problem.',
+    description: 'How to defend an empire with half the troops: Constantine’s strategy explained visually, and the thesis that proposed the first algorithms for the problem.',
     content: [
       ['.skip-link', 'Skip to content'],
       ['.nav-menu a[href="../../index.html#projetos"]', 'Projects'],
+      ['.nav-menu a[href="tecnico.html"]', 'Technical breakdown'],
       ['.nav-menu a[href*="Triple-Roman"]', 'Repository'],
       ['.case-breadcrumb', '← Back to projects'],
       ['.case-hero .eyebrow', 'Undergraduate thesis · Combinatorial optimization · Completed'],
-      ['.case-title', 'Triple Roman Domination in graphs'],
-      ['.case-intro', 'The first Genetic Algorithm- and Ant Colony Optimization-based metaheuristics for the TRDP, with a corrected Integer Linear Programming formulation for exact solutions.'],
-      ['.case-hero .hero-actions a:nth-child(1)', 'View code on GitHub'],
-      ['.case-hero .hero-actions a:nth-child(2)', 'Read thesis'],
-      ['.case-hero .hero-actions a:nth-child(3)', 'View contributions'],
+      ['.case-title', 'How do you defend an entire empire with half the troops?'],
+      ['#trd-intro', 'Constantine faced that question in the fourth century. It became a mathematical problem that, seventeen centuries later, no computer can solve quickly. My thesis attacked it with algorithms inspired by ants and by evolution — and corrected a published model that was wrong.'],
+      ['.case-hero .hero-actions a:nth-child(1)', 'See the strategy'],
+      ['.case-hero .hero-actions a:nth-child(2)', 'See the technical breakdown'],
+      ['.case-hero .hero-actions a:nth-child(3)', 'Repository'],
       ['.case-meta li:nth-child(2)', 'Genetic Algorithm'],
+      ['.case-meta li:nth-child(3)', 'Ant Colony Optimization'],
       ['.case-meta li:nth-child(4)', 'Integer Linear Programming'],
-      ['.case-block:nth-of-type(1) .section-kicker', 'The problem'],
-      ['.case-block:nth-of-type(1) h2', 'Minimum-cost network protection.'],
-      ['.case-block:nth-of-type(1) .lead', 'Triple Roman Domination models how to distribute protection levels among graph vertices, ensuring vulnerable regions are covered by their neighbors while minimizing total cost.'],
-      ['.case-block:nth-of-type(1) .case-prose > p:nth-child(2)', 'The idea originated in defense problems and also relates to scenarios such as server allocation and network coverage. Because the decision version is NP-complete, finding an optimal solution becomes difficult as instances grow. This motivates approximation methods that can produce good solutions in practical time.'],
-      ['.case-formula .section-kicker', 'The rule, in one line'],
-      ['.case-formula p:nth-child(2)', '<strong>Each region must receive enough protection from its neighborhood.</strong>'],
-      ['.case-formula code', 'Σ protection in the neighborhood of v ≥ 3 + number of active neighbors'],
-      ['.case-formula p:last-child', 'Formally, each vertex receives a value from 0 to 4. The total weight is the sum of these values; the goal is to find a valid configuration with the smallest possible weight.'],
-      ['.case-figure figcaption', 'Example of an optimal Triple Roman Domination function. Vertices represent regions and edges represent their connections; the numbers indicate the protection level assigned to each region. Source: author’s thesis.'],
-      ['#contribuicoes .section-kicker', 'Contributions'],
-      ['#contribuicoes h2', 'What this work adds.'],
-      ['#contribuicoes .case-list li:nth-child(1)', '<strong>First metaheuristics for the TRDP:</strong> implementation and evaluation of GA- and ACO-based approaches.'],
-      ['#contribuicoes .case-list li:nth-child(2)', '<strong>Corrected ILP:</strong> an Integer Linear Programming formulation that fixes inconsistencies in a previous proposal and serves as an exact reference.'],
-      ['#contribuicoes .case-list li:nth-child(3)', '<strong>Experimental benchmark:</strong> generation of 30 random graphs and computation of exact γ<sub>3R</sub>(G) values, along with exact solutions for most other evaluated instances.'],
-      ['#contribuicoes .case-list li:nth-child(4)', '<strong>Comparative analysis:</strong> evaluation of four GA heuristics, the impact of RVNS on ACO, and relative gaps against optimal solutions.'],
-      ['.case-highlight .section-kicker', 'Scientific contribution'],
-      ['.case-highlight .lead', 'The work not only proposes novel approximation methods for the TRDP; it also establishes a corrected exact reference and expands the set of instances with known values for future research.'],
-      ['.case-block:nth-of-type(3) .section-kicker', 'Results'],
-      ['.case-block:nth-of-type(3) h2', 'Performance with nuance.'],
-      ['.case-block:nth-of-type(3) .case-prose > p:nth-child(1)', '<strong>ACO-FL</strong>, combining ACO and RVNS, outperformed <strong>GA-FL</strong> in most cases in both runtime and solution quality. GA-FL nevertheless remained competitive in specific scenarios, especially on smaller and structured graphs.'],
-      ['.case-block:nth-of-type(3) .case-prose > p:nth-child(2)', 'The comparison used the relative gap against optimal ILP solutions. Among all evaluated graphs, only six had a gap above 50%; all others remained below that threshold.'],
-      ['.case-result:nth-child(1) span', 'random graphs generated with exact values computed'],
-      ['.case-result:nth-child(2) span', 'best performance in most evaluated cases'],
-      ['.case-result:nth-child(3) strong', '6 graphs'],
-      ['.case-result:nth-child(3) span', 'with a relative gap above 50% in the experimental set'],
-      ['.case-block:nth-of-type(4) .section-kicker', 'Next steps'],
-      ['.case-block:nth-of-type(4) h2', 'Where the research can go next.'],
-      ['.case-block:nth-of-type(4) .case-prose p', 'The work proposes expanding hyperparameter search and investigating new selection, crossover, mutation, and elitism strategies for GA. For ACO, it suggests evaluating other selection and exploration methods, as well as implementation and compiler optimizations to reduce runtime.'],
-      ['.case-cta .section-kicker', 'Code and experiments'],
-      ['.case-cta h2', 'Explore the implementation and full thesis.'],
+      ['#resumo .section-kicker', 'Summary'],
+      ['#trd-resumo-titulo', 'The essentials in five points.'],
+      ['#trd-resumo-1', '<strong>The problem:</strong> distributing protection across the regions of a graph at the lowest total cost, making sure every ungarrisoned region can be rescued by its neighbours. It is NP-complete.'],
+      ['#trd-resumo-2', '<strong>My contribution:</strong> the first two metaheuristics proposed in the literature for this problem — ant colony optimization and a genetic algorithm — implemented in C++.'],
+      ['#trd-resumo-3', '<strong>The correction:</strong> the exact formulation published earlier accepts invalid solutions. I present the counterexample and the first correct formulation, which becomes the reference everything else is measured against.'],
+      ['#trd-resumo-4', '<strong>Evidence:</strong> 362 graphs evaluated under three metrics declared before the experiments; ant colony optimization with local search won in most cases, and only 6 graphs ended up more than 50% away from the reference value.'],
+      ['#trd-resumo-5', '<strong>Format:</strong> undergraduate thesis in Computer Science at UFC Quixadá, defended in February 2025.'],
+      ['#trd-estrategia-kicker', 'Constantine’s strategy'],
+      ['#trd-estrategia-titulo', 'Half the legions, the same territory.'],
+      ['#trd-estrategia-lead', 'The empire had eight regions and fifty legions. When only twenty-five were left, garrisoning everything stopped being possible — so the emperor changed the question.'],
+      ['#trd-passo1-titulo', 'Eight neighbouring regions'],
+      ['#trd-passo1-texto', 'Gaul, Rome, Constantinople, Iberia, Asia Minor, Egypt, North Africa, and Britain, linked by their borders.'],
+      ['#trd-passo2-titulo', 'Half the force'],
+      ['#trd-passo2-texto', 'From fifty legions down to about twenty-five. There were no longer enough troops to occupy every region.'],
+      ['#trd-passo3-titulo', 'Defence in depth'],
+      ['#trd-passo3-texto', 'A region may sit without troops, as long as its neighbours can come to the rescue without leaving themselves undefended.'],
+      ['#trd-regra-kicker', 'The rule of the game'],
+      ['#trd-regra-titulo', 'Three legions of defence for every region.'],
+      ['#trd-formula-kicker', 'The whole rule, in one sentence'],
+      ['#trd-formula-frase', '<strong>Every region must add up to three legions of defence: the ones already stationed there plus the ones its neighbours can send — and every neighbour that sends help has to leave one legion behind.</strong>'],
+      ['#trd-formula-codigo', 'troops in the region + (troops of each neighbour − 1) ≥ 3'],
+      ['#trd-formula-nota', 'Each region receives 0, 2, 3, or 4 legions. The cost is the sum of all of them. The problem is to find the cheapest valid distribution.'],
+      ['#trd-regra-texto', 'That is all of it. A region holding 4 legions rescues any neighbour on its own: it sends 3 and keeps 1. A region holding 2 can only send 1 — it needs company.'],
+      ['#trd-lab-kicker', 'Try it'],
+      ['#trd-lab-titulo', 'Distribute the legions of the empire.'],
+      ['#trd-help', 'Click a region to change its troops: 0 → 2 → 3 → 4 → 0. The map flags right away who has been left exposed.'],
+      ['#trd-map-titulo', 'Interactive map of the eight regions of the empire'],
+      ['#trd-map-desc', 'Each circle is a region and each line is a border. The number inside a circle is its amount of legions. Use Tab to move across regions and Enter to change their troops.'],
+      ['#trd-score-custo-rotulo', 'Cost'],
+      ['#trd-score-custo-unidade', 'legions'],
+      ['#trd-score-otimo-rotulo', 'Best possible'],
+      ['#trd-score-otimo-unidade', 'legions'],
+      ['#trd-botao-otimo', 'Show an optimal solution'],
+      ['#trd-botao-limpar', 'Empty the map'],
+      ['#trd-lab-nota', 'This map opens on one of the five optimal solutions: eight legions, no region left exposed. No valid arrangement is cheaper than that.'],
+      ['#trd-legenda-vazio', 'no troops, depends on its neighbours'],
+      ['#trd-legenda-tropas', 'holding troops, sends one less than it has'],
+      ['#trd-legenda-exposto', 'exposed: short of three legions of defence'],
+      ['#trd-figura-legenda', 'The same solution over the original map: two regions holding four legions cover the other six. Figure from the thesis, drawn by the author based on Gray (2015).'],
+      ['#trd-dificuldade-kicker', 'Why it is hard'],
+      ['#trd-dificuldade-titulo', 'Easy to check, hard to find.'],
+      ['#trd-dificuldade-lead', 'Checking whether a distribution works takes an instant. Finding the cheapest one among every possibility is another story.'],
+      ['#trd-dificuldade-texto', 'With eight regions there are 65,536 distributions. With a hundred regions the count runs past sixty digits: no computer walks through that. And the problem is <strong>NP-complete</strong> — no exact and fast method is known, and the field suspects none exists. What is left is finding good solutions in acceptable time.'],
+      ['#trd-numero-1', 'possible distributions on a map of only eight regions'],
+      ['#trd-numero-2', 'distributions on a network of a hundred points: a sixty-one-digit number'],
+      ['#trd-numero-3', 'no exact and fast algorithm is known for the problem'],
+      ['#trd-trabalho-kicker', 'What I did'],
+      ['#trd-trabalho-titulo', 'Three ways in, and one correction.'],
+      ['#trd-card1-tag', 'Metaheuristic'],
+      ['#trd-card1-titulo', 'Ant colony'],
+      ['#trd-card1-texto', 'Artificial ants assemble distributions and leave a trail on the choices that worked; the ants that follow tend to reuse that trail. This was the method that performed best.'],
+      ['#trd-card2-tag', 'Metaheuristic'],
+      ['#trd-card2-titulo', 'Genetic algorithm'],
+      ['#trd-card2-texto', 'A population of solutions that cross over, mutate, and compete with one another. The cheapest ones survive into the next generation.'],
+      ['#trd-card3-tag', 'Exact method'],
+      ['#trd-card3-titulo', 'Integer linear programming'],
+      ['#trd-card3-texto', 'The problem written as a system of constraints and handed to a solver, which returns the optimal answer while the graph is small enough. It is the ruler used to measure the other two.'],
+      ['#trd-card4-tag', 'Correction'],
+      ['#trd-card4-titulo', 'A published model that failed'],
+      ['#trd-card4-texto', 'The exact formulation available in the literature accepted invalid distributions. I showed a concrete counterexample and proposed the first correct formulation.'],
+      ['#trd-resultados-kicker', 'Results'],
+      ['#trd-resultados-titulo', '362 graphs, measured against the optimum.'],
+      ['#trd-resultados-lead', 'Both algorithms were tested on classic benchmarks, real networks, and graphs generated for this work. Wherever the exact solver could answer, the comparison is against the optimal value.'],
+      ['#trd-resultado-1', 'graphs evaluated, across classic benchmarks, real networks, and generated instances'],
+      ['#trd-resultado-2', 'ant colony optimization won in most cases, in both runtime and quality'],
+      ['#trd-resultado-3', 'graphs, among all the ones evaluated, ended up more than 50% away from the optimum'],
+      ['#trd-resultados-texto', 'The genetic algorithm was not discarded: it stayed competitive on smaller and more structured graphs, and in some cases reached the optimum where ant colony optimization did not.'],
+      ['#trd-destaque-kicker', 'What this leaves for the field'],
+      ['#trd-destaque-texto', 'Beyond the first two approximation algorithms proposed for this problem, the work leaves behind a corrected exact reference and a set of instances with optimal values already computed, which other research can use for comparison.'],
+      ['#trd-aplicacoes-kicker', 'Where this shows up today'],
+      ['#trd-aplicacoes-titulo', 'The same problem, without legions.'],
+      ['#trd-aplicacao-1', '<strong>Servers:</strong> where to place servers so the whole network stays served even when one point goes down.'],
+      ['#trd-aplicacao-2', '<strong>Network coverage:</strong> making sure every point has enough backup coming from its neighbourhood, and not just a single available neighbour.'],
+      ['#trd-aplicacao-3', '<strong>Resource allocation:</strong> spreading scarce teams or equipment across regions that can support one another.'],
+      ['#trd-aplicacoes-nota', 'The literature cites these three scenarios. The work itself is about the mathematical problem: there is no applied case study over a real network here.'],
+      ['#trd-ponte-kicker', 'Deep dive'],
+      ['#trd-ponte-titulo', 'From here on, the detail.'],
+      ['#trd-ponte-lead', 'The technical page covers the formal definition, the counterexample that breaks the previous formulation, both algorithms step by step, and the result tables with the measured values.'],
+      ['#trd-ponte-aviso', 'It is optional reading, written for whoever wants to see the method — including the limits of what was measured.'],
+      ['#aprofundamento .hero-actions a', 'See the technical breakdown →'],
+      ['#trd-cta-kicker', 'Code and experiments'],
+      ['#trd-cta-titulo', 'Explore the implementation and the full thesis.'],
       ['.case-cta .contact-actions a:nth-child(1)', 'Open repository'],
       ['.case-cta .contact-actions a:nth-child(2)', 'Open thesis'],
+      ['.case-cta .contact-actions a:nth-child(3)', 'Technical breakdown'],
       ['footer .text-link', 'Back to portfolio'],
     ],
     attributes: [
       ['nav', 'aria-label', 'Main navigation'],
       ['.brand', 'aria-label', 'Back to portfolio'],
       ['.case-meta', 'aria-label', 'Project information'],
-      ['.case-figure img', 'alt', 'Map of the Roman Empire represented as a graph, with the labels of an optimal Triple Roman Domination function on its vertices.'],
-      ['.case-results', 'aria-label', 'Results summary'],
+      ['.system-flow', 'aria-label', 'Three steps of the defence strategy'],
+      ['.trd-legend', 'aria-label', 'Map legend'],
+      ['#dificuldade .case-results', 'aria-label', 'The difficulty in numbers'],
+      ['#resultados .case-results', 'aria-label', 'Results summary'],
+      ['#aplicacoes .case-list', 'aria-label', 'Applications of the problem'],
+      ['.case-figure img', 'alt', 'Map of the Roman Empire drawn as a graph, with the labels of an optimal Triple Roman Domination solution on its vertices.'],
+    ],
+  },
+  'triple-roman-tecnico': {
+    title: 'Triple Roman Domination — technical breakdown | Israel Souza Ferreira',
+    description: 'Technical deep dive into the thesis on Triple Roman Domination: formal definition, the counterexample that breaks the previous ILP formulation, the GA and ACO algorithms, and the result tables.',
+    content: [
+      ['.skip-link', 'Skip to content'],
+      ['.nav-menu a[href="index.html"]', 'Overview'],
+      ['.nav-menu a[href="../../index.html#projetos"]', 'Projects'],
+      ['.nav-menu a[href*="Triple-Roman"]', 'Repository'],
+      ['.case-breadcrumb', '← Back to the overview'],
+      ['.case-hero .eyebrow', 'Technical deep dive · Triple Roman Domination'],
+      ['.case-title', 'The technical structure in detail.'],
+      ['#trdt-intro', 'This page documents what supports the overview: the formal definition of the problem, the counterexample that invalidates the previously published exact formulation, the formulation proposed in its place, both algorithms step by step, and the tables measured over 362 graphs.'],
+      ['.case-hero .hero-actions a:nth-child(1)', 'See the correction of the exact model'],
+      ['.case-hero .hero-actions a:nth-child(2)', 'See the algorithms'],
+      ['.case-hero .hero-actions a:nth-child(3)', 'See the results'],
+      ['.case-meta li:nth-child(1)', 'Integer Linear Programming'],
+      ['.case-meta li:nth-child(2)', 'Genetic Algorithm'],
+      ['#trdt-def-kicker', 'Definition'],
+      ['#trdt-def-titulo', 'The problem, formally.'],
+      ['#trdt-def-lead', 'Given a graph <em>G</em> and a function <em>h</em> assigning each vertex a label in {0, 1, 2, 3, 4}, a vertex is <strong>active</strong> when its label is greater than zero. The active neighbourhood of <em>v</em>, written <em>AN(v)</em>, is the set of active neighbours of <em>v</em>.'],
+      ['#trdt-def-formula-kicker', 'Triple Roman Domination function'],
+      ['#trdt-def-formula-nota', 'The weight of <em>h</em> is the sum of its labels. The triple Roman domination number γ<sub>3R</sub>(G) is the smallest possible weight of a valid function, and the problem is to determine it. The decision version is NP-complete, including when restricted to bipartite and chordal graphs.'],
+      ['#trdt-def-equivalencia', 'Subtracting |AN(v)| from both sides gives the form used in the overview: every active neighbour contributes <em>h(u) − 1</em>, that is, it sends everything but one legion, while the vertex itself contributes its full <em>h(v)</em>. The two readings are the same inequality.'],
+      ['#trdt-def-teorema', '<strong>A result that trims the model:</strong> for every non-trivial connected graph there exists an optimal function that never uses the label 1 (Abdollahzadeh Ahangar <em>et al.</em>, 2021). Whenever a vertex receives 1, it can be zeroed while a neighbour is promoted, without increasing the weight. That is why both the exact formulation and the metaheuristics work only with {0, 2, 3, 4} — one variable fewer per vertex.'],
+      ['#trdt-def-limites', 'The bounds used as reference in the work: γ<sub>3R</sub>(G) ≥ ⌈4n / (Δ+1)⌉ for connected graphs with Δ ≥ 3 and n ≥ 2 (Valenzuela-Tripodoro <em>et al.</em>, 2024), and γ<sub>3R</sub>(G) ≤ 3n/2 for connected graphs with δ ≥ 2 (Hajjari <em>et al.</em>, 2023).'],
+      ['#trdt-pli-kicker', 'Exact model'],
+      ['#trdt-pli-titulo', 'A published formulation that accepts an invalid solution.'],
+      ['#trdt-pli-lead', 'The only Integer Linear Programming formulation available for the problem (Vengaldas <em>et al.</em>, 2023) uses six binary variables per vertex and four families of constraints. The constraint responsible for zero-labelled vertices is linearly too loose: there are labellings that satisfy it without being triple Roman domination functions.'],
+      ['#trdt-pli-restricao-kicker', 'The faulty constraint'],
+      ['#trdt-pli-restricao-nota', 'Here <em>q</em>, <em>r</em>, and <em>s</em> indicate labels 2, 3, and 4; <em>t</em> and <em>x</em> indicate the existence of some neighbour labelled 2 and some neighbour labelled 3. Summing fractions lets two neighbours labelled 2 “pay” the constraint together with the indicator <em>t</em>, even though two neighbours labelled 2 are not enough under the definition.'],
+      ['#trdt-c10-titulo', 'Ten-vertex cycle with an invalid labelling accepted by the previous model'],
+      ['#trdt-c10-desc', 'Ten vertices arranged in a circle. Seven receive label 2 and three receive label 0. Each vertex labelled 0 has exactly two neighbours labelled 2, which does not satisfy the definition of the problem.'],
+      ['#trdt-c10-legenda', 'Counterexample on the cycle C<sub>10</sub>. Each vertex labelled 0 has two neighbours labelled 2, which yields ⅔ + ½ = 7/6 ≥ 1 in the constraint above. Under the definition, however, it only receives 1 + 1 = 2 legions of defence, below the required 3.'],
+      ['#trdt-pli-consequencia', 'The authors refine that model into two further versions and show they are equivalent to one another. Since the faulty constraint is precisely the one modelling zero-labelled vertices and it remains in all three versions, all three inherit the flaw.'],
+      ['#trdt-pli-nova-kicker', 'The proposed formulation'],
+      ['#trdt-pli-nova-nota', 'The constraint is the definition itself written in binary variables, after cancelling the |AN(v)| term: a neighbour labelled 2 contributes 1, one labelled 3 contributes 2, and one labelled 4 contributes 3 — exactly “sends everything but one legion”. Dropping the label 1 through the theorem above reduces the model from 6|V| variables and 4|V| constraints to 3|V| variables and 2|V| constraints.'],
+      ['#trdt-alg-kicker', 'Algorithms'],
+      ['#trdt-alg-titulo', 'Two metaheuristics, the same solution format.'],
+      ['#trdt-alg-lead', 'In both algorithms a solution is a vector of <em>n</em> positions holding values in {0, 2, 3, 4}, and the cost to minimize is the sum of those positions. What changes is how the search space is traversed.'],
+      ['#trdt-ga-kicker', 'FLGA'],
+      ['#trdt-ga-titulo', 'Genetic algorithm.'],
+      ['#trdt-ga-item1', '<strong>Initial population by heuristic:</strong> four variants were compared. H1 draws a vertex, labels it 2, and zeroes its neighbourhood; H2 does the same with label 4 and then tries to lower labels; H3 walks the vertices in decreasing order of degree; H4 mixes the three in equal parts. H4 won and defines the FLGA.'],
+      ['#trdt-ga-item2', '<strong>Repair instead of discard:</strong> crossover and mutation produce infeasible solutions often. Rather than rejecting them, the <code>feasibilityCheck</code> routine walks the violated vertices and raises the label to the minimum that restores feasibility. The population is fully feasible at the end of every generation.'],
+      ['#trdt-ga-item3', '<strong>Greedy reduction:</strong> <code>decreaseLabels</code> tries to lower each label (4 → 3 → 2 → 0) and undoes any change that breaks feasibility for the vertex or its active neighbourhood. This is what keeps the repair step from accumulating needless slack.'],
+      ['#trdt-ga-item4', '<strong>Operators:</strong> tournament selection, one- or two-point crossover drawn for each pair, mutation replacing one position with a random label, and elitism preserving ⌈population × rate⌉ individuals.'],
+      ['#trdt-ga-item5', '<strong>Stopping:</strong> a maximum number of generations, or a maximum number of consecutive generations without improvement — whichever comes first.'],
+      ['#trdt-tabela-h-titulo', 'Comparison between the four initial-population heuristics'],
+      ['#trdt-tabela-h-cabecalho', '<th scope="col">Graph</th><th scope="col">|V|</th><th scope="col">H1</th><th scope="col">H2</th><th scope="col">H3</th><th scope="col">H4</th><th scope="col">ILP</th>'],
+      ['#trdt-tabela-h-nota', 'Excerpt of 5 of the 24 random graphs used in this comparison; fitness values (lower is better). The name g<em>N</em>-.<em>p</em> means <em>N</em> vertices and connection probability 0.<em>p</em>. The asterisk marks the cases where the solver proved optimality within the time limit.'],
+      ['#trdt-aco-kicker', 'ACO-FL'],
+      ['#trdt-aco-titulo', 'Ant colony optimization with local search.'],
+      ['#trdt-aco-lead', 'The implementation follows the <em>Max-Min Ant System</em> inside the <em>Hyper-Cube Framework</em>: every vertex carries a pheromone τ<sub>v</sub> ∈ [0,1], initialized at 0.5 and bounded to [0.001, 0.999].'],
+      ['#trdt-aco-item1', '<strong>Construction:</strong> each ant picks vertices to receive label 4 and zeroes their neighbourhood, until the auxiliary graph is exhausted. The choice uses deg(u) · τ<sub>u</sub>: with a fixed probability it takes the maximum, otherwise it draws by proportional roulette.'],
+      ['#trdt-aco-item2', '<strong>Extend and reduce:</strong> <code>extendSolution</code> promotes a fraction of the vertices to label 4, deliberately making the solution more expensive in order to escape local minima; <code>reduceSolution</code> then walks the vertices in decreasing order of degree, lowering labels while feasibility holds.'],
+      ['#trdt-aco-item3', '<strong>RVNS local search:</strong> it destroys part of the solution, rebuilds, extends, and reduces. The intensity of the destruction grows with the neighbourhood level k, which rises on every iteration without improvement and returns to 1 as soon as a better solution appears.'],
+      ['#trdt-aco-item4', '<strong>Pheromones guided by convergence:</strong> the factor φ decides the weight of the iteration best against the global best — only the iteration best while φ &lt; 0.4, only the global best once φ ≥ 0.8. If φ goes past 0.99, pheromones are reinitialized to avoid stagnation.'],
+      ['#trdt-tabela-rvns-titulo', 'Contribution of the RVNS local search'],
+      ['#trdt-tabela-rvns-cabecalho', '<th scope="col">Graph</th><th scope="col">|V|</th><th scope="col">ACO with RVNS</th><th scope="col">ACO without RVNS</th><th scope="col">ILP</th>'],
+      ['#trdt-tabela-rvns-nota', 'Excerpt of 5 of the 30 random graphs. The version with local search is the one named ACO-FL. The gain shows up mainly on large sparse graphs, where construction alone stalls.'],
+      ['#trdt-exp-kicker', 'Protocol'],
+      ['#trdt-exp-titulo', 'How the experiments were set up.'],
+      ['#trdt-exp-item1', '<strong>Instances — 362 graphs:</strong> 50 sparse matrices from the BAI collection, 186 from Harwell-Boeing, 56 graphs from Miscellaneous Networks, 10 graphs from each classic family (cycles, paths, stars, and trees), and 30 Erdős-Rényi random graphs from 25 to 250 vertices with connection probability 0.2, 0.5, and 0.8.'],
+      ['#trdt-exp-item2', '<strong>Exact reference:</strong> the ILP model was implemented in Python with Pyomo and NetworkX. The free CPLEX edition is limited to a thousand variables and a thousand constraints, which covers graphs of up to 333 vertices; beyond that, CBC was used. Each instance had at most 900 seconds, and the solver returns the best solution found — which is not always provably optimal.'],
+      ['#trdt-exp-item3', '<strong>Parameter tuning:</strong> the configuration of both algorithms was set by <code>irace</code> over a representative subset of 115 graphs, 5 from each collection, covering small, medium, and large instances. No parameter was hand-tuned over the full set.'],
+      ['#trdt-exp-item4', '<strong>Environment:</strong> Intel Core i5-8265U at 1.60 GHz, 8 GB of RAM, Ubuntu 22.04.5 LTS. Metaheuristics in C++ compiled with G++ 11.4.0 and the flags <code>-std=c++17 -Wall -Wextra -Ofast -finline-functions -march=native</code>.'],
+      ['#trdt-tabela-param-aco-titulo', 'ACO parameters returned by irace'],
+      ['#trdt-tabela-param-aco-cabecalho', '<th scope="col">Parameter</th><th scope="col">Search range</th><th scope="col">With RVNS</th><th scope="col">Without RVNS</th>'],
+      ['#trdt-tabela-param-ga-titulo', 'FLGA parameters returned by irace'],
+      ['#trdt-tabela-param-ga-cabecalho', '<th scope="col">Parameter</th><th scope="col">Search range</th><th scope="col">Tuned value</th>'],
+      ['#trdt-tabela-param-ga-nota', 'The population size is the order of the graph divided by the value in the last column.'],
+      ['#trdt-res-kicker', 'Results'],
+      ['#trdt-res-titulo', 'ACO-FL against FLGA, measured by the optimum.'],
+      ['#trdt-res-lead', 'The relative gap compares the best solution found by the metaheuristics against the solution of the exact model. ACO-FL wins on most instances, but the advantage is not uniform: on small dense graphs, and on some graphs with many local optima, FLGA gets closer.'],
+      ['#trdt-tabela-cmp-titulo', 'ACO-FL, FLGA, and ILP on the random graphs'],
+      ['#trdt-tabela-cmp-cabecalho', '<th scope="col">Graph</th><th scope="col">|V|</th><th scope="col">|E|</th><th scope="col">ACO-FL</th><th scope="col">FLGA</th><th scope="col">ILP</th><th scope="col">Gap</th>'],
+      ['#trdt-cmp-l1', '<th scope="row">g25-.2</th><td>25</td><td>61</td><td>19</td><td>24</td><td>19*</td><td>0.00%</td>'],
+      ['#trdt-cmp-l2', '<th scope="row">g25-.8</th><td>25</td><td>235</td><td>7</td><td>7</td><td>7*</td><td>0.00%</td>'],
+      ['#trdt-cmp-l3', '<th scope="row">g50-.5</th><td>50</td><td>637</td><td>12</td><td>12</td><td>12*</td><td>0.00%</td>'],
+      ['#trdt-cmp-l4', '<th scope="row">g75-.2</th><td>75</td><td>549</td><td>34</td><td>39</td><td>28*</td><td>21.43%</td>'],
+      ['#trdt-cmp-l5', '<th scope="row">g100-.5</th><td>100</td><td>2490</td><td>19</td><td>17</td><td>14*</td><td>21.43%</td>'],
+      ['#trdt-cmp-l6', '<th scope="row">g150-.2</th><td>150</td><td>2299</td><td>39</td><td>47</td><td>32</td><td>21.88%</td>'],
+      ['#trdt-cmp-l7', '<th scope="row">g200-.8</th><td>200</td><td>15947</td><td>12</td><td>12</td><td>8*</td><td>50.00%</td>'],
+      ['#trdt-cmp-l8', '<th scope="row">g225-.8</th><td>225</td><td>20015</td><td>12</td><td>8</td><td>8*</td><td>0.00%</td>'],
+      ['#trdt-cmp-l9', '<th scope="row">g250-.2</th><td>250</td><td>6249</td><td>52</td><td>54</td><td>39</td><td>33.33%</td>'],
+      ['#trdt-tabela-cmp-nota', 'Excerpt of 9 of the 30 random graphs. The gap is computed over the better of the two metaheuristics. On g100-.5 and g225-.8 it is FLGA that comes out ahead, reaching the optimum on the latter.'],
+      ['#trdt-tabela-fam-titulo', 'Classic families, with γ<sub>3R</sub> known from the ILP'],
+      ['#trdt-tabela-fam-cabecalho', '<th scope="col">Graph</th><th scope="col">|V|</th><th scope="col">γ<sub>3R</sub></th><th scope="col">ACO-FL</th><th scope="col">FLGA</th>'],
+      ['#trdt-fam-l1', '<th scope="row">Cycle C<sub>100</sub></th><td>100</td><td>135</td><td>135</td><td>146</td>'],
+      ['#trdt-fam-l2', '<th scope="row">Path P<sub>100</sub></th><td>100</td><td>135</td><td>135</td><td>147</td>'],
+      ['#trdt-fam-l3', '<th scope="row">Star S<sub>100</sub></th><td>100</td><td>4</td><td>4</td><td>4</td>'],
+      ['#trdt-fam-l4', '<th scope="row">Tree T<sub>100</sub></th><td>100</td><td>132</td><td>143</td><td>141</td>'],
+      ['#trdt-fam-l5', '<th scope="row">Cycle C<sub>250</sub></th><td>250</td><td>335</td><td>339</td><td>359</td>'],
+      ['#trdt-fam-l6', '<th scope="row">Tree T<sub>250</sub></th><td>250</td><td>354</td><td>366</td><td>380</td>'],
+      ['#trdt-tabela-fam-nota', 'On cycles and paths ACO-FL reproduces the optimum up to a hundred vertices. The star is trivial for both: a single centre labelled 4 solves the whole graph. On random trees FLGA is sometimes ahead.'],
+      ['#trdt-met-kicker', 'Results and impact communicated'],
+      ['#trdt-met-titulo', 'The three metrics behind every claim.'],
+      ['#trdt-met-lead', 'No comparison in this work rests on impression: the three criteria below were declared before the experiments and applied equally to both metaheuristics and to the exact model.'],
+      ['#trdt-met1-tag', 'Criterion 1'],
+      ['#trdt-met1-titulo', 'Runtime'],
+      ['#trdt-met1-texto', 'Seconds per instance, measured on the same machine and with the same compiler flags. It answers for computational efficiency — and for nothing else.'],
+      ['#trdt-met2-tag', 'Criterion 2'],
+      ['#trdt-met2-titulo', 'Fitness, the weight of the solution'],
+      ['#trdt-met2-texto', 'The sum of the labels of the best function found. Since it is exactly the quantity the problem asks to minimize, it compares directly against the value from the exact model.'],
+      ['#trdt-met3-tag', 'Criterion 3'],
+      ['#trdt-met3-titulo', 'Relative gap'],
+      ['#trdt-met3-texto', 'The percentage distance between the best metaheuristic solution and the value obtained by the ILP. It is the metric that supports saying “it landed this many percent from the optimum”.'],
+      ['#trdt-met4-tag', 'How it is computed'],
+      ['#trdt-met4-titulo', 'gap = (best − ILP) / ILP'],
+      ['#trdt-met4-texto', 'The better of the two metaheuristics goes into the numerator, rather than each one separately: the gap measures the distance from the set of proposed methods to the exact reference.'],
+      ['#trdt-met-impacto-intro', 'From those three metrics, what the work states publicly:'],
+      ['#trdt-met-impacto-1', '<strong>First correct exact formulation:</strong> the previously published ILP model accepts invalid solutions, and the text shows the counterexample that proves the flaw.'],
+      ['#trdt-met-impacto-2', '<strong>First metaheuristics for the problem:</strong> until then there was no genetic-algorithm or ant-colony approach for Triple Roman Domination.'],
+      ['#trdt-met-impacto-3', '<strong>A reusable set of instances:</strong> 30 random graphs generated with exact γ<sub>3R</sub> values, plus exact values for most of the remaining instances — comparison material for later research.'],
+      ['#trdt-met-impacto-4', '<strong>Components justified by measurement:</strong> the RVNS local search and the H4 initial-population heuristic were chosen by comparison under the same protocol, not by preference.'],
+      ['#trdt-met-impacto-5', '<strong>An honest account of the margin:</strong> across 362 graphs evaluated, only 6 landed more than 50% away from the reference value; every other one stayed below that threshold.'],
+      ['#trdt-lim-kicker', 'Limits of what was measured'],
+      ['#trdt-lim-titulo', 'What the numbers do not say.'],
+      ['#trdt-lim-item1', '<strong>Not every reference value is a proven optimum.</strong> The solver ran under a 900-second limit per instance. Without the asterisk, the value in the ILP column is merely the best solution found within that time, and the corresponding gap is an upper estimate.'],
+      ['#trdt-lim-item2', '<strong>Larger gaps on dense graphs.</strong> When the optimum is a small number such as 8, each extra legion costs many percentage points: the 50% on g200-.8 is the difference between 12 and 8. The relative gap overstates the distance in those cases.'],
+      ['#trdt-lim-item3', '<strong>One run per instance.</strong> The metaheuristics are stochastic, and the reported results do not come from multiple runs with confidence intervals, which rules out claiming small differences between the two algorithms.'],
+      ['#trdt-lim-item4', '<strong>Open work.</strong> Widening the hyperparameter search, testing other selection, crossover, mutation, and elitism strategies for the GA, evaluating other choice mechanisms for the ACO, and cutting runtime through implementation optimizations.'],
+      ['#trdt-cta-kicker', 'Project context'],
+      ['#trdt-cta-titulo', 'Back to the overview of the problem.'],
+      ['.case-cta .contact-actions a:nth-child(1)', 'See the overview'],
+      ['.case-cta .contact-actions a:nth-child(2)', 'Open on GitHub'],
+      ['.case-cta .contact-actions a:nth-child(3)', 'Open thesis'],
+      ['footer .text-link', 'Back to portfolio'],
+    ],
+    attributes: [
+      ['nav', 'aria-label', 'Main navigation'],
+      ['.brand', 'aria-label', 'Back to portfolio'],
+      ['.case-meta', 'aria-label', 'Topics on this page'],
+      ['#ga .case-list', 'aria-label', 'Components of the genetic algorithm'],
+      ['#aco .case-list', 'aria-label', 'Stages of the ant colony algorithm'],
+      ['#experimentos .case-list', 'aria-label', 'Experimental protocol'],
+      ['#metricas .case-list', 'aria-label', 'Impact communicated'],
+      ['#limites .case-list', 'aria-label', 'Limitations of the study'],
     ],
   },
 };
@@ -625,3 +836,156 @@ document.querySelectorAll('.project-card-clickable').forEach((card) => {
 });
 
 year.textContent = new Date().getFullYear();
+
+/* Mapa interativo da Dominação Romana Tripla — só existe na visão geral do projeto. */
+const trdLab = document.querySelector('.trd-lab');
+
+if (trdLab) {
+  const trdOptimalWeight = 8;
+  const trdLabelCycle = [0, 2, 3, 4];
+  const trdOptimalSolution = { iberia: 4, constantinopla: 4 };
+
+  const trdNeighbours = {
+    britania: ['galia', 'iberia'],
+    galia: ['britania', 'iberia', 'roma'],
+    iberia: ['britania', 'galia', 'roma', 'africa'],
+    roma: ['galia', 'iberia', 'africa', 'constantinopla', 'egito'],
+    africa: ['iberia', 'roma', 'egito'],
+    constantinopla: ['roma', 'asiamenor', 'egito'],
+    asiamenor: ['constantinopla', 'egito'],
+    egito: ['roma', 'africa', 'constantinopla', 'asiamenor'],
+  };
+
+  const trdRegionNames = {
+    pt: {
+      britania: 'Britânia',
+      galia: 'Gália',
+      iberia: 'Ibéria',
+      roma: 'Roma',
+      africa: 'África do Norte',
+      constantinopla: 'Constantinopla',
+      asiamenor: 'Ásia Menor',
+      egito: 'Egito',
+    },
+    en: {
+      britania: 'Britain',
+      galia: 'Gaul',
+      iberia: 'Iberia',
+      roma: 'Rome',
+      africa: 'North Africa',
+      constantinopla: 'Constantinople',
+      asiamenor: 'Asia Minor',
+      egito: 'Egypt',
+    },
+  };
+
+  const trdMessages = {
+    pt: {
+      empty: 'Mapa vazio: as oito regiões estão descobertas.',
+      exposedOne: 'Uma região não reúne três legiões de defesa.',
+      exposedMany: (total) => `${total} regiões não reúnem três legiões de defesa.`,
+      optimal: 'Império protegido pelo custo mínimo. Não existe arranjo mais barato.',
+      valid: (weight) => `Império protegido, mas por ${weight} legiões: o melhor arranjo custa ${trdOptimalWeight}.`,
+      node: (name, value, exposed) => exposed
+        ? `${name}: ${value} legiões, região desprotegida. Ative para alterar.`
+        : `${name}: ${value} legiões. Ative para alterar.`,
+    },
+    en: {
+      empty: 'Empty map: all eight regions are uncovered.',
+      exposedOne: 'One region does not reach three legions of defence.',
+      exposedMany: (total) => `${total} regions do not reach three legions of defence.`,
+      optimal: 'The empire is protected at minimum cost. No cheaper arrangement exists.',
+      valid: (weight) => `The empire is protected, but at ${weight} legions: the best arrangement costs ${trdOptimalWeight}.`,
+      node: (name, value, exposed) => exposed
+        ? `${name}: ${value} legions, region left exposed. Activate to change.`
+        : `${name}: ${value} legions. Activate to change.`,
+    },
+  };
+
+  const trdNodes = [...trdLab.querySelectorAll('.trd-node')];
+  const trdStatus = trdLab.querySelector('#trd-status');
+  const trdStatusText = trdLab.querySelector('#trd-status-text');
+  const trdCost = trdLab.querySelector('#trd-score-custo');
+  const trdLabels = {};
+
+  trdNodes.forEach((node) => {
+    const value = Number(node.querySelector('.trd-node-value').textContent) || 0;
+    trdLabels[node.dataset.region] = value;
+  });
+
+  /* Defesa disponível em v: as tropas da própria região mais o que cada vizinho
+     ativo pode enviar, já descontada a legião que ele precisa deixar em casa. */
+  function trdDefence(region) {
+    return trdNeighbours[region].reduce(
+      (total, neighbour) => (trdLabels[neighbour] > 0 ? total + trdLabels[neighbour] - 1 : total),
+      trdLabels[region]
+    );
+  }
+
+  function trdRender() {
+    const language = currentLanguage === 'en' ? 'en' : 'pt';
+    const names = trdRegionNames[language];
+    const messages = trdMessages[language];
+    let weight = 0;
+    let exposed = 0;
+
+    trdNodes.forEach((node) => {
+      const region = node.dataset.region;
+      const value = trdLabels[region];
+      const isExposed = trdDefence(region) < 3;
+
+      weight += value;
+      if (isExposed) exposed += 1;
+
+      node.classList.toggle('is-troops', value > 0 && !isExposed);
+      node.classList.toggle('is-exposed', isExposed);
+      node.querySelector('.trd-node-value').textContent = String(value);
+      node.querySelector('.trd-node-name').textContent = names[region];
+      node.setAttribute('aria-label', messages.node(names[region], value, isExposed));
+    });
+
+    trdCost.textContent = String(weight);
+    trdStatus.classList.toggle('is-exposed', exposed > 0);
+
+    if (weight === 0) {
+      trdStatusText.textContent = messages.empty;
+    } else if (exposed === 1) {
+      trdStatusText.textContent = messages.exposedOne;
+    } else if (exposed > 1) {
+      trdStatusText.textContent = messages.exposedMany(exposed);
+    } else if (weight === trdOptimalWeight) {
+      trdStatusText.textContent = messages.optimal;
+    } else {
+      trdStatusText.textContent = messages.valid(weight);
+    }
+  }
+
+  function trdCycleRegion(region) {
+    const next = (trdLabelCycle.indexOf(trdLabels[region]) + 1) % trdLabelCycle.length;
+    trdLabels[region] = trdLabelCycle[next];
+    trdRender();
+  }
+
+  trdNodes.forEach((node) => {
+    node.addEventListener('click', () => trdCycleRegion(node.dataset.region));
+    node.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      trdCycleRegion(node.dataset.region);
+    });
+  });
+
+  trdLab.querySelectorAll('[data-trd-action]').forEach((button) => {
+    button.addEventListener('click', () => {
+      Object.keys(trdLabels).forEach((region) => {
+        trdLabels[region] = button.dataset.trdAction === 'optimal'
+          ? trdOptimalSolution[region] || 0
+          : 0;
+      });
+      trdRender();
+    });
+  });
+
+  languageToggle.addEventListener('click', trdRender);
+  trdRender();
+}
