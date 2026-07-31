@@ -2239,3 +2239,53 @@ h3 {
     grid-template-columns: 1fr;
   }
 }
+
+.portrait-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 190px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.portrait-heading .case-section-heading {
+  margin-bottom: 0;
+}
+
+.portrait {
+  margin: 0;
+}
+
+.portrait img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+.portrait figcaption {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.architecture-card.is-highlight {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  background: color-mix(in srgb, var(--accent-soft) 55%, var(--surface));
+}
+
+.architecture-card.is-highlight > span {
+  color: var(--accent-strong);
+}
+
+@media (max-width: 700px) {
+  .portrait-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    max-width: 190px;
+  }
+}

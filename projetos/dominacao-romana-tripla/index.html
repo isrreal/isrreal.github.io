@@ -121,13 +121,22 @@
     <section class="section section-alt">
       <div class="container case-content">
         <article id="estrategia">
-          <div class="case-section-heading">
-            <p class="section-kicker" id="trd-estrategia-kicker">A estratégia de Constantino</p>
-            <h2 id="trd-estrategia-titulo">Metade das legiões, o mesmo território.</h2>
-            <p class="lead" id="trd-estrategia-lead">
-              O império tinha oito regiões e cinquenta legiões. Quando sobraram vinte e cinco,
-              guarnecer tudo deixou de ser possível — e o imperador mudou a pergunta.
-            </p>
+          <div class="portrait-heading">
+            <figure class="portrait">
+              <img src="../../assets/constantino-busto.jpg" alt="Busto em mármore do imperador Constantino, o Grande, visto de frente." width="540" height="715" loading="lazy" decoding="async">
+              <figcaption id="trd-retrato-legenda">
+                Constantino, o Grande, que reorganizou a defesa do império no século IV.
+                Busto do Museo Chiaramonti, Vaticano. Foto de Marie-Lan Nguyen, domínio público.
+              </figcaption>
+            </figure>
+            <div class="case-section-heading">
+              <p class="section-kicker" id="trd-estrategia-kicker">A estratégia de Constantino</p>
+              <h2 id="trd-estrategia-titulo">Metade das legiões, o mesmo território.</h2>
+              <p class="lead" id="trd-estrategia-lead">
+                O império tinha oito regiões e cinquenta legiões. Quando sobraram vinte e cinco,
+                guarnecer tudo deixou de ser possível — e o imperador mudou a pergunta.
+              </p>
+            </div>
           </div>
           <ol class="system-flow flow-three" aria-label="Três passos da estratégia de defesa">
             <li class="flow-step">
@@ -295,6 +304,42 @@
             as outras seis. Figura do TCC, elaborada pelo autor com base em Gray (2015).
           </figcaption>
         </figure>
+
+        <article class="case-block" id="variacao">
+          <div>
+            <p class="section-kicker" id="trd-variacao-kicker">Por que três?</p>
+            <h2 id="trd-variacao-titulo">A terceira versão de um problema clássico.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead" id="trd-variacao-lead">
+              A ideia de Constantino virou problema matemático em 2004, e desde então ganhou
+              versões cada vez mais exigentes. Muda uma coisa só: quantas legiões de socorro
+              cada região precisa reunir.
+            </p>
+            <div class="architecture-grid">
+              <section class="architecture-card">
+                <span id="trd-var1-tag">2004</span>
+                <h3 id="trd-var1-titulo">Dominação romana</h3>
+                <p id="trd-var1-texto">Uma legião de socorro por região. Basta um vizinho forte para cobrir quem está desguarnecido.</p>
+              </section>
+              <section class="architecture-card">
+                <span id="trd-var2-tag">2016</span>
+                <h3 id="trd-var2-titulo">Dominação romana dupla</h3>
+                <p id="trd-var2-texto">Duas legiões de socorro. Já não basta um único vizinho comum: é preciso mais reforço à volta.</p>
+              </section>
+              <section class="architecture-card is-highlight">
+                <span id="trd-var3-tag">2021 · este trabalho</span>
+                <h3 id="trd-var3-titulo">Dominação romana tripla</h3>
+                <p id="trd-var3-texto">Três legiões de socorro. É a mais exigente das três e, por isso, a que tolera o maior número de falhas simultâneas.</p>
+              </section>
+              <section class="architecture-card">
+                <span id="trd-var4-tag">O trade-off</span>
+                <h3 id="trd-var4-titulo">Mais robusta, não mais barata</h3>
+                <p id="trd-var4-texto">Exigir três em vez de uma custa mais legiões — a solução fica mais cara. O ganho não é economia: é a margem para absorver ataques ou quedas simultâneas sem deixar ninguém descoberto.</p>
+              </section>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -422,14 +467,30 @@
             <h2 id="trd-aplicacoes-titulo">O mesmo problema, sem legiões.</h2>
           </div>
           <div class="case-prose">
+            <p class="lead" id="trd-aplicacoes-lead">
+              Troque as regiões por bairros e as legiões por depósitos. Quantos depósitos uma
+              rede precisa, e em quais bairros, para abastecer a cidade inteira — sabendo que
+              um depósito que socorre o bairro vizinho não pode ficar sem estoque próprio?
+              É a mesma conta que Constantino fez.
+            </p>
+            <div class="case-formula">
+              <p class="section-kicker" id="trd-cidade-kicker">O mesmo enunciado, em três leituras</p>
+              <p id="trd-cidade-texto">
+                <strong>Bairro que não tem depósito precisa ser abastecido pelos vizinhos —
+                e quem abastece continua tendo o que vender.</strong> Trocando as palavras:
+                servidor, antena, hospital, equipe de plantão. A estrutura do problema não muda.
+              </p>
+            </div>
             <ul class="case-list" aria-label="Aplicações do problema">
-              <li id="trd-aplicacao-1"><strong>Servidores:</strong> onde instalar servidores para que toda a rede continue atendida, mesmo quando um ponto sai do ar.</li>
-              <li id="trd-aplicacao-2"><strong>Cobertura de redes:</strong> garantir que cada ponto tenha socorro suficiente vindo da vizinhança, e não apenas um único vizinho disponível.</li>
-              <li id="trd-aplicacao-3"><strong>Alocação de recursos:</strong> distribuir equipes ou equipamentos escassos entre regiões que conseguem se apoiar mutuamente.</li>
+              <li id="trd-aplicacao-1"><strong>Lojas e depósitos:</strong> quantos pontos de estoque uma rede precisa para cobrir todos os bairros, incluindo os que não têm loja própria, sem desabastecer quem socorre.</li>
+              <li id="trd-aplicacao-2"><strong>Servidores e antenas:</strong> onde instalar, e quantos, para que toda a rede continue atendida mesmo quando um ponto sai do ar — e continue atendida se dois saírem juntos.</li>
+              <li id="trd-aplicacao-3"><strong>Equipes e plantões:</strong> distribuir ambulâncias, brigadas ou equipes de manutenção entre regiões que conseguem se cobrir mutuamente sem ficarem descobertas.</li>
             </ul>
             <p id="trd-aplicacoes-nota">
-              A literatura da área cita esses três cenários. O trabalho em si é sobre o
-              problema matemático: não há aqui um estudo de caso aplicado a uma rede real.
+              A literatura da área cita defesa militar, alocação de servidores e cobertura de
+              redes; os exemplos de loja e plantão são analogias para mostrar a estrutura. O
+              trabalho em si é sobre o problema matemático: não há aqui um estudo de caso
+              aplicado a uma rede real.
             </p>
           </div>
         </article>
