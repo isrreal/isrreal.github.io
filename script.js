@@ -82,6 +82,7 @@ const englishPages = {
       ['#projetos .project-card:nth-child(1) > p', 'Facial biometric time-tracking system in final acceptance testing for an educational institution, combining face recognition, geofencing, medical-document classification, and a secure backend.'],
       ['#projetos .project-card:nth-child(1) .project-links a:nth-child(1)', 'Explore project →'],
       ['#projetos .project-card:nth-child(1) .project-links a:nth-child(2)', 'View technical breakdown →'],
+      ['#projetos .project-card:nth-child(1) .project-links a:nth-child(3)', 'Public repository →'],
       ['#projetos .project-card:nth-child(2) .status', 'Completed'],
       ['#projetos .project-card:nth-child(2) h3', 'Triple Roman Domination'],
       ['#projetos .project-card:nth-child(2) > p', 'The first GA- and ACO-based metaheuristics in the literature for the TRDP, together with a corrected ILP formulation for exact solutions.'],
