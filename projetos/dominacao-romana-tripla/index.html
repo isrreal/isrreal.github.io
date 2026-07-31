@@ -67,10 +67,9 @@
         <p class="eyebrow">TCC · Otimização combinatória · Concluído</p>
         <h1 class="case-title">Como defender um império inteiro com metade das tropas?</h1>
         <p class="hero-description case-intro" id="trd-intro">
-          Constantino enfrentou essa pergunta no século IV. Ela virou um problema de
-          matemática que, mil e setecentos anos depois, nenhum computador sabe resolver
-          rápido. Meu TCC atacou esse problema com algoritmos inspirados em formigas e
-          em evolução — e corrigiu um modelo publicado que estava errado.
+          Constantino enfrentou isso no século IV. Virou um problema de matemática que
+          nenhum computador resolve rápido até hoje. Meu TCC atacou com algoritmos
+          inspirados em formigas e em evolução — e corrigiu um modelo publicado errado.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#estrategia">Ver a estratégia</a>
@@ -96,30 +95,11 @@
           </div>
           <div class="case-prose">
             <ul class="case-list" aria-label="Resumo do projeto">
-              <li id="trd-resumo-1">
-                <strong>O problema:</strong> distribuir proteção entre as regiões de um grafo
-                com o menor custo total, garantindo que toda região desguarnecida possa ser
-                socorrida pelos vizinhos. É NP-completo.
-              </li>
-              <li id="trd-resumo-2">
-                <strong>Minha contribuição:</strong> as duas primeiras meta-heurísticas
-                propostas na literatura para este problema — colônia de formigas e algoritmo
-                genético — implementadas em C++.
-              </li>
-              <li id="trd-resumo-3">
-                <strong>A correção:</strong> a formulação exata publicada antes aceitava
-                soluções inválidas. Apresento o contraexemplo e a primeira formulação
-                correta, que serve de referência para medir tudo o mais.
-              </li>
-              <li id="trd-resumo-4">
-                <strong>Evidências:</strong> 362 grafos avaliados sob três métricas declaradas
-                antes dos experimentos; a colônia de formigas com busca local venceu na maioria
-                dos casos e apenas 6 grafos ficaram a mais de 50% do valor de referência.
-              </li>
-              <li id="trd-resumo-5">
-                <strong>Formato:</strong> Trabalho de Conclusão de Curso em Ciência da
-                Computação na UFC Quixadá, defendido em fevereiro de 2025.
-              </li>
+              <li id="trd-resumo-1"><strong>O problema:</strong> proteger todas as regiões de um grafo pelo menor custo, com quem está desguarnecido dependendo dos vizinhos. É NP-completo.</li>
+              <li id="trd-resumo-2"><strong>Minha contribuição:</strong> as duas primeiras meta-heurísticas da literatura para o problema — colônia de formigas e algoritmo genético, em C++.</li>
+              <li id="trd-resumo-3"><strong>A correção:</strong> a formulação exata publicada antes aceita soluções inválidas. Mostro o contraexemplo e proponho a primeira correta.</li>
+              <li id="trd-resumo-4"><strong>Evidências:</strong> 362 grafos sob três métricas declaradas antes dos experimentos. Só 6 ficaram a mais de 50% da referência.</li>
+              <li id="trd-resumo-5"><strong>Formato:</strong> TCC em Ciência da Computação na UFC Quixadá, defendido em fevereiro de 2025.</li>
             </ul>
           </div>
         </article>
@@ -140,10 +120,7 @@
             <div class="case-section-heading">
               <p class="section-kicker" id="trd-estrategia-kicker">A estratégia de Constantino</p>
               <h2 id="trd-estrategia-titulo">Metade das legiões, o mesmo território.</h2>
-              <p class="lead" id="trd-estrategia-lead">
-                O império tinha oito regiões e cinquenta legiões. Quando sobraram vinte e cinco,
-                guarnecer tudo deixou de ser possível — e o imperador mudou a pergunta.
-              </p>
+              <p class="lead" id="trd-estrategia-lead">Oito regiões, cinquenta legiões. Quando sobraram vinte e cinco, guarnecer tudo virou impossível — e o imperador mudou a pergunta.</p>
             </div>
           </div>
           <ol class="system-flow flow-three" aria-label="Três passos da estratégia de defesa">
@@ -155,7 +132,7 @@
             <li class="flow-step">
               <span class="flow-index">02</span>
               <strong id="trd-passo2-titulo">Metade da força</strong>
-              <p id="trd-passo2-texto">De cinquenta legiões para cerca de vinte e cinco. Não havia tropa suficiente para ocupar todas as regiões.</p>
+              <p id="trd-passo2-texto">De cinquenta para cerca de vinte e cinco legiões: não dá para ocupar todas as regiões.</p>
             </li>
             <li class="flow-step">
               <span class="flow-index">03</span>
@@ -188,10 +165,7 @@
                 O problema é encontrar a distribuição válida mais barata.
               </p>
             </div>
-            <p id="trd-regra-texto">
-              É só isso. Uma região com 4 legiões sozinha já salva qualquer vizinho: manda 3,
-              fica com 1. Uma com 2 legiões só consegue mandar 1 — precisa de companhia.
-            </p>
+            <p id="trd-regra-texto">Uma região com 4 legiões salva qualquer vizinho sozinha: manda 3, fica com 1. Uma com 2 só consegue mandar 1 — precisa de companhia.</p>
           </div>
         </article>
 
@@ -199,10 +173,7 @@
           <div class="trd-lab-heading">
             <p class="section-kicker" id="trd-lab-kicker">Experimente</p>
             <h3 id="trd-lab-titulo">Distribua as legiões do império.</h3>
-            <p id="trd-help" class="trd-lab-help">
-              Clique em uma região para mudar as tropas dela: 0 → 2 → 3 → 4 → 0.
-              O mapa avisa na hora quem ficou desprotegido.
-            </p>
+            <p id="trd-help" class="trd-lab-help">Clique numa região para mudar as tropas: 0 → 2 → 3 → 4. O mapa avisa na hora quem ficou desprotegido.</p>
           </div>
 
           <div class="trd-board">
@@ -291,10 +262,7 @@
                 <button class="button button-secondary" type="button" data-trd-action="optimal" id="trd-botao-otimo">Ver uma solução ótima</button>
                 <button class="button button-secondary" type="button" data-trd-action="clear" id="trd-botao-limpar">Esvaziar o mapa</button>
               </div>
-              <p class="trd-lab-note" id="trd-lab-nota">
-                Este mapa começa em uma das cinco soluções ótimas: oito legiões, nenhuma
-                região desprotegida. Não existe arranjo válido mais barato.
-              </p>
+              <p class="trd-lab-note" id="trd-lab-nota">Começa em uma das cinco soluções ótimas: oito legiões, ninguém desprotegido. Não existe arranjo válido mais barato.</p>
             </div>
           </div>
 
@@ -319,31 +287,27 @@
             <h2 id="trd-variacao-titulo">A terceira versão de um problema clássico.</h2>
           </div>
           <div class="case-prose">
-            <p class="lead" id="trd-variacao-lead">
-              A ideia de Constantino virou problema matemático em 2004, e desde então ganhou
-              versões cada vez mais exigentes. Muda uma coisa só: quantas legiões de socorro
-              cada região precisa reunir.
-            </p>
+            <p class="lead" id="trd-variacao-lead">A ideia de Constantino virou problema matemático em 2004 e ganhou versões cada vez mais exigentes. Muda uma coisa só: quantas legiões de socorro cada região precisa reunir.</p>
             <div class="architecture-grid">
               <section class="architecture-card">
                 <span id="trd-var1-tag">2004</span>
                 <h3 id="trd-var1-titulo">Dominação romana</h3>
-                <p id="trd-var1-texto">Uma legião de socorro por região. Basta um vizinho forte para cobrir quem está desguarnecido.</p>
+                <p id="trd-var1-texto">Uma legião de socorro por região. Basta um vizinho forte.</p>
               </section>
               <section class="architecture-card">
                 <span id="trd-var2-tag">2016</span>
                 <h3 id="trd-var2-titulo">Dominação romana dupla</h3>
-                <p id="trd-var2-texto">Duas legiões de socorro. Já não basta um único vizinho comum: é preciso mais reforço à volta.</p>
+                <p id="trd-var2-texto">Duas legiões. Um único vizinho comum já não basta.</p>
               </section>
               <section class="architecture-card is-highlight">
                 <span id="trd-var3-tag">2021 · este trabalho</span>
                 <h3 id="trd-var3-titulo">Dominação romana tripla</h3>
-                <p id="trd-var3-texto">Três legiões de socorro. É a mais exigente das três e, por isso, a que tolera o maior número de falhas simultâneas.</p>
+                <p id="trd-var3-texto">Três legiões. A mais exigente das três e a que tolera mais falhas simultâneas.</p>
               </section>
               <section class="architecture-card">
                 <span id="trd-var4-tag">O trade-off</span>
                 <h3 id="trd-var4-titulo">Mais robusta, não mais barata</h3>
-                <p id="trd-var4-texto">Exigir três em vez de uma custa mais legiões — a solução fica mais cara. O ganho não é economia: é a margem para absorver ataques ou quedas simultâneas sem deixar ninguém descoberto.</p>
+                <p id="trd-var4-texto">Exigir três em vez de uma custa mais legiões. O ganho não é economia: é margem para absorver quedas simultâneas.</p>
               </section>
             </div>
           </div>
@@ -359,18 +323,8 @@
             <h2 id="trd-dificuldade-titulo">Fácil de conferir, difícil de achar.</h2>
           </div>
           <div class="case-prose">
-            <p class="lead" id="trd-dificuldade-lead">
-              Conferir se uma distribuição funciona leva um instante. Encontrar a mais barata
-              entre todas as possíveis é outra história.
-            </p>
-            <p id="trd-dificuldade-texto">
-              Com oito regiões existem 65.536 distribuições. Com cem regiões, o número tem
-              61 dígitos — <strong>bilhões de vezes o total de átomos que existem na Terra</strong>.
-              Um computador que testasse um bilhão delas por segundo desde o Big Bang teria
-              coberto uma fração desprezível. E o problema é <strong>NP-completo</strong>: não se
-              conhece método exato e rápido, e a suspeita da área é que não exista. Sobra buscar
-              boas soluções em tempo aceitável.
-            </p>
+            <p class="lead" id="trd-dificuldade-lead">Conferir se uma distribuição funciona leva um instante. Achar a mais barata entre todas é outra história.</p>
+            <p id="trd-dificuldade-texto">Com oito regiões existem 65.536 distribuições. Com cem, o número tem 61 dígitos — <strong>bilhões de vezes o total de átomos da Terra</strong>. Um computador testando um bilhão por segundo desde o Big Bang teria coberto uma fração desprezível. E o problema é <strong>NP-completo</strong>: não se conhece método exato e rápido.</p>
             <div class="case-results" aria-label="A dificuldade em números">
               <div class="case-result">
                 <strong>65.536</strong>
@@ -401,22 +355,22 @@
             <section class="architecture-card">
               <span id="trd-card1-tag">Meta-heurística</span>
               <h3 id="trd-card1-titulo">Colônia de formigas</h3>
-              <p id="trd-card1-texto">Formigas artificiais montam distribuições e deixam rastro nas escolhas que deram certo; as próximas tendem a seguir esse rastro. Foi o método que se saiu melhor.</p>
+              <p id="trd-card1-texto">Formigas artificiais montam distribuições e deixam rastro nas escolhas que deram certo. Foi o método que se saiu melhor.</p>
             </section>
             <section class="architecture-card">
               <span id="trd-card2-tag">Meta-heurística</span>
               <h3 id="trd-card2-titulo">Algoritmo genético</h3>
-              <p id="trd-card2-texto">Uma população de soluções que se cruzam, sofrem mutações e competem entre si. As mais baratas sobrevivem para a geração seguinte.</p>
+              <p id="trd-card2-texto">Uma população de soluções que se cruzam, sofrem mutações e competem. As mais baratas sobrevivem.</p>
             </section>
             <section class="architecture-card">
               <span id="trd-card3-tag">Método exato</span>
               <h3 id="trd-card3-titulo">Programação linear inteira</h3>
-              <p id="trd-card3-texto">O problema descrito como um sistema de restrições e entregue a um solver, que devolve a resposta ótima enquanto o grafo é pequeno o bastante. É a régua para medir os outros dois.</p>
+              <p id="trd-card3-texto">O problema como sistema de restrições, resolvido por solver enquanto o grafo é pequeno. É a régua para medir os outros dois.</p>
             </section>
             <section class="architecture-card">
               <span id="trd-card4-tag">Correção</span>
               <h3 id="trd-card4-titulo">Um modelo publicado que falhava</h3>
-              <p id="trd-card4-texto">A formulação exata que existia aceitava distribuições inválidas. Mostrei um contraexemplo concreto e propus a primeira formulação correta da literatura.</p>
+              <p id="trd-card4-texto">A formulação exata da literatura aceitava distribuições inválidas. Mostrei um contraexemplo e propus a primeira correta.</p>
             </section>
           </div>
         </article>
@@ -431,11 +385,7 @@
             <h2 id="trd-resultados-titulo">362 grafos, medidos contra o ótimo.</h2>
           </div>
           <div class="case-prose">
-            <p class="lead" id="trd-resultados-lead">
-              Os dois algoritmos foram testados em bases clássicas, redes reais e grafos
-              gerados para o trabalho. Onde o solver exato conseguiu responder, a comparação
-              é contra o valor ótimo.
-            </p>
+            <p class="lead" id="trd-resultados-lead">Bases clássicas, redes reais e grafos gerados para o trabalho. Onde o solver exato respondeu, a comparação é contra o ótimo.</p>
             <div class="case-results" aria-label="Resumo dos resultados">
               <div class="case-result">
                 <strong>362</strong>
@@ -450,11 +400,7 @@
                 <span id="trd-resultado-3">grafos, entre todos os avaliados, ficaram a mais de 50% do ótimo</span>
               </div>
             </div>
-            <p id="trd-resultados-texto">
-              O algoritmo genético não foi descartado: ele continuou competitivo em grafos
-              menores e mais estruturados, e em alguns casos chegou ao ótimo onde a colônia
-              de formigas não chegou.
-            </p>
+            <p id="trd-resultados-texto">O algoritmo genético não foi descartado: seguiu competitivo em grafos menores e estruturados, e às vezes chegou ao ótimo onde a colônia de formigas não chegou.</p>
           </div>
         </article>
 
@@ -477,31 +423,13 @@
             <h2 id="trd-aplicacoes-titulo">O mesmo problema, sem legiões.</h2>
           </div>
           <div class="case-prose">
-            <p class="lead" id="trd-aplicacoes-lead">
-              Troque as regiões por bairros e as legiões por depósitos. Quantos depósitos uma
-              rede precisa, e em quais bairros, para abastecer a cidade inteira — sabendo que
-              um depósito que socorre o bairro vizinho não pode ficar sem estoque próprio?
-              É a mesma conta que Constantino fez.
-            </p>
-            <div class="case-formula">
-              <p class="section-kicker" id="trd-cidade-kicker">O mesmo enunciado, em três leituras</p>
-              <p id="trd-cidade-texto">
-                <strong>Bairro que não tem depósito precisa ser abastecido pelos vizinhos —
-                e quem abastece continua tendo o que vender.</strong> Trocando as palavras:
-                servidor, antena, hospital, equipe de plantão. A estrutura do problema não muda.
-              </p>
-            </div>
+            <p class="lead" id="trd-aplicacoes-lead">Troque regiões por bairros e legiões por depósitos: quantos depósitos abastecem a cidade inteira, sabendo que quem socorre o vizinho não pode ficar sem estoque? É a mesma conta.</p>
             <ul class="case-list" aria-label="Aplicações do problema">
-              <li id="trd-aplicacao-1"><strong>Lojas e depósitos:</strong> quantos pontos de estoque uma rede precisa para cobrir todos os bairros, incluindo os que não têm loja própria, sem desabastecer quem socorre.</li>
-              <li id="trd-aplicacao-2"><strong>Servidores e antenas:</strong> onde instalar, e quantos, para que toda a rede continue atendida mesmo quando um ponto sai do ar — e continue atendida se dois saírem juntos.</li>
-              <li id="trd-aplicacao-3"><strong>Equipes e plantões:</strong> distribuir ambulâncias, brigadas ou equipes de manutenção entre regiões que conseguem se cobrir mutuamente sem ficarem descobertas.</li>
+              <li id="trd-aplicacao-1"><strong>Lojas e depósitos:</strong> cobrir todos os bairros, inclusive os sem loja própria, sem desabastecer quem socorre.</li>
+              <li id="trd-aplicacao-2"><strong>Servidores e antenas:</strong> onde instalar para a rede seguir atendida quando um ponto cai — e quando dois caem juntos.</li>
+              <li id="trd-aplicacao-3"><strong>Equipes e plantões:</strong> distribuir ambulâncias ou brigadas entre regiões que se cobrem sem ficarem descobertas.</li>
             </ul>
-            <p id="trd-aplicacoes-nota">
-              A literatura da área cita defesa militar, alocação de servidores e cobertura de
-              redes; os exemplos de loja e plantão são analogias para mostrar a estrutura. O
-              trabalho em si é sobre o problema matemático: não há aqui um estudo de caso
-              aplicado a uma rede real.
-            </p>
+            <p id="trd-aplicacoes-nota">A literatura cita defesa militar, servidores e cobertura de redes; loja e plantão são analogias. O trabalho é sobre o problema matemático, não sobre um caso aplicado.</p>
           </div>
         </article>
 
@@ -511,15 +439,7 @@
             <h2 id="trd-ponte-titulo">A partir daqui, o detalhe.</h2>
           </div>
           <div class="case-prose">
-            <p class="lead" id="trd-ponte-lead">
-              A página técnica traz a definição formal, o contraexemplo que derruba a
-              formulação anterior, os dois algoritmos passo a passo e as tabelas de resultado
-              com os valores medidos.
-            </p>
-            <p id="trd-ponte-aviso">
-              É leitura opcional, escrita para quem quer ver o método — inclusive os limites
-              do que foi medido.
-            </p>
+            <p class="lead" id="trd-ponte-lead">A página técnica traz a definição formal, o contraexemplo que derruba a formulação anterior, os dois algoritmos passo a passo e as tabelas medidas.</p>
             <div class="hero-actions">
               <a class="button button-primary" href="tecnico.html">Ver a estrutura técnica →</a>
             </div>

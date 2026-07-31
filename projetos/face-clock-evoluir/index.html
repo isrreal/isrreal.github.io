@@ -98,9 +98,8 @@
           <div class="case-prose">
             <ul class="case-list" aria-label="Resumo do projeto">
               <li>
-                <strong>Problema e usuário:</strong> uma instituição de ensino precisava
-                registrar a jornada de seus funcionários sem cartão, senha ou fila —
-                incluindo quem trabalha fora da sede.
+                <strong>Problema e usuário:</strong> registrar a jornada de funcionários de uma
+                instituição de ensino sem cartão, senha ou fila — inclusive quem trabalha fora da sede.
               </li>
               <li>
                 <strong>Minha responsabilidade:</strong> entrega individual de ponta a ponta —
@@ -108,8 +107,8 @@
               </li>
               <li>
                 <strong>Arquitetura:</strong> biometria facial com busca vetorial em PostgreSQL
-                (<code>pgvector</code>), geofencing por GPS, triagem de atestados combinando
-                rede neural e OCR, e backend FastAPI em Docker.
+                (<code>pgvector</code>), geofencing por GPS, triagem de atestados com rede neural e
+                OCR, e backend FastAPI em Docker.
               </li>
               <li>
                 <strong>Evidências:</strong> 142 testes automatizados em pipeline Docker;
@@ -142,15 +141,13 @@
               está no local permitido e continuar simples o bastante para o uso diário.
             </p>
             <p>
-              O Face Clock Evoluir substitui identificadores compartilháveis, como cartões
-              e senhas, por uma verificação biométrica contextual. A solução atende tanto
-              ao registro individual quanto a um modo totem e integra o ponto a turnos,
-              banco de horas e envio de atestados.
+              O sistema substitui cartões e senhas por verificação biométrica contextual, atende
+              ao registro individual e ao modo totem, e integra o ponto a turnos, banco de horas e
+              envio de atestados.
             </p>
             <p>
-              A decisão de produto mais importante foi separar observação de punição:
-              uma batida fora do horário previsto é registrada e sinalizada, não bloqueada.
-              Assim, o sistema informa o desvio sem inventar regras de folha de pagamento.
+              A decisão de produto mais importante foi separar observação de punição: uma batida
+              fora do horário previsto é registrada e sinalizada, não bloqueada.
             </p>
           </div>
         </article>
@@ -201,9 +198,9 @@
               cada novo registro é validado em relação ao estado anterior.
             </p>
             <p>
-              Depois da autenticação facial e da validação de localização, o sistema resolve a
-              próxima ação com o <code>PontoFSM</code>. Assim, a pessoa pode sair diretamente após
-              entrar, fazer uma ou mais pausas e só encerra o expediente depois de um retorno válido.
+              Depois da autenticação facial e da validação de localização, o <code>PontoFSM</code>
+              resolve a próxima ação: dá para sair logo após entrar, fazer pausas e só encerrar o
+              expediente depois de um retorno válido.
             </p>
             <div class="state-machine" role="img" aria-label="Fluxo de ponto: sem batida leva à entrada; entrada leva ao início da pausa ou à saída; pausa leva ao retorno; retorno leva a outra pausa ou à saída.">
               <svg class="fsm-automaton" viewBox="0 0 960 250" role="img" aria-labelledby="fsm-title fsm-description">
@@ -315,16 +312,14 @@
               médico, antes de ele chegar à mesa de quem aprova.
             </p>
             <p id="atestado-resumo">
-              A triagem não decide sozinha: ela organiza a fila e sinaliza o que parece fora
-              do lugar, e a palavra final continua sendo de uma pessoa. Na avaliação com
-              documentos que o modelo nunca tinha visto, a versão escolhida acerta 87,5% dos
-              casos e comete sete enganos a menos que a alternativa anterior, sem reconhecer
-              menos atestados do que ela.
+              A triagem não decide sozinha: organiza a fila e sinaliza o que parece fora do lugar,
+              mas a palavra final é de uma pessoa. Em documentos que o modelo nunca viu, a versão
+              escolhida acerta 87,5% dos casos e comete sete enganos a menos que a anterior, sem
+              reconhecer menos atestados.
             </p>
             <p id="atestado-rotulos">
-              As decisões humanas também podem alimentar re-treinamentos futuros. Para evitar
-              rótulos incorretos, documentos rejeitados só entram como exemplos negativos quando
-              há concordância entre pessoa e modelo; casos ambíguos são descartados da base de treino.
+              As decisões humanas podem alimentar re-treinamentos. Para evitar rótulos incorretos,
+              documentos rejeitados só viram exemplo negativo quando pessoa e modelo concordam.
             </p>
           </div>
         </article>
@@ -336,14 +331,9 @@
           </div>
           <div class="case-prose">
             <p class="lead" id="ponte-lead">
-              Cada número desta página veio de uma medição, e nenhuma delas cabe em um resumo.
               A página técnica documenta a comparação entre as abordagens de classificação, o
-              diagnóstico de um bug silencioso, os experimentos que isolaram a causa do subajuste
-              do modelo e as camadas de segurança da aplicação.
-            </p>
-            <p id="ponte-aviso">
-              É leitura opcional e escrita para quem quer ver o método: protocolo de avaliação,
-              tabelas de resultado e hipóteses descartadas — inclusive as minhas.
+              diagnóstico de um bug silencioso, os experimentos que isolaram o subajuste do
+              modelo e as camadas de segurança.
             </p>
             <div class="hero-actions">
               <a class="button button-primary" href="tecnico.html">Ver estrutura técnica nos detalhes →</a>
@@ -359,9 +349,8 @@
           <div class="case-prose">
             <p>
               A aplicação foi testada como uma stack de produção real, sem os atalhos de
-              desenvolvimento que poderiam mascarar arquivos ausentes, permissões incorretas
-              ou falhas de inicialização. Testes de navegador também revelaram problemas que
-              a leitura estática do código não detectou.
+              desenvolvimento que mascaram arquivos ausentes, permissões erradas ou falhas de
+              inicialização. Testes de navegador revelaram problemas que a leitura do código não pegou.
             </p>
             <div class="case-results" aria-label="Indicadores de engenharia">
               <div class="case-result">
@@ -391,9 +380,8 @@
               de validação antes da implantação definitiva na instituição.
             </p>
             <p>
-              Por se tratar de um produto desenvolvido para um cliente, o código-fonte é
-              proprietário. O repositório público apresenta arquitetura, tecnologias e decisões
-              técnicas sem expor dados institucionais, credenciais ou detalhes operacionais.
+              Por ser um produto de cliente, o código é proprietário. O repositório público mostra
+              arquitetura, tecnologias e decisões técnicas sem expor dados institucionais.
             </p>
           </div>
         </article>
