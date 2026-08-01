@@ -75,6 +75,7 @@
         <div class="hero-actions">
           <a class="button button-secondary" href="#atestados">Ver o experimento de classificação</a>
           <a class="button button-secondary" href="#diagnostico">Ver o diagnóstico do modelo</a>
+          <a class="button button-secondary" href="#congelamento">Ver o experimento de congelamento</a>
           <a class="button button-secondary" href="#engenharia">Ver engenharia e segurança</a>
         </div>
         <ul class="case-meta" aria-label="Assuntos desta página">
@@ -332,6 +333,65 @@
                 já estavam prontos, reverificar custou uma reexecução, sem escrever código novo.
               </li>
             </ul>
+          </div>
+        </article>
+
+        <article class="case-block" id="congelamento">
+          <div>
+            <p class="section-kicker">Validação de arquitetura</p>
+            <h2>Um alarme de overfitting que o 5-fold desarmou.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead" id="congelamento-lead">
+              A configuração de descongelamento usada em produção parecia sobreajustar: 97% de
+              acerto no treino contra 70% num teste de apenas 40 imagens. Em vez de aceitar o
+              diagnóstico, três profundidades de descongelamento foram comparadas sob o mesmo
+              protocolo de validação cruzada.
+            </p>
+            <p id="congelamento-contexto">
+              A rede parte de pesos pré-treinados na ImageNet; a pergunta é quantos blocos finais
+              descongelar para o domínio de atestados. Três opções entraram na comparação: só a
+              cabeça classificadora, a cabeça mais o último bloco de features, e a cabeça mais os
+              dois últimos blocos — esta última, a configuração já em uso. Cada uma rodou em
+              5-fold estratificado sobre as 406 imagens de treino, até 30 épocas com parada
+              antecipada de paciência 7, sempre com a mesma semente e o mesmo balanceamento de
+              classes.
+            </p>
+            <figure class="case-figure">
+              <img src="../../assets/face-clock-freeze-experiment.png" width="2108" height="593"
+                   loading="lazy" decoding="async"
+                   alt="Curvas de acurácia de treino e validação por época, comparando a configuração que só treina a cabeça classificadora com a configuração atual que também descongela os dois últimos blocos de features.">
+              <figcaption id="congelamento-figura-legenda">
+                Acurácia por época nas cinco dobras: só a cabeça classificadora (esquerda) satura
+                bem abaixo do treino; a configuração atual (direita) mantém o gap entre treino e
+                validação bem mais estreito.
+              </figcaption>
+            </figure>
+            <div class="case-results" aria-label="Resultados do experimento de congelamento">
+              <div class="case-result">
+                <strong>84,2% ± 1,7</strong>
+                <span>acurácia média de validação da configuração em produção — a mais alta e a mais estável das três</span>
+              </div>
+              <div class="case-result">
+                <strong>67,0% ± 3,9</strong>
+                <span>acurácia da configuração que só treina a cabeça classificadora — capacidade insuficiente para o domínio</span>
+              </div>
+              <div class="case-result">
+                <strong>40</strong>
+                <span>imagens no teste que gerou o alarme inicial — variância grande demais para sustentar uma conclusão sozinha</span>
+              </div>
+            </div>
+            <p id="congelamento-conclusao">
+              A configuração intermediária, com apenas um bloco descongelado, generalizou pior e de
+              forma mais instável (74,9% ± 6,7%) do que a atual com dois blocos — descongelar mais
+              não piorou o quadro, contrariando a suspeita natural de que mais parâmetros treináveis
+              aumentariam o sobreajuste. O gap de 27 pontos percentuais que motivou o alarme inicial
+              não se repetiu no 5-fold: ali, entre treino e validação, ficou em torno de 10 pontos
+              para a configuração atual — a diferença vinha da variância de um conjunto de teste
+              pequeno, não de memorização real. A arquitetura já em produção foi confirmada, e o
+              próximo ganho de qualidade depende de mais dados — sobretudo da classe minoritária,
+              não-atestado — e não de mexer na profundidade de descongelamento.
+            </p>
           </div>
         </article>
 
