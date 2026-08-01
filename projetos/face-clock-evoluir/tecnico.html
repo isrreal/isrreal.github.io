@@ -357,14 +357,64 @@
               antecipada de paciência 7, sempre com a mesma semente e o mesmo balanceamento de
               classes.
             </p>
-            <figure class="case-figure">
-              <img src="../../assets/face-clock-freeze-experiment.png" width="2108" height="593"
-                   loading="lazy" decoding="async"
-                   alt="Curvas de acurácia de treino e validação por época, comparando a configuração que só treina a cabeça classificadora com a configuração atual que também descongela os dois últimos blocos de features.">
+            <figure class="case-figure case-figure-chart">
+              <svg viewBox="0 0 720 380" role="img" aria-labelledby="congelamento-svg-titulo congelamento-svg-desc" xmlns="http://www.w3.org/2000/svg">
+                <title id="congelamento-svg-titulo">Acurácia de validação por profundidade de descongelamento, 5-fold</title>
+                <desc id="congelamento-svg-desc">Gráfico de colunas com barras de erro (desvio-padrão) comparando três configurações: A, 67,0% mais ou menos 3,9; B, 74,9% mais ou menos 6,7; C, a configuração em produção, 84,2% mais ou menos 1,7.</desc>
+                <style>
+                  .fc-grid { stroke: var(--border); stroke-width: 1; }
+                  .fc-tick { fill: var(--muted); font-size: 11px; }
+                  .fc-bar-muted { fill: var(--muted); }
+                  .fc-bar-good { fill: var(--success); }
+                  .fc-whisker-halo { stroke: var(--surface); stroke-width: 5; stroke-linecap: round; fill: none; }
+                  .fc-whisker { stroke: var(--text); stroke-opacity: 0.55; stroke-width: 2; stroke-linecap: round; fill: none; }
+                  .fc-value { fill: var(--text); font-weight: 600; font-size: 16px; text-anchor: middle; }
+                  .fc-cat { fill: var(--text); font-weight: 600; font-size: 12.5px; text-anchor: middle; }
+                  .fc-status { fill: var(--muted); font-size: 11.5px; text-anchor: middle; }
+                </style>
+                <g>
+                  <line class="fc-grid" x1="48" y1="294.0" x2="696" y2="294.0" />
+                  <text class="fc-tick" x="44" y="298.0" text-anchor="end">0%</text>
+                  <line class="fc-grid" x1="48" y1="228.5" x2="696" y2="228.5" />
+                  <text class="fc-tick" x="44" y="232.5" text-anchor="end">25%</text>
+                  <line class="fc-grid" x1="48" y1="163.0" x2="696" y2="163.0" />
+                  <text class="fc-tick" x="44" y="167.0" text-anchor="end">50%</text>
+                  <line class="fc-grid" x1="48" y1="97.5" x2="696" y2="97.5" />
+                  <text class="fc-tick" x="44" y="101.5" text-anchor="end">75%</text>
+                  <line class="fc-grid" x1="48" y1="32.0" x2="696" y2="32.0" />
+                  <text class="fc-tick" x="44" y="36.0" text-anchor="end">100%</text>
+                </g>
+                <g>
+                  <title id="congelamento-tip-a">Configuração A: 67,0% de acurácia média de validação, descartada.</title>
+                  <path class="fc-bar-muted" d="M142.0,294.0 L142.0,122.5 Q142.0,118.5 146.0,118.5 L166.0,118.5 Q170.0,118.5 170.0,122.5 L170.0,294.0 Z" />
+                  <path class="fc-whisker-halo" d="M156.0,108.2 L156.0,128.8 M149.0,108.2 L163.0,108.2 M149.0,128.8 L163.0,128.8" />
+                  <path class="fc-whisker" d="M156.0,108.2 L156.0,128.8 M149.0,108.2 L163.0,108.2 M149.0,128.8 L163.0,128.8" />
+                  <text class="fc-value" id="congelamento-valor-a" x="156" y="98.2">67,0%</text>
+                  <text class="fc-cat" id="congelamento-cat-a" x="156" y="328">A — só a cabeça</text>
+                  <text class="fc-status" id="congelamento-status-a" x="156" y="346">descartada</text>
+                </g>
+                <g>
+                  <title id="congelamento-tip-b">Configuração B: 74,9% de acurácia média de validação, descartada.</title>
+                  <path class="fc-bar-muted" d="M358.0,294.0 L358.0,101.9 Q358.0,97.9 362.0,97.9 L382.0,97.9 Q386.0,97.9 386.0,101.9 L386.0,294.0 Z" />
+                  <path class="fc-whisker-halo" d="M372.0,80.2 L372.0,115.5 M365.0,80.2 L379.0,80.2 M365.0,115.5 L379.0,115.5" />
+                  <path class="fc-whisker" d="M372.0,80.2 L372.0,115.5 M365.0,80.2 L379.0,80.2 M365.0,115.5 L379.0,115.5" />
+                  <text class="fc-value" id="congelamento-valor-b" x="372" y="70.2">74,9%</text>
+                  <text class="fc-cat" id="congelamento-cat-b" x="372" y="328">B — +1 bloco</text>
+                  <text class="fc-status" id="congelamento-status-b" x="372" y="346">descartada</text>
+                </g>
+                <g>
+                  <title id="congelamento-tip-c">Configuração C: 84,2% de acurácia média de validação, mantida no pipeline.</title>
+                  <path class="fc-bar-good" d="M574.0,294.0 L574.0,77.3 Q574.0,73.3 578.0,73.3 L598.0,73.3 Q602.0,73.3 602.0,77.3 L602.0,294.0 Z" />
+                  <path class="fc-whisker-halo" d="M588.0,69.0 L588.0,77.7 M581.0,69.0 L595.0,69.0 M581.0,77.7 L595.0,77.7" />
+                  <path class="fc-whisker" d="M588.0,69.0 L588.0,77.7 M581.0,69.0 L595.0,69.0 M581.0,77.7 L595.0,77.7" />
+                  <text class="fc-value" id="congelamento-valor-c" x="588" y="59.0">84,2%</text>
+                  <text class="fc-cat" id="congelamento-cat-c" x="588" y="328">C — +2 blocos (atual)</text>
+                  <text class="fc-status" id="congelamento-status-c" x="588" y="346">mantida no pipeline</text>
+                </g>
+              </svg>
               <figcaption id="congelamento-figura-legenda">
-                Acurácia por época nas cinco dobras: só a cabeça classificadora (esquerda) satura
-                bem abaixo do treino; a configuração atual (direita) mantém o gap entre treino e
-                validação bem mais estreito.
+                Acurácia média de validação de cada configuração, com desvio-padrão entre as cinco
+                dobras: a configuração em produção não só vence — é também a mais estável das três.
               </figcaption>
             </figure>
             <div class="case-results" aria-label="Resultados do experimento de congelamento">

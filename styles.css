@@ -726,6 +726,18 @@ h3 {
   text-align: center;
 }
 
+.case-figure-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 1.5rem 1rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+}
+
 .case-table-wrapper {
   margin: 2rem 0 0;
 }
