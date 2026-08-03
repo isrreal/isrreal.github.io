@@ -11,7 +11,7 @@
   --success: #0f9d68;
   --warning: #9a6700;
   --paused: #6b7280;
-  --shadow: 0 24px 80px rgba(25, 31, 45, 0.11);
+  --shadow: 0 14px 40px rgba(25, 31, 45, 0.08);
   --radius-sm: 0.75rem;
   --radius-md: 1.25rem;
   --radius-lg: 1.75rem;
@@ -31,7 +31,7 @@ html[data-theme="dark"] {
   --success: #34d399;
   --warning: #f0c66b;
   --paused: #aab3c5;
-  --shadow: 0 28px 90px rgba(0, 0, 0, 0.35);
+  --shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
 }
 
 * {
@@ -132,7 +132,7 @@ svg {
 
 .site-header.scrolled {
   border-color: var(--border);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 .nav {
@@ -499,7 +499,7 @@ h3 {
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
   box-shadow: var(--shadow);
 }
@@ -1506,23 +1506,23 @@ h3 {
   }
 
   .language-toggle:hover {
-    box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 10%, transparent);
-    transform: translateY(-2px);
+    box-shadow: 0 6px 14px color-mix(in srgb, var(--accent) 8%, transparent);
+    transform: translateY(-1px);
   }
 
   .language-toggle:hover .language-arrow {
-    transform: rotate(180deg) scale(1.1);
+    transform: rotate(180deg) scale(1.05);
   }
 
   .button:hover {
-    box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 12%, transparent);
-    transform: translateY(-3px) scale(1.015);
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--accent) 8%, transparent);
+    transform: translateY(-2px);
   }
 
   .terminal-card:hover {
     border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-    box-shadow: 0 34px 100px rgba(0, 0, 0, 0.42);
-    transform: rotate(0deg) translateY(-7px) scale(1.012);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
+    transform: rotate(0deg) translateY(-4px);
   }
 
   .tag-list li:hover,
@@ -1530,19 +1530,19 @@ h3 {
     border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
     background: color-mix(in srgb, var(--accent-soft) 48%, transparent);
     color: var(--text);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
   }
 
   .case-formula:hover {
     background: color-mix(in srgb, var(--accent-soft) 28%, var(--surface));
-    box-shadow: 0 18px 45px color-mix(in srgb, var(--accent) 7%, transparent);
-    transform: translateX(6px);
+    box-shadow: 0 10px 26px color-mix(in srgb, var(--accent) 5%, transparent);
+    transform: translateX(4px);
   }
 
   .case-figure:hover img {
     border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-    box-shadow: 0 32px 90px color-mix(in srgb, var(--accent) 10%, transparent);
-    transform: scale(1.012);
+    box-shadow: 0 16px 45px color-mix(in srgb, var(--accent) 6%, transparent);
+    transform: scale(1.006);
   }
 
   .case-highlight:hover,
@@ -1550,8 +1550,8 @@ h3 {
   .contact-card:hover,
   .experience-card:hover {
     border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
-    box-shadow: 0 28px 75px color-mix(in srgb, var(--accent) 9%, transparent);
-    transform: translateY(-5px);
+    box-shadow: 0 14px 38px color-mix(in srgb, var(--accent) 6%, transparent);
+    transform: translateY(-3px);
   }
 
   .flow-step:hover,
@@ -1563,8 +1563,8 @@ h3 {
     z-index: 2;
     border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
     background-color: color-mix(in srgb, var(--accent-soft) 22%, var(--surface));
-    box-shadow: 0 22px 55px color-mix(in srgb, var(--accent) 9%, transparent);
-    transform: translateY(-7px) scale(1.015);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 6%, transparent);
+    transform: translateY(-4px);
   }
 
   .flow-step:hover .flow-index,
@@ -1589,29 +1589,29 @@ h3 {
 
   .case-result:hover strong {
     color: var(--accent-strong);
-    transform: translateY(-2px) scale(1.04);
+    transform: translateY(-1px);
     transform-origin: left center;
   }
 
   .state-machine:hover {
     border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-    box-shadow: 0 20px 55px color-mix(in srgb, var(--accent) 7%, transparent);
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--accent) 5%, transparent);
   }
 
   .fsm-state:hover {
-    transform: scale(1.06);
+    transform: scale(1.03);
   }
 
   .fsm-state:hover circle {
-    filter: drop-shadow(0 8px 12px color-mix(in srgb, var(--accent) 14%, transparent));
+    filter: drop-shadow(0 4px 8px color-mix(in srgb, var(--accent) 10%, transparent));
   }
 
   .state-node:hover {
     border-color: var(--accent);
     background: color-mix(in srgb, var(--accent-soft) 55%, var(--background));
-    box-shadow: 0 10px 28px color-mix(in srgb, var(--accent) 12%, transparent);
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--accent) 8%, transparent);
     color: var(--accent-strong);
-    transform: translateY(-4px) scale(1.04);
+    transform: translateY(-2px);
   }
 
   .state-node:hover + .state-arrow,
@@ -1623,18 +1623,18 @@ h3 {
   .experience-facts div:hover {
     border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
     background: color-mix(in srgb, var(--accent-soft) 32%, var(--surface-alt));
-    transform: translateY(-4px);
+    transform: translateY(-2px);
   }
 
   .experience-facts div:hover dt {
-    transform: translateY(-2px) scale(1.04);
+    transform: translateY(-1px);
     transform-origin: left center;
   }
 
   .experience-metric-grid li:hover {
     border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
     background: color-mix(in srgb, var(--accent-soft) 32%, var(--surface-alt));
-    transform: translateY(-4px);
+    transform: translateY(-2px);
   }
 
   .text-link:hover,
@@ -2263,7 +2263,7 @@ h3 {
 
 @media (hover: hover) {
   .trd-node:hover {
-    transform: scale(1.07);
+    transform: scale(1.04);
   }
 
   .trd-node:hover circle {
