@@ -1380,6 +1380,28 @@ h3 {
   color: var(--muted);
 }
 
+/* Ponte entre camadas: fecha o card com a pergunta que a proxima pagina responde.
+   Usa a borda de acento a esquerda para se ler como convite, nao como mais um
+   paragrafo do corpo. */
+/* Segundo paragrafo da abertura: orienta o leitor sobre a profundidade da
+   pagina sem competir com a frase principal. */
+.case-intro-secondary {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 0.75rem;
+}
+
+.experience-teaser {
+  margin: 1.5rem 0 0;
+  padding: 0.9rem 0 0.9rem 1.1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
 .experience-evaluation {
   margin-top: 2rem;
   padding-top: 1.75rem;

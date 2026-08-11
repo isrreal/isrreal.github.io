@@ -191,19 +191,27 @@
               <p class="experience-period" id="fc-exp-periodo">2026 — presente</p>
             </div>
             <p class="lead" id="fc-exp-lead">
-              Face Clock Evoluir: sistema de ponto por reconhecimento facial, entregue de
-              ponta a ponta e em fase final de homologação.
+              Face Clock Evoluir: o funcionário bate o ponto olhando para uma câmera.
+              Sem crachá, sem senha, sem digital — e o sistema descobre sozinho quem é,
+              entre todos os cadastrados, em menos de um segundo.
             </p>
             <dl class="experience-facts" aria-label="Resumo da consultoria" id="fc-exp-facts">
               <div><dt>Ponta a ponta</dt><dd>modelos, backend, dados e implantação</dd></div>
-              <div><dt>292</dt><dd>testes automatizados em pipeline Docker</dd></div>
-              <div><dt>+13 p.p.</dt><dd>de acurácia de validação após ablação controlada</dd></div>
+              <div><dt>315</dt><dd>testes automatizados rodando a cada mudança</dd></div>
+              <div><dt>8&nbsp;GB</dt><dd>o servidor do cliente não tinha placa de vídeo — e ainda assim coube</dd></div>
             </dl>
             <ul class="experience-list" id="fc-exp-lista">
-              <li>Entreguei o sistema ponta a ponta: interface web e totem, modelos, dados, backend, testes e implantação.</li>
-              <li>Implementei busca vetorial 1:N e verificação 1:1 sobre embeddings faciais de 512 dimensões, com vivacidade e proteção anti-replay.</li>
-              <li>Treinei um classificador EfficientNet-B0 para triagem de atestados e diagnostiquei seu subajuste por ablação controlada.</li>
+              <li>Entreguei sozinho o sistema inteiro: a tela que o funcionário usa, o totem na parede, os modelos que reconhecem o rosto, o banco de dados e a instalação no servidor.</li>
+              <li>Fiz o reconhecimento distinguir uma pessoa entre todas as cadastradas — e recusar fotos de fotos, que é como se burla um sistema desses.</li>
+              <li>Ensinei o sistema a separar sozinho um atestado médico de qualquer outro documento fotografado pelo celular, e recuperei 13 pontos percentuais de acerto ao descobrir que a causa do erro não era a que todos supunham.</li>
+              <li>Descobri, perto da entrega, que o servidor do cliente não tinha placa de vídeo e tinha só 8&nbsp;GB de memória. Recoloquei a aplicação inteira dentro desse limite sem abrir mão de nada — e, no caminho, encontrei três defeitos que teriam impedido a instalação de funcionar.</li>
             </ul>
+            <p class="experience-teaser">
+              Como um servidor sem placa de vídeo passou a rodar reconhecimento facial em
+              tempo real, e como se prova que o sistema continua decidindo igual depois de
+              uma mudança dessas? É o que o estudo de caso conta — em português, antes de
+              chegar a qualquer linha de código.
+            </p>
             <ul class="tag-list" aria-label="Tecnologias da consultoria">
               <li>InsightFace</li><li>EfficientNet-B0</li><li>FastAPI</li><li>PostgreSQL</li><li>pgvector</li><li>Docker</li><li>CI</li>
             </ul>
