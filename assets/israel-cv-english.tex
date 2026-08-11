@@ -109,6 +109,9 @@
         \enspace $|$ \enspace
         \href{https://israelsouza.speculummaius.com.br/}
         {Portfolio: israelsouza.speculummaius.com.br}
+        \enspace $|$ \enspace
+        \href{http://lattes.cnpq.br/6540409845091993}
+        {Lattes}
     }
 
 \end{center}
@@ -198,7 +201,15 @@ before concluding, and distrust your own result.
 
     \item Built the data layer and inference service with PostgreSQL,
     SQLAlchemy, Alembic, and FastAPI; delivered Dockerized infrastructure with
-    HTTPS, GitHub Actions, and \textbf{142 automated tests}.
+    HTTPS, GitHub Actions, and \textbf{315 automated tests}.
+
+    \item Resized the delivery to the client's actual server --- no GPU, 8~GB of
+    RAM --- cutting \textbf{8~GB} from the images and \textbf{2~GB} from memory
+    usage by moving inference to \textbf{ONNX Runtime}, with numerical parity
+    verified against PyTorch (bit-identical preprocessing, \textbf{zero} decisions
+    changed). Validating the package by installing it from scratch surfaced
+    \textbf{three defects} that would have blocked installation and were out of
+    reach for unit tests.
 
 \end{itemize}
 

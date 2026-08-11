@@ -109,6 +109,9 @@
         \enspace $|$ \enspace
         \href{https://israelsouza.speculummaius.com.br/}
         {Portfólio: israelsouza.speculummaius.com.br}
+        \enspace $|$ \enspace
+        \href{http://lattes.cnpq.br/6540409845091993}
+        {Lattes}
     }
 
 \end{center}
@@ -198,7 +201,13 @@ concluir e desconfiar do próprio resultado.
 
     \item Construí a camada de dados e o serviço de inferência com PostgreSQL,
     SQLAlchemy, Alembic e FastAPI; entreguei infraestrutura Dockerizada com
-    HTTPS, GitHub Actions e \textbf{142 testes automatizados}.
+    HTTPS, GitHub Actions e \textbf{315 testes automatizados}.
+
+    \item Redimensionei a entrega para o servidor do cliente (sem GPU, 8~GB de
+    RAM): \textbf{--8~GB} de imagens e \textbf{--2~GB} de memória migrando a
+    inferência para \textbf{ONNX Runtime}, com paridade verificada contra o
+    PyTorch e \textbf{zero} decisões alteradas. Instalar o pacote do zero revelou
+    \textbf{três defeitos} bloqueantes fora do alcance de teste unitário.
 
 \end{itemize}
 
