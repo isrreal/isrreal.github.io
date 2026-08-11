@@ -961,6 +961,14 @@ h3 {
   margin-bottom: 0;
 }
 
+/* Detalhe de apoio dentro do destaque: menor que o .lead, para não competir
+   com a afirmação principal do bloco. */
+.case-highlight-note {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
 .case-results {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

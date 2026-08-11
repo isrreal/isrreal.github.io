@@ -80,6 +80,7 @@
           <a class="button button-secondary" href="#diagnostico">Ver o diagnóstico do modelo</a>
           <a class="button button-secondary" href="#congelamento">Ver o experimento de congelamento</a>
           <a class="button button-secondary" href="#engenharia">Ver engenharia e segurança</a>
+          <a class="button button-secondary" href="#entrega">Ver o dimensionamento para o servidor</a>
         </div>
         <ul class="case-meta" aria-label="Assuntos desta página">
           <li>Experimentos controlados</li>
@@ -486,6 +487,87 @@
             Operações de inferência, limitadas por CPU, permanecem síncronas; concorrência
             assíncrona é reservada para esperas de I/O. A escolha evita complexidade sem ganho
             e deixa explícito onde cada modelo de execução realmente ajuda.
+          </p>
+          <p class="case-highlight-note">
+            Um teste de carga expôs o outro lado dessa fronteira. O login falhava por
+            esgotamento do pool de conexões, e o diagnóstico aparente — pool pequeno demais —
+            era o errado: a consulta do usuário abria uma transação, e a conexão ficava retida
+            durante todo o cálculo do bcrypt, trabalho de CPU que não toca o banco. Com um hash
+            de cerca de 100&nbsp;ms, cada conexão rende no máximo dez logins por segundo por
+            mais ociosa que a CPU esteja. Liberar a conexão antes do hash importa mais do que
+            aumentar o pool.
+          </p>
+        </aside>
+
+        <article class="case-block" id="entrega">
+          <div>
+            <p class="section-kicker">Restrição de hardware</p>
+            <h2>O servidor de produção não tinha GPU.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              A máquina de destino se confirmou tarde: gráficos integrados Intel HD 4600 e
+              8&nbsp;GB de RAM, sem GPU dedicada. A stack tinha sido construída assumindo
+              aceleração disponível, e a imagem de inferência partia de uma base com CUDA e
+              cuDNN — cerca de 6&nbsp;GB de bibliotecas que aquela máquina não conseguiria
+              executar em nenhuma hipótese.
+            </p>
+            <p>
+              Medir antes de cortar mostrou que o peso estava em dois lugares diferentes, e que
+              o mais visível não era o mais caro. Em <strong>disco</strong>, o custo era o CUDA:
+              bibliotecas grandes, inertes, transportadas até o cliente para nunca abrir. Em
+              <strong>memória</strong>, o CUDA quase não pesava — o sistema operacional só
+              carrega as páginas de código que executam. A RAM estava sendo consumida por outra
+              coisa: o pacote de reconhecimento facial subia cinco modelos quando a aplicação
+              consultava dois, e cada processo do servidor carregava a sua própria cópia.
+            </p>
+            <div class="case-results" aria-label="Resultado do dimensionamento">
+              <div class="case-result">
+                <strong>&minus;2&nbsp;GB</strong>
+                <span>de RAM devolvidos ao sistema, cerca de um quarto da máquina</span>
+              </div>
+              <div class="case-result">
+                <strong>&minus;95%</strong>
+                <span>no tamanho da imagem de inferência, de 8,1&nbsp;GB para 433&nbsp;MB</span>
+              </div>
+              <div class="case-result">
+                <strong>0</strong>
+                <span>decisões do classificador alteradas ao trocar de runtime</span>
+              </div>
+            </div>
+            <p>
+              A última etapa trocou o runtime de inferência: o modelo passou a rodar em
+              ONNX Runtime, o mesmo que o reconhecimento facial já usava, eliminando um segundo
+              framework de tensores da entrega. Trocar o runtime, porém, é trocar a aritmética
+              que decide se um atestado é aceito — e isso exigia prova, não confiança. O script
+              de exportação compara o novo caminho contra o antigo sobre todo o conjunto de
+              teste e falha se qualquer imagem mudar de lado: o pré-processamento saiu idêntico
+              bit a bit, e nenhuma decisão se moveu.
+            </p>
+            <p>
+              O ganho de memória e o de disco não são a mesma história, e tratá-los como uma só
+              teria produzido um número bonito e falso. Foi por isso que os dois foram medidos e
+              relatados separadamente.
+            </p>
+          </div>
+        </article>
+
+        <aside class="case-highlight">
+          <p class="section-kicker">Otimização que não foi feita</p>
+          <p class="lead">
+            Com os dois serviços passando a usar o mesmo runtime, fundi-los em um só container
+            parecia o passo seguinte — menos memória, menos peças. A medição desaconselhou.
+          </p>
+          <p class="case-highlight-note">
+            Decompor o tempo de uma classificação mostrou que a rede neural respondia em
+            14&nbsp;ms e o OCR consumia 909&nbsp;ms: 98% do trabalho estava no reconhecimento de
+            texto, não no modelo. Fundido ao backend, que roda com dois processos dimensionados
+            para os 8&nbsp;GB da máquina, cada atestado enviado ocuparia metade da capacidade de
+            atendimento por perto de um segundo — disputando com o reconhecimento facial no
+            totem, que é justamente o caminho sensível a espera. O container separado funciona
+            como anteparo, e a memória que ele custa compra esse isolamento. A mesma medição
+            também reposicionou qualquer aceleração futura do classificador: acelerar a rede não
+            tem o que ganhar.
           </p>
         </aside>
       </div>

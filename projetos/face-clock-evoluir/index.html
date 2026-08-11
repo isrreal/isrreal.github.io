@@ -114,7 +114,7 @@
                 OCR, e backend FastAPI em Docker.
               </li>
               <li>
-                <strong>Evidências:</strong> 142 testes automatizados em pipeline Docker;
+                <strong>Evidências:</strong> 315 testes automatizados em pipeline Docker;
                 468 documentos triados por sinais objetivos de qualidade; um bug silencioso de
                 orientação de imagem diagnosticado por metadados EXIF; dezesseis pontos
                 percentuais de acurácia de validação recuperados em duas causas isoladas por
@@ -358,14 +358,21 @@
               desenvolvimento que mascaram arquivos ausentes, permissões erradas ou falhas de
               inicialização. Testes de navegador revelaram problemas que a leitura do código não pegou.
             </p>
+            <p>
+              Instalar o pacote de entrega do zero, seguindo o próprio manual, encontrou três
+              defeitos que a suíte de testes não alcançava — todos dependentes de imagem
+              construída e volume montado, não de código. O mais grave deixava o cadastro
+              biométrico falhar em toda instalação nova: o diretório das fotos nascia com dono
+              errado, e a falha só aparecia depois de a face já ter sido processada com sucesso.
+            </p>
             <div class="case-results" aria-label="Indicadores de engenharia">
               <div class="case-result">
-                <strong>142</strong>
+                <strong>315</strong>
                 <span>testes automatizados passando no pipeline Docker</span>
               </div>
               <div class="case-result">
-                <strong>CPU/GPU</strong>
-                <span>inferência portátil, com aceleração opcional quando disponível</span>
+                <strong>&minus;8&nbsp;GB</strong>
+                <span>imagens de entrega reduzidas ao dimensionar a stack para o servidor real</span>
               </div>
               <div class="case-result">
                 <strong>HTTPS</strong>
