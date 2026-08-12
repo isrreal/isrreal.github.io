@@ -483,6 +483,45 @@
           </div>
         </article>
 
+        <article class="case-block" id="multi-stage">
+          <div>
+            <p class="section-kicker">Benchmark de entrega</p>
+            <h2>O ganho do multi-stage, sem trocar o runtime.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              A redução total da imagem não pode ser atribuída ao multi-stage sem uma comparação
+              controlada. Para isolar seu efeito, construí o mesmo serviço ONNX — mesmo código,
+              modelo e dependências — em duas versões: uma instala tudo diretamente na imagem final;
+              a outra monta o ambiente em uma fase de build e copia apenas o runtime para a fase final.
+            </p>
+            <figure class="case-table-wrapper">
+              <div class="case-table-scroll">
+                <table class="case-table" id="tabela-multi-stage">
+                  <caption id="tabela-multi-stage-titulo">Imagem ONNX equivalente, medida no mesmo host e commit</caption>
+                  <thead id="tabela-multi-stage-cabecalho">
+                    <tr><th scope="col">Build</th><th scope="col">Tamanho</th><th scope="col">Diferença</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr id="tabela-multi-stage-single"><th scope="row">Referência single-stage</th><td>446,2 MiB</td><td>—</td></tr>
+                    <tr class="case-table-highlight" id="tabela-multi-stage-multi"><th scope="row">Multi-stage de produção</th><td>413,3 MiB</td><td>−32,9 MiB (−7,4%)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <figcaption id="tabela-multi-stage-nota">
+                As duas imagens carregaram o modelo ONNX e responderam <code>200</code> em
+                <code>/health</code>. O benchmark é reproduzível pelos Dockerfiles e scripts do projeto.
+              </figcaption>
+            </figure>
+            <p id="multi-stage-conclusao">
+              Os 32,9 MiB são uma economia real no artefato distribuído, mas não explicam sozinhos
+              os 94,6% da redução histórica. O salto maior veio de remover CUDA e PyTorch do caminho
+              de inferência. Separar as causas evita transformar uma boa decisão de engenharia em uma
+              afirmação de portfólio bonita, porém falsa.
+            </p>
+          </div>
+        </article>
+
         <aside class="case-highlight">
           <p class="section-kicker">Decisão de arquitetura</p>
           <p class="lead">
