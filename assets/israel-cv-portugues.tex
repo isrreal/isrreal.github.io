@@ -201,13 +201,15 @@ concluir e desconfiar do próprio resultado.
 
     \item Construí a camada de dados e o serviço de inferência com PostgreSQL,
     SQLAlchemy, Alembic e FastAPI; entreguei infraestrutura Dockerizada com
-    HTTPS, GitHub Actions e \textbf{315 testes automatizados}.
+    HTTPS, GitHub Actions e \textbf{346 testes automatizados}.
 
     \item Redimensionei a entrega para o servidor do cliente (sem GPU, 8~GB de
     RAM): \textbf{--8~GB} de imagens e \textbf{--2~GB} de memória migrando a
-    inferência para \textbf{ONNX Runtime}, com paridade verificada contra o
-    PyTorch e \textbf{zero} decisões alteradas. Instalar o pacote do zero revelou
-    \textbf{três defeitos} bloqueantes fora do alcance de teste unitário.
+    inferência para \textbf{ONNX Runtime}, com \textbf{zero} decisões alteradas.
+    Auditar o pacote construído, e não a árvore de trabalho, revelou
+    \textbf{três defeitos} de instalação e um classificador nunca validado na
+    imagem (\textbf{76,6\%} contra \textbf{95,3\%}); adicionei registro de
+    procedência e \textit{gate} de release.
 
 \end{itemize}
 

@@ -201,15 +201,15 @@ before concluding, and distrust your own result.
 
     \item Built the data layer and inference service with PostgreSQL,
     SQLAlchemy, Alembic, and FastAPI; delivered Dockerized infrastructure with
-    HTTPS, GitHub Actions, and \textbf{315 automated tests}.
+    HTTPS, GitHub Actions, and \textbf{346 automated tests}.
 
     \item Resized the delivery to the client's actual server --- no GPU, 8~GB of
     RAM --- cutting \textbf{8~GB} from the images and \textbf{2~GB} from memory
-    usage by moving inference to \textbf{ONNX Runtime}, with numerical parity
-    verified against PyTorch (bit-identical preprocessing, \textbf{zero} decisions
-    changed). Validating the package by installing it from scratch surfaced
-    \textbf{three defects} that would have blocked installation and were out of
-    reach for unit tests.
+    usage by moving inference to \textbf{ONNX Runtime}, with \textbf{zero}
+    decisions changed. Auditing the built package, not the working tree, exposed
+    \textbf{three} installation defects and a never-validated classifier inside
+    the image (\textbf{76.6\%} against \textbf{95.3\%}); I added a provenance
+    record and a release gate.
 
 \end{itemize}
 

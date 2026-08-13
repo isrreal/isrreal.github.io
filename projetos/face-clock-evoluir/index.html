@@ -371,9 +371,16 @@
               biométrico falhar em toda instalação nova: o diretório das fotos nascia com dono
               errado, e a falha só aparecia depois de a face já ter sido processada com sucesso.
             </p>
+            <p>
+              A revisão seguinte foi feita sobre o pacote empacotado, não sobre a árvore de
+              trabalho — auditando as imagens já construídas e a documentação como o cliente a
+              receberia. Foi ali que apareceu o defeito mais sério do projeto: a entrega
+              embarcava um modelo de classificação diferente do que havia sido validado
+              (<a href="tecnico.html#procedencia">detalhes na página técnica</a>).
+            </p>
             <div class="case-results" aria-label="Indicadores de engenharia">
               <div class="case-result">
-                <strong>315</strong>
+                <strong>346</strong>
                 <span>testes automatizados passando no pipeline Docker</span>
               </div>
               <div class="case-result">

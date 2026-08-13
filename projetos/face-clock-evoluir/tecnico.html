@@ -82,6 +82,7 @@
           <a class="button button-secondary" href="#diagnostico">Ver o diagnóstico do modelo</a>
           <a class="button button-secondary" href="#congelamento">Ver o experimento de congelamento</a>
           <a class="button button-secondary" href="#engenharia">Ver engenharia e segurança</a>
+          <a class="button button-secondary" href="#procedencia">Ver a auditoria da entrega</a>
           <a class="button button-secondary" href="#entrega">Ver o dimensionamento para o servidor</a>
         </div>
         <ul class="case-meta" aria-label="Assuntos desta página">
@@ -90,6 +91,7 @@
           <li>scikit-learn</li>
           <li>PyTorch</li>
           <li>Segurança da aplicação</li>
+          <li>Integridade da entrega</li>
         </ul>
       </div>
     </section>
@@ -479,7 +481,74 @@
               <li><strong>Totem provisionado:</strong> cada dispositivo usa API key obtida por ativação com PIN e proteção contra força bruta; a chave não é incorporada ao HTML público.</li>
               <li><strong>Biometria protegida:</strong> múltiplos frames, vivacidade, impressão SHA-256 anti-replay e controles para dados sensíveis segundo a LGPD.</li>
               <li><strong>Implantação restrita:</strong> backend exposto apenas localmente, HTTPS por túnel, migrações versionadas e volumes persistentes.</li>
+              <li><strong>Escape por contexto, não por hábito:</strong> escapar HTML não protege uma string JavaScript dentro de <code>onclick</code> — o parser decodifica a entidade <code>&amp;#039;</code> <em>antes</em> de o script ser compilado e devolve a aspa ao atacante. Os pontos onde dado do usuário virava marcação passaram a montar nós por DOM, com <code>textContent</code> e <code>addEventListener</code>: sem fronteira de string, não há o que escapar.</li>
+              <li><strong>Saúde que reprova schema defasado:</strong> o healthcheck comparava só se o banco respondia — e responder ele responde mesmo faltando coluna. Agora confere a revisão de migração aplicada contra a esperada pelo código, porque uma instância verde com schema atrasado quebra na primeira rota que tocar o campo novo.</li>
             </ul>
+          </div>
+        </article>
+
+        <article class="case-block" id="procedencia">
+          <div>
+            <p class="section-kicker">Integridade da entrega</p>
+            <h2>O pacote embarcava um modelo que ninguém havia validado.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              Auditando o pacote de entrega — as imagens já construídas, não a árvore de
+              trabalho — o checkpoint PyTorch no disco não conferia com o checksum versionado.
+              Parecia registro desatualizado. Era o contrário: o checksum estava certo e o
+              arquivo é que havia sido trocado.
+            </p>
+            <p>
+              O histórico de treinos guardava a linhagem. Um experimento posterior sobrescreveu
+              o checkpoint promovido e nunca foi promovido no lugar dele. Pior: o modelo ONNX
+              que ia dentro da imagem não correspondia a <em>nenhum</em> checkpoint versionado —
+              a divergência só apareceu comparando probabilidades imagem a imagem.
+            </p>
+            <div class="case-formula">
+              <p class="section-kicker">Por que os números do histórico não denunciavam</p>
+              <p><strong>As acurácias registradas eram incomparáveis entre si: cada treino usou um split diferente (424/44 contra 297/64).</strong></p>
+              <code>90,9% vs 78,1% → splits distintos → comparação sem significado</code>
+              <p>
+                Só medir os dois no <em>mesmo</em> conjunto de teste revelou a diferença real —
+                e a entrega estava servindo o modelo pior.
+              </p>
+            </div>
+            <figure class="case-table-wrapper">
+              <div class="case-table-scroll">
+                <table class="case-table" id="tabela-procedencia">
+                  <caption id="tabela-procedencia-titulo">Acurácia no mesmo conjunto de teste (64 imagens), sob o runtime que vai ao cliente</caption>
+                  <thead>
+                    <tr><th scope="col">Checkpoint</th><th scope="col">Acurácia</th><th scope="col">Situação</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="case-table-highlight"><th scope="row">Promovido, registrado no checksum</th><td>95,31% (61/64)</td><td>o que deveria ser entregue</td></tr>
+                    <tr><th scope="row">Experimento que sobrescreveu</th><td>76,56% (49/64)</td><td>o que estava no pacote</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <figcaption>
+                Medido dentro da própria imagem empacotada, carregada do <code>tar</code> de
+                entrega — não no ambiente de treino.
+              </figcaption>
+            </figure>
+            <p>
+              A causa raiz não era descuido isolado: o comando de exportação <em>documentado</em>
+              não podia sequer rodar, porque as dependências que o próprio script mandava instalar
+              nunca haviam sido declaradas. Um caminho oficial quebrado empurra para a exportação
+              manual, e é assim que a procedência se perde.
+            </p>
+            <ul class="case-list" aria-label="Correções de integridade da entrega">
+              <li><strong>O gate só olhava existência:</strong> o script de release testava se o arquivo existia. Existir, existia — inválido era o par. Agora confere checksum e aborta com o esperado contra o obtido.</li>
+              <li><strong>Nada ligava o ONNX ao checkpoint:</strong> dois checksums provam cada arquivo contra si mesmo, e nenhum prova que um saiu do outro. A exportação passou a gravar esse vínculo, e o release o verifica.</li>
+              <li><strong>O caminho documentado voltou a funcionar:</strong> dependências declaradas, exportação reproduzível — rodada duas vezes, byte a byte idêntica.</li>
+            </ul>
+            <p id="procedencia-conclusao">
+              A lição não é sobre modelos: <strong>testes verdes não dizem nada sobre o que foi
+              empacotado.</strong> A suíte passava em todas as versões, inclusive naquela que
+              embarcava o modelo errado, porque nenhum teste olha para dentro do artefato que o
+              cliente recebe. Auditar o pacote é uma etapa distinta de testar o código.
+            </p>
           </div>
         </article>
 
@@ -515,7 +584,7 @@
             </figure>
             <p id="multi-stage-conclusao">
               Os 32,9 MiB são uma economia real no artefato distribuído, mas não explicam sozinhos
-              os 94,6% da redução histórica. O salto maior veio de remover CUDA e PyTorch do caminho
+              os 94,8% da redução histórica. O salto maior veio de remover CUDA e PyTorch do caminho
               de inferência. Separar as causas evita transformar uma boa decisão de engenharia em uma
               afirmação de portfólio bonita, porém falsa.
             </p>
