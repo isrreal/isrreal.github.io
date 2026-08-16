@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Aprofundamento técnico do Face Clock Evoluir: diagnóstico experimental do classificador, escada de baselines para triagem de atestados e camadas de segurança da aplicação.">
+  <meta name="description" content="Experimentos do Face Clock Evoluir: limiar facial, frames, FAISS, concorrência, baselines de classificação, segurança e benchmarks de produção.">
   <meta name="author" content="Israel Souza Ferreira">
   <meta name="theme-color" content="#071417">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="Face Clock Evoluir — estrutura técnica | Israel Souza Ferreira">
-  <meta property="og:description" content="Experimentos controlados, comparação de baselines e decisões de engenharia por trás do Face Clock Evoluir.">
+  <meta property="og:description" content="Protocolos, benchmarks, baselines e limitações por trás das decisões do Face Clock Evoluir.">
   <meta property="og:url" content="https://israelsouza.speculummaius.com.br/projetos/face-clock-evoluir/tecnico.html">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:image" content="https://israelsouza.speculummaius.com.br/assets/og-portfolio.jpg">
@@ -61,46 +61,127 @@
   </header>
 
   <main id="conteudo">
-    <section class="case-hero">
+    <section class="case-hero face-tech-hero">
       <div class="container">
         <a class="case-breadcrumb" href="index.html">← Voltar ao estudo de caso</a>
         <div class="case-brand case-brand-sm">
           <img class="case-logo case-logo-sm" src="../../assets/face-clock-evoluir-logo.png" alt="" width="44" height="44">
           <p class="eyebrow">Aprofundamento técnico · Face Clock Evoluir</p>
         </div>
-        <h1 class="case-title">A estrutura técnica nos detalhes.</h1>
-        <p class="hero-description case-intro">
-          Esta página documenta o que sustenta os números do estudo de caso: como cada
-          abordagem de classificação foi comparada sob o mesmo protocolo, como um bug
-          silencioso foi diagnosticado, como a causa do subajuste do modelo foi isolada
-          por experimento, como a aplicação é protegida em camadas, como cinco defeitos de
-          interface escaparam de suíte verde e console limpo, e como a stack inteira foi
-          redimensionada para um servidor sem placa de vídeo — com prova de que o sistema
-          continuou decidindo igual.
+        <h1 class="case-title" id="face-tech-title">Dos resultados às evidências.</h1>
+        <p class="hero-description case-intro" id="face-tech-intro">
+          Protocolos, baselines, benchmarks e limitações que sustentam o estudo de caso.
+          Cada seção começa pela decisão e aprofunda até a evidência reproduzível.
         </p>
         <div class="hero-actions">
+          <a class="button button-primary" href="#reconhecimento">Reconhecimento facial</a>
           <a class="button button-secondary" href="#atestados">Ver o experimento de classificação</a>
           <a class="button button-secondary" href="#diagnostico">Ver o diagnóstico do modelo</a>
-          <a class="button button-secondary" href="#congelamento">Ver o experimento de congelamento</a>
           <a class="button button-secondary" href="#engenharia">Ver engenharia e segurança</a>
-          <a class="button button-secondary" href="#procedencia">Ver a auditoria da entrega</a>
-          <a class="button button-secondary" href="#camada-errada">Ver o diagnóstico de interface</a>
-          <a class="button button-secondary" href="#entrega">Ver o dimensionamento para o servidor</a>
+          <a class="button button-secondary" href="#progressao">Ver a trajetória da entrega</a>
         </div>
         <ul class="case-meta" aria-label="Assuntos desta página">
+          <li>Reconhecimento 1:N</li>
           <li>Experimentos controlados</li>
-          <li>Comparação de baselines</li>
-          <li>scikit-learn</li>
-          <li>PyTorch</li>
-          <li>Segurança da aplicação</li>
-          <li>Integridade da entrega</li>
-          <li>Diagnóstico de interface</li>
+          <li>FAISS + pgvector</li>
+          <li>PyTorch + scikit-learn</li>
+          <li>Segurança e produção</li>
+          <li>Limitações explícitas</li>
         </ul>
       </div>
     </section>
 
     <section class="section">
       <div class="container case-content">
+        <article class="case-block" id="reconhecimento">
+          <div>
+            <p class="section-kicker">Reconhecimento facial</p>
+            <h2>Quatro decisões herdadas, quatro medições.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead" id="reconhecimento-lead">
+              Limiar, quantidade de frames, índice vetorial e troca de modelo pareciam
+              decisões independentes. Um instrumento comum reproduziu a pipeline do totem
+              e mostrou onde havia risco, custo sem benefício e complexidade prematura.
+            </p>
+            <p class="table-scroll-hint" id="reconhecimento-scroll">Deslize a tabela para comparar as quatro colunas →</p>
+            <figure class="case-table-wrapper">
+              <div class="case-table-scroll">
+                <table class="case-table" id="tabela-reconhecimento">
+                  <caption id="tabela-reconhecimento-titulo">Da hipótese herdada à decisão medida</caption>
+                  <thead>
+                    <tr id="tabela-reconhecimento-cabecalho">
+                      <th scope="col">Pergunta</th>
+                      <th scope="col">Antes</th>
+                      <th scope="col">Medição</th>
+                      <th scope="col">Decisão</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="reconhecimento-limiar">
+                      <th scope="row">Qual limiar aceitar?</th>
+                      <td>0,363, publicado para 1:1</td>
+                      <td>45,4% de desconhecidos aceitos; em 0,50, 0,2%</td>
+                      <td>0,50, com remedição prevista na população real</td>
+                    </tr>
+                    <tr id="reconhecimento-frames">
+                      <th scope="row">Quantos frames?</th>
+                      <td>5 frames, 160&nbsp;ms entre eles</td>
+                      <td>acurácia idêntica de 1 a 8; dois extras custavam ~3&nbsp;s de CPU na pipeline medida</td>
+                      <td>3 frames: mediana + liveness, sem redundância</td>
+                    </tr>
+                    <tr id="reconhecimento-faiss">
+                      <th scope="row">Adotar FAISS?</th>
+                      <td>“vai escalar melhor”</td>
+                      <td>busca exata: 0,076&nbsp;ms/1.000 vetores; HNSW: 0,04&nbsp;ms, recall@1 0,915</td>
+                      <td>manter busca transacional no pgvector</td>
+                    </tr>
+                    <tr id="reconhecimento-modelo" class="case-table-highlight">
+                      <th scope="row">A troca de modelo custou acurácia?</th>
+                      <td>desconhecido</td>
+                      <td>mesmo FAR=0 no ponto comparável; 32× menos CPU</td>
+                      <td>YuNet + SFace, com licença compatível</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <figcaption id="tabela-reconhecimento-nota">
+                Limiar e frames foram medidos sobre população pública/sessões sintéticas controladas;
+                são evidência de direção, não substitutos para a calibração no totem e na população do cliente.
+              </figcaption>
+            </figure>
+            <div class="case-results" aria-label="Latência atual do reconhecimento facial">
+              <div class="case-result">
+                <strong>74&nbsp;ms</strong>
+                <span>p95 com uma identificação simultânea, rajada atual de 3 frames</span>
+              </div>
+              <div class="case-result">
+                <strong>1,87&nbsp;s</strong>
+                <span>p95 com 20 identificações simultâneas, no benchmark CPU-only</span>
+              </div>
+              <div class="case-result">
+                <strong>~1,2 milhão</strong>
+                <span>de vetores para a busca exata projetada atingir 50&nbsp;ms</span>
+              </div>
+            </div>
+            <div class="case-formula" id="reconhecimento-concorrencia">
+              <p class="section-kicker">Achado não planejado</p>
+              <p><strong>Duas batidas simultâneas faziam 6 de 6 extrações falharem.</strong></p>
+              <p>
+                Detector e reconhecedor compartilhavam estado interno no threadpool. Com 8 batidas,
+                foram 24 falhas em 24 extrações. A correção foi serializar o acesso ao modelo — o
+                oposto da paralelização que o benchmark inicialmente tentava avaliar — e prender o
+                comportamento em teste de regressão com 8 threads × 3 frames.
+              </p>
+            </div>
+            <p id="reconhecimento-reproducao">
+              A reprodução está nos notebooks 15–18 e em <code>ml/face_bench.py</code>: mesma
+              extração, normalização e limiares do serviço de produção, com fontes de dados e
+              limitações declaradas.
+            </p>
+          </div>
+        </article>
+
         <article class="case-block" id="atestados">
           <div>
             <p class="section-kicker">Experimento de classificação</p>
@@ -672,6 +753,66 @@
               os 94,8% da redução histórica. O salto maior veio de remover CUDA e PyTorch do caminho
               de inferência. Separar as causas evita transformar uma boa decisão de engenharia em uma
               afirmação de portfólio bonita, porém falsa.
+            </p>
+          </div>
+        </article>
+
+        <article class="case-block" id="progressao">
+          <div>
+            <p class="section-kicker">Trajetória da entrega</p>
+            <h2>De 10,59 GB para 1,11 GB, em três decisões separáveis.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              Cada release grava no manifesto o tamanho exato das imagens que gerou, o que permite
+              olhar a entrega inteira ao longo do tempo. E o que se vê não é um esforço único de
+              otimização: são três decisões tomadas por motivos diferentes, nenhuma delas com
+              “reduzir a imagem” como objetivo principal.
+            </p>
+            <figure class="case-table-wrapper">
+              <div class="case-table-scroll">
+                <table class="case-table" id="tabela-progressao">
+                  <caption id="tabela-progressao-titulo">Tamanho das imagens por release, lido do manifesto de entrega</caption>
+                  <thead id="tabela-progressao-cabecalho">
+                    <tr><th scope="col">Release</th><th scope="col">Backend</th><th scope="col">Inferência</th><th scope="col">Total</th><th scope="col">O que mudou</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr id="tabela-progressao-100"><th scope="row">1.0.0</th><td>2,52 GB</td><td>8,06 GB</td><td>10,59 GB</td><td>ponto de partida</td></tr>
+                    <tr id="tabela-progressao-102"><th scope="row">1.0.2</th><td>não reconstruído</td><td>0,43 GB</td><td>—</td><td>inferência sai de CUDA + PyTorch para ONNX Runtime</td></tr>
+                    <tr id="tabela-progressao-108"><th scope="row">1.0.8</th><td>2,17 GB</td><td>0,42 GB</td><td>2,60 GB</td><td>sem causa única registrada no manifesto</td></tr>
+                    <tr class="case-table-highlight" id="tabela-progressao-1010"><th scope="row">1.0.10</th><td>0,69 GB</td><td>0,42 GB</td><td>1,11 GB</td><td>troca do modelo facial, por licenciamento, leva junto a dependência pesada</td></tr>
+                    <tr id="tabela-progressao-121"><th scope="row">1.2.1</th><td>0,69 GB</td><td>0,42 GB</td><td>1,11 GB</td><td>estável há quatro releases</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <figcaption id="tabela-progressao-nota">
+                Valores em bytes no manifesto, gravados pelo próprio script de release a cada build.
+                As imagens da 1.0.0 seguem preservadas localmente, o que permite reconferir a linha de
+                partida em vez de depender do registro.
+              </figcaption>
+            </figure>
+            <div class="case-results" aria-label="Diferença entre a primeira entrega e a atual">
+              <div class="case-result">
+                <strong>&minus;9,47&nbsp;GB</strong>
+                <span>entre a primeira entrega e a atual, somando as duas imagens</span>
+              </div>
+              <div class="case-result">
+                <strong>9,5×</strong>
+                <span>menor no total; a imagem de inferência, sozinha, ficou 19× menor</span>
+              </div>
+              <div class="case-result">
+                <strong>414&nbsp;MB</strong>
+                <span>é o que o cliente baixa hoje, com as imagens comprimidas no pacote</span>
+              </div>
+            </div>
+            <p id="progressao-conclusao">
+              Duas leituras que a tabela sustenta e a impressão geral não sustentaria. A primeira: a
+              maior queda — os 7,6 GB da inferência — veio de <strong>adequar o runtime ao hardware
+              real</strong>, não de enxugar camadas; a segunda maior, de <strong>resolver um
+              bloqueador de licenciamento</strong> do modelo facial, com a redução como efeito
+              colateral. A segunda: da 1.0.10 em diante o tamanho não se move — as versões seguintes
+              mudaram comportamento, navegação e documentação, e uma entrega que para de engordar é
+              resultado tão relevante quanto uma que emagrece.
             </p>
           </div>
         </article>

@@ -88,7 +88,7 @@
     {\normalsize
         \textbf{Cientista de Dados
         \enspace $|$ \enspace
-        Machine Learning}
+        Engenheiro de Machine Learning}
     }\\[2pt]
 
     {\small
@@ -117,50 +117,17 @@
 \end{center}
 
 \vspace{-3pt}
-\small
 
 % ---------- PERFIL ----------
 \section*{Perfil}
 
-Cientista de dados com atuação no ciclo completo do problema: extração e
-tratamento de dados em escala, modelagem estatística e preditiva, desenho de
-experimentos e comunicação de resultados. Experiência em P\&D com bolsa CNPq
-aplicando \textbf{Teoria de Resposta ao Item}, \textbf{séries temporais},
-\textbf{modelos de linguagem} e avaliação rigorosa de modelos a problemas de
-educação e saúde pública. Formação em Ciência da Computação com base sólida em
-estatística, otimização e SQL. O diferencial está na avaliação: medir antes de
-concluir e desconfiar do próprio resultado.
+Cientista de dados e engenheiro de machine learning com experiência em
+\textbf{pesquisa aplicada} e entrega ponta a ponta: experimentação, visão
+computacional, APIs, dados e implantação CPU-only. Transformo hipóteses em
+decisões mensuráveis com baselines, ablações, benchmarks e testes automatizados.
 
 % ---------- EXPERIÊNCIA ----------
 \section*{Experiência Profissional}
-
-\entrada
-    {Tieta Artificial Intelligence}
-    {Remoto, Brasil}
-    {Cientista de Dados / Pesquisador de P\&D --- Bolsista CNPq RHAE}
-    {Abr 2025 - Jun 2026}
-
-\begin{itemize}
-
-    \item Modelei parâmetros psicométricos latentes de itens educacionais com
-    \textbf{Teoria de Resposta ao Item}, validando as estimativas dos modelos
-    contra parâmetros de referência.
-
-    \item Desenhei \textbf{avaliações pareadas} sobre os mesmos itens para
-    comparar abordagens concorrentes sob o mesmo protocolo, quantificando a
-    correlação de cada sinal estimado com os parâmetros de referência e o custo
-    de inferência associado.
-
-    \item Construí pipelines de extração de sinais com \textbf{modelos de
-    linguagem} orquestrados por \textbf{DSPy}.
-
-    \item Testei arquiteturas de \textbf{regressão multitarefa} sobre dados
-    textuais e visuais.
-
-    \item Estruturei experimentos reprodutíveis, métricas de avaliação e
-    documentação técnica para sustentar as conclusões do ciclo de pesquisa.
-
-\end{itemize}
 
 \entrada
     {Tieta Artificial Intelligence}
@@ -170,8 +137,27 @@ concluir e desconfiar do próprio resultado.
 
 \begin{itemize}
 
-    \item Desenvolvo um pipeline de \textbf{segmentação de questões} de provas
-    escaneadas via OCR, extraindo itens estruturados para análise educacional.
+    \item Desenvolvo um pipeline de \textbf{OCR e segmentação de documentos}
+    que transforma provas escaneadas em questões estruturadas para análise
+    educacional.
+
+\end{itemize}
+
+\entrada
+    {Tieta Artificial Intelligence}
+    {Remoto, Brasil}
+    {Cientista de Dados / Pesquisador de P\&D --- Bolsista CNPq RHAE}
+    {Abr 2025 - Jun 2026}
+
+\begin{itemize}
+
+    \item Modelei parâmetros psicométricos com \textbf{Teoria de Resposta ao
+    Item} e comparei abordagens por avaliações pareadas, ablações, correlação
+    com referências e custo de inferência.
+
+    \item Construí pipelines de extração de sinais com LLMs orquestrados por
+    \textbf{DSPy} e avaliei arquiteturas de regressão multitarefa sobre dados
+    textuais e visuais em experimentos reprodutíveis.
 
 \end{itemize}
 
@@ -183,33 +169,32 @@ concluir e desconfiar do próprio resultado.
 
 \begin{itemize}
 
-    \item Entreguei \textbf{ponta a ponta} um sistema contratado de registro
-    de ponto por reconhecimento facial, funcional e em fase final de
-    homologação para implantação, cobrindo interface, modelagem, dados, backend,
-    testes e deploy.
+    \item Desenvolvi ponta a ponta o \href
+    {https://github.com/isrreal/face-clock-evoluir-public}
+    {\textbf{Face Clock Evoluir}}, sistema contratado de ponto facial em
+    homologação final, cobrindo modelos, backend, banco, segurança, testes e
+    implantação.
 
-    \item Treinei um classificador EfficientNet-B0 para triagem automática de
-    atestados com \textbf{busca de hiperparâmetros} (Optuna), validação
-    cruzada estratificada e decisão híbrida CNN + OCR; diagnostiquei o
-    subajuste por \textbf{ablação controlada} e elevei a acurácia de validação
-    em \textbf{13 pontos percentuais}.
+    \item Coloquei reconhecimento 1:N em operação CPU-only com YuNet + SFace,
+    ONNX Runtime e PostgreSQL/pgvector: \textbf{p95 de 74~ms} com uma
+    identificação e \textbf{574 testes automatizados} na entrega atual.
 
-    \item Implementei \textbf{busca vetorial} 1:N e verificação 1:1 sobre
-    embeddings faciais de 512 dimensões com InsightFace e pgvector,
-    agregando decisões \textit{multi-frame} para reduzir falsos positivos, com
-    \textit{liveness} e proteção anti-replay.
+    \item Recalibrei o limiar open-set, reduzindo desconhecidos aceitos de
+    \textbf{45,4\% para 0,2\%} na base pública; reduzi \textbf{5 para 3 frames}
+    após medir acurácia idêntica de 1 a 8 e corrigi uma corrida que causava
+    \textbf{24/24 falhas} em oito rajadas simultâneas.
 
-    \item Construí a camada de dados e o serviço de inferência com PostgreSQL,
-    SQLAlchemy, Alembic e FastAPI; entreguei infraestrutura Dockerizada com
-    HTTPS, GitHub Actions e \textbf{346 testes automatizados}.
+    \item Um benchmark de busca vetorial mediu \textbf{0,076~ms em 1.000
+    vetores}; como o HNSW obteve recall@1 de 0,915, mantive a busca exata e
+    transacional no pgvector em vez de adotar FAISS prematuramente.
 
-    \item Redimensionei a entrega para o servidor do cliente (sem GPU, 8~GB de
-    RAM): \textbf{--8~GB} de imagens e \textbf{--2~GB} de memória migrando a
-    inferência para \textbf{ONNX Runtime}, com \textbf{zero} decisões alteradas.
-    Auditar o pacote construído, e não a árvore de trabalho, revelou
-    \textbf{três defeitos} de instalação e um classificador nunca validado na
-    imagem (\textbf{76,6\%} contra \textbf{95,3\%}); adicionei registro de
-    procedência e \textit{gate} de release.
+    \item Comparei cinco abordagens para triagem de atestados; a solução
+    EfficientNet + Regressão Logística alcançou \textbf{87,5\% de acurácia} e
+    sete falsos positivos a menos, preservando o recall.
+
+    \item Adequei a entrega ao servidor sem GPU e com 8~GB de RAM: imagens de
+    produção de \textbf{10,59 para 1,11~GB} (9,5$\times$ menores), com zero
+    decisões do classificador alteradas na migração para ONNX Runtime.
 
 \end{itemize}
 
@@ -221,9 +206,8 @@ concluir e desconfiar do próprio resultado.
 
 \begin{itemize}
 
-    \item Ministrei apoio em estruturas de dados, algoritmos, análise de
-    complexidade e Cálculo, traduzindo conteúdo quantitativo para turmas de
-    graduação.
+    \item Apoiei turmas em estruturas de dados, algoritmos, complexidade e
+    Cálculo, traduzindo conteúdo quantitativo para diferentes níveis.
 
 \end{itemize}
 
@@ -233,34 +217,23 @@ concluir e desconfiar do próprio resultado.
 \begin{itemize}
 
     \item
-    \textbf{Previsão de Casos de Dengue (séries temporais):}
-    previsão de notificações a partir dos microdados do SINAN, com ETL,
-    modelos LSTM e PLE, rastreio de experimentos em MLflow e serviço de
-    inferência; reduzi o \textbf{RMSE de $\approx$98 para 83} na série do
-    Ceará (queda de $\approx$15\%). PostgreSQL, PyTorch, FastAPI e Docker.
-
-    \item
-    \textbf{
-        \href
-        {https://github.com/isrreal/AuxilioEmergencialQueries}
-        {Auxílio Emergencial --- Análise de Desempenho em 31,6 GB:}
-    }
-    trabalho acadêmico retomado por iniciativa própria e reconstruído para
-    escala real sobre \textbf{31,6 GB} de dados públicos; a instrumentação por
-    etapa correlacionou o crescimento de memória aos identificadores de
-    deduplicação retidos (\textbf{r = 0,99}), isolando a causa raiz do gargalo.
-    Ingestão em blocos com \texttt{COPY} binário assíncrono, PostgreSQL,
-    Pandas e Streamlit.
-
-    \item
     \textbf{
         \href
         {https://github.com/isrreal/Triple-Roman-Domination-in-graphs}
         {Triple Roman Domination in Graphs (TCC):}
     }
-    primeira abordagem meta-heurística apresentada na literatura para o
-    problema, com Algoritmo Genético, MAX-MIN Ant System e RVNS, usando
-    Programação Linear Inteira como \textit{baseline} exato de validação.
+    primeiras meta-heurísticas GA e ACO da literatura para o problema e
+    correção da formulação PLI publicada; avaliação sobre \textbf{362 grafos}.
+
+    \item
+    \textbf{
+        \href
+        {https://github.com/isrreal/AuxilioEmergencialQueries}
+        {Auxílio Emergencial --- Engenharia de Dados:}
+    }
+    ingestão em blocos com \texttt{COPY} binário sobre \textbf{31,6~GB} de
+    dados públicos; instrumentação ligou o crescimento de memória aos IDs de
+    deduplicação retidos (\textbf{r = 0,99}).
 
 \end{itemize}
 
@@ -270,20 +243,13 @@ concluir e desconfiar do próprio resultado.
 \textbf{Linguagens e consultas:}
 Python, SQL, C++ e Bash.\\[1pt]
 
-\textbf{Análise e estatística:}
-Pandas, NumPy, SciPy, Scikit-learn, testes de hipótese, análise de correlação,
-validação cruzada, calibração de modelos, análise de ablação e Teoria de
-Resposta ao Item.\\[1pt]
+\textbf{ML, visão e experimentação:}
+PyTorch, Scikit-learn, OpenCV, YuNet, SFace, ONNX Runtime, DSPy, Optuna,
+validação cruzada, calibração, ablação, testes de hipótese e busca vetorial.\\[1pt]
 
-\textbf{Modelagem e machine learning:}
-PyTorch, Optuna, DSPy, FAISS, InsightFace, OpenCV; séries temporais (LSTM,
-PLE), regressão multitarefa e multimodal, MoE/MMoE, atenção, busca vetorial e
-meta-heurísticas.\\[1pt]
-
-\textbf{Dados, MLOps e comunicação:}
-PostgreSQL, pgvector, SQLAlchemy, Alembic, MLflow, Docker, Git, GitHub Actions,
-GitLab CI/CD, FastAPI, pytest, mypy, Streamlit, visualização de dados e
-documentação técnica.
+\textbf{Dados e produção:}
+PostgreSQL, pgvector, FAISS, Pandas, NumPy, SciPy, FastAPI, SQLAlchemy, Alembic,
+Docker, GitHub Actions, pytest, MLflow e Streamlit.
 
 % ---------- FORMAÇÃO ----------
 \section*{Formação Acadêmica}

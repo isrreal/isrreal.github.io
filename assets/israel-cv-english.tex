@@ -88,7 +88,7 @@
     {\normalsize
         \textbf{Data Scientist
         \enspace $|$ \enspace
-        Machine Learning}
+        Machine Learning Engineer}
     }\\[2pt]
 
     {\small
@@ -117,50 +117,17 @@
 \end{center}
 
 \vspace{-3pt}
-\small
 
 % ---------- PROFILE ----------
 \section*{Profile}
 
-Data scientist working across the full problem cycle: extracting and preparing
-data at scale, statistical and predictive modeling, experimental design, and
-communicating results. R\&D experience as a CNPq research fellow applying
-\textbf{Item Response Theory}, \textbf{time-series forecasting},
-\textbf{language models}, and rigorous model evaluation to problems in
-education and public health. Computer Science background with solid grounding in
-statistics, optimization, and SQL. What sets me apart is evaluation: measure
-before concluding, and distrust your own result.
+Data scientist and machine learning engineer experienced in \textbf{applied
+research} and end-to-end delivery: experimentation, computer vision, APIs,
+data, and CPU-only deployment. I turn hypotheses into measurable decisions
+through baselines, ablations, benchmarks, and automated testing.
 
 % ---------- PROFESSIONAL EXPERIENCE ----------
 \section*{Professional Experience}
-
-\entry
-    {Tieta Artificial Intelligence}
-    {Remote, Brazil}
-    {Data Scientist / R\&D Researcher --- CNPq RHAE Research Fellow}
-    {Apr 2025 - Jun 2026}
-
-\begin{itemize}
-
-    \item Modeled latent psychometric parameters of educational items with
-    \textbf{Item Response Theory}, validating model estimates against reference
-    parameters.
-
-    \item Designed \textbf{paired evaluations} over the same items to compare
-    competing approaches under the same protocol, quantifying both the
-    correlation of each estimated signal with reference parameters and its
-    inference cost.
-
-    \item Built signal-extraction pipelines with \textbf{language models}
-    orchestrated by \textbf{DSPy}.
-
-    \item Tested \textbf{multitask regression} architectures over textual and
-    visual data.
-
-    \item Structured reproducible experiments, evaluation metrics, and technical
-    documentation to support the conclusions of the research cycle.
-
-\end{itemize}
 
 \entry
     {Tieta Artificial Intelligence}
@@ -170,8 +137,26 @@ before concluding, and distrust your own result.
 
 \begin{itemize}
 
-    \item Developing a \textbf{question segmentation} pipeline for scanned exam
-    documents via OCR, extracting structured items for educational analysis.
+    \item Developing an \textbf{OCR and document-segmentation pipeline} that
+    turns scanned exams into structured questions for educational analysis.
+
+\end{itemize}
+
+\entry
+    {Tieta Artificial Intelligence}
+    {Remote, Brazil}
+    {Data Scientist / R\&D Researcher --- CNPq RHAE Research Fellow}
+    {Apr 2025 - Jun 2026}
+
+\begin{itemize}
+
+    \item Modeled psychometric parameters with \textbf{Item Response Theory}
+    and compared approaches through paired evaluations, ablations, correlation
+    with references, and inference cost.
+
+    \item Built signal-extraction pipelines with LLMs orchestrated by
+    \textbf{DSPy} and evaluated multitask regression architectures over textual
+    and visual data through reproducible experiments.
 
 \end{itemize}
 
@@ -183,33 +168,32 @@ before concluding, and distrust your own result.
 
 \begin{itemize}
 
-    \item Delivered a contracted end-to-end facial recognition
-    attendance system, functional and in final acceptance testing before
-    deployment, covering the interface, modeling, data, backend, testing, and
-    deployment.
+    \item Built the \href
+    {https://github.com/isrreal/face-clock-evoluir-public}
+    {\textbf{Face Clock Evoluir}} end to end, a contracted facial attendance
+    system in final acceptance testing, covering models, backend, database,
+    security, testing, and deployment.
 
-    \item Trained an EfficientNet-B0 classifier for automated medical-document
-    triage using \textbf{hyperparameter search} (Optuna), stratified
-    cross-validation, and a hybrid CNN + OCR decision pipeline; diagnosed
-    underfitting through \textbf{controlled ablation} and raised validation
-    accuracy by \textbf{13 percentage points}.
+    \item Put 1:N recognition into CPU-only operation with YuNet + SFace, ONNX
+    Runtime, and PostgreSQL/pgvector: \textbf{74~ms p95} with one identification
+    and \textbf{574 automated tests} in the current delivery.
 
-    \item Implemented 1:N \textbf{vector search} and 1:1 verification over
-    512-dimensional facial embeddings with InsightFace and pgvector,
-    aggregating \textit{multi-frame} decisions to reduce false positives, with
-    \textit{liveness} detection and anti-replay protection.
+    \item Recalibrated the open-set threshold, reducing accepted unknowns from
+    \textbf{45.4\% to 0.2\%} on public reference data; reduced \textbf{5 to 3
+    frames} after identical accuracy from 1 to 8, and fixed a race causing
+    \textbf{24/24 failures} across eight simultaneous bursts.
 
-    \item Built the data layer and inference service with PostgreSQL,
-    SQLAlchemy, Alembic, and FastAPI; delivered Dockerized infrastructure with
-    HTTPS, GitHub Actions, and \textbf{346 automated tests}.
+    \item A vector-search benchmark measured \textbf{0.076~ms over 1,000
+    vectors}; because HNSW reached only 0.915 recall@1, I kept exact,
+    transactional pgvector search instead of adopting FAISS prematurely.
 
-    \item Resized the delivery to the client's actual server --- no GPU, 8~GB of
-    RAM --- cutting \textbf{8~GB} from the images and \textbf{2~GB} from memory
-    usage by moving inference to \textbf{ONNX Runtime}, with \textbf{zero}
-    decisions changed. Auditing the built package, not the working tree, exposed
-    \textbf{three} installation defects and a never-validated classifier inside
-    the image (\textbf{76.6\%} against \textbf{95.3\%}); I added a provenance
-    record and a release gate.
+    \item Compared five approaches for medical-document triage; EfficientNet +
+    Logistic Regression reached \textbf{87.5\% accuracy} with seven fewer false
+    positives at the same recall.
+
+    \item Fit the delivery to an 8~GB, GPU-less server: production images fell
+    from \textbf{10.59 to 1.11~GB} (9.5$\times$ smaller), with zero classifier
+    decisions changed in the migration to ONNX Runtime.
 
 \end{itemize}
 
@@ -221,9 +205,8 @@ before concluding, and distrust your own result.
 
 \begin{itemize}
 
-    \item Provided academic support in data structures, algorithms, and
-    complexity analysis, translating quantitative material for undergraduate
-    classes.
+    \item Supported classes in data structures, algorithms, complexity, and
+    Calculus, translating quantitative material across skill levels.
 
 \end{itemize}
 
@@ -233,35 +216,24 @@ before concluding, and distrust your own result.
 \begin{itemize}
 
     \item
-    \textbf{Dengue Case Forecasting (time series):}
-    forecasting case notifications from Brazilian SINAN surveillance
-    microdata, with ETL, LSTM and PLE models, experiment tracking in MLflow,
-    and an inference service; reduced \textbf{RMSE from $\approx$98 to 83} on
-    the Ceará series ($\approx$15\% drop). PostgreSQL, PyTorch, FastAPI, and
-    Docker.
-
-    \item
-    \textbf{
-        \href
-        {https://github.com/isrreal/AuxilioEmergencialQueries}
-        {Brazilian Emergency Aid --- Performance Analysis over 31.6 GB:}
-    }
-    university assignment picked back up on my own initiative and rebuilt for
-    real scale over \textbf{31.6 GB} of public data; per-stage instrumentation
-    correlated memory growth with retained deduplication identifiers
-    (\textbf{r = 0.99}), isolating the root cause of the bottleneck. Chunked
-    ingestion through asynchronous binary \texttt{COPY}, PostgreSQL, Pandas,
-    and Streamlit.
-
-    \item
     \textbf{
         \href
         {https://github.com/isrreal/Triple-Roman-Domination-in-graphs}
         {Triple Roman Domination in Graphs (undergraduate thesis):}
     }
-    first metaheuristic approaches reported in the literature for the problem,
-    using a Genetic Algorithm, MAX-MIN Ant System, and RVNS, with Integer
-    Linear Programming as an exact validation \textit{baseline}.
+    first GA- and ACO-based metaheuristics reported for the problem, plus a
+    correction to the published ILP formulation; evaluated over
+    \textbf{362 graphs}.
+
+    \item
+    \textbf{
+        \href
+        {https://github.com/isrreal/AuxilioEmergencialQueries}
+        {Brazilian Emergency Aid --- Data Engineering:}
+    }
+    chunked binary \texttt{COPY} ingestion over \textbf{31.6~GB} of public
+    data; instrumentation linked memory growth to retained deduplication IDs
+    (\textbf{r = 0.99}).
 
 \end{itemize}
 
@@ -271,20 +243,13 @@ before concluding, and distrust your own result.
 \textbf{Languages and querying:}
 Python, SQL, C++, and Bash.\\[1pt]
 
-\textbf{Analysis and statistics:}
-Pandas, NumPy, SciPy, Scikit-learn, hypothesis testing, correlation analysis,
-cross-validation, model calibration, ablation analysis, and Item Response
-Theory.\\[1pt]
+\textbf{ML, vision, and experimentation:}
+PyTorch, Scikit-learn, OpenCV, YuNet, SFace, ONNX Runtime, DSPy, Optuna,
+cross-validation, calibration, ablation, hypothesis testing, and vector search.\\[1pt]
 
-\textbf{Modeling and machine learning:}
-PyTorch, Optuna, DSPy, FAISS, InsightFace, OpenCV; time series (LSTM, PLE),
-multitask and multimodal regression, MoE/MMoE, attention, vector search, and
-metaheuristics.\\[1pt]
-
-\textbf{Data, MLOps, and communication:}
-PostgreSQL, pgvector, SQLAlchemy, Alembic, MLflow, Docker, Git, GitHub Actions,
-GitLab CI/CD, FastAPI, pytest, mypy, Streamlit, data visualization, and
-technical documentation.
+\textbf{Data and production:}
+PostgreSQL, pgvector, FAISS, Pandas, NumPy, SciPy, FastAPI, SQLAlchemy, Alembic,
+Docker, GitHub Actions, pytest, MLflow, and Streamlit.
 
 % ---------- EDUCATION ----------
 \section*{Education}

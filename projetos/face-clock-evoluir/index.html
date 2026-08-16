@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Estudo de caso do Face Clock Evoluir: sistema de gestão de ponto com biometria facial, geofencing, classificação de atestados e engenharia de produção.">
+  <meta name="description" content="Face Clock Evoluir: sistema de ponto com biometria facial e triagem de atestados, apresentado do impacto aos experimentos de limiar, frames, FAISS e concorrência.">
   <meta name="author" content="Israel Souza Ferreira">
   <meta name="theme-color" content="#071417">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="Face Clock Evoluir | Israel Souza Ferreira">
-  <meta property="og:description" content="Biometria facial, geofencing e aprendizado de máquina aplicados a um sistema real de gestão de ponto.">
+  <meta property="og:description" content="Um sistema real de ML, do impacto às decisões medidas de reconhecimento facial e produção.">
   <meta property="og:url" content="https://israelsouza.speculummaius.com.br/projetos/face-clock-evoluir/">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:image" content="https://israelsouza.speculummaius.com.br/assets/og-portfolio.jpg">
@@ -61,7 +61,7 @@
   </header>
 
   <main id="conteudo">
-    <section class="case-hero">
+    <section class="case-hero face-case-hero">
       <div class="container">
         <a class="case-breadcrumb" href="../../index.html#projetos">← Voltar aos projetos</a>
         <p class="eyebrow">Produto aplicado · Visão computacional · Em homologação</p>
@@ -69,16 +69,14 @@
           <img class="case-logo" src="../../assets/face-clock-evoluir-logo.png" alt="" width="80" height="80">
           <h1 class="case-title">Face Clock Evoluir</h1>
         </div>
-        <p class="hero-description case-intro">
-          Numa instituição de ensino, o funcionário chega, olha para uma câmera e o ponto
-          está registrado. O sistema descobre quem ele é entre todos os cadastrados,
-          confere se ele está mesmo no local de trabalho e, quando manda um atestado pelo
-          celular, decide sozinho se aquilo é um atestado de verdade.
+        <p class="hero-description case-intro" id="face-case-intro">
+          Sistema de ponto contratado para uma instituição de ensino: identifica o
+          funcionário pelo rosto, valida o contexto da batida e tria atestados enviados
+          pelo celular.
         </p>
-        <p class="hero-description case-intro case-intro-secondary">
-          Esta página conta o que foi construído e por quê, sem exigir conhecimento
-          técnico. Quem quiser ver como cada decisão foi medida e provada encontra o
-          caminho no fim — e na <a href="tecnico.html">estrutura técnica</a>.
+        <p class="hero-description case-intro case-intro-secondary" id="face-case-depth">
+          Comece pelo impacto; depois veja as decisões e, se quiser, abra os
+          <a href="tecnico.html#reconhecimento">experimentos reproduzíveis</a>.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#como-funciona">Entender o sistema</a>
@@ -86,7 +84,7 @@
           <a class="button button-secondary" href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Repositório público</a>
         </div>
         <ul class="case-meta" aria-label="Informações do projeto">
-          <li>InsightFace</li>
+          <li>YuNet + SFace</li>
           <li>FastAPI</li>
           <li>PostgreSQL + pgvector</li>
           <li>EfficientNet-B0</li>
@@ -102,34 +100,25 @@
         <article class="case-summary" id="resumo">
           <div>
             <p class="section-kicker">Resumo</p>
-            <h2>O essencial em cinco pontos.</h2>
+            <h2>O essencial.</h2>
           </div>
           <div class="case-prose">
             <ul class="case-list" aria-label="Resumo do projeto">
               <li>
-                <strong>Problema e usuário:</strong> registrar a jornada de funcionários de uma
-                instituição de ensino sem cartão, senha ou fila — inclusive quem trabalha fora da sede.
+                <strong>Problema:</strong> registrar jornada sem cartão, senha ou fila, inclusive fora da sede.
               </li>
               <li>
-                <strong>Minha responsabilidade:</strong> entrega individual de ponta a ponta —
-                modelos, backend, banco de dados, segurança, testes e implantação.
+                <strong>Responsabilidade:</strong> modelos, backend, dados, segurança, testes e implantação.
               </li>
               <li>
-                <strong>Arquitetura:</strong> biometria facial com busca vetorial em PostgreSQL
-                (<code>pgvector</code>), geofencing por GPS, triagem de atestados com rede neural e
-                OCR, e backend FastAPI em Docker.
+                <strong>Solução:</strong> biometria 1:N, geofencing, FastAPI, PostgreSQL/pgvector e triagem neural + OCR.
               </li>
               <li>
-                <strong>Evidências:</strong> 315 testes automatizados em pipeline Docker;
-                468 documentos triados por sinais objetivos de qualidade; um bug silencioso de
-                orientação de imagem diagnosticado por metadados EXIF; dezesseis pontos
-                percentuais de acurácia de validação recuperados em duas causas isoladas por
-                experimento; cinco abordagens de classificação comparadas sob o mesmo protocolo,
-                do classificador trivial ao híbrido vencedor.
+                <strong>Evidências:</strong> 574 testes; quatro decisões faciais medidas; cinco
+                classificadores de atestado comparados; pacote de produção auditado.
               </li>
               <li>
-                <strong>Status:</strong> sistema contratado, funcional e em fase final de
-                homologação para implantação.
+                <strong>Status:</strong> sistema funcional em homologação final.
               </li>
             </ul>
           </div>
@@ -171,12 +160,12 @@
             <li class="flow-step">
               <span class="flow-index">01</span>
               <strong>Captura</strong>
-              <p>Múltiplos quadros reduzem a dependência de uma única imagem e permitem filtrar amostras ruins.</p>
+              <p>Três frames sustentam vivacidade sem manter trabalho redundante.</p>
             </li>
             <li class="flow-step">
               <span class="flow-index">02</span>
               <strong>Representação</strong>
-              <p>O InsightFace transforma cada rosto em um vetor normalizado de 512 dimensões.</p>
+              <p>YuNet + SFace transformam cada rosto em um vetor normalizado de 128 dimensões.</p>
             </li>
             <li class="flow-step">
               <span class="flow-index">03</span>
@@ -194,6 +183,36 @@
               <p>A batida é persistida e eventuais desvios de turno são apresentados sem impedir o ponto.</p>
             </li>
           </ol>
+        </article>
+
+        <article class="case-block" id="evidencias">
+          <div>
+            <p class="section-kicker">Decisões por experimento</p>
+            <h2>Quatro medições mudaram o sistema.</h2>
+          </div>
+          <div class="evidence-ladder">
+            <article>
+              <span>Risco</span>
+              <strong>45,4% → 0,2%</strong>
+              <p>O limiar herdado era de verificação 1:1; no cenário 1:N aceitava desconhecidos demais. A calibração reduziu o erro por duas ordens de grandeza na base de referência.</p>
+            </article>
+            <article>
+              <span>Latência</span>
+              <strong>5 → 3 frames</strong>
+              <p>De 1 a 8 frames, a acurácia medida não mudou. Três preservam a mediana e a checagem de movimento sem pagar por dois frames extras.</p>
+            </article>
+            <article>
+              <span>Arquitetura</span>
+              <strong>FAISS: não adotado</strong>
+              <p>A busca exata levou 0,076&nbsp;ms em 1.000 vetores. O HNSW foi mais rápido, mas recall@1 de 0,915 não justificava trocar precisão por complexidade.</p>
+            </article>
+            <article>
+              <span>Concorrência</span>
+              <strong>6/6 falhas</strong>
+              <p>Duas batidas simultâneas corrompiam o modelo compartilhado. A medição encontrou a corrida; serializar a inferência eliminou a falha silenciosa.</p>
+            </article>
+            <a class="button button-primary evidence-ladder-link" href="tecnico.html#reconhecimento">Ver protocolos, tabelas e limitações →</a>
+          </div>
         </article>
 
         <article class="case-block" id="maquina-estados">
@@ -319,37 +338,15 @@
           </div>
           <div class="case-prose">
             <p class="lead" id="atestado-lead">
-              Quando alguém envia um atestado pelo sistema, um modelo de visão computacional
-              e uma leitura automática do texto conferem se o documento é mesmo um atestado
-              médico, antes de ele chegar à mesa de quem aprova.
+              Rede neural e OCR priorizam a fila antes da revisão humana.
             </p>
             <p id="atestado-resumo">
-              A triagem não decide sozinha: organiza a fila e sinaliza o que parece fora do lugar,
-              mas a palavra final é de uma pessoa. Em documentos que o modelo nunca viu, a versão
-              escolhida acerta 87,5% dos casos e comete sete enganos a menos que a anterior, sem
-              reconhecer menos atestados.
+              No teste reservado, a solução híbrida alcançou 87,5% de acurácia e reduziu sete
+              falsos positivos sem perder recall. A aprovação final continua humana.
             </p>
             <p id="atestado-rotulos">
-              As decisões humanas podem alimentar re-treinamentos. Para evitar rótulos incorretos,
-              documentos rejeitados só viram exemplo negativo quando pessoa e modelo concordam.
+              O feedback humano alimenta retreinamentos apenas quando a regra de rotulagem evita contradições.
             </p>
-          </div>
-        </article>
-
-        <article class="case-block" id="deep-dive">
-          <div>
-            <p class="section-kicker">Aprofundamento</p>
-            <h2>A partir daqui, o detalhe.</h2>
-          </div>
-          <div class="case-prose">
-            <p class="lead" id="ponte-lead">
-              A página técnica documenta a comparação entre as abordagens de classificação, o
-              diagnóstico de um bug silencioso, os experimentos que isolaram o subajuste do
-              modelo e as camadas de segurança.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="tecnico.html">Ver estrutura técnica nos detalhes →</a>
-            </div>
           </div>
         </article>
 
@@ -360,32 +357,18 @@
           </div>
           <div class="case-prose">
             <p>
-              A aplicação foi testada como uma stack de produção real, sem os atalhos de
-              desenvolvimento que mascaram arquivos ausentes, permissões erradas ou falhas de
-              inicialização. Testes de navegador revelaram problemas que a leitura do código não pegou.
-            </p>
-            <p>
-              Instalar o pacote de entrega do zero, seguindo o próprio manual, encontrou três
-              defeitos que a suíte de testes não alcançava — todos dependentes de imagem
-              construída e volume montado, não de código. O mais grave deixava o cadastro
-              biométrico falhar em toda instalação nova: o diretório das fotos nascia com dono
-              errado, e a falha só aparecia depois de a face já ter sido processada com sucesso.
-            </p>
-            <p>
-              A revisão seguinte foi feita sobre o pacote empacotado, não sobre a árvore de
-              trabalho — auditando as imagens já construídas e a documentação como o cliente a
-              receberia. Foi ali que apareceu o defeito mais sério do projeto: a entrega
-              embarcava um modelo de classificação diferente do que havia sido validado
-              (<a href="tecnico.html#procedencia">detalhes na página técnica</a>).
+              Além da suíte, instalei e auditei o pacote como o cliente o receberia. Isso revelou
+              permissões de volume incorretas e um modelo empacotado diferente do validado — falhas
+              invisíveis para testes executados apenas sobre o código.
             </p>
             <div class="case-results" aria-label="Indicadores de engenharia">
               <div class="case-result">
-                <strong>346</strong>
+                <strong>574</strong>
                 <span>testes automatizados passando no pipeline Docker</span>
               </div>
               <div class="case-result">
-                <strong>&minus;8&nbsp;GB</strong>
-                <span>imagens de entrega reduzidas ao dimensionar a stack para o servidor real</span>
+                <strong>9,5× menor</strong>
+                <span>entrega reduzida de 10,59&nbsp;GB para 1,11&nbsp;GB</span>
               </div>
               <div class="case-result">
                 <strong>HTTPS</strong>
@@ -402,12 +385,8 @@
           </div>
           <div class="case-prose">
             <p class="lead">
-              O sistema ainda não está concluído nem entregue: encontra-se na etapa final
-              de validação antes da implantação definitiva na instituição.
-            </p>
-            <p>
-              Por ser um produto de cliente, o código é proprietário. O repositório público mostra
-              arquitetura, tecnologias e decisões técnicas sem expor dados institucionais.
+              Produto contratado e funcional, na etapa final de validação antes da implantação.
+              O repositório público preserva arquitetura e decisões sem expor código ou dados do cliente.
             </p>
           </div>
         </article>
