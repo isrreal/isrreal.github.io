@@ -73,9 +73,10 @@
           Esta página documenta o que sustenta os números do estudo de caso: como cada
           abordagem de classificação foi comparada sob o mesmo protocolo, como um bug
           silencioso foi diagnosticado, como a causa do subajuste do modelo foi isolada
-          por experimento, como a aplicação é protegida em camadas e como a stack inteira
-          foi redimensionada para um servidor sem placa de vídeo — com prova de que o
-          sistema continuou decidindo igual.
+          por experimento, como a aplicação é protegida em camadas, como cinco defeitos de
+          interface escaparam de suíte verde e console limpo, e como a stack inteira foi
+          redimensionada para um servidor sem placa de vídeo — com prova de que o sistema
+          continuou decidindo igual.
         </p>
         <div class="hero-actions">
           <a class="button button-secondary" href="#atestados">Ver o experimento de classificação</a>
@@ -83,6 +84,7 @@
           <a class="button button-secondary" href="#congelamento">Ver o experimento de congelamento</a>
           <a class="button button-secondary" href="#engenharia">Ver engenharia e segurança</a>
           <a class="button button-secondary" href="#procedencia">Ver a auditoria da entrega</a>
+          <a class="button button-secondary" href="#camada-errada">Ver o diagnóstico de interface</a>
           <a class="button button-secondary" href="#entrega">Ver o dimensionamento para o servidor</a>
         </div>
         <ul class="case-meta" aria-label="Assuntos desta página">
@@ -92,6 +94,7 @@
           <li>PyTorch</li>
           <li>Segurança da aplicação</li>
           <li>Integridade da entrega</li>
+          <li>Diagnóstico de interface</li>
         </ul>
       </div>
     </section>
@@ -548,6 +551,88 @@
               empacotado.</strong> A suíte passava em todas as versões, inclusive naquela que
               embarcava o modelo errado, porque nenhum teste olha para dentro do artefato que o
               cliente recebe. Auditar o pacote é uma etapa distinta de testar o código.
+            </p>
+          </div>
+        </article>
+
+        <article class="case-block" id="camada-errada">
+          <div>
+            <p class="section-kicker">Diagnóstico de interface</p>
+            <h2>Cinco defeitos que passaram porque a verificação olhava a camada errada.</h2>
+          </div>
+          <div class="case-prose">
+            <p class="lead">
+              Suíte verde, código revisado, console do navegador limpo — e cinco defeitos
+              atravessaram tudo isso. Nenhum era difícil de corrigir; todos foram difíceis de
+              <em>ver</em>, porque a verificação em uso não alcançava a camada onde moravam.
+            </p>
+            <div class="case-results" aria-label="Indicadores do diagnóstico de interface">
+              <div class="case-result">
+                <strong>~48&nbsp;MiB</strong>
+                <span>de imagem decodificada por miniatura de 120&nbsp;px, dez por tela</span>
+              </div>
+              <div class="case-result">
+                <strong>2.356 → 10&nbsp;KiB</strong>
+                <span>por amostra depois de gerar a miniatura no servidor, em 33&nbsp;ms</span>
+              </div>
+              <div class="case-result">
+                <strong>3</strong>
+                <span>páginas com o mesmo layout quebrado sob HTTP&nbsp;200 e console sem erro</span>
+              </div>
+            </div>
+            <p>
+              <strong>A aba travava e o servidor estava ocioso.</strong> Os containers a menos de
+              1% de CPU e nenhum erro em 30 minutos já diziam que o problema era do lado do
+              navegador — não onde. As fotos da biometria eram servidas como saíram da câmera
+              (4080&nbsp;×&nbsp;3060, 2,3&nbsp;MB) para preencher cards de 120&nbsp;px: cada uma
+              vira cerca de 48&nbsp;MiB de bitmap na memória, e os <code>blob:</code> criados
+              nunca eram liberados. A suíte testava que o endpoint devolvia a foto certa com o
+              status certo, e nunca pegaria isto: o defeito não estava no comportamento, estava
+              na grandeza do que era devolvido.
+            </p>
+            <div class="case-formula">
+              <p class="section-kicker">O controle de acesso que a folha de estilo desfazia</p>
+              <p><strong>O atributo que esconde um elemento perde por especificidade para qualquer regra de classe.</strong></p>
+              <code>[hidden]{display:none} &lt; .cartao{display:flex} → o elemento oculto aparece</code>
+              <p>
+                O gating por papel rodava correto em JavaScript e o CSS o revertia em silêncio —
+                cartões restritos ficavam visíveis para todos os papéis. A base já carregava cinco
+                remendos escritos classe a classe, sintoma de um buraco tapado caso a caso e
+                escapando na classe seguinte. A correção foi uma regra geral, mais um teste que a
+                exige nas folhas que servem telas com controle de acesso.
+              </p>
+            </div>
+            <ul class="case-list" aria-label="Defeitos e o instrumento que passou a encontrá-los">
+              <li>
+                <strong>Layout quebrado com HTTP 200 e console limpo:</strong> faltava o container
+                que põe menu e conteúdo lado a lado, e a página descia como HTML sem estilo. Página
+                servida, parciais expandidos e JavaScript sem exceção — tudo verdadeiro, e nada
+                disso enxerga layout. Ao fotografar uma página que funcionava para comparar,
+                apareceu o achado maior: outras duas telas estavam quebradas do mesmo jeito desde
+                que haviam sido extraídas do painel, sem ninguém ter registrado.
+              </li>
+              <li>
+                <strong>Uma regra de acesso exibida como falha técnica:</strong> ver biometria de
+                conta administrativa é exclusivo do diretor, e o servidor respondia 403 —
+                corretamente. A tela pedia as fotos assim mesmo e escrevia “falhou ao carregar”, o
+                que fazia política de acesso parecer defeito intermitente. A interface passou a
+                conhecer a mesma regra, explicar o recorte e não emitir requisição condenada ao 403.
+              </li>
+              <li>
+                <strong>O pacote com instruções de duas releases atrás:</strong> o guia mandava
+                abrir um diretório que o pacote entregue não continha — quem seguisse o passo a
+                passo travava na primeira linha. Todos os gates de release passaram, porque
+                validavam a árvore de trabalho, não a cópia dentro do <code>tar</code>. As
+                instruções passaram a sair de uma variável de versão, e a conferência passou a ser
+                feita no pacote extraído.
+              </li>
+            </ul>
+            <p>
+              O padrão é o mesmo nos cinco: cada verificação era válida e passava, e nenhuma tinha
+              alcance sobre o defeito. Três correções viraram teste automatizado no mesmo commit;
+              as outras duas viraram mudança de hábito — <strong>quando a mudança é visual,
+              fotografar a tela; quando é de entrega, abrir a caixa</strong> — que é a parte que
+              não dá para automatizar.
             </p>
           </div>
         </article>
