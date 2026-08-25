@@ -44,7 +44,7 @@ const englishPages = {
       ['.nav-menu a[href="#contato"]', 'Contact'],
       ['.hero .eyebrow', 'Data Science · ML Engineering'],
       ['.hero h1', 'Applied machine learning, with experimental rigor and a strong software foundation.'],
-      ['.hero-description', 'I am <strong>Israel Souza Ferreira</strong>, a computer scientist with experience in applied research and systems development. I am seeking Data Science, Machine Learning Engineering, and Applied ML opportunities, combining reproducible baselines, experimental evaluation, and APIs.'],
+      ['.hero-description', 'I am <strong>Israel Souza Ferreira</strong>, a computer scientist who graduated from UFC Quixadá on August 19, 2026, with experience in applied research and systems development. I am seeking Data Science, Machine Learning Engineering, and Applied ML opportunities, combining reproducible baselines, experimental evaluation, and APIs.'],
       ['.hero-actions a:nth-child(1)', 'Selected projects'],
       ['.hero-actions a:nth-child(2)', 'Résumé PDF'],
       ['.hero-meta li:nth-child(1)', '<svg class="location-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M12 21s7-6.1 7-12A7 7 0 1 0 5 9c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg> Fortaleza, Ceará, Brazil'],
