@@ -102,13 +102,13 @@
         {israel.souza.dev@gmail.com}
         \\[1pt]
         \href{https://www.linkedin.com/in/isrreal/}
-        {linkedin.com/in/isrreal}
+        {LinkedIn}
         \enspace $|$ \enspace
         \href{https://github.com/isrreal}
-        {github.com/isrreal}
+        {GitHub}
         \enspace $|$ \enspace
         \href{https://israelsouza.speculummaius.com.br/}
-        {Portfólio: israelsouza.speculummaius.com.br}
+        {Portfólio}
         \enspace $|$ \enspace
         \href{http://lattes.cnpq.br/6540409845091993}
         {Lattes}
@@ -122,9 +122,9 @@
 \section*{Perfil}
 
 Cientista de dados e engenheiro de machine learning com experiência em
-\textbf{pesquisa aplicada} e entrega ponta a ponta: experimentação, visão
-computacional, APIs, dados e implantação CPU-only. Transformo hipóteses em
-decisões mensuráveis com baselines, ablações, benchmarks e testes automatizados.
+\textbf{pesquisa aplicada e entrega ponta a ponta}: experimentação, visão
+computacional, APIs, dados e implantação CPU-only. Sustento decisões com
+baselines, ablações, benchmarks e testes automatizados.
 
 % ---------- EXPERIÊNCIA ----------
 \section*{Experiência Profissional}
@@ -172,29 +172,23 @@ decisões mensuráveis com baselines, ablações, benchmarks e testes automatiza
     \item Desenvolvi ponta a ponta o \href
     {https://github.com/isrreal/face-clock-evoluir-public}
     {\textbf{Face Clock Evoluir}}, sistema contratado de ponto facial em
-    homologação final, cobrindo modelos, backend, banco, segurança, testes e
-    implantação.
+    homologação final. Assumi modelos, backend, banco, segurança e implantação;
+    a entrega atual possui \textbf{574 testes automatizados}.
 
     \item Coloquei reconhecimento 1:N em operação CPU-only com YuNet + SFace,
     ONNX Runtime e PostgreSQL/pgvector: \textbf{p95 de 74~ms} com uma
-    identificação e \textbf{574 testes automatizados} na entrega atual.
+    identificação. A calibração open-set reduziu desconhecidos aceitos de
+    \textbf{45,4\% para 0,2\%} na base pública de referência.
 
-    \item Recalibrei o limiar open-set, reduzindo desconhecidos aceitos de
-    \textbf{45,4\% para 0,2\%} na base pública; reduzi \textbf{5 para 3 frames}
-    após medir acurácia idêntica de 1 a 8 e corrigi uma corrida que causava
-    \textbf{24/24 falhas} em oito rajadas simultâneas.
-
-    \item Um benchmark de busca vetorial mediu \textbf{0,076~ms em 1.000
-    vetores}; como o HNSW obteve recall@1 de 0,915, mantive a busca exata e
-    transacional no pgvector em vez de adotar FAISS prematuramente.
+    \item Experimentos reduziram \textbf{5 para 3 frames} sem perda medida e
+    mostraram busca exata de \textbf{0,076~ms em 1.000 vetores}; mantive a busca
+    transacional no pgvector em vez de adicionar FAISS sem ganho comprovado.
 
     \item Comparei cinco abordagens para triagem de atestados; a solução
     EfficientNet + Regressão Logística alcançou \textbf{87,5\% de acurácia} e
-    sete falsos positivos a menos, preservando o recall.
-
-    \item Adequei a entrega ao servidor sem GPU e com 8~GB de RAM: imagens de
-    produção de \textbf{10,59 para 1,11~GB} (9,5$\times$ menores), com zero
-    decisões do classificador alteradas na migração para ONNX Runtime.
+    sete falsos positivos a menos no mesmo recall. Para o servidor sem GPU e
+    com 8~GB de RAM, reduzi as imagens de \textbf{10,59 para 1,11~GB}, sem
+    alterar decisões do classificador na migração para ONNX Runtime.
 
 \end{itemize}
 

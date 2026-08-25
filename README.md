@@ -40,8 +40,10 @@ ser traduzido silenciosamente.
 Os PDFs em `assets/` são gerados a partir dos fontes LaTeX no mesmo diretório:
 
 ```bash
-pdflatex -interaction=nonstopmode assets/israel-cv-portugues.tex
-pdflatex -interaction=nonstopmode assets/israel-cv-english.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=assets assets/israel-cv-portugues.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=assets assets/israel-cv-english.tex
+cp assets/israel-cv-portugues.pdf assets/israel_cv_pt.pdf
+cp assets/israel-cv-english.pdf assets/israel_cv_en.pdf
 ```
 
 Cada idioma é publicado sob dois nomes (`israel_cv_pt.pdf` e `israel-cv-portugues.pdf`),
