@@ -390,13 +390,14 @@
         <article class="case-block" id="resultados">
           <div>
             <p class="section-kicker" id="trdt-res-kicker">Resultados</p>
-            <h2 id="trdt-res-titulo">ACO-FL contra FLGA, medidos pelo ótimo.</h2>
+            <h2 id="trdt-res-titulo">ACO-FL e FLGA, comparados à referência exata quando disponível.</h2>
           </div>
           <div class="case-prose">
             <p class="lead" id="trdt-res-lead">
               O gap relativo compara a melhor solução encontrada pelas meta-heurísticas com a
-              solução do modelo exato. O ACO-FL vence na maioria das instâncias, mas a
-              vantagem não é uniforme: em grafos pequenos e densos, e em alguns grafos com
+              solução do modelo exato. Na execução relatada, o ACO-FL obteve a melhor combinação
+              observada na maioria das instâncias, mas a vantagem não é uniforme: em grafos pequenos
+              e densos, e em alguns grafos com
               muitos ótimos locais, o FLGA chega mais perto.
             </p>
 
@@ -495,8 +496,8 @@
               A partir dessas três métricas, o que o trabalho afirma publicamente:
             </p>
             <ul class="case-list" aria-label="Impacto comunicado">
-              <li id="trdt-met-impacto-1"><strong>Primeira formulação exata correta:</strong> o modelo PLI publicado anteriormente aceita soluções inválidas, e o texto exibe o contraexemplo que comprova a falha.</li>
-              <li id="trdt-met-impacto-2"><strong>Primeiras meta-heurísticas para o problema:</strong> não havia, até então, abordagem baseada em algoritmos genéticos ou colônia de formigas para a Dominação Romana Tripla.</li>
+              <li id="trdt-met-impacto-1"><strong>Formulação exata corrigida:</strong> o modelo PLI publicado anteriormente aceita soluções inválidas, e o texto exibe o contraexemplo que comprova a falha.</li>
+              <li id="trdt-met-impacto-2"><strong>Meta-heurísticas implementadas:</strong> o trabalho investiga o problema com abordagens baseadas em algoritmo genético e colônia de formigas.</li>
               <li id="trdt-met-impacto-3"><strong>Base de instâncias reutilizável:</strong> 30 grafos aleatórios gerados com γ<sub>3R</sub> exato calculado, além dos valores exatos da maior parte das demais instâncias — material de comparação para pesquisas seguintes.</li>
               <li id="trdt-met-impacto-4"><strong>Componentes justificados por medição:</strong> a busca local RVNS e a heurística de população inicial H4 foram escolhidas por comparação sob o mesmo protocolo, não por preferência.</li>
               <li id="trdt-met-impacto-5"><strong>Resultado honesto sobre a margem:</strong> em 362 grafos avaliados, apenas 6 ficaram a mais de 50% do valor de referência; todos os demais ficaram abaixo desse limiar.</li>

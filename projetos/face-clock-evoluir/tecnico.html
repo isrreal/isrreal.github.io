@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Experimentos do Face Clock Evoluir: limiar facial, frames, FAISS, concorrência, baselines de classificação, segurança e benchmarks de produção.">
+  <meta name="description" content="Experimentos do Face Clock Evoluir: limiar facial, frames, FAISS, concorrência, baselines de classificação, segurança e benchmarks de entrega.">
   <meta name="author" content="Israel Souza Ferreira">
   <meta name="theme-color" content="#071417">
 
@@ -85,7 +85,7 @@
           <li>Experimentos controlados</li>
           <li>FAISS + pgvector</li>
           <li>PyTorch + scikit-learn</li>
-          <li>Segurança e produção</li>
+          <li>Segurança e preparação de entrega</li>
           <li>Limitações explícitas</li>
         </ul>
       </div>
@@ -176,7 +176,7 @@
             </div>
             <p id="reconhecimento-reproducao">
               A reprodução está nos notebooks 15–18 e em <code>ml/face_bench.py</code>: mesma
-              extração, normalização e limiares do serviço de produção, com fontes de dados e
+              extração, normalização e limiares do serviço de inferência, com fontes de dados e
               limitações declaradas.
             </p>
           </div>
@@ -396,7 +396,7 @@
                 demais e baixá-lo seria o ajuste natural. Simular o pipeline completo em nove limiares
                 mostrou o oposto: reduzir o valor melhora o classificador isolado e degrada o resultado
                 final, porque passa a dar voz ao componente menos preciso. A medição evitou uma
-                regressão em produção.
+                regressão no serviço de inferência.
               </li>
               <li>
                 <strong>A causa real, e uma segunda hipótese corrigida:</strong> restava o conjunto de
@@ -435,7 +435,7 @@
           </div>
           <div class="case-prose">
             <p class="lead" id="congelamento-lead">
-              A configuração de descongelamento usada em produção parecia sobreajustar: 97% de
+              A configuração de descongelamento escolhida para a entrega parecia sobreajustar: 97% de
               acerto no treino contra 70% num teste de apenas 40 imagens. Em vez de aceitar o
               diagnóstico, três profundidades de descongelamento foram comparadas sob o mesmo
               protocolo de validação cruzada.
@@ -452,7 +452,7 @@
             <figure class="case-figure case-figure-chart">
               <svg viewBox="0 0 720 380" role="img" aria-labelledby="congelamento-svg-titulo congelamento-svg-desc" xmlns="http://www.w3.org/2000/svg">
                 <title id="congelamento-svg-titulo">Acurácia de validação por profundidade de descongelamento, 5-fold</title>
-                <desc id="congelamento-svg-desc">Gráfico de colunas com barras de erro (desvio-padrão) comparando três configurações: A, 67,0% mais ou menos 3,9; B, 74,9% mais ou menos 6,7; C, a configuração em produção, 84,2% mais ou menos 1,7.</desc>
+                <desc id="congelamento-svg-desc">Gráfico de colunas com barras de erro (desvio-padrão) comparando três configurações: A, 67,0% mais ou menos 3,9; B, 74,9% mais ou menos 6,7; C, a configuração selecionada, 84,2% mais ou menos 1,7.</desc>
                 <style>
                   .fc-grid { stroke: var(--border); stroke-width: 1; }
                   .fc-tick { fill: var(--muted); font-size: 11px; }
@@ -506,13 +506,13 @@
               </svg>
               <figcaption id="congelamento-figura-legenda">
                 Acurácia média de validação de cada configuração, com desvio-padrão entre as cinco
-                dobras: a configuração em produção não só vence — é também a mais estável das três.
+                dobras: a configuração selecionada não só vence — é também a mais estável das três.
               </figcaption>
             </figure>
             <div class="case-results" aria-label="Resultados do experimento de congelamento">
               <div class="case-result">
                 <strong>84,2% ± 1,7</strong>
-                <span>acurácia média de validação da configuração em produção — a mais alta e a mais estável das três</span>
+                <span>acurácia média de validação da configuração selecionada — a mais alta e a mais estável das três</span>
               </div>
               <div class="case-result">
                 <strong>67,0% ± 3,9</strong>
@@ -530,7 +530,7 @@
               aumentariam o sobreajuste. O gap de 27 pontos percentuais que motivou o alarme inicial
               não se repetiu no 5-fold: ali, entre treino e validação, ficou em torno de 10 pontos
               para a configuração atual — a diferença vinha da variância de um conjunto de teste
-              pequeno, não de memorização real. A arquitetura já em produção foi confirmada, e o
+              pequeno, não de memorização real. A arquitetura selecionada foi confirmada, e o
               próximo ganho de qualidade depende de mais dados — sobretudo da classe minoritária,
               não-atestado — e não de mexer na profundidade de descongelamento.
             </p>
@@ -563,7 +563,7 @@
               <li><strong>Recuperação controlada:</strong> redefinições usam tokens de uso único, com expiração e marcação de utilização.</li>
               <li><strong>Autorização e anti-IDOR:</strong> além de autenticar, a API verifica se o usuário pode acessar cada recurso, inclusive documentos médicos sensíveis.</li>
               <li><strong>Totem provisionado:</strong> cada dispositivo usa API key obtida por ativação com PIN e proteção contra força bruta; a chave não é incorporada ao HTML público.</li>
-              <li><strong>Biometria protegida:</strong> múltiplos frames, vivacidade, impressão SHA-256 anti-replay e controles para dados sensíveis segundo a LGPD.</li>
+              <li><strong>Biometria protegida:</strong> múltiplos frames, vivacidade, impressão SHA-256 anti-replay e controles técnicos para dados biométricos e médicos; a avaliação jurídica de conformidade é externa ao projeto.</li>
               <li><strong>Implantação restrita:</strong> backend exposto apenas localmente, HTTPS por túnel, migrações versionadas e volumes persistentes.</li>
               <li><strong>Escape por contexto, não por hábito:</strong> escapar HTML não protege uma string JavaScript dentro de <code>onclick</code> — o parser decodifica a entidade <code>&amp;#039;</code> <em>antes</em> de o script ser compilado e devolve a aspa ao atacante. Os pontos onde dado do usuário virava marcação passaram a montar nós por DOM, com <code>textContent</code> e <code>addEventListener</code>: sem fronteira de string, não há o que escapar.</li>
               <li><strong>Saúde que reprova schema defasado:</strong> o healthcheck comparava só se o banco respondia — e responder ele responde mesmo faltando coluna. Agora confere a revisão de migração aplicada contra a esperada pelo código, porque uma instância verde com schema atrasado quebra na primeira rota que tocar o campo novo.</li>
@@ -838,7 +838,7 @@
         <article class="case-block" id="entrega">
           <div>
             <p class="section-kicker">Restrição de hardware</p>
-            <h2>O servidor de produção não tinha GPU.</h2>
+            <h2>O servidor-alvo não tinha GPU.</h2>
           </div>
           <div class="case-prose">
             <p class="lead">
