@@ -161,7 +161,6 @@ const englishPages = {
       ['#curriculo .contact-actions a:nth-child(2)', 'Download PDF'],
       ['#curriculo .contact-actions a:nth-child(3)', 'LaTeX source'],
       ['#curriculo .contact-actions a:nth-child(4)', 'Lattes Curriculum (CNPq)'],
-      ['#curriculo .contact-actions a:nth-child(5)', 'Lattes PDF'],
       ['#contato .section-kicker', 'Contact'],
       ['#contato h2', 'Let’s talk.'],
       ['#contato .contact-card > div:first-child > p:last-child', 'Open to Data Scientist, Machine Learning Engineer, and Applied ML Engineer opportunities.'],
