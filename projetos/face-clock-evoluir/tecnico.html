@@ -70,8 +70,7 @@
         </div>
         <h1 class="case-title" id="face-tech-title">Dos resultados às evidências.</h1>
         <p class="hero-description case-intro" id="face-tech-intro">
-          Protocolos, baselines, benchmarks e limitações que sustentam o estudo de caso.
-          Cada seção começa pela decisão e aprofunda até a evidência reproduzível.
+          Protocolos, baselines, benchmarks e limitações dos experimentos, com evidências reproduzíveis.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#reconhecimento">Reconhecimento facial</a>
@@ -100,9 +99,7 @@
           </div>
           <div class="case-prose">
             <p class="lead" id="reconhecimento-lead">
-              Limiar, quantidade de frames, índice vetorial e troca de modelo pareciam
-              decisões independentes. Um instrumento comum reproduziu a pipeline do totem
-              e mostrou onde havia risco, custo sem benefício e complexidade prematura.
+              Reproduzi o pipeline do totem para avaliar limiar, número de frames, índice vetorial e troca de modelo.
             </p>
             <p class="table-scroll-hint" id="reconhecimento-scroll">Deslize a tabela para comparar as quatro colunas →</p>
             <figure class="case-table-wrapper">
@@ -168,10 +165,7 @@
               <p class="section-kicker">Achado não planejado</p>
               <p><strong>Duas batidas simultâneas faziam 6 de 6 extrações falharem.</strong></p>
               <p>
-                Detector e reconhecedor compartilhavam estado interno no threadpool. Com 8 batidas,
-                foram 24 falhas em 24 extrações. A correção foi serializar o acesso ao modelo — o
-                oposto da paralelização que o benchmark inicialmente tentava avaliar — e prender o
-                comportamento em teste de regressão com 8 threads × 3 frames.
+                Detector e reconhecedor compartilhavam estado no threadpool: 8 batidas causaram 24 falhas em 24 extrações. Serializei o acesso ao modelo e adicionei regressão com 8 threads × 3 frames.
               </p>
             </div>
             <p id="reconhecimento-reproducao">
@@ -189,25 +183,13 @@
           </div>
           <div class="case-prose">
             <p class="lead" id="atestado-lead">
-              O classificador de atestados não foi apenas ajustado até parecer bom: foi comparado
-              com alternativas explícitas, do classificador trivial ao híbrido, todas sob o mesmo
-              protocolo de seleção e a mesma medição final.
+              Comparei classificadores triviais, clássicos, neurais e híbridos sob o mesmo protocolo de seleção e teste.
             </p>
             <p id="atestado-dados">
-              O classificador vive em um serviço próprio e foi estruturado com fine-tuning
-              seletivo e uma comparação reproduzível entre abordagens. A partição é estratificada,
-              gerada por script com semente fixa e versionada: 297 documentos para treino, 64 para
-              validação e 64 para teste final; o conjunto de teste não participou nem do early
-              stopping nem da escolha de hiperparâmetros.
+              Serviço próprio com fine-tuning seletivo. Partição estratificada, versionada e gerada com semente fixa: 297 documentos de treino, 64 de validação e 64 de teste. O teste não participou do early stopping nem da seleção de hiperparâmetros.
             </p>
             <p id="atestado-metodo">
-              A comparação foi montada como uma escada de baselines, do trivial ao híbrido. Cada
-              candidato teve seus hiperparâmetros escolhidos por busca em grade com validação cruzada
-              estratificada de cinco dobras <em>dentro do treino</em>, otimizando F1 da classe minoritária
-              — atestado representa 31% da base. Nenhuma imagem de teste participou da busca; ela só
-              foi usada na medição final. O piso é dado por um classificador que sempre responde a classe majoritária:
-              68,8% de accuracy com F1 zero, o que já mostra que accuracy isolada não descreve
-              este problema.
+              Selecionei hiperparâmetros por busca em grade com validação cruzada estratificada de cinco dobras <em>dentro do treino</em>, otimizando F1 da classe atestado (31% da base). O baseline majoritário alcança 68,8% de acurácia e F1 zero; o teste foi usado apenas na medição final.
             </p>
             <figure class="case-table-wrapper">
               <div class="case-table-scroll">
@@ -266,28 +248,13 @@
               </div>
             </div>
             <p id="atestado-hog">
-              O experimento evitou uma conclusão superficial em duas direções. HOG + SVM, uma
-              abordagem inteiramente clássica, chegou a F1 0,636 — melhor que o piso, mas abaixo
-              da cabeça original da rede (0,651): bordas e layout não bastam para separar os
-              documentos. E o ganho da alternativa vencedora não veio de trocar a rede por um
-              método clássico, e sim de recombiná-los: a EfficientNet fornece os embeddings de
-              1.280 dimensões e a Regressão Logística faz a decisão final. O OCR continua como
-              camada de revisão por regras.
+              HOG + SVM alcançou F1 0,636, abaixo da cabeça neural original (0,651). A solução selecionada combina embeddings de 1.280 dimensões da EfficientNet com Regressão Logística. O OCR atua na revisão por regras.
             </p>
             <p id="atestado-precisao">
-              As duas cabeças recuperam a mesma quantidade de atestados, 14 dos 20 do teste; o que
-              muda é o custo dessa recuperação, de 9 falsos positivos para 2. E a melhora não é
-              apenas escolha de limiar: a ordenação dos documentos por probabilidade também ficou
-              melhor, com ROC AUC de 0,814 para 0,892 e PR AUC de 0,697 para 0,823.
+              Ambas as cabeças recuperam 14 dos 20 atestados, mas os falsos positivos caem de 9 para 2. ROC AUC passa de 0,814 para 0,892; PR AUC, de 0,697 para 0,823.
             </p>
             <p id="atestado-ressalvas">
-              Com 64 documentos de teste, diferenças pequenas de F1 não sustentam ranking. Entre os
-              três classificadores sobre embeddings, a validação cruzada ficou dentro de 0,004
-              (0,904 a 0,908) e a ordem observada no teste não é significativa; nos baselines HOG, o
-              melhor em validação cruzada nem foi o melhor no teste. A validação cruzada dos embeddings
-              também não é comparável de igual para igual com a do HOG: o backbone foi ajustado nessas
-              mesmas imagens de treino, então seu número interno é otimista por construção. A comparação
-              justa entre as duas famílias é a do teste, onde nenhuma delas tinha visto os documentos.
+              Os 64 documentos de teste não sustentam ranking por pequenas diferenças de F1. Os três classificadores sobre embeddings ficaram entre 0,904 e 0,908 na validação cruzada; entre os HOG, a ordem mudou no teste. Como o backbone foi ajustado nas imagens de treino, a validação dos embeddings é otimista. A comparação entre famílias deve usar o teste reservado.
             </p>
           </div>
         </article>
@@ -299,9 +266,7 @@
           </div>
           <div class="case-prose">
             <p class="lead">
-              O OCR do pipeline vinha entregando resultados ruins em parte dos documentos.
-              Em vez de trocar a ferramenta, a origem do problema foi investigada — e não
-              estava no OCR.
+              Investiguei falhas de OCR e identifiquei imagens carregadas com orientação incorreta.
             </p>
             <div class="case-results" aria-label="Indicadores da investigação">
               <div class="case-result">
@@ -319,33 +284,16 @@
             </div>
             <ul class="case-list" aria-label="Decisões técnicas da investigação">
               <li>
-                <strong>Diagnóstico do bug silencioso:</strong> fotos de celular carregam na tag EXIF
-                <code>Orientation</code> a rotação necessária para exibição. Visualizadores aplicam essa
-                tag; a biblioteca de imagem usada no pipeline, não. O documento chegava deitado à rede
-                neural e ao OCR sem gerar erro algum — apenas texto ilegível. Nas amostras verificadas,
-                normalizar a orientação levou a extração de nenhum termo reconhecido para a identificação
-                correta do documento.
+                <strong>Orientação EXIF:</strong> o pipeline ignorava a tag <code>Orientation</code> e enviava documentos rotacionados à rede e ao OCR. Nas amostras verificadas, normalizar a orientação recuperou a identificação do documento.
               </li>
               <li>
-                <strong>Descarte do próprio falso positivo:</strong> o detector de orientação do OCR
-                apontava rotação em 45% da base. O cruzamento com o tipo de arquivo mostrou que 91 dos
-                109 casos de “180°” eram capturas de tela — que nunca estão de cabeça para baixo. O sinal
-                era ruído do detector, não característica do dado; a hipótese só foi confirmada pelo
-                metadado EXIF.
+                <strong>Validação da hipótese:</strong> o detector de orientação sinalizava 45% da base; 91 dos 109 casos de “180°” eram capturas de tela. O metadado EXIF permitiu distinguir rotação real de ruído do detector.
               </li>
               <li>
-                <strong>Correção sem desalinhar treino e produção:</strong> normalizar a orientação apenas
-                na inferência criaria <em>train/serve skew</em>, já que o modelo havia sido treinado com as
-                mesmas imagens rotacionadas. A correção foi centralizada em um único ponto de leitura,
-                aplicada também ao carregador de dados do treino, seguida de re-treinamento — cujo efeito
-                sobre o classificador foi reportado como neutro, não como ganho.
+                <strong>Consistência treino/inferência:</strong> centralizei a normalização na leitura de imagens e no carregador de treino, evitando <em>train/serve skew</em>. Após retreinamento, o efeito no classificador foi neutro.
               </li>
               <li>
-                <strong>Escolha de métrica por adequação, não por sofisticação:</strong> a divergência de
-                Jensen-Shannon foi cogitada para comparar dois pipelines e descartada após demonstração
-                numérica: em um caso construído com discordância em 100% dos documentos, a divergência
-                entre as distribuições marginais resulta exatamente zero. A comparação passou a usar
-                instrumentos pareados, que enxergam a discordância documento a documento.
+                <strong>Métricas pareadas:</strong> descartei Jensen-Shannon após demonstrar divergência marginal zero em um caso com 100% de discordância entre documentos. Adotei comparações documento a documento.
               </li>
             </ul>
           </div>
@@ -354,13 +302,11 @@
         <article class="case-block" id="diagnostico">
           <div>
             <p class="section-kicker">Diagnóstico experimental</p>
-            <h2>Descartar hipóteses, inclusive as próprias.</h2>
+            <h2>Hipóteses avaliadas por experimento.</h2>
           </div>
           <div class="case-prose">
             <p class="lead">
-              O classificador não estava aprendendo o quanto deveria. Em vez de partir para o
-              palpite usual — modelo maior — cada causa candidata virou um experimento controlado,
-              com grupo de controle e uma variável por vez.
+              Investiguei o aprendizado limitado do classificador com experimentos controlados, alterando uma variável por vez.
             </p>
             <div class="case-results" aria-label="Indicadores do diagnóstico">
               <div class="case-result">
@@ -378,51 +324,22 @@
             </div>
             <ul class="case-list" aria-label="Experimentos conduzidos">
               <li>
-                <strong>A resposta óbvia, testada e rejeitada:</strong> a reação padrão a um modelo que
-                não aprende é aumentar a capacidade. O teste de memorização mostrou que os mesmos
-                parâmetros treináveis ajustam integralmente um subconjunto pequeno em quatro épocas
-                quando a regularização é retirada. Capacidade existia de sobra — parâmetros adicionais
-                custariam treino mais lento sem mover o resultado.
+                <strong>Capacidade:</strong> sem regularização, os mesmos parâmetros ajustaram um subconjunto em quatro épocas. O teste de memorização descartou falta de capacidade.
               </li>
               <li>
-                <strong>Uma hipótese própria, derrubada pelo experimento:</strong> a suspeita inicial era
-                que a suavização de rótulos impunha um teto de confiança, já que o teto teórico ficava
-                logo acima do máximo observado. O experimento controlado removeu a suavização e o teto
-                não subiu. A proximidade entre os dois números era coincidência, não causa — e a
-                conclusão anterior foi revista.
+                <strong>Suavização de rótulos:</strong> removê-la não elevou o teto de confiança observado, descartando a hipótese inicial.
               </li>
               <li>
-                <strong>A correção intuitiva pioraria o sistema:</strong> o limiar de decisão parecia alto
-                demais e baixá-lo seria o ajuste natural. Simular o pipeline completo em nove limiares
-                mostrou o oposto: reduzir o valor melhora o classificador isolado e degrada o resultado
-                final, porque passa a dar voz ao componente menos preciso. A medição evitou uma
-                regressão no serviço de inferência.
+                <strong>Limiar:</strong> simulei o pipeline em nove valores. Reduzir o limiar melhorava o classificador isolado, mas piorava o resultado final ao favorecer o componente menos preciso.
               </li>
               <li>
-                <strong>A causa real, e uma segunda hipótese corrigida:</strong> restava o conjunto de
-                transformações aplicadas às imagens de treino. A suspeita era o espelhamento horizontal,
-                inválido para documentos porque texto espelhado não existe entre as entradas reais.
-                Removê-lo isoladamente não mudou nada mensurável; reduzir a carga completa de
-                transformações elevou a acurácia de validação em treze pontos percentuais e manteve o
-                modelo aprendendo por vinte e três épocas, contra quatro antes. O problema era o volume
-                agregado, não a transformação que a intuição apontava.
+                <strong>Augmentation:</strong> remover o espelhamento horizontal isoladamente não mudou o resultado. Reduzir a carga total de transformações elevou a acurácia de validação em treze pontos percentuais e prolongou o aprendizado de quatro para vinte e três épocas.
               </li>
               <li>
-                <strong>Um segundo gargalo, exposto pela primeira correção:</strong> com o modelo já
-                melhor, notei que o treino parava enquanto ainda melhorava — o critério de parada
-                media acurácia, que num conjunto pequeno de validação avança em saltos grandes e
-                satura. Comparei três critérios em treinos isolados; o que eu havia apostado ficou em
-                último, e o vencedor levou o modelo a treinar três vezes mais tempo antes de parar.
+                <strong>Parada antecipada:</strong> a acurácia saturava no conjunto pequeno de validação. Comparei três critérios em treinos isolados; o selecionado permitiu treinar três vezes mais antes da parada.
               </li>
               <li>
-                <strong>A conclusão anterior, invalidada pelas próprias correções:</strong> enquanto o
-                classificador estava travado, a medição indicava que ele quase não contribuía — o OCR
-                sustentava o resultado sozinho. Refazer a mesma avaliação inverteu o quadro: a rede
-                passou a cruzar o limiar de decisão em 23,7% dos documentos contra 0,6% antes, a
-                concordância entre os dois componentes saiu do nível do acaso para moderada, e o erro
-                quadrático das probabilidades caiu a menos de um quarto do valor original. A conclusão
-                valia para o modelo defeituoso, não para o problema. Como os instrumentos de avaliação
-                já estavam prontos, reverificar custou uma reexecução, sem escrever código novo.
+                <strong>Reavaliação:</strong> após as correções, a rede cruzou o limiar em 23,7% dos documentos, contra 0,6% antes. A concordância com o OCR passou de acaso a moderada, e o erro quadrático das probabilidades caiu a menos de um quarto. Reexecutei os instrumentos existentes para revisar a conclusão sobre a contribuição da rede.
               </li>
             </ul>
           </div>
@@ -431,23 +348,14 @@
         <article class="case-block" id="congelamento">
           <div>
             <p class="section-kicker">Validação de arquitetura</p>
-            <h2>Um alarme de overfitting que o 5-fold desarmou.</h2>
+            <h2>Profundidade de fine-tuning avaliada em 5-fold.</h2>
           </div>
           <div class="case-prose">
             <p class="lead" id="congelamento-lead">
-              A configuração de descongelamento escolhida para a entrega parecia sobreajustar: 97% de
-              acerto no treino contra 70% num teste de apenas 40 imagens. Em vez de aceitar o
-              diagnóstico, três profundidades de descongelamento foram comparadas sob o mesmo
-              protocolo de validação cruzada.
+              A diferença entre treino (97%) e teste (70%, 40 imagens) motivou a comparação de três profundidades de descongelamento por validação cruzada.
             </p>
             <p id="congelamento-contexto">
-              A rede parte de pesos pré-treinados na ImageNet; a pergunta é quantos blocos finais
-              descongelar para o domínio de atestados. Três opções entraram na comparação: só a
-              cabeça classificadora, a cabeça mais o último bloco de features, e a cabeça mais os
-              dois últimos blocos — esta última, a configuração já em uso. Cada uma rodou em
-              5-fold estratificado sobre as 406 imagens de treino, até 30 épocas com parada
-              antecipada de paciência 7, sempre com a mesma semente e o mesmo balanceamento de
-              classes.
+              Com pesos ImageNet, comparei cabeça, cabeça + último bloco e cabeça + dois últimos blocos. Protocolo: 5-fold estratificado em 406 imagens de treino, até 30 épocas, paciência 7, mesma semente e balanceamento de classes.
             </p>
             <figure class="case-figure case-figure-chart">
               <svg viewBox="0 0 720 380" role="img" aria-labelledby="congelamento-svg-titulo congelamento-svg-desc" xmlns="http://www.w3.org/2000/svg">
@@ -505,8 +413,7 @@
                 </g>
               </svg>
               <figcaption id="congelamento-figura-legenda">
-                Acurácia média de validação de cada configuração, com desvio-padrão entre as cinco
-                dobras: a configuração selecionada não só vence — é também a mais estável das três.
+                Acurácia média de validação e desvio-padrão entre as cinco dobras.
               </figcaption>
             </figure>
             <div class="case-results" aria-label="Resultados do experimento de congelamento">
@@ -524,15 +431,7 @@
               </div>
             </div>
             <p id="congelamento-conclusao">
-              A configuração intermediária, com apenas um bloco descongelado, generalizou pior e de
-              forma mais instável (74,9% ± 6,7%) do que a atual com dois blocos — descongelar mais
-              não piorou o quadro, contrariando a suspeita natural de que mais parâmetros treináveis
-              aumentariam o sobreajuste. O gap de 27 pontos percentuais que motivou o alarme inicial
-              não se repetiu no 5-fold: ali, entre treino e validação, ficou em torno de 10 pontos
-              para a configuração atual — a diferença vinha da variância de um conjunto de teste
-              pequeno, não de memorização real. A arquitetura selecionada foi confirmada, e o
-              próximo ganho de qualidade depende de mais dados — sobretudo da classe minoritária,
-              não-atestado — e não de mexer na profundidade de descongelamento.
+              Dois blocos descongelados mantiveram o melhor resultado e a menor variância; um bloco alcançou 74,9% ± 6,7%. O gap treino/validação ficou em torno de 10 pontos no 5-fold, contra 27 no teste pequeno. A avaliação confirmou a arquitetura selecionada e indicou ampliar os dados, sobretudo de não-atestado.
             </p>
           </div>
         </article>
@@ -544,8 +443,7 @@
           </div>
           <div class="case-prose">
             <p class="lead">
-              A identidade é validada em diferentes níveis: usuário, sessão, autorização,
-              dispositivo e tentativa biométrica. Cada camada reduz um tipo distinto de risco.
+              Validação de identidade, sessão, autorização, dispositivo e tentativa biométrica.
             </p>
             <div class="case-formula auth-summary">
               <p class="section-kicker">Em termos simples</p>
@@ -565,8 +463,8 @@
               <li><strong>Totem provisionado:</strong> cada dispositivo usa API key obtida por ativação com PIN e proteção contra força bruta; a chave não é incorporada ao HTML público.</li>
               <li><strong>Biometria protegida:</strong> múltiplos frames, vivacidade, impressão SHA-256 anti-replay e controles técnicos para dados biométricos e médicos; a avaliação jurídica de conformidade é externa ao projeto.</li>
               <li><strong>Implantação restrita:</strong> backend exposto apenas localmente, HTTPS por túnel, migrações versionadas e volumes persistentes.</li>
-              <li><strong>Escape por contexto, não por hábito:</strong> escapar HTML não protege uma string JavaScript dentro de <code>onclick</code> — o parser decodifica a entidade <code>&amp;#039;</code> <em>antes</em> de o script ser compilado e devolve a aspa ao atacante. Os pontos onde dado do usuário virava marcação passaram a montar nós por DOM, com <code>textContent</code> e <code>addEventListener</code>: sem fronteira de string, não há o que escapar.</li>
-              <li><strong>Saúde que reprova schema defasado:</strong> o healthcheck comparava só se o banco respondia — e responder ele responde mesmo faltando coluna. Agora confere a revisão de migração aplicada contra a esperada pelo código, porque uma instância verde com schema atrasado quebra na primeira rota que tocar o campo novo.</li>
+              <li><strong>Prevenção de XSS:</strong> substituí marcação com dados do usuário por nós DOM, <code>textContent</code> e <code>addEventListener</code>, evitando interpolação em <code>onclick</code>.</li>
+              <li><strong>Healthcheck de schema:</strong> passei a comparar a migração aplicada com a revisão esperada pelo código, além de verificar a conexão com o banco.</li>
             </ul>
           </div>
         </article>
@@ -574,20 +472,14 @@
         <article class="case-block" id="procedencia">
           <div>
             <p class="section-kicker">Integridade da entrega</p>
-            <h2>O pacote embarcava um modelo que ninguém havia validado.</h2>
+            <h2>Rastreabilidade do modelo empacotado.</h2>
           </div>
           <div class="case-prose">
             <p class="lead">
-              Auditando o pacote de entrega — as imagens já construídas, não a árvore de
-              trabalho — o checkpoint PyTorch no disco não conferia com o checksum versionado.
-              Parecia registro desatualizado. Era o contrário: o checksum estava certo e o
-              arquivo é que havia sido trocado.
+              A auditoria das imagens de entrega identificou um checkpoint PyTorch diferente do checksum versionado.
             </p>
             <p>
-              O histórico de treinos guardava a linhagem. Um experimento posterior sobrescreveu
-              o checkpoint promovido e nunca foi promovido no lugar dele. Pior: o modelo ONNX
-              que ia dentro da imagem não correspondia a <em>nenhum</em> checkpoint versionado —
-              a divergência só apareceu comparando probabilidades imagem a imagem.
+              Um experimento sobrescreveu o checkpoint promovido. O ONNX empacotado também divergia dos checkpoints versionados, como mostrou a comparação de probabilidades por imagem.
             </p>
             <div class="case-formula">
               <p class="section-kicker">Por que os números do histórico não denunciavam</p>
@@ -617,21 +509,15 @@
               </figcaption>
             </figure>
             <p>
-              A causa raiz não era descuido isolado: o comando de exportação <em>documentado</em>
-              não podia sequer rodar, porque as dependências que o próprio script mandava instalar
-              nunca haviam sido declaradas. Um caminho oficial quebrado empurra para a exportação
-              manual, e é assim que a procedência se perde.
+              O comando documentado de exportação falhava por dependências não declaradas, favorecendo exportações manuais sem rastreabilidade.
             </p>
             <ul class="case-list" aria-label="Correções de integridade da entrega">
-              <li><strong>O gate só olhava existência:</strong> o script de release testava se o arquivo existia. Existir, existia — inválido era o par. Agora confere checksum e aborta com o esperado contra o obtido.</li>
-              <li><strong>Nada ligava o ONNX ao checkpoint:</strong> dois checksums provam cada arquivo contra si mesmo, e nenhum prova que um saiu do outro. A exportação passou a gravar esse vínculo, e o release o verifica.</li>
-              <li><strong>O caminho documentado voltou a funcionar:</strong> dependências declaradas, exportação reproduzível — rodada duas vezes, byte a byte idêntica.</li>
+              <li><strong>Validação de release:</strong> o gate passou a verificar checksums e abortar em caso de divergência.</li>
+              <li><strong>Linhagem:</strong> a exportação registra o vínculo entre checkpoint e ONNX, verificado no release.</li>
+              <li><strong>Reprodutibilidade:</strong> declarei as dependências e obtive duas exportações idênticas byte a byte.</li>
             </ul>
             <p id="procedencia-conclusao">
-              A lição não é sobre modelos: <strong>testes verdes não dizem nada sobre o que foi
-              empacotado.</strong> A suíte passava em todas as versões, inclusive naquela que
-              embarcava o modelo errado, porque nenhum teste olha para dentro do artefato que o
-              cliente recebe. Auditar o pacote é uma etapa distinta de testar o código.
+              Adotei a auditoria do artefato distribuído como etapa complementar aos testes de código.
             </p>
           </div>
         </article>
@@ -639,13 +525,11 @@
         <article class="case-block" id="camada-errada">
           <div>
             <p class="section-kicker">Diagnóstico de interface</p>
-            <h2>Cinco defeitos que passaram porque a verificação olhava a camada errada.</h2>
+            <h2>Cinco falhas identificadas na interface e no pacote.</h2>
           </div>
           <div class="case-prose">
             <p class="lead">
-              Suíte verde, código revisado, console do navegador limpo — e cinco defeitos
-              atravessaram tudo isso. Nenhum era difícil de corrigir; todos foram difíceis de
-              <em>ver</em>, porque a verificação em uso não alcançava a camada onde moravam.
+              Identifiquei cinco falhas que os testes de código e o console do navegador não detectavam.
             </p>
             <div class="case-results" aria-label="Indicadores do diagnóstico de interface">
               <div class="case-result">
@@ -662,58 +546,29 @@
               </div>
             </div>
             <p>
-              <strong>A aba travava e o servidor estava ocioso.</strong> Os containers a menos de
-              1% de CPU e nenhum erro em 30 minutos já diziam que o problema era do lado do
-              navegador — não onde. As fotos da biometria eram servidas como saíram da câmera
-              (4080&nbsp;×&nbsp;3060, 2,3&nbsp;MB) para preencher cards de 120&nbsp;px: cada uma
-              vira cerca de 48&nbsp;MiB de bitmap na memória, e os <code>blob:</code> criados
-              nunca eram liberados. A suíte testava que o endpoint devolvia a foto certa com o
-              status certo, e nunca pegaria isto: o defeito não estava no comportamento, estava
-              na grandeza do que era devolvido.
+              <strong>Memória no navegador:</strong> fotos de 4080 × 3060 (2,3 MB) preenchiam cards de 120 px, consumindo cerca de 48 MiB de bitmap cada. As URLs <code>blob:</code> não eram liberadas. O endpoint retornava a imagem correta, mas os testes não verificavam seu custo de memória.
             </p>
             <div class="case-formula">
               <p class="section-kicker">O controle de acesso que a folha de estilo desfazia</p>
               <p><strong>O atributo que esconde um elemento perde por especificidade para qualquer regra de classe.</strong></p>
               <code>[hidden]{display:none} &lt; .cartao{display:flex} → o elemento oculto aparece</code>
               <p>
-                O gating por papel rodava correto em JavaScript e o CSS o revertia em silêncio —
-                cartões restritos ficavam visíveis para todos os papéis. A base já carregava cinco
-                remendos escritos classe a classe, sintoma de um buraco tapado caso a caso e
-                escapando na classe seguinte. A correção foi uma regra geral, mais um teste que a
-                exige nas folhas que servem telas com controle de acesso.
+                Regras CSS de classe sobrepunham o atributo de ocultação e exibiam cards restritos. Substituí cinco correções locais por uma regra geral, verificada por teste nas folhas com controle de acesso.
               </p>
             </div>
             <ul class="case-list" aria-label="Defeitos e o instrumento que passou a encontrá-los">
               <li>
-                <strong>Layout quebrado com HTTP 200 e console limpo:</strong> faltava o container
-                que põe menu e conteúdo lado a lado, e a página descia como HTML sem estilo. Página
-                servida, parciais expandidos e JavaScript sem exceção — tudo verdadeiro, e nada
-                disso enxerga layout. Ao fotografar uma página que funcionava para comparar,
-                apareceu o achado maior: outras duas telas estavam quebradas do mesmo jeito desde
-                que haviam sido extraídas do painel, sem ninguém ter registrado.
+                <strong>Layout:</strong> três telas perderam o container de menu e conteúdo. A comparação por captura de tela revelou o defeito, apesar de HTTP 200 e console sem erros.
               </li>
               <li>
-                <strong>Uma regra de acesso exibida como falha técnica:</strong> ver biometria de
-                conta administrativa é exclusivo do diretor, e o servidor respondia 403 —
-                corretamente. A tela pedia as fotos assim mesmo e escrevia “falhou ao carregar”, o
-                que fazia política de acesso parecer defeito intermitente. A interface passou a
-                conhecer a mesma regra, explicar o recorte e não emitir requisição condenada ao 403.
+                <strong>Autorização na interface:</strong> a tela solicitava fotos restritas ao diretor e apresentava o 403 como falha de carregamento. Passei a explicar a restrição e evitar a requisição sem permissão.
               </li>
               <li>
-                <strong>O pacote com instruções de duas releases atrás:</strong> o guia mandava
-                abrir um diretório que o pacote entregue não continha — quem seguisse o passo a
-                passo travava na primeira linha. Todos os gates de release passaram, porque
-                validavam a árvore de trabalho, não a cópia dentro do <code>tar</code>. As
-                instruções passaram a sair de uma variável de versão, e a conferência passou a ser
-                feita no pacote extraído.
+                <strong>Guia de entrega:</strong> as instruções citavam um diretório ausente no pacote. Vinculei o guia à variável de versão e passei a verificar o <code>tar</code> extraído.
               </li>
             </ul>
             <p>
-              O padrão é o mesmo nos cinco: cada verificação era válida e passava, e nenhuma tinha
-              alcance sobre o defeito. Três correções viraram teste automatizado no mesmo commit;
-              as outras duas viraram mudança de hábito — <strong>quando a mudança é visual,
-              fotografar a tela; quando é de entrega, abrir a caixa</strong> — que é a parte que
-              não dá para automatizar.
+              Três correções receberam testes automatizados. Para alterações visuais e de entrega, adotei capturas de tela e inspeção do pacote extraído.
             </p>
           </div>
         </article>
@@ -725,10 +580,7 @@
           </div>
           <div class="case-prose">
             <p class="lead">
-              A redução total da imagem não pode ser atribuída ao multi-stage sem uma comparação
-              controlada. Para isolar seu efeito, construí o mesmo serviço ONNX — mesmo código,
-              modelo e dependências — em duas versões: uma instala tudo diretamente na imagem final;
-              a outra monta o ambiente em uma fase de build e copia apenas o runtime para a fase final.
+              Isolei o efeito do multi-stage em duas imagens ONNX com o mesmo código, modelo e dependências: instalação direta na imagem final ou build separado com cópia apenas do runtime.
             </p>
             <figure class="case-table-wrapper">
               <div class="case-table-scroll">
@@ -749,10 +601,7 @@
               </figcaption>
             </figure>
             <p id="multi-stage-conclusao">
-              Os 32,9 MiB são uma economia real no artefato distribuído, mas não explicam sozinhos
-              os 94,8% da redução histórica. O salto maior veio de remover CUDA e PyTorch do caminho
-              de inferência. Separar as causas evita transformar uma boa decisão de engenharia em uma
-              afirmação de portfólio bonita, porém falsa.
+              O multi-stage economizou 32,9 MiB. A redução histórica de 94,6% veio principalmente da remoção de CUDA e PyTorch da inferência.
             </p>
           </div>
         </article>
@@ -764,10 +613,7 @@
           </div>
           <div class="case-prose">
             <p class="lead">
-              Cada release grava no manifesto o tamanho exato das imagens que gerou, o que permite
-              olhar a entrega inteira ao longo do tempo. E o que se vê não é um esforço único de
-              otimização: são três decisões tomadas por motivos diferentes, nenhuma delas com
-              “reduzir a imagem” como objetivo principal.
+              O manifesto registra o tamanho das imagens por release. A série permite separar os efeitos de mudanças no runtime, no modelo facial e no empacotamento.
             </p>
             <figure class="case-table-wrapper">
               <div class="case-table-scroll">
@@ -806,32 +652,18 @@
               </div>
             </div>
             <p id="progressao-conclusao">
-              Duas leituras que a tabela sustenta e a impressão geral não sustentaria. A primeira: a
-              maior queda — os 7,6 GB da inferência — veio de <strong>adequar o runtime ao hardware
-              real</strong>, não de enxugar camadas; a segunda maior, de <strong>resolver um
-              bloqueador de licenciamento</strong> do modelo facial, com a redução como efeito
-              colateral. A segunda: da 1.0.10 em diante o tamanho não se move — as versões seguintes
-              mudaram comportamento, navegação e documentação, e uma entrega que para de engordar é
-              resultado tão relevante quanto uma que emagrece.
+              A maior queda (7,6 GB na inferência) veio da adequação do runtime ao hardware; a seguinte, da troca do modelo facial por licenciamento. Desde a 1.0.10, o tamanho permaneceu estável enquanto evoluíram comportamento, navegação e documentação.
             </p>
           </div>
         </article>
 
-        <aside class="case-highlight">
+        <aside class="case-highlight" id="execucao">
           <p class="section-kicker">Decisão de arquitetura</p>
           <p class="lead">
-            Operações de inferência, limitadas por CPU, permanecem síncronas; concorrência
-            assíncrona é reservada para esperas de I/O. A escolha evita complexidade sem ganho
-            e deixa explícito onde cada modelo de execução realmente ajuda.
+            Inferência em CPU permanece síncrona; concorrência assíncrona atende esperas de I/O.
           </p>
           <p class="case-highlight-note">
-            Um teste de carga expôs o outro lado dessa fronteira. O login falhava por
-            esgotamento do pool de conexões, e o diagnóstico aparente — pool pequeno demais —
-            era o errado: a consulta do usuário abria uma transação, e a conexão ficava retida
-            durante todo o cálculo do bcrypt, trabalho de CPU que não toca o banco. Com um hash
-            de cerca de 100&nbsp;ms, cada conexão rende no máximo dez logins por segundo por
-            mais ociosa que a CPU esteja. Liberar a conexão antes do hash importa mais do que
-            aumentar o pool.
+            O teste de carga revelou conexões retidas durante o bcrypt, esgotando o pool. Com hashes de cerca de 100&nbsp;ms, cada conexão limitava o fluxo a dez logins por segundo. O diagnóstico indicou liberar a conexão antes do cálculo.
           </p>
         </aside>
 
@@ -842,20 +674,10 @@
           </div>
           <div class="case-prose">
             <p class="lead">
-              A máquina de destino se confirmou tarde: gráficos integrados Intel HD 4600 e
-              8&nbsp;GB de RAM, sem GPU dedicada. A stack tinha sido construída assumindo
-              aceleração disponível, e a imagem de inferência partia de uma base com CUDA e
-              cuDNN — cerca de 6&nbsp;GB de bibliotecas que aquela máquina não conseguiria
-              executar em nenhuma hipótese.
+              O servidor de destino tinha Intel HD 4600, 8&nbsp;GB de RAM e nenhuma GPU dedicada. A imagem inicial incluía cerca de 6&nbsp;GB de CUDA e cuDNN sem uso nesse hardware.
             </p>
             <p>
-              Medir antes de cortar mostrou que o peso estava em dois lugares diferentes, e que
-              o mais visível não era o mais caro. Em <strong>disco</strong>, o custo era o CUDA:
-              bibliotecas grandes, inertes, transportadas até o cliente para nunca abrir. Em
-              <strong>memória</strong>, o CUDA quase não pesava — o sistema operacional só
-              carrega as páginas de código que executam. A RAM estava sendo consumida por outra
-              coisa: o pacote de reconhecimento facial subia cinco modelos quando a aplicação
-              consultava dois, e cada processo do servidor carregava a sua própria cópia.
+              Medi <strong>disco</strong> e <strong>memória</strong> separadamente. CUDA concentrava o custo em disco; na RAM, o pacote facial carregava cinco modelos para usar dois, replicados por processo do servidor.
             </p>
             <div class="case-results" aria-label="Resultado do dimensionamento">
               <div class="case-result">
@@ -872,38 +694,18 @@
               </div>
             </div>
             <p>
-              A última etapa trocou o runtime de inferência: o modelo passou a rodar em
-              ONNX Runtime, o mesmo que o reconhecimento facial já usava, eliminando um segundo
-              framework de tensores da entrega. Trocar o runtime, porém, é trocar a aritmética
-              que decide se um atestado é aceito — e isso exigia prova, não confiança. O script
-              de exportação compara o novo caminho contra o antigo sobre todo o conjunto de
-              teste e falha se qualquer imagem mudar de lado: o pré-processamento saiu idêntico
-              bit a bit, e nenhuma decisão se moveu.
-            </p>
-            <p>
-              O ganho de memória e o de disco não são a mesma história, e tratá-los como uma só
-              teria produzido um número bonito e falso. Foi por isso que os dois foram medidos e
-              relatados separadamente.
+              Migrei o classificador para ONNX Runtime. O script de exportação compara os runtimes no teste reservado e falha se alguma decisão mudar. O pré-processamento foi idêntico bit a bit, sem alterações de decisão.
             </p>
           </div>
         </article>
 
-        <aside class="case-highlight">
-          <p class="section-kicker">Otimização que não foi feita</p>
+        <aside class="case-highlight" id="isolamento">
+          <p class="section-kicker">Isolamento de inferência</p>
           <p class="lead">
-            Com os dois serviços passando a usar o mesmo runtime, fundi-los em um só container
-            parecia o passo seguinte — menos memória, menos peças. A medição desaconselhou.
+            Mantive a triagem em serviço separado após medir seu custo de processamento.
           </p>
           <p class="case-highlight-note">
-            Decompor o tempo de uma classificação mostrou que a rede neural respondia em
-            14&nbsp;ms e o OCR consumia 909&nbsp;ms: 98% do trabalho estava no reconhecimento de
-            texto, não no modelo. Fundido ao backend, que roda com dois processos dimensionados
-            para os 8&nbsp;GB da máquina, cada atestado enviado ocuparia metade da capacidade de
-            atendimento por perto de um segundo — disputando com o reconhecimento facial no
-            totem, que é justamente o caminho sensível a espera. O container separado funciona
-            como anteparo, e a memória que ele custa compra esse isolamento. A mesma medição
-            também reposicionou qualquer aceleração futura do classificador: acelerar a rede não
-            tem o que ganhar.
+            A rede consumia 14&nbsp;ms e o OCR, 909&nbsp;ms (98% do tempo). Integrar a triagem ao backend de dois processos ocuparia metade do atendimento por cerca de um segundo. O serviço separado preserva a capacidade para o ponto facial.
           </p>
         </aside>
       </div>

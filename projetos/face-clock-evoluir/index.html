@@ -70,17 +70,11 @@
           <h1 class="case-title">Face Clock Evoluir</h1>
         </div>
         <p class="hero-description case-intro" id="face-case-intro">
-          Sistema de ponto contratado para uma instituição de ensino: identifica o
-          funcionário pelo rosto, valida o contexto da batida e tria atestados enviados
-          pelo celular.
-        </p>
-        <p class="hero-description case-intro case-intro-secondary" id="face-case-depth">
-          Comece pelo impacto; depois veja as decisões e, se quiser, abra os
-          <a href="tecnico.html#reconhecimento">experimentos reproduzíveis</a>.
+          Sistema de ponto para uma instituição de ensino, com reconhecimento facial, validação de localização e triagem de atestados pelo celular.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#como-funciona">Entender o sistema</a>
-          <a class="button button-secondary" href="tecnico.html">Ver estrutura técnica nos detalhes</a>
+          <a class="button button-secondary" href="tecnico.html">Detalhes técnicos</a>
           <a class="button button-secondary" href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Repositório público</a>
         </div>
         <ul class="case-meta" aria-label="Informações do projeto">
@@ -131,21 +125,17 @@
         <article class="case-block" id="problema">
           <div>
             <p class="section-kicker">O problema</p>
-            <h2>Registrar presença sem criar atrito.</h2>
+            <h2>Ponto facial e gestão de jornada.</h2>
           </div>
           <div class="case-prose">
             <p class="lead">
-              Um sistema de ponto precisa reconhecer a pessoa certa, confirmar que ela
-              está no local permitido e continuar simples o bastante para o uso diário.
+              Reconhecer o funcionário e validar sua localização em um fluxo simples de uso diário.
             </p>
             <p>
-              O sistema substitui cartões e senhas por verificação biométrica contextual, atende
-              ao registro individual e ao modo totem, e integra o ponto a turnos, banco de horas e
-              envio de atestados.
+              Registro individual e em totem, integrado a turnos, banco de horas e envio de atestados.
             </p>
             <p>
-              A decisão de produto mais importante foi separar observação de punição: uma batida
-              fora do horário previsto é registrada e sinalizada, não bloqueada.
+              Batidas fora do horário são registradas e sinalizadas, sem bloqueio.
             </p>
           </div>
         </article>
@@ -154,13 +144,12 @@
           <div class="case-section-heading">
             <p class="section-kicker">Como funciona</p>
             <h2>Da câmera ao registro de ponto.</h2>
-            <p class="lead">O reconhecimento é apenas uma etapa de um fluxo que também considera qualidade, segurança e contexto.</p>
           </div>
           <ol class="system-flow" aria-label="Fluxo do reconhecimento facial ao registro de ponto">
             <li class="flow-step">
               <span class="flow-index">01</span>
               <strong>Captura</strong>
-              <p>Três frames sustentam vivacidade sem manter trabalho redundante.</p>
+              <p>Três frames para checagem de vivacidade.</p>
             </li>
             <li class="flow-step">
               <span class="flow-index">02</span>
@@ -180,7 +169,7 @@
             <li class="flow-step">
               <span class="flow-index">05</span>
               <strong>Registro</strong>
-              <p>A batida é persistida e eventuais desvios de turno são apresentados sem impedir o ponto.</p>
+              <p>Persistência da batida e sinalização de desvios de turno.</p>
             </li>
           </ol>
         </article>
@@ -194,22 +183,22 @@
             <article>
               <span>Risco</span>
               <strong>45,4% → 0,2%</strong>
-              <p>O limiar herdado era de verificação 1:1; no cenário 1:N aceitava desconhecidos demais. A calibração reduziu o erro por duas ordens de grandeza na base de referência.</p>
+              <p>O limiar de verificação 1:1 aceitava muitos desconhecidos em 1:N. A calibração reduziu o erro na base de referência.</p>
             </article>
             <article>
               <span>Latência</span>
               <strong>5 → 3 frames</strong>
-              <p>De 1 a 8 frames, a acurácia medida não mudou. Três preservam a mediana e a checagem de movimento sem pagar por dois frames extras.</p>
+              <p>A acurácia não mudou entre 1 e 8 frames. Três mantêm a mediana e a checagem de movimento.</p>
             </article>
             <article>
               <span>Arquitetura</span>
               <strong>FAISS: não adotado</strong>
-              <p>A busca exata levou 0,076&nbsp;ms em 1.000 vetores. O HNSW foi mais rápido, mas recall@1 de 0,915 não justificava trocar precisão por complexidade.</p>
+              <p>Busca exata: 0,076&nbsp;ms em 1.000 vetores. O HNSW foi mais rápido, mas seu recall@1 de 0,915 favoreceu manter a busca exata.</p>
             </article>
             <article>
               <span>Concorrência</span>
               <strong>6/6 falhas</strong>
-              <p>Duas batidas simultâneas corrompiam o modelo compartilhado. A medição encontrou a corrida; serializar a inferência eliminou a falha silenciosa.</p>
+              <p>Batidas simultâneas causavam falhas no modelo compartilhado. Serializar a inferência corrigiu a corrida.</p>
             </article>
             <a class="button button-primary evidence-ladder-link" href="tecnico.html#reconhecimento">Ver protocolos, tabelas e limitações →</a>
           </div>
@@ -218,17 +207,14 @@
         <article class="case-block" id="maquina-estados">
           <div>
             <p class="section-kicker">Comportamento do totem</p>
-            <h2>Um fluxo controlado por máquina de estados.</h2>
+            <h2>Validação por máquina de estados.</h2>
           </div>
           <div class="case-prose">
             <p class="lead">
-              A máquina de estados controla os tipos de batida e impede sequências incoerentes:
-              cada novo registro é validado em relação ao estado anterior.
+              Cada batida é validada em relação ao estado anterior.
             </p>
             <p>
-              Depois da autenticação facial e da validação de localização, o <code>PontoFSM</code>
-              resolve a próxima ação: dá para sair logo após entrar, fazer pausas e encerrar o
-              expediente durante o intervalo, sem registrar um retorno que não aconteceu.
+              Após validar rosto e localização, o <code>PontoFSM</code> permite saída direta, pausas repetidas e encerramento durante o intervalo.
             </p>
             <div class="state-machine" role="img" aria-label="Fluxo de ponto: sem batida leva à entrada; entrada leva ao início da pausa ou à saída; pausa leva ao retorno ou à saída; retorno leva a outra pausa ou à saída.">
               <svg class="fsm-automaton" viewBox="0 -52 960 302" role="img" aria-labelledby="fsm-title fsm-description">
@@ -334,18 +320,17 @@
         <article class="case-block" id="atestados">
           <div>
             <p class="section-kicker">Além da biometria</p>
-            <h2>Triagem inteligente de atestados.</h2>
+            <h2>Triagem de atestados.</h2>
           </div>
           <div class="case-prose">
             <p class="lead" id="atestado-lead">
-              Rede neural e OCR priorizam a fila antes da revisão humana.
+              Rede neural e OCR priorizam a fila para revisão humana.
             </p>
             <p id="atestado-resumo">
-              No teste reservado, a solução híbrida alcançou 87,5% de acurácia e reduziu sete
-              falsos positivos sem perder recall. A aprovação final continua humana.
+              No teste reservado: 87,5% de acurácia e sete falsos positivos a menos, sem perder recall. A aprovação final é humana.
             </p>
             <p id="atestado-rotulos">
-              O feedback humano alimenta retreinamentos apenas quando a regra de rotulagem evita contradições.
+              O feedback humano alimenta retreinamentos com regras de rotulagem para evitar contradições.
             </p>
           </div>
         </article>
@@ -353,13 +338,11 @@
         <article class="case-block" id="qualidade">
           <div>
             <p class="section-kicker">Qualidade</p>
-            <h2>Validado além do ambiente de desenvolvimento.</h2>
+            <h2>Auditoria do pacote de entrega.</h2>
           </div>
           <div class="case-prose">
             <p>
-              Além da suíte, instalei e auditei o pacote como o cliente o receberia. Isso revelou
-              permissões de volume incorretas e um modelo empacotado diferente do validado — falhas
-              invisíveis para testes executados apenas sobre o código.
+              Instalei e auditei o pacote entregue ao cliente. Identifiquei permissões de volume incorretas e um modelo diferente do validado.
             </p>
             <div class="case-results" aria-label="Indicadores de engenharia">
               <div class="case-result">
@@ -385,9 +368,7 @@
           </div>
           <div class="case-prose">
             <p class="lead">
-              Produto contratado e funcional, na etapa final de validação antes da implantação;
-              não é apresentado como sistema em operação de produção.
-              O repositório público preserva arquitetura e decisões sem expor código ou dados do cliente.
+              Sistema contratado e funcional, em validação final antes da implantação. O repositório público documenta arquitetura e decisões sem expor código ou dados do cliente.
             </p>
           </div>
         </article>
@@ -398,7 +379,7 @@
       <div class="container case-cta">
         <div>
           <p class="section-kicker">Apresentação pública</p>
-          <h2>Explore a arquitetura e a documentação técnica.</h2>
+          <h2>Arquitetura e documentação.</h2>
         </div>
         <div class="contact-actions">
           <a class="button button-primary" href="tecnico.html">Ver estrutura técnica nos detalhes</a>

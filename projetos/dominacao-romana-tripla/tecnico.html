@@ -65,12 +65,9 @@
       <div class="container">
         <a class="case-breadcrumb" href="index.html">← Voltar à visão geral</a>
         <p class="eyebrow">Aprofundamento técnico · Dominação Romana Tripla</p>
-        <h1 class="case-title">A estrutura técnica nos detalhes.</h1>
+        <h1 class="case-title">Modelo, algoritmos e experimentos.</h1>
         <p class="hero-description case-intro" id="trdt-intro">
-          Esta página documenta o que sustenta a visão geral: a definição formal do problema,
-          o contraexemplo que invalida a formulação exata publicada anteriormente, a
-          formulação proposta em seu lugar, os dois algoritmos passo a passo e as tabelas
-          medidas em 362 grafos.
+          Definição formal, correção da formulação PLI, meta-heurísticas GA e ACO e resultados em 362 grafos.
         </p>
         <div class="hero-actions">
           <a class="button button-secondary" href="#pli">Ver a correção do modelo exato</a>
@@ -465,42 +462,40 @@
           </div>
           <div class="case-prose">
             <p class="lead" id="trdt-met-lead">
-              Nenhuma comparação do trabalho se apoia em impressão: os três critérios abaixo
-              foram declarados antes dos experimentos e aplicados igualmente às duas
-              meta-heurísticas e ao modelo exato.
+              Tempo, fitness e gap foram definidos antes dos experimentos e aplicados aos dois algoritmos e ao modelo exato.
             </p>
             <div class="architecture-grid">
               <section class="architecture-card">
                 <span id="trdt-met1-tag">Critério 1</span>
                 <h3 id="trdt-met1-titulo">Tempo de execução</h3>
-                <p id="trdt-met1-texto">Segundos por instância, medidos na mesma máquina e com as mesmas flags de compilação. Responde por eficiência computacional — e só por ela.</p>
+                <p id="trdt-met1-texto">Segundos por instância, medidos na mesma máquina e com as mesmas flags de compilação.</p>
               </section>
               <section class="architecture-card">
                 <span id="trdt-met2-tag">Critério 2</span>
                 <h3 id="trdt-met2-titulo">Fitness, o peso da solução</h3>
-                <p id="trdt-met2-texto">A soma dos rótulos da melhor função encontrada. Como é exatamente a grandeza que o problema pede para minimizar, compara-se diretamente com o valor do modelo exato.</p>
+                <p id="trdt-met2-texto">Soma dos rótulos da melhor solução encontrada, comparada com o valor do modelo exato.</p>
               </section>
               <section class="architecture-card">
                 <span id="trdt-met3-tag">Critério 3</span>
                 <h3 id="trdt-met3-titulo">Gap relativo</h3>
-                <p id="trdt-met3-texto">Distância percentual entre a melhor solução das meta-heurísticas e o valor obtido pelo PLI. É a métrica que permite dizer “ficou a tantos por cento do ótimo”.</p>
+                <p id="trdt-met3-texto">Distância percentual entre a melhor solução das meta-heurísticas e a referência PLI.</p>
               </section>
               <section class="architecture-card">
                 <span id="trdt-met4-tag">Como é calculado</span>
                 <h3 id="trdt-met4-titulo">gap = (melhor − PLI) / PLI</h3>
-                <p id="trdt-met4-texto">A melhor das duas meta-heurísticas entra no numerador, e não cada uma isoladamente: o gap mede a distância do conjunto de métodos propostos até a referência exata.</p>
+                <p id="trdt-met4-texto">O numerador usa a melhor das duas meta-heurísticas.</p>
               </section>
             </div>
 
             <p id="trdt-met-impacto-intro">
-              A partir dessas três métricas, o que o trabalho afirma publicamente:
+              Contribuições do trabalho:
             </p>
             <ul class="case-list" aria-label="Impacto comunicado">
-              <li id="trdt-met-impacto-1"><strong>Formulação exata corrigida:</strong> o modelo PLI publicado anteriormente aceita soluções inválidas, e o texto exibe o contraexemplo que comprova a falha.</li>
-              <li id="trdt-met-impacto-2"><strong>Meta-heurísticas implementadas:</strong> o trabalho investiga o problema com abordagens baseadas em algoritmo genético e colônia de formigas.</li>
+              <li id="trdt-met-impacto-1"><strong>Formulação corrigida:</strong> contraexemplo que demonstra a falha do PLI publicado.</li>
+              <li id="trdt-met-impacto-2"><strong>Implementação:</strong> meta-heurísticas de algoritmo genético e colônia de formigas.</li>
               <li id="trdt-met-impacto-3"><strong>Base de instâncias reutilizável:</strong> 30 grafos aleatórios gerados com γ<sub>3R</sub> exato calculado, além dos valores exatos da maior parte das demais instâncias — material de comparação para pesquisas seguintes.</li>
-              <li id="trdt-met-impacto-4"><strong>Componentes justificados por medição:</strong> a busca local RVNS e a heurística de população inicial H4 foram escolhidas por comparação sob o mesmo protocolo, não por preferência.</li>
-              <li id="trdt-met-impacto-5"><strong>Resultado honesto sobre a margem:</strong> em 362 grafos avaliados, apenas 6 ficaram a mais de 50% do valor de referência; todos os demais ficaram abaixo desse limiar.</li>
+              <li id="trdt-met-impacto-4"><strong>Seleção experimental:</strong> busca local RVNS e população inicial H4 comparadas sob o mesmo protocolo.</li>
+              <li id="trdt-met-impacto-5"><strong>Gap:</strong> apenas 6 dos 362 grafos ficaram a mais de 50% da referência.</li>
             </ul>
           </div>
         </article>
