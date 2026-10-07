@@ -4,13 +4,12 @@
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{helvet}
-  \renewcommand{\familydefault}{\sfdefault}
+  \usepackage{lmodern}
   \usepackage{microtype}
   \DisableLigatures{encoding=*,family=*}
 \else
   \usepackage{fontspec}
-  \setmainfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf,ItalicFont=texgyreheros-italic.otf,Ligatures=NoCommon]
+  \setmainfont{lmroman10-regular.otf}[BoldFont=lmroman10-bold.otf,ItalicFont=lmroman10-italic.otf,Ligatures=NoCommon]
 \fi
 \usepackage[english]{babel}
 \usepackage{enumitem}
@@ -28,7 +27,7 @@
 \setlength{\parskip}{2pt}
 \raggedright
 \setlist[itemize]{leftmargin=1.3em,itemsep=2pt,topsep=3pt,parsep=0pt}
-\titleformat{\section}{\large\bfseries}{}{0em}{}
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{10pt}{4pt}
 % Single-column reading order: position, employer/location, then dates.
 \newcommand{\entry}[4]{\Needspace{9\baselineskip}\textbf{#1}\par #2 --- #3\par #4\par}

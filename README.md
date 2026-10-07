@@ -40,9 +40,10 @@ e `data-en-placeholder`, mantendo o atributo original em português. Componentes
 acompanham o evento `portfolio:languagechange`. Para botões de navegação, prefira seletores
 pelo `href` em vez da posição, para que o texto continue associado ao destino correto.
 
-Após alterar `script.js`, execute `python3 scripts/version_script.py`. O comando atualiza
-a versão do arquivo em todas as páginas a partir do seu conteúdo, para que o navegador
-carregue as traduções atuais em vez de reutilizar um JavaScript antigo em cache.
+Após alterar `script.js` ou recompilar os currículos, execute `python3 scripts/version_script.py`.
+O comando versiona o JavaScript em todas as páginas e os links dos PDFs em português e inglês
+a partir do conteúdo dos arquivos, para que o navegador carregue as traduções e os currículos
+atuais em vez de reutilizar arquivos antigos em cache.
 Verifique antes de publicar com `python3 scripts/version_script.py --check`.
 
 A navegação segue apresentação → resumo do projeto → evidências técnicas → documentação/código.
@@ -82,6 +83,8 @@ Alternativa testada: `tectonic --outdir .cv-build assets/israel-cv-portugues.tex
 para inglês e copiando os arquivos como acima. As versões `.txt` publicadas normalizam
 ligaturas Unicode e removem separadores de página para facilitar a leitura do texto extraído.
 Cada idioma tem dois nomes PDF por compatibilidade com links externos; mantenha as cópias idênticas.
+O botão "Fonte LaTeX (.tex)" acompanha o idioma selecionado e permite baixar o arquivo usado
+na compilação. Depois de copiar os PDFs, atualize seus links com `python3 scripts/version_script.py`.
 
 A graduação começou em 2021 (mês não informado), terminou em 19/08/2026 e não se confunde
 com a defesa do TCC em 02/2025. Datas da consultoria e das monitorias foram confirmadas pelo autor.

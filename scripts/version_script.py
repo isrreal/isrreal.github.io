@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Atualiza a versão do JavaScript nas páginas para invalidar caches antigos."""
+"""Versiona o JavaScript e os PDFs dos currículos para invalidar caches antigos."""
 
 import argparse
 import hashlib
@@ -13,6 +13,13 @@ def main():
     args = parser.parse_args()
     root = Path(__file__).resolve().parent.parent
     version = hashlib.sha256((root / 'script.js').read_bytes()).hexdigest()[:12]
+    resume_urls = {}
+    for language, code in [('portugues', 'pt'), ('english', 'en')]:
+        path = f'assets/israel-cv-{language}.pdf'
+        pdf = (root / path).read_bytes()
+        if pdf != (root / f'assets/israel_cv_{code}.pdf').read_bytes():
+            raise SystemExit(f'As duas cópias do PDF {language} devem ser idênticas')
+        resume_urls[code] = f'{path}?v={hashlib.sha256(pdf).hexdigest()[:12]}'
     pages = [root / 'index.html', root / '404.html', *sorted((root / 'projetos').rglob('*.html'))]
     pattern = re.compile(r'(src="[^"]*script\.js)(?:\?v=[a-f0-9]+)?(")')
     outdated = []
@@ -21,6 +28,13 @@ def main():
         updated, count = pattern.subn(lambda m: f'{m[1]}?v={version}{m[2]}', content)
         if count != 1:
             raise SystemExit(f'{page.relative_to(root)}: esperado um carregamento de script.js')
+        if page == root / 'index.html':
+            for code, url in resume_urls.items():
+                attribute = f'data-resume-pdf-{code}'
+                updated = re.sub(rf'\s{attribute}="[^"]*"', '', updated)
+                updated = updated.replace('data-page="home"', f'data-page="home" {attribute}="{url}"', 1)
+            updated = re.sub(r'href="assets/(?:israel_cv_pt|israel-cv-portugues)\.pdf(?:\?v=[a-f0-9]+)?"',
+                             lambda _: f'href="{resume_urls["pt"]}"', updated)
         if updated != content:
             outdated.append(str(page.relative_to(root)))
             if not args.check:

@@ -524,13 +524,13 @@ function applyLanguage(language) {
 
   const resumeFiles = language === 'en'
     ? {
-        pdf: 'assets/israel_cv_en.pdf',
+        pdf: root.dataset.resumePdfEn || 'assets/israel-cv-english.pdf',
         tex: 'assets/israel-cv-english.tex',
         text: 'assets/israel-cv-english.txt',
         download: 'Israel-Souza-Ferreira-Resume.pdf',
       }
     : {
-        pdf: 'assets/israel_cv_pt.pdf',
+        pdf: root.dataset.resumePdfPt || 'assets/israel-cv-portugues.pdf',
         tex: 'assets/israel-cv-portugues.tex',
         text: 'assets/israel-cv-portugues.txt',
         download: 'Israel-Souza-Ferreira-Curriculo.pdf',
