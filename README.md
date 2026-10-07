@@ -40,6 +40,11 @@ e `data-en-placeholder`, mantendo o atributo original em português. Componentes
 acompanham o evento `portfolio:languagechange`. Para botões de navegação, prefira seletores
 pelo `href` em vez da posição, para que o texto continue associado ao destino correto.
 
+Após alterar `script.js`, execute `python3 scripts/version_script.py`. O comando atualiza
+a versão do arquivo em todas as páginas a partir do seu conteúdo, para que o navegador
+carregue as traduções atuais em vez de reutilizar um JavaScript antigo em cache.
+Verifique antes de publicar com `python3 scripts/version_script.py --check`.
+
 A navegação segue apresentação → resumo do projeto → evidências técnicas → documentação/código.
 Registros históricos extensos usam `<details>` nativo; links para âncoras revelam automaticamente
 o registro correspondente. Resultados devem conter comparação, interpretação e limite.
