@@ -2,3 +2,12 @@
 Thumbs.db
 .vscode/
 .idea/
+
+# Personal interview preparation; never publish or stage this file.
+guia-entrevista.local.md
+
+# LaTeX intermediates and local build output.
+.cv-build/
+assets/*.aux
+assets/*.log
+assets/*.out

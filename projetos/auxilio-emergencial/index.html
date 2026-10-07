@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark" data-page="auxilio">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ingestão de dados públicos em PostgreSQL: experimentos reproduzíveis, memória medida e limites da deduplicação em Python.">
+  <meta name="author" content="Israel Souza Ferreira">
+  <meta name="theme-color" content="#071417">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Auxílio Emergencial | Engenharia de Dados — Israel Souza Ferreira">
+  <meta property="og:description" content="Ingestão reproduzível em PostgreSQL, crescimento de memória e limites dos experimentos.">
+  <meta property="og:url" content="https://israelsouza.speculummaius.com.br/projetos/auxilio-emergencial/">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="https://israelsouza.speculummaius.com.br/assets/og-portfolio.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Portfólio de Israel Souza Ferreira — machine learning, pesquisa e engenharia.">
+  <meta name="twitter:image" content="https://israelsouza.speculummaius.com.br/assets/og-portfolio.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <title>Auxílio Emergencial | Engenharia de Dados — Israel Souza Ferreira</title>
+  <link rel="canonical" href="https://israelsouza.speculummaius.com.br/projetos/auxilio-emergencial/">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="../../script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header" id="inicio">
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="brand" href="../../index.html" aria-label="Voltar ao portfólio">
+        <span aria-hidden="true">&#955;</span>
+        <span>Israel Souza Ferreira</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
+        <span class="sr-only">Abrir menu</span>
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu"><a href="../../index.html#projetos" class="text-link"  data-en="Projects">Projetos</a><a href="index.html" class="text-link"  data-en="Overview">Visão geral</a><a href="tecnico.html" class="text-link"  data-en="Experiments">Experimentos</a></div>
+      <div class="nav-actions">
+        <button class="language-toggle" type="button" aria-label="Mudar para inglês" title="Mudar para inglês">
+          <span class="language-label" aria-hidden="true">Idioma</span>
+          <span class="language-code" aria-hidden="true">EN</span>
+          <span class="language-arrow" aria-hidden="true">↔</span>
+        </button>
+        <button class="theme-toggle" type="button" aria-label="Alternar tema" title="Alternar tema">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+<section class="case-hero">
+    <div class="container"><a href="../../index.html#projetos" class="case-breadcrumb"  data-en="← Back to projects">← Voltar aos projetos</a>
+    <p class="eyebrow" data-en="Data engineering · In development">Engenharia de dados · Em desenvolvimento</p>
+    <h1  data-en="Emergency Aid: data within process limits">Auxílio Emergencial: dados que cabem no processo</h1>
+    <p class="hero-description" data-en="Chunking reduces temporary data, but does not guarantee stable memory. I measured state retained between chunks before choosing the next change.">Processar em blocos reduz dados temporários, mas não garante memória estável. Medi o estado que permanece entre blocos antes de escolher a próxima mudança.</p>
+    <div class="hero-actions"><a href="#resultados" class="button button-primary"  data-en="Understand the results">Entender os resultados</a><a href="https://github.com/isrreal/AuxilioEmergencialQueries" class="button button-secondary" target="_blank" rel="noopener noreferrer" data-en="Code and notebooks">Código e notebooks</a>
+    </div>
+    </div>
+    </section>
+    <section class="section section-alt" id="problema">
+    <div class="container narrow">
+    <p class="section-kicker" data-en="The problem">O problema</p>
+    <h2  data-en="Ingest data without exhausting memory.">Ingerir dados sem esgotar a memória.</h2>
+    <p class="lead" data-en="The full public source is 31.6 GB. I built a pipeline with chunked reading, normalization, and PostgreSQL binary COPY ingestion. Published experiments use controlled subsets, including 5 million rows; they do not demonstrate full ingestion of the 31.6 GB source.">A fonte pública completa tem 31,6 GB. Desenvolvi um pipeline com leitura em blocos, normalização e carga binária COPY no PostgreSQL. Os experimentos publicados usam recortes controlados, incluindo 5 milhões de linhas; não demonstram a ingestão completa dos 31,6 GB.</p>
+    </div>
+    </section>
+    <section class="section " id="resultados">
+    <div class="container narrow">
+    <p class="section-kicker" data-en="The result">O resultado</p>
+    <h2  data-en="A useful diagnosis also shows what failed.">Um diagnóstico útil também mostra o que falhou.</h2>
+    <div class="decision-grid">
+    <article class="decision-card">
+    <h3  data-en="What worsened">O que piorou</h3>
+    <p  data-en="With fixed 100-thousand-row chunks, post-cleanup memory grew from about 182 to 750 MiB over 5 million rows. This is worse for scaling: retained state grows even with equal-sized chunks.">Com blocos fixos de 100 mil linhas, a memória após limpeza cresceu de cerca de 182 para 750 MiB em 5 milhões de linhas. Isso é pior para escalar: o estado retido aumenta mesmo com blocos iguais.</p>
+    </article>
+    <article class="decision-card">
+    <h3  data-en="What the diagnosis suggests">O que o diagnóstico sugere</h3>
+    <p  data-en="Correlation of about 0.99 with accumulated IDs is consistent with deduplication-set retention. It does not prove they cause all growth; the allocator may also retain memory.">A correlação de aproximadamente 0,99 com os IDs acumulados é compatível com retenção nos conjuntos de deduplicação. Não prova que eles causam todo o aumento; o alocador também pode reter memória.</p>
+    </article>
+    <article class="decision-card">
+    <h3  data-en="The next decision">Qual é a próxima decisão</h3>
+    <p  data-en="Move cross-chunk deduplication to PostgreSQL staging and repeat the same experiment. This correction is planned; no memory improvement from it has been published.">Mover a deduplicação entre blocos para staging no PostgreSQL e repetir o mesmo experimento. É uma correção planejada; ainda não há ganho de memória publicado dessa mudança.</p>
+    </article>
+    </div><a href="tecnico.html#memoria" class="text-link"  data-en="See protocol and interpretation →">Ver protocolo e interpretação →</a>
+    </div>
+    </section>
+    <section class="section section-alt" id="papel">
+    <div class="container narrow">
+    <p class="section-kicker" data-en="My role">Meu papel</p>
+    <h2  data-en="Pipeline, instrumentation, and analysis.">Pipeline, instrumentação e análise.</h2>
+    <p  data-en="I implemented Python/Pandas/asyncpg ingestion, an Alembic-managed schema, and per-stage instrumentation. The runner uses an isolated database for each run; notebooks and aggregate tables record results and limitations.">Implementei ingestão em Python/Pandas/asyncpg, esquema com Alembic e instrumentação por etapa. O runner usa um banco isolado por execução; notebooks e tabelas agregadas registram resultados e limitações.</p>
+    <p  data-en="An API and dashboard support query exploration. Index, chunk-size, Polars, and PySpark comparisons remain planned work.">API e dashboard permitem explorar consultas. Comparações de índices, tamanhos de bloco, Polars ou PySpark ainda são trabalho planejado.</p><a href="tecnico.html" class="text-link"  data-en="Explore the experiments →">Aprofundar os experimentos →</a>
+    </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="current-year"></span> Israel Souza Ferreira.</p>
+      <p><a class="text-link" href="../../index.html">Voltar ao portfólio</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -82,7 +82,7 @@
         <ul class="case-meta" aria-label="Assuntos desta página">
           <li>Reconhecimento 1:N</li>
           <li>Experimentos controlados</li>
-          <li>FAISS + pgvector</li>
+          <li  data-en="pgvector; FAISS evaluated as an alternative">pgvector; FAISS avaliado como alternativa</li>
           <li>PyTorch + scikit-learn</li>
           <li>Segurança e preparação de entrega</li>
           <li>Limitações explícitas</li>
@@ -90,6 +90,7 @@
       </div>
     </section>
 
+<section class="section " id="leitura"><div class="container narrow"><p class="section-kicker" data-en="Evidence map">Mapa das evidências</p><h2  data-en="Current results and historical investigations.">Resultados atuais e investigações históricas.</h2><p  data-en="Start with recognition and the document benchmark. Open the records below for diagnostics, integrity, and packaging. Each protocol has its own data; metrics from different splits are not comparable.">Comece pelo reconhecimento e pelo benchmark de atestados. Abra os registros abaixo para estudar diagnósticos, integridade e empacotamento. Cada protocolo tem seus próprios dados; números de splits diferentes não são comparáveis.</p><p class="interpretation" data-en="This delivery uses YuNet + SFace (128 dimensions). Public documentation still describes InsightFace (512 dimensions) and uses production terminology for the architecture; the status reported here is final acceptance testing. Delivery code and detailed evidence remain private.">Esta entrega usa YuNet + SFace (128 dimensões). A documentação pública ainda descreve InsightFace (512 dimensões) e usa o termo produção para a arquitetura; o status relatado aqui é homologação final. Código e evidências detalhadas da entrega permanecem privados.</p></div></section>
     <section class="section">
       <div class="container case-content">
         <article class="case-block" id="reconhecimento">
@@ -115,37 +116,17 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr id="reconhecimento-limiar">
-                      <th scope="row">Qual limiar aceitar?</th>
-                      <td>0,363, publicado para 1:1</td>
-                      <td>45,4% de desconhecidos aceitos; em 0,50, 0,2%</td>
-                      <td>0,50, com remedição prevista na população real</td>
-                    </tr>
-                    <tr id="reconhecimento-frames">
-                      <th scope="row">Quantos frames?</th>
-                      <td>5 frames, 160&nbsp;ms entre eles</td>
-                      <td>acurácia idêntica de 1 a 8; dois extras custavam ~3&nbsp;s de CPU na pipeline medida</td>
-                      <td>3 frames: mediana + liveness, sem redundância</td>
-                    </tr>
-                    <tr id="reconhecimento-faiss">
-                      <th scope="row">Adotar FAISS?</th>
-                      <td>“vai escalar melhor”</td>
-                      <td>busca exata: 0,076&nbsp;ms/1.000 vetores; HNSW: 0,04&nbsp;ms, recall@1 0,915</td>
-                      <td>manter busca transacional no pgvector</td>
-                    </tr>
-                    <tr id="reconhecimento-modelo" class="case-table-highlight">
-                      <th scope="row">A troca de modelo custou acurácia?</th>
-                      <td>desconhecido</td>
-                      <td>mesmo FAR=0 no ponto comparável; 32× menos CPU</td>
-                      <td>YuNet + SFace, com licença compatível</td>
-                    </tr>
+                    <tr id="reconhecimento-limiar" data-en="&lt;th scope=&quot;row&quot;&gt;Which threshold to accept?&lt;/th&gt;&lt;td&gt;0.363, published for 1:1&lt;/td&gt;&lt;td&gt;45.4% of unknown people accepted; at 0.50, 0.2%&lt;/td&gt;&lt;td&gt;Lower acceptance of unknown people is better. Selected 0.50; enrolled-user rejection cost and gallery effects need remeasurement at the client.&lt;/td&gt;"><th scope="row">Qual limiar aceitar?</th><td>0,363, publicado para 1:1</td><td>45,4% de desconhecidos aceitos; em 0,50, 0,2%</td><td>Menor aceitação de desconhecidos é melhor. Selecionei 0,50; o custo em rejeições de cadastrados e o efeito da galeria precisam de remedição no cliente.</td></tr>
+                    <tr id="reconhecimento-frames" data-en="&lt;th scope=&quot;row&quot;&gt;How many frames?&lt;/th&gt;&lt;td&gt;5 frames, 160 ms apart&lt;/td&gt;&lt;td&gt;Identical accuracy from 1 to 8; two extras cost ~3 s of CPU in the ablation experiment&lt;/td&gt;&lt;td&gt;3 frames preserve median aggregation and liveness signals with less work. Ablation cost is not the current service p95 latency.&lt;/td&gt;"><th scope="row">Quantos frames?</th><td>5 frames, 160 ms entre eles</td><td>Acurácia idêntica de 1 a 8; dois extras custavam ~3 s de CPU no experimento de ablação</td><td>3 frames preservam a agregação por mediana e sinais de vivacidade, com menos trabalho. O custo da ablação não é a latência p95 do serviço atual.</td></tr>
+                    <tr id="reconhecimento-faiss" data-en="&lt;th scope=&quot;row&quot;&gt;Adopt FAISS?&lt;/th&gt;&lt;td&gt;Expected scaling benefit&lt;/td&gt;&lt;td&gt;Exact search: 0.076 ms/1,000 vectors; HNSW: 0.04 ms, recall@1 0.915&lt;/td&gt;&lt;td&gt;HNSW is ~0.036 ms faster, but misses 8.5% of exact nearest neighbors in the trial. Too little gain to accept the recall loss; kept transactional pgvector.&lt;/td&gt;"><th scope="row">Adotar FAISS?</th><td>Hipótese de ganho de escala</td><td>Busca exata: 0,076 ms/1.000 vetores; HNSW: 0,04 ms, recall@1 0,915</td><td>HNSW é ~0,036 ms mais rápido, mas perde 8,5% dos vizinhos exatos no ensaio. Ganho pequeno para aceitar perda de recall; mantive pgvector transacional.</td></tr>
+                    <tr id="reconhecimento-modelo" class="case-table-highlight" data-en="&lt;th scope=&quot;row&quot;&gt;Replace the model?&lt;/th&gt;&lt;td&gt;Historical InsightFace: 512 dimensions&lt;/td&gt;&lt;td&gt;YuNet + SFace: 128 dimensions; observed FAR=0 at the comparable point and 32× less CPU&lt;/td&gt;&lt;td&gt;Less CPU is better for the target server. Sample FAR=0 does not prove zero risk; different models and thresholds require recalibration.&lt;/td&gt;"><th scope="row">Trocar o modelo?</th><td>InsightFace histórico: 512 dimensões</td><td>YuNet + SFace: 128 dimensões; FAR=0 observado no ponto comparável e 32× menos CPU</td><td>Menos CPU é melhor para o servidor-alvo. FAR=0 na amostra não prova risco zero; modelos e limiares diferentes exigem recalibração.</td></tr>
                   </tbody>
                 </table>
               </div>
               <figcaption id="tabela-reconhecimento-nota">
                 Limiar e frames foram medidos sobre população pública/sessões sintéticas controladas;
                 são evidência de direção, não substitutos para a calibração no totem e na população do cliente.
-              </figcaption>
+              </figcaption><p class="interpretation" data-en="Lower latency is better, but p95 of 74 ms with one identification rises to 1.87 s with 20 (about 25×). These are two load levels of the same benchmark; 74 ms is not general capacity. The ~1.2-million-vector estimate is an extrapolation, not tested scale.">Latência menor é melhor, mas p95 de 74 ms com uma identificação sobe para 1,87 s com 20 (cerca de 25×). São dois níveis de carga do mesmo benchmark; não se pode anunciar 74 ms como capacidade geral. A projeção de ~1,2 milhão de vetores é extrapolação, não escala testada.</p>
             </figure>
             <div class="case-results" aria-label="Latência atual do reconhecimento facial">
               <div class="case-result">
@@ -188,43 +169,35 @@
             <p id="atestado-dados">
               Serviço próprio com fine-tuning seletivo. Partição estratificada, versionada e gerada com semente fixa: 297 documentos de treino, 64 de validação e 64 de teste. O teste não participou do early stopping nem da seleção de hiperparâmetros.
             </p>
-            <p id="atestado-metodo">
-              Selecionei hiperparâmetros por busca em grade com validação cruzada estratificada de cinco dobras <em>dentro do treino</em>, otimizando F1 da classe atestado (31% da base). O baseline majoritário alcança 68,8% de acurácia e F1 zero; o teste foi usado apenas na medição final.
-            </p>
+            <p id="atestado-metodo" data-en="Selected hyperparameters using grid search with five-fold stratified cross-validation within training, optimizing medical-document F1 (31% of the dataset). The majority baseline has 68.8% accuracy and zero F1: apparently high accuracy, but misses all medical documents. The test was held out for the reported comparison; it is not a fresh test for each historical investigation.">Selecionei hiperparâmetros por busca em grade com validação cruzada estratificada de cinco dobras dentro do treino, otimizando F1 da classe atestado (31% da base). O baseline majoritário tem 68,8% de acurácia e F1 zero: parece acertar muito, mas perde todos os atestados. O teste foi reservado para a comparação relatada; não é um novo teste para cada investigação histórica.</p>
             <figure class="case-table-wrapper">
               <div class="case-table-scroll">
                 <table class="case-table" id="tabela-baselines">
                   <caption id="tabela-baselines-titulo">Escada de baselines no teste reservado</caption>
                   <thead>
-                    <tr id="tabela-baselines-cabecalho">
-                      <th scope="col">Abordagem</th>
-                      <th scope="col">Accuracy</th>
-                      <th scope="col">Precisão</th>
-                      <th scope="col">Recall</th>
-                      <th scope="col">F1</th>
-                    </tr>
+                    <tr id="tabela-baselines-cabecalho" data-en="&lt;th scope=&quot;col&quot;&gt;Approach&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Accuracy&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Precision&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Recall&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;F1&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Test interpretation&lt;/th&gt;"><th scope="col">Abordagem</th><th scope="col">Acurácia</th><th scope="col">Precisão</th><th scope="col">Recall</th><th scope="col">F1</th><th scope="col">Interpretação no teste</th></tr>
                   </thead>
                   <tbody>
-                    <tr id="tabela-linha-dummy">
+                    <tr id="tabela-linha-dummy" data-en="&lt;th scope=&quot;row&quot;&gt;Majority class (floor)&lt;/th&gt;&lt;td&gt;0.688&lt;/td&gt;&lt;td&gt;0.000&lt;/td&gt;&lt;td&gt;0.000&lt;/td&gt;&lt;td&gt;0.000&lt;/td&gt;&lt;td&gt;Worst for triage: none of the 20 medical documents detected.&lt;/td&gt;">
                       <th scope="row">Classe majoritária (piso)</th>
                       <td>0,688</td><td>0,000</td><td>0,000</td><td>0,000</td>
-                    </tr>
-                    <tr id="tabela-linha-hog-svm">
+                    <td>Pior para triagem: nenhum dos 20 atestados é detectado.</td></tr>
+                    <tr id="tabela-linha-hog-svm" data-en="&lt;th scope=&quot;row&quot;&gt;HOG + linear SVM&lt;/th&gt;&lt;td&gt;0.750&lt;/td&gt;&lt;td&gt;0.583&lt;/td&gt;&lt;td&gt;0.700&lt;/td&gt;&lt;td&gt;0.636&lt;/td&gt;&lt;td&gt;14/20 medical documents detected, 10 false positives. Better than dummy; still many incorrect alerts.&lt;/td&gt;">
                       <th scope="row">HOG + SVM linear</th>
                       <td>0,750</td><td>0,583</td><td>0,700</td><td>0,636</td>
-                    </tr>
-                    <tr id="tabela-linha-hog-rbf">
+                    <td>14/20 atestados detectados, 10 falsos positivos. Melhor que o trivial; ainda gera muitos alertas indevidos.</td></tr>
+                    <tr id="tabela-linha-hog-rbf" data-en="&lt;th scope=&quot;row&quot;&gt;HOG + RBF SVM&lt;/th&gt;&lt;td&gt;0.797&lt;/td&gt;&lt;td&gt;0.733&lt;/td&gt;&lt;td&gt;0.550&lt;/td&gt;&lt;td&gt;0.629&lt;/td&gt;&lt;td&gt;11/20 detected and 4 false positives. Higher accuracy, but lower recall and F1 than linear SVM: misses more medical documents.&lt;/td&gt;">
                       <th scope="row">HOG + SVM RBF</th>
                       <td>0,797</td><td>0,733</td><td>0,550</td><td>0,629</td>
-                    </tr>
-                    <tr id="tabela-linha-cnn">
+                    <td>11/20 detectados e 4 falsos positivos. Acurácia maior, mas recall e F1 piores que o SVM linear: deixa passar mais atestados.</td></tr>
+                    <tr id="tabela-linha-cnn" data-en="&lt;th scope=&quot;row&quot;&gt;EfficientNet, original head&lt;/th&gt;&lt;td&gt;0.766&lt;/td&gt;&lt;td&gt;0.609&lt;/td&gt;&lt;td&gt;0.700&lt;/td&gt;&lt;td&gt;0.651&lt;/td&gt;&lt;td&gt;14/20 detected, 9 false positives. Slightly higher F1 than linear HOG; the small sample does not establish superiority.&lt;/td&gt;">
                       <th scope="row">EfficientNet, cabeça original</th>
                       <td>0,766</td><td>0,609</td><td>0,700</td><td>0,651</td>
-                    </tr>
-                    <tr class="case-table-highlight" id="tabela-linha-embeddings">
+                    <td>14/20 detectados, 9 falsos positivos. F1 ligeiramente maior que HOG linear; amostra pequena não comprova superioridade.</td></tr>
+                    <tr class="case-table-highlight" id="tabela-linha-embeddings" data-en="&lt;th scope=&quot;row&quot;&gt;Embeddings + Logistic Regression&lt;/th&gt;&lt;td&gt;0.875&lt;/td&gt;&lt;td&gt;0.875&lt;/td&gt;&lt;td&gt;0.700&lt;/td&gt;&lt;td&gt;0.778&lt;/td&gt;&lt;td&gt;14/20 detected, 2 false positives. Best observed F1; improves precision without losing recall versus the original head.&lt;/td&gt;">
                       <th scope="row">Embeddings + Regressão Logística</th>
                       <td>0,875</td><td>0,875</td><td>0,700</td><td>0,778</td>
-                    </tr>
+                    <td>14/20 detectados, 2 falsos positivos. Melhor F1 observado; melhora a precisão sem perder recall frente à cabeça original.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -250,12 +223,8 @@
             <p id="atestado-hog">
               HOG + SVM alcançou F1 0,636, abaixo da cabeça neural original (0,651). A solução selecionada combina embeddings de 1.280 dimensões da EfficientNet com Regressão Logística. O OCR atua na revisão por regras.
             </p>
-            <p id="atestado-precisao">
-              Ambas as cabeças recuperam 14 dos 20 atestados, mas os falsos positivos caem de 9 para 2. ROC AUC passa de 0,814 para 0,892; PR AUC, de 0,697 para 0,823.
-            </p>
-            <p id="atestado-ressalvas">
-              Os 64 documentos de teste não sustentam ranking por pequenas diferenças de F1. Os três classificadores sobre embeddings ficaram entre 0,904 e 0,908 na validação cruzada; entre os HOG, a ordem mudou no teste. Como o backbone foi ajustado nas imagens de treino, a validação dos embeddings é otimista. A comparação entre famílias deve usar o teste reservado.
-            </p>
+            <p id="atestado-precisao" data-en="Both heads detect 14 of 20 medical documents: 6 false negatives each. False positives fall from 9 to 2; accuracy is 49/64 versus 56/64. ROC AUC from 0.814 to 0.892 and PR AUC from 0.697 to 0.823 indicate better observed ranking; they do not choose the operational threshold by themselves.">Ambas as cabeças detectam 14 dos 20 atestados: 6 falsos negativos em cada uma. Os falsos positivos caem de 9 para 2; acurácia é 49/64 contra 56/64. ROC AUC de 0,814 para 0,892 e PR AUC de 0,697 para 0,823 indicam melhor ordenação observada; não escolhem sozinhas o limiar operacional.</p>
+            <p id="atestado-ressalvas" data-en="64 test documents limit estimate precision; one error changes accuracy by 1.56 percentage points. Embeddings come from a backbone fitted on training images, so head-only cross-validation may be optimistic. The three embedding classifiers had validation F1 of 0.904–0.908; small differences do not support ranking. Later audits reusing a set are not independent evaluations.">64 documentos de teste limitam a precisão da estimativa; um erro altera a acurácia em 1,56 ponto percentual. Embeddings vêm de um backbone ajustado nas imagens de treino, de modo que a validação cruzada só da cabeça pode ser otimista. Os três classificadores sobre embeddings ficaram em F1 de 0,904–0,908 na validação; diferenças pequenas não sustentam ranking. Auditorias posteriores que reutilizam um conjunto não são avaliações independentes.</p>
           </div>
         </article>
 
@@ -264,7 +233,7 @@
             <p class="section-kicker">Método de investigação</p>
             <h2>Medir antes de concluir.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Inspect orientation and paired comparisons">Investigar orientação e comparação pareada</span></summary>
             <p class="lead">
               Investiguei falhas de OCR e identifiquei imagens carregadas com orientação incorreta.
             </p>
@@ -296,7 +265,7 @@
                 <strong>Métricas pareadas:</strong> descartei Jensen-Shannon após demonstrar divergência marginal zero em um caso com 100% de discordância entre documentos. Adotei comparações documento a documento.
               </li>
             </ul>
-          </div>
+          </details>
         </article>
 
         <article class="case-block" id="diagnostico">
@@ -304,27 +273,27 @@
             <p class="section-kicker">Diagnóstico experimental</p>
             <h2>Hipóteses avaliadas por experimento.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Read historical hypotheses and ablations">Consultar hipóteses e ablações históricas</span></summary>
             <p class="lead">
               Investiguei o aprendizado limitado do classificador com experimentos controlados, alterando uma variável por vez.
             </p>
             <div class="case-results" aria-label="Indicadores do diagnóstico">
               <div class="case-result">
                 <strong>3</strong>
-                <span>hipóteses descartadas por experimento: capacidade, sobreajuste e regularização da perda</span>
+                <span><span  data-en="hypotheses investigated; results weakened initial explanations within the tested protocol">hipóteses investigadas; resultados enfraqueceram as explicações iniciais no protocolo usado</span></span>
               </div>
               <div class="case-result">
                 <strong>4</strong>
-                <span>épocas para os mesmos parâmetros ajustarem por completo um subconjunto, refutando falta de capacidade</span>
+                <span  data-en="epochs for the same parameters to fit a subset, indicating ability to memorize that subset">épocas para os mesmos parâmetros ajustarem por completo um subconjunto, indicando capacidade de memorizar o subconjunto</span>
               </div>
               <div class="case-result">
                 <strong>+16</strong>
-                <span>pontos percentuais de acurácia em validação, somando duas causas isoladas por experimento</span>
+                <span  data-en="percentage points of historical validation accuracy gain; successive changes do not isolate interactions">pontos percentuais de acurácia em validação, de ganho histórico em validação; mudanças sucessivas não isolam interações</span>
               </div>
             </div>
             <ul class="case-list" aria-label="Experimentos conduzidos">
               <li>
-                <strong>Capacidade:</strong> sem regularização, os mesmos parâmetros ajustaram um subconjunto em quatro épocas. O teste de memorização descartou falta de capacidade.
+                <strong>Capacidade:</strong> sem regularização, os mesmos parâmetros ajustaram um subconjunto em quatro épocas. O teste mostrou que a rede consegue memorizar esse subconjunto; não mede generalização.
               </li>
               <li>
                 <strong>Suavização de rótulos:</strong> removê-la não elevou o teto de confiança observado, descartando a hipótese inicial.
@@ -342,7 +311,7 @@
                 <strong>Reavaliação:</strong> após as correções, a rede cruzou o limiar em 23,7% dos documentos, contra 0,6% antes. A concordância com o OCR passou de acaso a moderada, e o erro quadrático das probabilidades caiu a menos de um quarto. Reexecutei os instrumentos existentes para revisar a conclusão sobre a contribuição da rede.
               </li>
             </ul>
-          </div>
+          </details>
         </article>
 
         <article class="case-block" id="congelamento">
@@ -350,7 +319,7 @@
             <p class="section-kicker">Validação de arquitetura</p>
             <h2>Profundidade de fine-tuning avaliada em 5-fold.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Compare fine-tuning depth">Comparar profundidade de fine-tuning</span></summary>
             <p class="lead" id="congelamento-lead">
               A diferença entre treino (97%) e teste (70%, 40 imagens) motivou a comparação de três profundidades de descongelamento por validação cruzada.
             </p>
@@ -423,17 +392,15 @@
               </div>
               <div class="case-result">
                 <strong>67,0% ± 3,9</strong>
-                <span>acurácia da configuração que só treina a cabeça classificadora — capacidade insuficiente para o domínio</span>
+                <span  data-en="accuracy for training only the classification head — lowest observed mean in this protocol">acurácia da configuração que só treina a cabeça classificadora — menor média observada neste protocolo</span>
               </div>
               <div class="case-result">
                 <strong>40</strong>
                 <span>imagens no teste que gerou o alarme inicial — variância grande demais para sustentar uma conclusão sozinha</span>
               </div>
             </div>
-            <p id="congelamento-conclusao">
-              Dois blocos descongelados mantiveram o melhor resultado e a menor variância; um bloco alcançou 74,9% ± 6,7%. O gap treino/validação ficou em torno de 10 pontos no 5-fold, contra 27 no teste pequeno. A avaliação confirmou a arquitetura selecionada e indicou ampliar os dados, sobretudo de não-atestado.
-            </p>
-          </div>
+            <p id="congelamento-conclusao" data-en="Two unfrozen blocks: 84.2% ± 1.7, versus 67.0% ± 3.9 for the head alone and 74.9% ± 6.7 for one block. Higher mean and lower fold dispersion favor configuration C in this protocol; they do not prove configuration A lacks capacity. This study uses 406 training images and a historical 40-image test: it is not the 297/64/64 final benchmark split.">Dois blocos descongelados: 84,2% ± 1,7, contra 67,0% ± 3,9 só com a cabeça e 74,9% ± 6,7 com um bloco. Melhor média e menor dispersão entre dobras favorecem a configuração C neste protocolo; não provam falta de capacidade da configuração A. Este estudo usa 406 imagens de treino e teste histórico de 40: não é o split 297/64/64 do benchmark final.</p>
+          </details>
         </article>
 
         <article class="case-block" id="engenharia">
@@ -474,7 +441,7 @@
             <p class="section-kicker">Integridade da entrega</p>
             <h2>Rastreabilidade do modelo empacotado.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Audit checkpoint lineage">Auditar linhagem de checkpoints</span></summary>
             <p class="lead">
               A auditoria das imagens de entrega identificou um checkpoint PyTorch diferente do checksum versionado.
             </p>
@@ -516,10 +483,8 @@
               <li><strong>Linhagem:</strong> a exportação registra o vínculo entre checkpoint e ONNX, verificado no release.</li>
               <li><strong>Reprodutibilidade:</strong> declarei as dependências e obtive duas exportações idênticas byte a byte.</li>
             </ul>
-            <p id="procedencia-conclusao">
-              Adotei a auditoria do artefato distribuído como etapa complementar aos testes de código.
-            </p>
-          </div>
+            <p id="procedencia-conclusao" data-en="The audit found 12 fewer correct predictions in the incorrect artifact (49/64 versus 61/64, an 18.75-point difference). This justifies checking the actually packaged model. These checkpoints and this audit are not the EfficientNet + Logistic Regression benchmark (56/64); 95.31% must not be advertised as that experiment’s selected-classifier performance.">A auditoria encontrou 12 acertos a menos no artefato incorreto (49/64 contra 61/64, diferença de 18,75 pontos). Isso justifica verificar o modelo realmente empacotado. Esses checkpoints e essa auditoria não são o benchmark EfficientNet + Regressão Logística (56/64); 95,31% não deve ser anunciado como desempenho do classificador selecionado naquele experimento.</p>
+          </details>
         </article>
 
         <article class="case-block" id="camada-errada">
@@ -527,7 +492,7 @@
             <p class="section-kicker">Diagnóstico de interface</p>
             <h2>Cinco falhas identificadas na interface e no pacote.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Inspect interface diagnostics">Consultar diagnósticos de interface</span></summary>
             <p class="lead">
               Identifiquei cinco falhas que os testes de código e o console do navegador não detectavam.
             </p>
@@ -570,7 +535,7 @@
             <p>
               Três correções receberam testes automatizados. Para alterações visuais e de entrega, adotei capturas de tela e inspeção do pacote extraído.
             </p>
-          </div>
+          </details>
         </article>
 
         <article class="case-block" id="multi-stage">
@@ -578,7 +543,7 @@
             <p class="section-kicker">Benchmark de entrega</p>
             <h2>O ganho do multi-stage, sem trocar o runtime.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Isolate the multi-stage effect">Separar o efeito do multi-stage</span></summary>
             <p class="lead">
               Isolei o efeito do multi-stage em duas imagens ONNX com o mesmo código, modelo e dependências: instalação direta na imagem final ou build separado com cópia apenas do runtime.
             </p>
@@ -600,10 +565,8 @@
                 <code>/health</code>. O benchmark é reproduzível pelos Dockerfiles e scripts do projeto.
               </figcaption>
             </figure>
-            <p id="multi-stage-conclusao">
-              O multi-stage economizou 32,9 MiB. A redução histórica de 94,6% veio principalmente da remoção de CUDA e PyTorch da inferência.
-            </p>
-          </div>
+            <p id="multi-stage-conclusao" data-en="32.9 MiB less (7.4%) is a modest packaging improvement with a fixed runtime. The historical ~94.6% inference-image reduction includes removing CUDA/PyTorch; it cannot be attributed solely to multi-stage builds.">32,9 MiB a menos (7,4%) é uma melhoria modesta de empacotamento sob runtime fixo. Os cerca de 94,6% de redução histórica da imagem de inferência incluem a remoção de CUDA/PyTorch; não podem ser atribuídos só ao multi-stage.</p>
+          </details>
         </article>
 
         <article class="case-block" id="progressao">
@@ -611,7 +574,7 @@
             <p class="section-kicker">Trajetória da entrega</p>
             <h2>De 10,59 GB para 1,11 GB, em três decisões separáveis.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Read image-size evolution">Consultar a evolução das imagens</span></summary>
             <p class="lead">
               O manifesto registra o tamanho das imagens por release. A série permite separar os efeitos de mudanças no runtime, no modelo facial e no empacotamento.
             </p>
@@ -639,7 +602,7 @@
             </figure>
             <div class="case-results" aria-label="Diferença entre a primeira entrega e a atual">
               <div class="case-result">
-                <strong>&minus;9,47&nbsp;GB</strong>
+                <strong>~9,48&nbsp;GB</strong>
                 <span>entre a primeira entrega e a atual, somando as duas imagens</span>
               </div>
               <div class="case-result">
@@ -651,10 +614,8 @@
                 <span>é o que o cliente baixa hoje, com as imagens comprimidas no pacote</span>
               </div>
             </div>
-            <p id="progressao-conclusao">
-              A maior queda (7,6 GB na inferência) veio da adequação do runtime ao hardware; a seguinte, da troca do modelo facial por licenciamento. Desde a 1.0.10, o tamanho permaneceu estável enquanto evoluíram comportamento, navegação e documentação.
-            </p>
-          </div>
+            <p id="progressao-conclusao" data-en="10.59 → 1.11 GB means about 89.5% less total disk (9.48 GB from rounded values). Inference alone fell about 94.6%; these have different denominators. The largest drop came from the runtime; the next from the facial model. Compressed images (414 MB), installed size, and RAM are distinct measurements.">10,59 → 1,11 GB representa cerca de 89,5% menos disco no total (9,48 GB pelos valores arredondados). A inferência isolada caiu cerca de 94,6%; são denominadores diferentes. A maior queda veio do runtime; a seguinte, do modelo facial. Imagens comprimidas (414 MB), tamanho instalado e RAM são medições distintas.</p>
+          </details>
         </article>
 
         <aside class="case-highlight" id="execucao">
@@ -672,7 +633,7 @@
             <p class="section-kicker">Restrição de hardware</p>
             <h2>O servidor-alvo não tinha GPU.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Inspect disk, RAM, and ONNX parity">Examinar disco, RAM e paridade ONNX</span></summary>
             <p class="lead">
               O servidor de destino tinha Intel HD 4600, 8&nbsp;GB de RAM e nenhuma GPU dedicada. A imagem inicial incluía cerca de 6&nbsp;GB de CUDA e cuDNN sem uso nesse hardware.
             </p>
@@ -696,7 +657,7 @@
             <p>
               Migrei o classificador para ONNX Runtime. O script de exportação compara os runtimes no teste reservado e falha se alguma decisão mudar. O pré-processamento foi idêntico bit a bit, sem alterações de decisão.
             </p>
-          </div>
+          </details>
         </article>
 
         <aside class="case-highlight" id="isolamento">

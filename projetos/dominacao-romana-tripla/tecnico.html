@@ -140,7 +140,7 @@
             <p class="section-kicker" id="trdt-pli-kicker">Modelo exato</p>
             <h2 id="trdt-pli-titulo">Uma formulação publicada que aceita solução inválida.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Inspect the correction and counterexample">Examinar a correção e o contraexemplo</span></summary>
             <p class="lead" id="trdt-pli-lead">
               A única formulação de Programação Linear Inteira existente para o problema
               (Vengaldas <em>et al.</em>, 2023) usa seis variáveis binárias por vértice e
@@ -204,7 +204,7 @@
                 6|V| variáveis e 4|V| restrições para 3|V| variáveis e 2|V| restrições.
               </p>
             </div>
-          </div>
+          </details>
         </article>
       </div>
     </section>
@@ -228,7 +228,7 @@
             <p class="section-kicker" id="trdt-ga-kicker">FLGA</p>
             <h2 id="trdt-ga-titulo">Algoritmo genético.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Inspect operators and ablations">Examinar operadores e ablações</span></summary>
             <ul class="case-list" aria-label="Componentes do algoritmo genético">
               <li id="trdt-ga-item1"><strong>População inicial por heurística:</strong> quatro variantes foram comparadas. H1 sorteia um vértice, rotula com 2 e zera a vizinhança; H2 faz o mesmo com rótulo 4 e depois tenta reduzir rótulos; H3 percorre os vértices em ordem decrescente de grau; H4 mistura as três em partes iguais. H4 venceu e define o FLGA.</li>
               <li id="trdt-ga-item2"><strong>Reparo em vez de descarte:</strong> cruzamento e mutação produzem soluções inviáveis com frequência. Em vez de rejeitá-las, o procedimento <code>feasibilityCheck</code> percorre os vértices violados e eleva o rótulo ao mínimo que restaura a viabilidade. A população permanece inteiramente viável ao fim de cada geração.</li>
@@ -255,14 +255,9 @@
                   </tbody>
                 </table>
               </div>
-              <figcaption id="trdt-tabela-h-nota">
-                Recorte de 5 dos 24 grafos aleatórios usados nessa comparação; valores de
-                <em>fitness</em> (menor é melhor). O nome g<em>N</em>-.<em>p</em> indica
-                <em>N</em> vértices e probabilidade de conexão 0,<em>p</em>. O asterisco marca
-                os casos em que o solver comprovou o ótimo dentro do limite de tempo.
-              </figcaption>
+              <figcaption id="trdt-tabela-h-nota" data-en="Excerpt of 5 of the 24 comparison graphs. Lower fitness is better: H4 beats the best of the other heuristics by 1, 1, 1, and 4 units in the first four cases; ties with H3 in the last. Mixing constructions improves diversity, but does not establish universal gains. Asterisks mark solver-certified optima; otherwise ILP values are references only.">Recorte de 5 dos 24 grafos da comparação. Menor fitness é melhor: H4 supera a melhor das outras heurísticas por 1, 1, 1 e 4 unidades nos quatro primeiros casos; no último empata com H3. Misturar construções melhora diversidade, mas não comprova ganho universal. O asterisco marca ótimo certificado pelo solver; sem ele, o valor PLI é só referência.</figcaption>
             </figure>
-          </div>
+          </details>
         </article>
 
         <article class="case-block" id="aco">
@@ -270,7 +265,7 @@
             <p class="section-kicker" id="trdt-aco-kicker">ACO-FL</p>
             <h2 id="trdt-aco-titulo">Colônia de formigas com busca local.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Inspect construction, pheromones, and local search">Examinar construção, feromônios e busca local</span></summary>
             <p class="lead" id="trdt-aco-lead">
               A implementação segue o <em>Max-Min Ant System</em> dentro do
               <em>Hyper-Cube Framework</em>: cada vértice carrega um feromônio
@@ -301,13 +296,9 @@
                   </tbody>
                 </table>
               </div>
-              <figcaption id="trdt-tabela-rvns-nota">
-                Recorte de 5 dos 30 grafos aleatórios. A versão com busca local é a que passou
-                a se chamar ACO-FL. O ganho aparece principalmente nos grafos esparsos e
-                grandes, onde a construção sozinha estaciona.
-              </figcaption>
+              <figcaption id="trdt-tabela-rvns-nota" data-en="In the 5-graph excerpt, RVNS reduces cost by 2, 3, 3, 9, and 4 units: lower is better because local search lowers labels while preserving feasibility. Distance to the ILP reference remains; one run per instance does not measure gain variability.">No recorte de 5 grafos, RVNS reduz o custo em 2, 3, 3, 9 e 4 unidades: menor é melhor porque a busca local rebaixa rótulos mantendo viabilidade. Ainda há distância da referência PLI; uma execução por instância não mede a variabilidade desse ganho.</figcaption>
             </figure>
-          </div>
+          </details>
         </article>
       </div>
     </section>
@@ -319,11 +310,11 @@
             <p class="section-kicker" id="trdt-exp-kicker">Protocolo</p>
             <h2 id="trdt-exp-titulo">Como os experimentos foram montados.</h2>
           </div>
-          <div class="case-prose">
+          <details class="case-prose evidence-detail"><summary><span  data-en="Inspect environment and parameters">Consultar ambiente e parâmetros</span></summary>
             <ul class="case-list" aria-label="Protocolo experimental">
               <li id="trdt-exp-item1"><strong>Instâncias — 362 grafos:</strong> 50 matrizes esparsas da base BAI, 186 da coleção Harwell-Boeing, 56 grafos da base Miscellaneous Networks, 10 grafos de cada família clássica (ciclos, caminhos, estrelas e árvores) e 30 grafos aleatórios Erdős-Rényi de 25 a 250 vértices com probabilidade de conexão 0,2, 0,5 e 0,8.</li>
               <li id="trdt-exp-item2"><strong>Referência exata:</strong> o modelo PLI foi implementado em Python com Pyomo e NetworkX. A versão gratuita do CPLEX é limitada a mil variáveis e mil restrições, o que cobre grafos de até 333 vértices; acima disso foi usado o CBC. Cada instância teve no máximo 900 segundos, e o solver devolve a melhor solução encontrada — que nem sempre é comprovadamente ótima.</li>
-              <li id="trdt-exp-item3"><strong>Ajuste de parâmetros:</strong> as configurações dos dois algoritmos foram definidas pelo <code>irace</code> sobre um subconjunto representativo de 115 grafos, 5 de cada base, cobrindo instâncias pequenas, médias e grandes. Nenhum parâmetro foi ajustado à mão sobre o conjunto completo.</li>
+              <li id="trdt-exp-item3" data-en="&lt;strong&gt;Parameter tuning:&lt;/strong&gt; irace was used on 115 graphs selected from the study set. The described protocol does not establish an independent test outside tuning graphs; results describe performance on this set, without a generalization guarantee."><strong>Ajuste de parâmetros:</strong> irace foi usado em 115 grafos selecionados do conjunto de estudo. O protocolo descrito não estabelece um teste independente dos grafos usados no ajuste; os resultados devem ser lidos como desempenho nesse conjunto, sem promessa de generalização.</li>
               <li id="trdt-exp-item4"><strong>Ambiente:</strong> Intel Core i5-8265U a 1,60 GHz, 8 GB de RAM, Ubuntu 22.04.5 LTS. Meta-heurísticas em C++ compiladas com G++ 11.4.0 e as flags <code>-std=c++17 -Wall -Wextra -Ofast -finline-functions -march=native</code>.</li>
             </ul>
 
@@ -377,7 +368,7 @@
                 O tamanho da população é a ordem do grafo dividida pelo valor da última coluna.
               </figcaption>
             </figure>
-          </div>
+          </details>
         </article>
       </div>
     </section>
@@ -403,20 +394,18 @@
                 <table class="case-table">
                   <caption id="trdt-tabela-cmp-titulo">ACO-FL, FLGA e PLI nos grafos aleatórios</caption>
                   <thead>
-                    <tr id="trdt-tabela-cmp-cabecalho">
-                      <th scope="col">Grafo</th><th scope="col">|V|</th><th scope="col">|E|</th><th scope="col">ACO-FL</th><th scope="col">FLGA</th><th scope="col">PLI</th><th scope="col">Gap</th>
-                    </tr>
+                    <tr id="trdt-tabela-cmp-cabecalho" data-en="&lt;th scope=&quot;col&quot;&gt;Graph&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;|V|&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;|E|&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;ACO-FL&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;FLGA&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;ILP&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Best gap&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Interpretation (lower is better)&lt;/th&gt;"><th scope="col">Grafo</th><th scope="col">|V|</th><th scope="col">|E|</th><th scope="col">ACO-FL</th><th scope="col">FLGA</th><th scope="col">PLI</th><th scope="col">Gap da melhor</th><th scope="col">Interpretação (menor é melhor)</th></tr>
                   </thead>
                   <tbody>
-                    <tr id="trdt-cmp-l1"><th scope="row">g25-.2</th><td>25</td><td>61</td><td>19</td><td>24</td><td>19*</td><td>0,00%</td></tr>
-                    <tr id="trdt-cmp-l2"><th scope="row">g25-.8</th><td>25</td><td>235</td><td>7</td><td>7</td><td>7*</td><td>0,00%</td></tr>
-                    <tr id="trdt-cmp-l3"><th scope="row">g50-.5</th><td>50</td><td>637</td><td>12</td><td>12</td><td>12*</td><td>0,00%</td></tr>
-                    <tr id="trdt-cmp-l4"><th scope="row">g75-.2</th><td>75</td><td>549</td><td>34</td><td>39</td><td>28*</td><td>21,43%</td></tr>
-                    <tr id="trdt-cmp-l5"><th scope="row">g100-.5</th><td>100</td><td>2490</td><td>19</td><td>17</td><td>14*</td><td>21,43%</td></tr>
-                    <tr id="trdt-cmp-l6"><th scope="row">g150-.2</th><td>150</td><td>2299</td><td>39</td><td>47</td><td>32</td><td>21,88%</td></tr>
-                    <tr id="trdt-cmp-l7"><th scope="row">g200-.8</th><td>200</td><td>15947</td><td>12</td><td>12</td><td>8*</td><td>50,00%</td></tr>
-                    <tr id="trdt-cmp-l8"><th scope="row">g225-.8</th><td>225</td><td>20015</td><td>12</td><td>8</td><td>8*</td><td>0,00%</td></tr>
-                    <tr id="trdt-cmp-l9"><th scope="row">g250-.2</th><td>250</td><td>6249</td><td>52</td><td>54</td><td>39</td><td>33,33%</td></tr>
+                    <tr id="trdt-cmp-l1" data-en="&lt;th scope=&quot;row&quot;&gt;g25-.2&lt;/th&gt;&lt;td&gt;25&lt;/td&gt;&lt;td&gt;61&lt;/td&gt;&lt;td&gt;19&lt;/td&gt;&lt;td&gt;24&lt;/td&gt;&lt;td&gt;19*&lt;/td&gt;&lt;td&gt;0.00%&lt;/td&gt;&lt;td&gt;ACO-FL reaches optimum 19; FLGA costs 5 more.&lt;/td&gt;"><th scope="row">g25-.2</th><td>25</td><td>61</td><td>19</td><td>24</td><td>19*</td><td>0,00%</td><td>ACO-FL atinge ótimo 19; FLGA custa 5 a mais.</td></tr>
+                    <tr id="trdt-cmp-l2" data-en="&lt;th scope=&quot;row&quot;&gt;g25-.8&lt;/th&gt;&lt;td&gt;25&lt;/td&gt;&lt;td&gt;235&lt;/td&gt;&lt;td&gt;7&lt;/td&gt;&lt;td&gt;7&lt;/td&gt;&lt;td&gt;7*&lt;/td&gt;&lt;td&gt;0.00%&lt;/td&gt;&lt;td&gt;Tie at optimum 7.&lt;/td&gt;"><th scope="row">g25-.8</th><td>25</td><td>235</td><td>7</td><td>7</td><td>7*</td><td>0,00%</td><td>Empate no ótimo 7.</td></tr>
+                    <tr id="trdt-cmp-l3" data-en="&lt;th scope=&quot;row&quot;&gt;g50-.5&lt;/th&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;637&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;12*&lt;/td&gt;&lt;td&gt;0.00%&lt;/td&gt;&lt;td&gt;Tie at optimum 12.&lt;/td&gt;"><th scope="row">g50-.5</th><td>50</td><td>637</td><td>12</td><td>12</td><td>12*</td><td>0,00%</td><td>Empate no ótimo 12.</td></tr>
+                    <tr id="trdt-cmp-l4" data-en="&lt;th scope=&quot;row&quot;&gt;g75-.2&lt;/th&gt;&lt;td&gt;75&lt;/td&gt;&lt;td&gt;549&lt;/td&gt;&lt;td&gt;34&lt;/td&gt;&lt;td&gt;39&lt;/td&gt;&lt;td&gt;28*&lt;/td&gt;&lt;td&gt;21.43%&lt;/td&gt;&lt;td&gt;ACO-FL is 5 units better; still costs 6 above optimum 28.&lt;/td&gt;"><th scope="row">g75-.2</th><td>75</td><td>549</td><td>34</td><td>39</td><td>28*</td><td>21,43%</td><td>ACO-FL é 5 unidades melhor; ainda custa 6 acima do ótimo 28.</td></tr>
+                    <tr id="trdt-cmp-l5" data-en="&lt;th scope=&quot;row&quot;&gt;g100-.5&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;td&gt;2490&lt;/td&gt;&lt;td&gt;19&lt;/td&gt;&lt;td&gt;17&lt;/td&gt;&lt;td&gt;14*&lt;/td&gt;&lt;td&gt;21.43%&lt;/td&gt;&lt;td&gt;FLGA is 2 units better; costs 3 above optimum 14.&lt;/td&gt;"><th scope="row">g100-.5</th><td>100</td><td>2490</td><td>19</td><td>17</td><td>14*</td><td>21,43%</td><td>FLGA é 2 unidades melhor; custa 3 acima do ótimo 14.</td></tr>
+                    <tr id="trdt-cmp-l6" data-en="&lt;th scope=&quot;row&quot;&gt;g150-.2&lt;/th&gt;&lt;td&gt;150&lt;/td&gt;&lt;td&gt;2299&lt;/td&gt;&lt;td&gt;39&lt;/td&gt;&lt;td&gt;47&lt;/td&gt;&lt;td&gt;32&lt;/td&gt;&lt;td&gt;21.88%&lt;/td&gt;&lt;td&gt;ACO-FL beats FLGA by 8; 21.88% is against an uncertified reference.&lt;/td&gt;"><th scope="row">g150-.2</th><td>150</td><td>2299</td><td>39</td><td>47</td><td>32</td><td>21,88%</td><td>ACO-FL é melhor que FLGA por 8; 21,88% é contra referência não certificada.</td></tr>
+                    <tr id="trdt-cmp-l7" data-en="&lt;th scope=&quot;row&quot;&gt;g200-.8&lt;/th&gt;&lt;td&gt;200&lt;/td&gt;&lt;td&gt;15947&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;8*&lt;/td&gt;&lt;td&gt;50.00%&lt;/td&gt;&lt;td&gt;Tie, both 4 units above optimum: 50% loss.&lt;/td&gt;"><th scope="row">g200-.8</th><td>200</td><td>15947</td><td>12</td><td>12</td><td>8*</td><td>50,00%</td><td>Empate, ambos 4 unidades acima do ótimo: perda de 50%.</td></tr>
+                    <tr id="trdt-cmp-l8" data-en="&lt;th scope=&quot;row&quot;&gt;g225-.8&lt;/th&gt;&lt;td&gt;225&lt;/td&gt;&lt;td&gt;20015&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;8&lt;/td&gt;&lt;td&gt;8*&lt;/td&gt;&lt;td&gt;0.00%&lt;/td&gt;&lt;td&gt;FLGA reaches optimum 8; ACO-FL costs 50% more.&lt;/td&gt;"><th scope="row">g225-.8</th><td>225</td><td>20015</td><td>12</td><td>8</td><td>8*</td><td>0,00%</td><td>FLGA atinge ótimo 8; ACO-FL custa 50% a mais.</td></tr>
+                    <tr id="trdt-cmp-l9" data-en="&lt;th scope=&quot;row&quot;&gt;g250-.2&lt;/th&gt;&lt;td&gt;250&lt;/td&gt;&lt;td&gt;6249&lt;/td&gt;&lt;td&gt;52&lt;/td&gt;&lt;td&gt;54&lt;/td&gt;&lt;td&gt;39&lt;/td&gt;&lt;td&gt;33.33%&lt;/td&gt;&lt;td&gt;ACO-FL is 2 units better; 33.33% gap against an uncertified reference.&lt;/td&gt;"><th scope="row">g250-.2</th><td>250</td><td>6249</td><td>52</td><td>54</td><td>39</td><td>33,33%</td><td>ACO-FL é 2 unidades melhor; gap de 33,33% contra referência não certificada.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -430,27 +419,21 @@
             <figure class="case-table-wrapper">
               <div class="case-table-scroll">
                 <table class="case-table">
-                  <caption id="trdt-tabela-fam-titulo">Famílias clássicas, com γ<sub>3R</sub> conhecido pelo PLI</caption>
+                  <caption id="trdt-tabela-fam-titulo" data-en="Classical families: cost compared with the ILP reference">Famílias clássicas: custo comparado à referência PLI</caption>
                   <thead>
-                    <tr id="trdt-tabela-fam-cabecalho">
-                      <th scope="col">Grafo</th><th scope="col">|V|</th><th scope="col">γ<sub>3R</sub></th><th scope="col">ACO-FL</th><th scope="col">FLGA</th>
-                    </tr>
+                    <tr id="trdt-tabela-fam-cabecalho" data-en="&lt;th scope=&quot;col&quot;&gt;Graph&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;|V|&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;ILP reference&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;ACO-FL&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;FLGA&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Interpretation&lt;/th&gt;"><th scope="col">Grafo</th><th scope="col">|V|</th><th scope="col">Referência PLI</th><th scope="col">ACO-FL</th><th scope="col">FLGA</th><th scope="col">Interpretação</th></tr>
                   </thead>
                   <tbody>
-                    <tr id="trdt-fam-l1"><th scope="row">Ciclo C<sub>100</sub></th><td>100</td><td>135</td><td>135</td><td>146</td></tr>
-                    <tr id="trdt-fam-l2"><th scope="row">Caminho P<sub>100</sub></th><td>100</td><td>135</td><td>135</td><td>147</td></tr>
-                    <tr id="trdt-fam-l3"><th scope="row">Estrela S<sub>100</sub></th><td>100</td><td>4</td><td>4</td><td>4</td></tr>
-                    <tr id="trdt-fam-l4"><th scope="row">Árvore T<sub>100</sub></th><td>100</td><td>132</td><td>143</td><td>141</td></tr>
-                    <tr id="trdt-fam-l5"><th scope="row">Ciclo C<sub>250</sub></th><td>250</td><td>335</td><td>339</td><td>359</td></tr>
-                    <tr id="trdt-fam-l6"><th scope="row">Árvore T<sub>250</sub></th><td>250</td><td>354</td><td>366</td><td>380</td></tr>
+                    <tr id="trdt-fam-l1" data-en="&lt;th scope=&quot;row&quot;&gt;Cycle C&lt;sub&gt;100&lt;/sub&gt;&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;td&gt;135&lt;/td&gt;&lt;td&gt;135&lt;/td&gt;&lt;td&gt;146&lt;/td&gt;&lt;td&gt;ACO-FL matches the reference; FLGA costs 11 more.&lt;/td&gt;"><th scope="row">Ciclo C<sub>100</sub></th><td>100</td><td>135</td><td>135</td><td>146</td><td>ACO-FL iguala a referência; FLGA custa 11 a mais.</td></tr>
+                    <tr id="trdt-fam-l2" data-en="&lt;th scope=&quot;row&quot;&gt;Path P&lt;sub&gt;100&lt;/sub&gt;&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;td&gt;135&lt;/td&gt;&lt;td&gt;135&lt;/td&gt;&lt;td&gt;147&lt;/td&gt;&lt;td&gt;ACO-FL matches the reference; FLGA costs 12 more.&lt;/td&gt;"><th scope="row">Caminho P<sub>100</sub></th><td>100</td><td>135</td><td>135</td><td>147</td><td>ACO-FL iguala a referência; FLGA custa 12 a mais.</td></tr>
+                    <tr id="trdt-fam-l3" data-en="&lt;th scope=&quot;row&quot;&gt;Star S&lt;sub&gt;100&lt;/sub&gt;&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;Tie at reference 4: a strong center suffices.&lt;/td&gt;"><th scope="row">Estrela S<sub>100</sub></th><td>100</td><td>4</td><td>4</td><td>4</td><td>Empate na referência 4: um centro forte basta.</td></tr>
+                    <tr id="trdt-fam-l4" data-en="&lt;th scope=&quot;row&quot;&gt;Tree T&lt;sub&gt;100&lt;/sub&gt;&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;td&gt;132&lt;/td&gt;&lt;td&gt;143&lt;/td&gt;&lt;td&gt;141&lt;/td&gt;&lt;td&gt;FLGA costs 2 less than ACO-FL, still 9 above the reference.&lt;/td&gt;"><th scope="row">Árvore T<sub>100</sub></th><td>100</td><td>132</td><td>143</td><td>141</td><td>FLGA custa 2 a menos que ACO-FL, ainda 9 acima da referência.</td></tr>
+                    <tr id="trdt-fam-l5" data-en="&lt;th scope=&quot;row&quot;&gt;Cycle C&lt;sub&gt;250&lt;/sub&gt;&lt;/th&gt;&lt;td&gt;250&lt;/td&gt;&lt;td&gt;335&lt;/td&gt;&lt;td&gt;339&lt;/td&gt;&lt;td&gt;359&lt;/td&gt;&lt;td&gt;ACO-FL costs 20 less than FLGA, still 4 above the reference.&lt;/td&gt;"><th scope="row">Ciclo C<sub>250</sub></th><td>250</td><td>335</td><td>339</td><td>359</td><td>ACO-FL custa 20 a menos que FLGA, ainda 4 acima da referência.</td></tr>
+                    <tr id="trdt-fam-l6" data-en="&lt;th scope=&quot;row&quot;&gt;Tree T&lt;sub&gt;250&lt;/sub&gt;&lt;/th&gt;&lt;td&gt;250&lt;/td&gt;&lt;td&gt;354&lt;/td&gt;&lt;td&gt;366&lt;/td&gt;&lt;td&gt;380&lt;/td&gt;&lt;td&gt;ACO-FL costs 14 less than FLGA, still 12 above the reference.&lt;/td&gt;"><th scope="row">Árvore T<sub>250</sub></th><td>250</td><td>354</td><td>366</td><td>380</td><td>ACO-FL custa 14 a menos que FLGA, ainda 12 acima da referência.</td></tr>
                   </tbody>
                 </table>
               </div>
-              <figcaption id="trdt-tabela-fam-nota">
-                Em ciclos e caminhos o ACO-FL reproduz o ótimo até cem vértices. A estrela é
-                trivial para ambos: um único centro com rótulo 4 resolve o grafo inteiro. Em
-                árvores aleatórias o FLGA às vezes fica à frente.
-              </figcaption>
+              <figcaption id="trdt-tabela-fam-nota" data-en="On 100-vertex cycles and paths, ACO-FL matches the reference. On the star, both reach cost 4; on tree T100, FLGA beats ACO-FL, but both exceed the reference. These cases illustrate why comparing by family is more useful than choosing a universal winner.">Nos ciclos e caminhos de 100 vértices, ACO-FL iguala a referência. Na estrela, ambos alcançam custo 4; na árvore T100, FLGA é melhor que ACO-FL, mas ambos ficam acima da referência. Esses casos ilustram por que comparar por família é mais útil que escolher um vencedor universal.</figcaption>
             </figure>
           </div>
         </article>
@@ -468,17 +451,17 @@
               <section class="architecture-card">
                 <span id="trdt-met1-tag">Critério 1</span>
                 <h3 id="trdt-met1-titulo">Tempo de execução</h3>
-                <p id="trdt-met1-texto">Segundos por instância, medidos na mesma máquina e com as mesmas flags de compilação.</p>
+                <p id="trdt-met1-texto" data-en="Seconds per instance in the same environment. Lower is better if quality and search budgets are comparable; speed alone does not decide the winner.">Segundos por instância no mesmo ambiente. Menor é melhor se a qualidade e o orçamento de busca forem comparáveis; só velocidade não decide o vencedor.</p>
               </section>
               <section class="architecture-card">
                 <span id="trdt-met2-tag">Critério 2</span>
                 <h3 id="trdt-met2-titulo">Fitness, o peso da solução</h3>
-                <p id="trdt-met2-texto">Soma dos rótulos da melhor solução encontrada, comparada com o valor do modelo exato.</p>
+                <p id="trdt-met2-texto" data-en="Sum of labels of a feasible solution. Lower is better; an infeasible solution is excluded from quality comparisons.">Soma dos rótulos de uma solução viável. Menor é melhor; uma solução inviável não entra na comparação de qualidade.</p>
               </section>
               <section class="architecture-card">
                 <span id="trdt-met3-tag">Critério 3</span>
                 <h3 id="trdt-met3-titulo">Gap relativo</h3>
-                <p id="trdt-met3-texto">Distância percentual entre a melhor solução das meta-heurísticas e a referência PLI.</p>
+                <p id="trdt-met3-texto" data-en="Percentage difference against the ILP reference. Zero means matching that reference; it means matching the optimum only if certified.">Diferença percentual contra a referência PLI. Zero significa igualdade com essa referência; só é igualdade com o ótimo se houver certificação.</p>
               </section>
               <section class="architecture-card">
                 <span id="trdt-met4-tag">Como é calculado</span>
@@ -493,9 +476,9 @@
             <ul class="case-list" aria-label="Impacto comunicado">
               <li id="trdt-met-impacto-1"><strong>Formulação corrigida:</strong> contraexemplo que demonstra a falha do PLI publicado.</li>
               <li id="trdt-met-impacto-2"><strong>Implementação:</strong> meta-heurísticas de algoritmo genético e colônia de formigas.</li>
-              <li id="trdt-met-impacto-3"><strong>Base de instâncias reutilizável:</strong> 30 grafos aleatórios gerados com γ<sub>3R</sub> exato calculado, além dos valores exatos da maior parte das demais instâncias — material de comparação para pesquisas seguintes.</li>
+              <li id="trdt-met-impacto-3" data-en="&lt;strong&gt;Reusable dataset:&lt;/strong&gt; graphs, outputs, and ILP references preserved. Only proven optimal values should be treated as optima; others are time-limited reference solutions."><strong>Base reutilizável:</strong> grafos, saídas e referências PLI preservados. Só valores com prova de otimalidade devem ser tratados como ótimos; os demais são soluções de referência sob limite de tempo.</li>
               <li id="trdt-met-impacto-4"><strong>Seleção experimental:</strong> busca local RVNS e população inicial H4 comparadas sob o mesmo protocolo.</li>
-              <li id="trdt-met-impacto-5"><strong>Gap:</strong> apenas 6 dos 362 grafos ficaram a mais de 50% da referência.</li>
+              <li id="trdt-met-impacto-5" data-en="&lt;strong&gt;Observed distribution:&lt;/strong&gt; 6 of 362 graphs exceeded 50% of the reference. This describes the result tail; it does not imply others reached the optimum or that 50% loss is acceptable."><strong>Distribuição observada:</strong> 6 dos 362 grafos ficaram acima de 50% da referência. Isso descreve a cauda de resultados; não implica que os outros atingiram o ótimo, nem que 50% seja uma perda aceitável.</li>
             </ul>
           </div>
         </article>
@@ -507,8 +490,8 @@
           </div>
           <div class="case-prose">
             <ul class="case-list" aria-label="Limitações do estudo">
-              <li id="trdt-lim-item1"><strong>Nem todo valor de referência é ótimo comprovado.</strong> O solver operou com limite de 900 segundos por instância. Sem o asterisco, o valor da coluna PLI é apenas a melhor solução encontrada nesse tempo, e o gap correspondente é uma estimativa por cima.</li>
-              <li id="trdt-lim-item2"><strong>Gaps maiores em grafos densos.</strong> Quando o ótimo é um número pequeno, como 8, cada legião a mais custa muitos pontos percentuais: os 50% de g200-.8 são a diferença entre 12 e 8. O gap relativo exagera a distância nesses casos.</li>
+              <li id="trdt-lim-item1" data-en="&lt;strong&gt;Reference without proof of optimality:&lt;/strong&gt; under a 900 s limit, an unstarred ILP value is a feasible solution (upper bound), not the optimum. Gap against this reference is not an upper bound on optimality error; when the heuristic costs more than the reference, it may underestimate the true distance. If it costs less, the gap may be negative. Use the solver bound for a certified-distance estimate."><strong>Referência sem prova de ótimo:</strong> com limite de 900 s, o valor PLI sem asterisco é uma solução viável (limite superior), não o ótimo. O gap contra essa referência não é um limite superior do erro ao ótimo; quando a heurística custa mais que a referência, pode subestimar a distância real. Se custar menos, o gap pode até ser negativo. Use o bound do solver para estimar distância certificada.</li>
+              <li id="trdt-lim-item2" data-en="&lt;strong&gt;Relative gap and absolute cost:&lt;/strong&gt; on g200-.8, 12 versus optimum 8 means 4 more units and a 50% gap. Neither measure is wrong: together they show absolute and relative loss. With a small optimum, each unit contributes more to the percentage."><strong>Gap relativo e custo absoluto:</strong> em g200-.8, 12 contra o ótimo 8 são 4 unidades a mais e 50% de gap. Nenhuma medida está errada: juntas mostram tamanho absoluto e relativo da perda. Com ótimo pequeno, cada unidade pesa mais no percentual.</li>
               <li id="trdt-lim-item3"><strong>Uma execução por instância.</strong> As meta-heurísticas são estocásticas e os resultados relatados não vêm de múltiplas execuções com intervalo de confiança, o que impede afirmar diferenças pequenas entre os dois algoritmos.</li>
               <li id="trdt-lim-item4"><strong>Trabalho em aberto.</strong> Ampliar a busca de hiperparâmetros, testar outras estratégias de seleção, cruzamento, mutação e elitismo no GA, avaliar outros mecanismos de escolha no ACO e reduzir o tempo de execução por otimizações de implementação.</li>
             </ul>

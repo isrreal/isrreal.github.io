@@ -1,6 +1,6 @@
 # Portfólio — Israel Souza Ferreira
 
-Site estático publicado em [isrreal.github.io](https://isrreal.github.io/), sem framework nem
+Site estático publicado em [israelsouza.speculummaius.com.br](https://israelsouza.speculummaius.com.br/), sem framework nem
 etapa de build: HTML, CSS e JavaScript servidos direto pelo GitHub Pages.
 
 ## Estrutura
@@ -12,6 +12,7 @@ styles.css                                  folha de estilo única, com tema cla
 script.js                                   tema, idioma, menu e componentes interativos
 projetos/face-clock-evoluir/                estudo de caso + página técnica
 projetos/dominacao-romana-tripla/           estudo de caso + página técnica
+projetos/auxilio-emergencial/               ingestão + experimentos de memória
 assets/                                     currículos (LaTeX e PDF), imagens e ícones
 ```
 
@@ -26,28 +27,56 @@ python3 -m http.server 8000
 
 ## Idiomas
 
-O site é bilíngue (português e inglês). A tradução acontece no cliente: `script.js` mantém,
-para cada página, uma tabela que mapeia seletores CSS para o texto em inglês, e o botão de
-idioma troca o `innerHTML` desses elementos. A página é identificada pelo atributo
-`data-page` no elemento `<html>`.
+O site é bilíngue (português e inglês). O HTML contém português como padrão e funciona
+sem JavaScript. Nas páginas revisadas, cada trecho traduzido usa `data-en` com seu conteúdo
+em inglês; o script preserva o português original e alterna os textos. Não coloque trechos
+`data-en` dentro de outro trecho `data-en`, pois substituir o pai remove os filhos.
 
-Consequência prática ao editar: **se você mudar a estrutura HTML de um trecho traduzido,
-o seletor correspondente em `script.js` precisa acompanhar**, senão aquele trecho deixa de
-ser traduzido silenciosamente.
+As páginas técnicas ainda mantêm parte das tabelas antigas de seletores em `script.js`.
+Traduções inline têm prioridade. Ao alterar um trecho legado, atualize sua tradução ou migre
+para `data-en`. Datas, unidades, denominadores e limitações devem coincidir nos dois idiomas.
+
+A navegação segue apresentação → resumo do projeto → evidências técnicas → documentação/código.
+Registros históricos extensos usam `<details>` nativo; links para âncoras revelam automaticamente
+o registro correspondente. Resultados devem conter comparação, interpretação e limite.
 
 ## Currículos
 
-Os PDFs em `assets/` são gerados a partir dos fontes LaTeX no mesmo diretório:
+Os fontes LaTeX e PDFs estão em `assets/`. Os currículos usam uma coluna, cargos e datas
+em ordem linear, contatos visíveis e seções padronizadas. A versão atual tem duas páginas
+para preservar legibilidade. Isso facilita parsing; não promete aprovação em qualquer ATS.
+A [documentação do Greenhouse](https://support.greenhouse.io/hc/en-us/articles/200989175-Unsuccessful-resume-parse)
+explica limitações com colunas, tabelas, imagens e cabeçalhos complexos.
+
+Compile em diretório temporário, preservando a pasta pública livre de intermediários:
 
 ```bash
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=assets assets/israel-cv-portugues.tex
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=assets assets/israel-cv-english.tex
+mkdir -p .cv-build
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=.cv-build assets/israel-cv-portugues.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=.cv-build assets/israel-cv-english.tex
+cp .cv-build/israel-cv-portugues.pdf assets/israel-cv-portugues.pdf
+cp .cv-build/israel-cv-english.pdf assets/israel-cv-english.pdf
 cp assets/israel-cv-portugues.pdf assets/israel_cv_pt.pdf
 cp assets/israel-cv-english.pdf assets/israel_cv_en.pdf
+pdftotext assets/israel-cv-portugues.pdf assets/israel-cv-portugues.txt
+pdftotext assets/israel-cv-english.pdf assets/israel-cv-english.txt
+python3 - <<'PY'
+from pathlib import Path
+import unicodedata
+for name in ['portugues', 'english']:
+    path = Path(f'assets/israel-cv-{name}.txt')
+    path.write_text(unicodedata.normalize('NFKC', path.read_text()).replace('\f', '\n').strip() + '\n')
+PY
 ```
 
-Cada idioma é publicado sob dois nomes (`israel_cv_pt.pdf` e `israel-cv-portugues.pdf`),
-porque ambos já circulam em links externos. Ao regerar, atualize os dois.
+Alternativa testada: `tectonic --outdir .cv-build assets/israel-cv-portugues.tex`, repetindo
+para inglês e copiando os arquivos como acima. As versões `.txt` publicadas normalizam
+ligaturas Unicode e removem separadores de página para facilitar a leitura do texto extraído.
+Cada idioma tem dois nomes PDF por compatibilidade com links externos; mantenha as cópias idênticas.
+
+A graduação começou em 2021 (mês não informado), terminou em 19/08/2026 e não se confunde
+com a defesa do TCC em 02/2025. Datas da consultoria e das monitorias foram confirmadas pelo autor.
+Mantenha esses períodos sincronizados entre HTML, LaTeX, PDFs e texto simples.
 
 ## Verificações antes de publicar
 
@@ -55,5 +84,8 @@ Não há CI configurado. O mínimo recomendado a cada alteração:
 
 - todos os arquivos referenciados existem (`src`, `href`, `link`);
 - âncoras internas (`#secao`) apontam para IDs que existem;
-- os seletores das tabelas de tradução ainda encontram elementos nas páginas;
+- PT → EN → PT restaura os textos; os links de currículo acompanham o idioma;
+- disclosures funcionam por teclado e âncoras abrem o conteúdo fechado;
+- não há overflow horizontal global em celular, com detalhes abertos e fechados;
+- `pdftotext` preserva nome, contatos, curso, empregador, cargo e período em ordem;
 - números repetidos em mais de uma página continuam coerentes entre si.

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark" data-page="auxilio-tecnico">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ingestão de dados públicos em PostgreSQL: experimentos reproduzíveis, memória medida e limites da deduplicação em Python.">
+  <meta name="author" content="Israel Souza Ferreira">
+  <meta name="theme-color" content="#071417">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Auxílio Emergencial | Engenharia de Dados — Israel Souza Ferreira">
+  <meta property="og:description" content="Ingestão reproduzível em PostgreSQL, crescimento de memória e limites dos experimentos.">
+  <meta property="og:url" content="https://israelsouza.speculummaius.com.br/projetos/auxilio-emergencial/tecnico.html">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="https://israelsouza.speculummaius.com.br/assets/og-portfolio.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Portfólio de Israel Souza Ferreira — machine learning, pesquisa e engenharia.">
+  <meta name="twitter:image" content="https://israelsouza.speculummaius.com.br/assets/og-portfolio.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <title>Auxílio Emergencial | Experimentos — Israel Souza Ferreira</title>
+  <link rel="canonical" href="https://israelsouza.speculummaius.com.br/projetos/auxilio-emergencial/tecnico.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="../../script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header" id="inicio">
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="brand" href="../../index.html" aria-label="Voltar ao portfólio">
+        <span aria-hidden="true">&#955;</span>
+        <span>Israel Souza Ferreira</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
+        <span class="sr-only">Abrir menu</span>
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu"><a href="../../index.html#projetos" class="text-link"  data-en="Projects">Projetos</a><a href="index.html" class="text-link"  data-en="Overview">Visão geral</a><a href="tecnico.html" class="text-link"  data-en="Experiments">Experimentos</a></div>
+      <div class="nav-actions">
+        <button class="language-toggle" type="button" aria-label="Mudar para inglês" title="Mudar para inglês">
+          <span class="language-label" aria-hidden="true">Idioma</span>
+          <span class="language-code" aria-hidden="true">EN</span>
+          <span class="language-arrow" aria-hidden="true">↔</span>
+        </button>
+        <button class="theme-toggle" type="button" aria-label="Alternar tema" title="Alternar tema">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+<section class="case-hero">
+    <div class="container"><a href="index.html" class="case-breadcrumb"  data-en="← Overview">← Visão geral</a>
+    <p class="eyebrow" data-en="Data engineering · In development">Engenharia de dados · Em desenvolvimento</p>
+    <h1  data-en="Emergency Aid: ingestion experiments">Auxílio Emergencial: experimentos de ingestão</h1>
+    <p class="hero-description" data-en="Chunking reduces temporary data, but does not guarantee stable memory. I measured state retained between chunks before choosing the next change.">Processar em blocos reduz dados temporários, mas não garante memória estável. Medi o estado que permanece entre blocos antes de escolher a próxima mudança.</p>
+    <div class="hero-actions"><a href="#memoria" class="button button-primary"  data-en="Understand the results">Entender os resultados</a><a href="https://github.com/isrreal/AuxilioEmergencialQueries" class="button button-secondary" target="_blank" rel="noopener noreferrer" data-en="Code and notebooks">Código e notebooks</a>
+    </div>
+    </div>
+    </section>
+    <section class="section section-alt" id="protocolo">
+    <div class="container narrow">
+    <p class="section-kicker" data-en="Protocol">Protocolo</p>
+    <h2  data-en="Compare under declared conditions.">Comparar sob condições declaradas.</h2>
+    <p class="lead" data-en="Python → Pandas (reading and normalization) → asyncpg COPY → PostgreSQL. Alembic versions the schema; each run starts in a newly migrated database. RSS measures Python-process resident memory, not database memory.">Python → Pandas (leitura e normalização) → asyncpg COPY → PostgreSQL. Alembic versiona o schema; cada execução começa em banco recém-migrado. RSS mede a memória residente do processo Python, não a memória do banco.</p>
+    <p  data-en="100-thousand-row chunks, one excluded warm-up run, and three measured runs per scenario. Tables use medians; database, transformations, and runner remain fixed.">Blocos de 100 mil linhas, uma execução de aquecimento excluída e três execuções medidas por cenário. As tabelas usam medianas; banco, transformações e runner permanecem fixos.</p>
+    </div>
+    </section>
+    <section class="section " id="baseline">
+    <div class="container narrow">
+    <p class="section-kicker" data-en="Throughput and memory">Vazão e memória</p>
+    <h2  data-en="More volume preserves throughput, but increases the peak.">Mais volume preserva a vazão, mas aumenta o pico.</h2><figure class="case-table-wrapper">
+    <div class="case-table-scroll"><table class="case-table"><caption><span  data-en="Ingestion baselines: medians from three runs">Baselines de ingestão: medianas de três execuções</span></caption><thead><tr><th scope="col" data-en="Source rows">Linhas fonte</th><th scope="col" data-en="Wall time">Tempo total</th><th scope="col" data-en="Rows/s">Linhas/s</th><th scope="col" data-en="Peak RSS">Pico RSS</th><th scope="col" data-en="Interpretation">Interpretação</th></tr></thead><tbody><tr><th scope="row">100.000</th><td>4,80 s</td><td>20.832</td><td>214,25 MiB</td><td  data-en="One chunk: initial reference; does not measure retention between chunks.">Um bloco: referência inicial; não mede retenção entre blocos.</td></tr><tr><th scope="row">1.000.000</th><td>49,65 s</td><td>20.139</td><td>387,91 MiB</td><td  data-en="10× more rows: throughput ~3.3% lower and peak RSS ~81% higher. Similar throughput; memory is not controlled only by chunk size.">10× mais linhas: throughput ~3,3% menor e pico de RSS ~81% maior. Vazão semelhante; memória não acompanha só o tamanho do bloco.</td></tr></tbody></table>
+    </div><figcaption  data-en="Peak RSS includes temporary buffers; alone it does not establish retention. Values from this host are not guarantees for other environments.">Pico de RSS inclui buffers temporários; sozinho não demonstra retenção. Valores deste host, sem promessa para outro ambiente.</figcaption></figure><a href="https://github.com/isrreal/AuxilioEmergencialQueries/blob/main/results/ingestion-baseline-summary.csv" class="text-link" target="_blank" rel="noopener noreferrer" data-en="Inspect source table →">Consultar tabela fonte →</a>
+    </div>
+    </section>
+    <section class="section section-alt" id="memoria">
+    <div class="container narrow">
+    <p class="section-kicker" data-en="Memory diagnosis">Diagnóstico de memória</p>
+    <h2  data-en="Fixed chunks did not prevent growing state.">Blocos fixos não impediram estado crescente.</h2>
+    <div class="case-results">
+    <div class="case-result"><strong>182 → 750 MiB</strong><span  data-en="Post-cleanup RSS: ~568 MiB more over 50 chunks. Worse for scaling, as the next read starts with a larger baseline.">RSS após limpeza: ~568 MiB a mais em 50 blocos. Pior para escalar, pois a próxima leitura começa com uma base maior.</span>
+    </div>
+    <div class="case-result"><strong>r ≈ 0,991</strong><span  data-en="Strong association with retained IDs. Describes the trajectory; does not isolate causality.">Associação forte com IDs retidos. Descreve a trajetória, não isola causalidade.</span>
+    </div>
+    <div class="case-result"><strong>3 execuções</strong><span  data-en="Same direction repeated; still one environment and one implementation.">Mesma direção repetida; ainda um único ambiente e uma implementação.</span>
+    </div>
+    </div>
+    <p  data-en="In the 5-million-row scenario, sets accumulate about 5.44 million IDs. The descriptive fit indicates ~107 MiB per million IDs, but IDs and progress grow together. RSS includes Python, native libraries, allocator reserves, and buffers.">No cenário de 5 milhões de linhas, os conjuntos acumulam cerca de 5,44 milhões de IDs. O ajuste descritivo indica ~107 MiB por milhão de IDs, mas IDs e progresso crescem juntos. RSS inclui Python, bibliotecas nativas, reservas do alocador e buffers.</p>
+    <p class="interpretation" data-en="&lt;strong&gt;Supported conclusion:&lt;/strong&gt; memory is not bounded by chunk size. &lt;strong&gt;Hypothesis:&lt;/strong&gt; global sets contribute to retention. &lt;strong&gt;Next test:&lt;/strong&gt; staging-based deduplication, repeating checkpoints and comparing the post-cleanup curve."><strong>Conclusão sustentada:</strong> a memória não fica limitada ao tamanho do bloco. <strong>Hipótese:</strong> os conjuntos globais contribuem para a retenção. <strong>Teste seguinte:</strong> deduplicação por staging, repetindo checkpoints e comparando a curva após limpeza.</p><a href="https://github.com/isrreal/AuxilioEmergencialQueries/blob/main/notebooks/02_ingestion_memory_growth.ipynb" class="text-link" target="_blank" rel="noopener noreferrer" data-en="Notebook: method, checkpoints, and limits →">Notebook: método, checkpoints e limites →</a>
+    </div>
+    </section>
+    <section class="section " id="limites">
+    <div class="container narrow">
+    <p class="section-kicker" data-en="Limits and next steps">Limites e próximos passos</p>
+    <h2  data-en="What still needs measurement.">O que ainda precisa ser medido.</h2>
+    <p  data-en="No completed Polars/PySpark comparison or demonstrated index or staging improvement. API HTTP timing combines SQL execution, serialization, and network; an SQL benchmark must control cache and use EXPLAIN ANALYZE.">Não há comparação concluída com Polars/PySpark, nem ganho comprovado de índices ou staging. Medir tempo HTTP da API mistura consulta SQL, serialização e rede; um benchmark SQL deve controlar cache e usar EXPLAIN ANALYZE.</p>
+    <p  data-en="Summing memory_usage(deep=True) across DataFrames with shared objects does not yield physical RSS. The one-chunk scenario is a smoke test; the 50-chunk trajectory is more informative about retention.">Somar memory_usage(deep=True) de DataFrames com objetos compartilhados não fornece RSS físico. O cenário de um bloco é um smoke test; a trajetória de 50 blocos é mais informativa sobre retenção.</p><a href="index.html" class="text-link"  data-en="← Back to overview">← Voltar à visão geral</a>
+    </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="current-year"></span> Israel Souza Ferreira.</p>
+      <p><a class="text-link" href="../../index.html">Voltar ao portfólio</a></p>
+    </div>
+  </footer>
+</body>
+</html>

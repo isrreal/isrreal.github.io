@@ -1,275 +1,117 @@
-\documentclass[a4paper,10pt]{article}
-
-% ---------- CONFIGURATION ----------
-\usepackage[
-    a4paper,
-    top=0.65cm,
-    bottom=0.65cm,
-    left=1.25cm,
-    right=1.25cm
-]{geometry}
-
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\documentclass[a4paper,11pt]{article}
+\usepackage[a4paper,margin=1.4cm]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{helvet}
+  \renewcommand{\familydefault}{\sfdefault}
+  \usepackage{microtype}
+  \DisableLigatures{encoding=*,family=*}
+\else
+  \usepackage{fontspec}
+  \setmainfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf,ItalicFont=texgyreheros-italic.otf,Ligatures=NoCommon]
+\fi
 \usepackage[english]{babel}
-\IfFileExists{newtxtext.sty}{
-  \usepackage{newtxtext}
-  \usepackage{newtxmath}
-}{
-  \usepackage{mathptmx}
-}
-\usepackage{amssymb}
-\usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{titlesec}
-\usepackage{xcolor}
-
-\definecolor{linkcolor}{RGB}{0, 0, 160}
-
-\hypersetup{
-    colorlinks=true,
-    urlcolor=linkcolor,
-    linkcolor=linkcolor,
-    pdftitle={Israel Souza Ferreira - Resume},
-    pdfauthor={Israel Souza Ferreira}
-}
-
+\usepackage{needspace}
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+\hypersetup{hidelinks,pdftitle={Israel Souza Ferreira - Resume},pdfauthor={Israel Souza Ferreira}}
 \urlstyle{same}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
-
 \pagestyle{empty}
-\raggedbottom
-\emergencystretch=1em
-
-% ---------- COMPACT LISTS ----------
-\setlist[itemize]{
-    label=\textbullet,
-    leftmargin=1.2em,
-    itemsep=0.25pt,
-    topsep=1pt,
-    parsep=0pt,
-    partopsep=0pt
-}
-
-% ---------- SECTIONS ----------
-\titleformat{\section}
-  {\normalsize\bfseries}
-  {}
-  {0em}
-  {\MakeUppercase}
-  [\vspace{-1.1ex}\rule{\linewidth}{0.35pt}]
-
-\titlespacing{\section}{0pt}{1.05ex}{0.4ex}
-
-% #1 Organization
-% #2 Location
-% #3 Position or degree
-% #4 Period
-\newcommand{\entry}[4]{%
-    \noindent
-    \textbf{#1}
-    \hfill
-    \textbf{#2}\\[-1pt]
-    \textit{#3}
-    \hfill
-    \textit{#4}\par
-}
-
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\raggedright
+\setlist[itemize]{leftmargin=1.3em,itemsep=2pt,topsep=3pt,parsep=0pt}
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+\titlespacing{\section}{0pt}{10pt}{4pt}
+% Single-column reading order: position, employer/location, then dates.
+\newcommand{\entry}[4]{\Needspace{9\baselineskip}\textbf{#1}\par #2 --- #3\par #4\par}
 \begin{document}
+{\LARGE\textbf{Israel Souza Ferreira}}\par
+\textbf{Data Scientist | Machine Learning Engineer}\par
+Fortaleza, Brazil --- Remote\par
+Email: \href{mailto:israel.souza.dev@gmail.com}{israel.souza.dev@gmail.com} | Phone: +55 85 98433-2790\par
+LinkedIn: \url{https://www.linkedin.com/in/isrreal/}\par
+GitHub: \url{https://github.com/isrreal}\par
+Portfolio: \url{https://israelsouza.speculummaius.com.br/}\par
 
-% ---------- HEADER ----------
-\begin{center}
+\section*{Professional Summary}
+Computer Science graduate with experience in applied Machine Learning research,
+computer vision, and systems development. I compare baselines and run experiments,
+calibration, automated testing, and preparation for CPU deployment.
 
-    {\LARGE\textbf{Israel Souza Ferreira}}\\[1pt]
-
-    {\normalsize
-        \textbf{Data Scientist
-        \enspace $|$ \enspace
-        Machine Learning Engineer}
-    }\\[2pt]
-
-    {\small
-        Fortaleza, Brazil
-        \enspace $|$ \enspace
-        Remote
-        \enspace $|$ \enspace
-        +55 85 98433-2790
-        \enspace $|$ \enspace
-        \href{mailto:israel.souza.dev@gmail.com}
-        {israel.souza.dev@gmail.com}
-        \\[1pt]
-        \href{https://www.linkedin.com/in/isrreal/}
-        {LinkedIn}
-        \enspace $|$ \enspace
-        \href{https://github.com/isrreal}
-        {GitHub}
-        \enspace $|$ \enspace
-        \href{https://israelsouza.speculummaius.com.br/}
-        {Portfolio}
-        \enspace $|$ \enspace
-        \href{http://lattes.cnpq.br/6540409845091993}
-        {Lattes}
-    }
-
-\end{center}
-
-\vspace{-3pt}
-
-% ---------- PROFILE ----------
-\section*{Profile}
-
-Computer scientist with experience in \textbf{applied research and ML-enabled
-systems development}: experimentation, computer vision, APIs, and data. I
-support decisions with baselines, ablations, benchmarks, and automated testing.
-
-% ---------- PROFESSIONAL EXPERIENCE ----------
-\section*{Professional Experience}
-
-\entry
-    {Tieta.ai}
-    {Remote, Brazil}
-    {R\&D Researcher --- Research and Innovation Training Program Fellow}
-    {Jul 2026 - Present}
-
-\begin{itemize}
-
-    \item Contributed to \textbf{software development and maintenance}
-    in research and innovation activities.
-
-    \item Implemented \textbf{validation and automated tests}
-    to support software quality and maintenance.
-
-    \item Automated technical activities to support
-    \textbf{reproducibility} and work organization.
-
-    \item Produced \textbf{technical documentation} and organized changes
-    through version control for traceability, governance, and controlled evolution.
-
-\end{itemize}
-
-\entry
-    {Tieta.ai}
-    {Remote, Brazil}
-    {Machine Learning Researcher --- CNPq RHAE Research Fellow, part-time}
-    {Apr 2025 - Jun 2026}
-
-\begin{itemize}
-
-    \item Conducted \textbf{applied Machine Learning research},
-    developing and evaluating computational solutions.
-
-    \item Performed \textbf{experimentation and results analysis}
-    to support technical evaluation and decision-making.
-
-    \item Established \textbf{reproducible development and evaluation processes}
-    to organize research activities.
-
-\end{itemize}
-
-\entry
-    {Independent Consulting --- Educational Institution}
-    {Remote, Brazil}
-    {Full Stack Developer and Machine Learning Engineer}
-    {2026 - Present}
-
-\begin{itemize}
-
-    \item Built the \href
-    {https://github.com/isrreal/face-clock-evoluir-public}
-    {\textbf{Face Clock Evoluir}}, a contracted facial-attendance system in
-    final acceptance testing. Owned models, backend, database, security,
-    testing, and preparation for deployment; the current delivery has
-    \textbf{574 automated tests}.
-
-    \item Implemented CPU-only 1:N recognition with YuNet + SFace, ONNX Runtime,
-    and PostgreSQL/pgvector: \textbf{74~ms p95} with one identification in the
-    benchmark. Open-set calibration reduced accepted unknowns from \textbf{45.4\% to 0.2\%}
-    on public reference data.
-
-    \item Experiments reduced \textbf{5 to 3 frames} without measured loss and
-    showed \textbf{0.076~ms} exact search over 1,000 vectors; kept transactional
-    pgvector search instead of adding FAISS without a demonstrated gain.
-
-    \item Compared five approaches for medical-document triage; EfficientNet +
-    Logistic Regression reached \textbf{87.5\% accuracy} with seven fewer false
-    positives at the same recall. For an 8~GB, GPU-less server, reduced images
-    from \textbf{10.59 to 1.11~GB}, with no classifier decisions changed in the
-    migration to ONNX Runtime.
-
-\end{itemize}
-
-\entry
-    {Federal University of Ceará --- Quixadá Campus}
-    {On-site, Brazil}
-    {Teaching Assistant for Algorithms, Calculus, and Pre-Calculus}
-    {2022 - 2024}
-
-\begin{itemize}
-
-    \item Supported classes in data structures, algorithms, complexity, and
-    Calculus, translating quantitative material across skill levels.
-
-\end{itemize}
-
-% ---------- PROJECTS ----------
-\section*{Selected Projects}
-
-\begin{itemize}
-
-    \item
-    \textbf{
-        \href
-        {https://github.com/isrreal/Triple-Roman-Domination-in-graphs}
-        {Triple Roman Domination in Graphs (undergraduate thesis):}
-    }
-    implemented GA- and ACO-based metaheuristics and proposed a correction to
-    the published ILP formulation; evaluated over
-    \textbf{362 graphs}.
-
-    \item
-    \textbf{
-        \href
-        {https://github.com/isrreal/AuxilioEmergencialQueries}
-        {Brazilian Emergency Aid --- Data Engineering:}
-    }
-    chunked binary \texttt{COPY} ingestion over \textbf{31.6~GB} of public
-    data; instrumentation linked memory growth to retained deduplication IDs
-    (\textbf{r = 0.99}).
-
-\end{itemize}
-
-% ---------- SKILLS ----------
-\section*{Technical Skills}
-
-\textbf{Languages and querying:}
-Python, SQL, C++, and Bash.\\[1pt]
-
-\textbf{ML, vision, and experimentation:}
-PyTorch, Scikit-learn, OpenCV, YuNet, SFace, ONNX Runtime, DSPy, Optuna,
-cross-validation, calibration, ablation, hypothesis testing, and vector search.\\[1pt]
-
-\textbf{Data and application engineering:}
-PostgreSQL, pgvector, FAISS, Pandas, NumPy, SciPy, FastAPI, SQLAlchemy, Alembic,
-Docker, GitHub Actions, pytest, and Streamlit.
-
-% ---------- EDUCATION ----------
 \section*{Education}
+\textbf{Bachelor of Science in Computer Science}\par
+Federal University of Ceará (UFC) --- Quixadá Campus, Brazil\par
+Dates: 2021 -- August 2026. Completed on August 19, 2026.\par
+Undergraduate thesis: Metaheuristics and Integer Linear Programming for Triple Roman
+Domination in Graphs; developed in 2024--2025 and defended in February 2025.
 
-\entry
-    {Federal University of Ceará --- Quixadá Campus}
-    {Brazil}
-    {B.Sc. in Computer Science}
-    {Completed Aug 19, 2026}
+\section*{Technical Skills}
+\textbf{Languages and data:} Python, SQL, C++, Bash, Pandas, NumPy, PostgreSQL, pgvector.\par
+\textbf{Machine Learning and computer vision:} PyTorch, scikit-learn, SciPy, OpenCV,
+YuNet, SFace, ONNX Runtime, OCR, embeddings, cross-validation, calibration, and ablation.\par
+\textbf{Engineering:} FastAPI, SQLAlchemy, Alembic, Docker, GitHub Actions, Git, pytest.
 
-% ---------- LANGUAGES ----------
+\section*{Professional Experience}
+\entry{Research and Development (R\&D) Researcher}
+{Tieta.ai}{Remote, Brazil}{July 2026 -- Present}
+Research Fellow in the Research and Innovation Training Program.
+\begin{itemize}
+\item Contributed to research software development and maintenance; implemented validation and automated tests.
+\item Automated technical activities and produced versioned documentation to support reproducibility and traceability.
+\end{itemize}
+
+\entry{Full Stack Developer and Machine Learning Engineer}
+{Independent consulting for an educational institution}{Remote, Brazil}{March 2026 -- Present}
+Project: Face Clock Evoluir. Contracted, functional system in final acceptance testing.
+\begin{itemize}
+\item Built models, FastAPI APIs, PostgreSQL/pgvector persistence, security, tests, and the deployment package for facial attendance and medical-document triage. The delivery record contains 574 automated tests.
+\item Calibrated YuNet/SFace 1:N facial recognition: accepted unknowns decreased from 45.4\% to 0.2\% on public data. CPU benchmark p95 was 74 ms with one simultaneous identification and 1.87 s with 20; real-population calibration is still required.
+\item Compared five medical-document classifiers on 64 test documents. EfficientNet with Logistic Regression achieved F1 of 0.778 and accuracy of 87.5\%; false positives fell from 9 to 2 versus the original neural head, maintaining 70\% recall (14/20 medical documents).
+\item Reduced total delivery images from 10.59 to 1.11 GB (about 89.5\% less disk) by matching dependencies to a GPU-less server. ONNX Runtime migration preserved classifier decisions on the compared test set.
+\end{itemize}
+
+\entry{Machine Learning Researcher}
+{Tieta.ai}{Remote, Brazil}{April 2025 -- June 2026}
+CNPq RHAE Research Fellow, part-time.
+\begin{itemize}
+\item Conducted applied Machine Learning research, developing and evaluating computational solutions.
+\item Ran experiments and analyzed results; established reproducible development and evaluation processes.
+\end{itemize}
+
+\entry{Teaching Assistant --- Algorithm Design and Analysis}
+{Federal University of Ceará --- Quixadá Campus}{Quixadá, Brazil}{April 2024 -- December 2024}
+\begin{itemize}
+\item Supported undergraduate students in algorithms and complexity analysis.
+\end{itemize}
+
+\entry{Teaching Assistant --- Calculus}
+{Federal University of Ceará --- Quixadá Campus}{Quixadá, Brazil}{April 2022 -- July 2022}
+\begin{itemize}
+\item Supported undergraduate students with Calculus concepts and exercises.
+\end{itemize}
+
+\section*{Selected Projects}
+\textbf{Triple Roman Domination in Graphs --- Undergraduate Thesis | 2024--2025}\par
+\begin{itemize}
+\item Implemented genetic algorithm (GA) and ant colony optimization (ACO) metaheuristics in C++, with a Python/Pyomo integer linear programming model. Proposed correcting a published formulation that accepted invalid solutions; evaluated 362 graphs with one run per instance.
+\end{itemize}
+Code: \url{https://github.com/isrreal/Triple-Roman-Domination-in-graphs}\par
+
+\textbf{Brazilian Emergency Aid --- Data Engineering | In development}\par
+\begin{itemize}
+\item Implemented Pandas and asyncpg COPY chunked ingestion for a 31.6 GB public source. On subsets of up to 5 million rows, measured post-cleanup RSS growth from about 182 to 750 MiB, using fixed 100-thousand-row chunks and three measured runs.
+\item Observed an association between RSS and retained IDs (r approximately 0.991); correlation does not establish causality. PostgreSQL staging-based deduplication is the next experiment, with no published improvement yet.
+\end{itemize}
+Code: \url{https://github.com/isrreal/AuxilioEmergencialQueries}
+
 \section*{Languages}
-
-\textbf{Portuguese:} Native
-\enspace $|$ \enspace
-\textbf{English:} Good communication skills; fluent technical reading of
-research papers and documentation
-
+Portuguese: native. English: good communication; fluent technical reading of research papers and documentation.
 \end{document}

@@ -18,6 +18,7 @@
   --container: 1120px;
 }
 
+
 html[data-theme="dark"] {
   --background: #12171a;
   --surface: #1a2124;
@@ -2628,4 +2629,61 @@ h3 {
   .table-scroll-hint {
     display: block;
   }
+}
+
+/* Progressive disclosure: visible conclusions, optional evidence. */
+html[data-page="home"] .hero h1 {
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+}
+.hero-bg { opacity: .3; }
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1.25rem;
+  margin-block: 1.75rem;
+}
+.decision-card {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+.decision-card h3 { margin-top: 0; font-size: 1.18rem; }
+.decision-card p { color: var(--muted); }
+.interpretation {
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.evidence-detail {
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+.evidence-detail > summary {
+  cursor: pointer;
+  font-weight: 650;
+  color: var(--accent-strong);
+  padding: .25rem;
+}
+.evidence-detail > summary:hover { color: var(--text); }
+.evidence-detail > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+  border-radius: 4px;
+}
+.evidence-detail[open] > summary { margin-bottom: 1.25rem; }
+.case-table td:last-child { white-space: normal; }
+.case-table { min-width: 620px; }
+[id] { scroll-margin-top: 6rem; }
+@media (max-width: 640px) {
+  .evidence-detail { padding: 1rem; }
+  .section { padding-block: 3rem; }
+}
+@media print {
+  .evidence-detail:not([open]) > :not(summary) { display: block; }
 }
