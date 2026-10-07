@@ -81,12 +81,12 @@ const englishPages = {
       [".case-breadcrumb", "← Back to the case study"],
       [".case-hero .eyebrow", "Technical deep dive · Face Clock Evoluir"],
       [".case-title", "The technical structure in detail."],
-      [".case-hero .hero-actions a:nth-child(1)", "See the classification experiment"],
-      [".case-hero .hero-actions a:nth-child(2)", "See the model diagnosis"],
-      [".case-hero .hero-actions a:nth-child(3)", "See the freeze-depth experiment"],
-      [".case-hero .hero-actions a:nth-child(4)", "See engineering and security"],
-      [".case-meta li:nth-child(1)", "Controlled experiments"],
-      [".case-meta li:nth-child(2)", "Baseline comparison"],
+      [".case-hero .hero-actions a[href=\"#reconhecimento\"]", "Facial recognition"],
+      [".case-hero .hero-actions a[href=\"#atestados\"]", "See the classification experiment"],
+      [".case-hero .hero-actions a[href=\"#diagnostico\"]", "See the model diagnosis"],
+      [".case-hero .hero-actions a[href=\"#engenharia\"]", "See engineering and security"],
+      [".case-meta li:nth-child(1)", "1:N facial recognition"],
+      [".case-meta li:nth-child(2)", "Controlled experiments"],
       [".case-meta li:nth-child(5)", "Application security"],
       ["#atestados .section-kicker", "Classification experiment"],
       ["#atestados h2", "A ladder of baselines, from trivial to hybrid."],
@@ -208,16 +208,7 @@ const englishPages = {
       [".case-cta .contact-actions a:nth-child(2)", "Open on GitHub"],
       ["#face-tech-title", "From results to evidence."],
       ["#face-tech-intro", "Experimental protocols, baselines, benchmarks, and limitations, with reproducible evidence."],
-      [".face-tech-hero .hero-actions a:nth-child(1)", "Facial recognition"],
-      [".face-tech-hero .hero-actions a:nth-child(2)", "Classification experiment"],
-      [".face-tech-hero .hero-actions a:nth-child(3)", "Model diagnosis"],
-      [".face-tech-hero .hero-actions a:nth-child(4)", "Engineering and security"],
-      [".face-tech-hero .hero-actions a:nth-child(5)", "Delivery trajectory"],
-      [".face-tech-hero .case-meta li:nth-child(1)", "1:N recognition"],
-      [".face-tech-hero .case-meta li:nth-child(2)", "Controlled experiments"],
       [".face-tech-hero .case-meta li:nth-child(4)", "PyTorch + scikit-learn"],
-      [".face-tech-hero .case-meta li:nth-child(5)", "Security and delivery preparation"],
-      [".face-tech-hero .case-meta li:nth-child(6)", "Explicit limitations"],
       ["#reconhecimento .section-kicker", "Facial recognition"],
       ["#reconhecimento h2", "Four inherited decisions, four measurements."],
       ["#reconhecimento-lead", "I reproduced the kiosk pipeline to evaluate the threshold, frame count, vector index, and model replacement."],
@@ -454,6 +445,17 @@ const inlineTranslations = [...document.querySelectorAll("[data-en]")].map((elem
   element, pt: element.innerHTML, en: element.dataset.en,
 }));
 
+// Translate attributes independently from content, preserving nodes and listeners.
+const inlineAttributeTranslations = [];
+for (const attribute of ['aria-label', 'alt', 'title', 'placeholder']) {
+  document.querySelectorAll(`[data-en-${attribute}]`).forEach((element) => {
+    inlineAttributeTranslations.push({
+      element, attribute, pt: element.getAttribute(attribute),
+      en: element.getAttribute(`data-en-${attribute}`),
+    });
+  });
+}
+
 const originalContent = new Map();
 const originalAttributes = new Map();
 const pageTranslations = englishPages[page];
@@ -505,6 +507,11 @@ function applyLanguage(language) {
 
   inlineTranslations.forEach(({ element, pt, en }) => {
     element.innerHTML = language === 'en' ? en : pt;
+  });
+
+  inlineAttributeTranslations.forEach(({ element, attribute, pt, en }) => {
+    if (language === 'pt' && pt === null) element.removeAttribute(attribute);
+    else element.setAttribute(attribute, language === 'en' ? en : pt);
   });
 
   document.title = language === 'en' ? pageTranslations?.title || originalTitle : originalTitle;
@@ -578,6 +585,7 @@ function applyLanguage(language) {
   } catch {
     // Language switching remains available when storage is unavailable.
   }
+  document.dispatchEvent(new CustomEvent('portfolio:languagechange', { detail: { language } }));
 }
 
 let savedLanguage;
@@ -848,7 +856,7 @@ if (trdLab) {
     });
   });
 
-  languageToggle.addEventListener('click', trdRender);
+  document.addEventListener('portfolio:languagechange', trdRender);
   trdRender();
 }
 

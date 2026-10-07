@@ -35,6 +35,10 @@ em inglês; o script preserva o português original e alterna os textos. Não co
 As páginas técnicas ainda mantêm parte das tabelas antigas de seletores em `script.js`.
 Traduções inline têm prioridade. Ao alterar um trecho legado, atualize sua tradução ou migre
 para `data-en`. Datas, unidades, denominadores e limitações devem coincidir nos dois idiomas.
+Rótulos de acessibilidade e dicas usam `data-en-aria-label`, `data-en-alt`, `data-en-title`
+e `data-en-placeholder`, mantendo o atributo original em português. Componentes dinâmicos
+acompanham o evento `portfolio:languagechange`. Para botões de navegação, prefira seletores
+pelo `href` em vez da posição, para que o texto continue associado ao destino correto.
 
 A navegação segue apresentação → resumo do projeto → evidências técnicas → documentação/código.
 Registros históricos extensos usam `<details>` nativo; links para âncoras revelam automaticamente

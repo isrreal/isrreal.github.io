@@ -77,15 +77,15 @@
           <a class="button button-secondary" href="#atestados">Ver o experimento de classificação</a>
           <a class="button button-secondary" href="#diagnostico">Ver o diagnóstico do modelo</a>
           <a class="button button-secondary" href="#engenharia">Ver engenharia e segurança</a>
-          <a class="button button-secondary" href="#progressao">Ver a trajetória da entrega</a>
+          <a class="button button-secondary" href="#progressao" data-en="See the delivery trajectory">Ver a trajetória da entrega</a>
         </div>
         <ul class="case-meta" aria-label="Assuntos desta página">
-          <li>Reconhecimento 1:N</li>
+          <li data-en="1:N facial recognition">Reconhecimento 1:N</li>
           <li>Experimentos controlados</li>
           <li  data-en="pgvector; FAISS evaluated as an alternative">pgvector; FAISS avaliado como alternativa</li>
           <li>PyTorch + scikit-learn</li>
-          <li>Segurança e preparação de entrega</li>
-          <li>Limitações explícitas</li>
+          <li data-en="Security and delivery preparation">Segurança e preparação de entrega</li>
+          <li data-en="Explicit limitations">Limitações explícitas</li>
         </ul>
       </div>
     </section>
@@ -134,7 +134,7 @@
                 <span>p95 com uma identificação simultânea, rajada atual de 3 frames</span>
               </div>
               <div class="case-result">
-                <strong>1,87&nbsp;s</strong>
+                <strong data-en="1.87&amp;nbsp;s">1,87&nbsp;s</strong>
                 <span>p95 com 20 identificações simultâneas, no benchmark CPU-only</span>
               </div>
               <div class="case-result">
@@ -208,11 +208,11 @@
             </figure>
             <div class="case-results" aria-label="Resultados do experimento de classificação de atestados">
               <div class="case-result">
-                <strong>0,778</strong>
+                <strong data-en="0.778">0,778</strong>
                 <span>F1 para atestado da solução vencedora: EfficientNet como extratora de embeddings + Regressão Logística</span>
               </div>
               <div class="case-result">
-                <strong>0,875</strong>
+                <strong data-en="0.875">0,875</strong>
                 <span>accuracy da solução híbrida no teste reservado, acima da cabeça original da rede (0,766)</span>
               </div>
               <div class="case-result">
@@ -247,7 +247,7 @@
                 <span>imagens chegavam rotacionadas ao modelo por metadado EXIF ignorado</span>
               </div>
               <div class="case-result">
-                <strong>2.071</strong>
+                <strong data-en="2,071">2.071</strong>
                 <span>linhas removidas ao concluir que a premissa de um experimento não se sustentava</span>
               </div>
             </div>
@@ -387,11 +387,11 @@
             </figure>
             <div class="case-results" aria-label="Resultados do experimento de congelamento">
               <div class="case-result">
-                <strong>84,2% ± 1,7</strong>
+                <strong data-en="84.2% ± 1.7">84,2% ± 1,7</strong>
                 <span>acurácia média de validação da configuração selecionada — a mais alta e a mais estável das três</span>
               </div>
               <div class="case-result">
-                <strong>67,0% ± 3,9</strong>
+                <strong data-en="67.0% ± 3.9">67,0% ± 3,9</strong>
                 <span  data-en="accuracy for training only the classification head — lowest observed mean in this protocol">acurácia da configuração que só treina a cabeça classificadora — menor média observada neste protocolo</span>
               </div>
               <div class="case-result">
@@ -438,7 +438,7 @@
 
         <article class="case-block" id="procedencia">
           <div>
-            <p class="section-kicker">Integridade da entrega</p>
+            <p class="section-kicker" data-en="Delivery integrity">Integridade da entrega</p>
             <h2>Rastreabilidade do modelo empacotado.</h2>
           </div>
           <details class="case-prose evidence-detail"><summary><span  data-en="Audit checkpoint lineage">Auditar linhagem de checkpoints</span></summary>
@@ -449,10 +449,10 @@
               Um experimento sobrescreveu o checkpoint promovido. O ONNX empacotado também divergia dos checkpoints versionados, como mostrou a comparação de probabilidades por imagem.
             </p>
             <div class="case-formula">
-              <p class="section-kicker">Por que os números do histórico não denunciavam</p>
-              <p><strong>As acurácias registradas eram incomparáveis entre si: cada treino usou um split diferente (424/44 contra 297/64).</strong></p>
-              <code>90,9% vs 78,1% → splits distintos → comparação sem significado</code>
-              <p>
+              <p class="section-kicker" data-en="Why historical metrics did not expose the issue">Por que os números do histórico não denunciavam</p>
+              <p data-en="&lt;strong&gt;The recorded accuracies were not comparable: each training run used a different split (424/44 versus 297/64).&lt;/strong&gt;"><strong>As acurácias registradas eram incomparáveis entre si: cada treino usou um split diferente (424/44 contra 297/64).</strong></p>
+              <code data-en="90.9% vs 78.1% → different splits → meaningless comparison">90,9% vs 78,1% → splits distintos → comparação sem significado</code>
+              <p data-en="Evaluating both on the &lt;em&gt;same&lt;/em&gt; test set exposed the actual difference — the delivery was serving the worse model.">
                 Só medir os dois no <em>mesmo</em> conjunto de teste revelou a diferença real —
                 e a entrega estava servindo o modelo pior.
               </p>
@@ -460,17 +460,17 @@
             <figure class="case-table-wrapper">
               <div class="case-table-scroll">
                 <table class="case-table" id="tabela-procedencia">
-                  <caption id="tabela-procedencia-titulo">Acurácia no mesmo conjunto de teste (64 imagens), sob o runtime que vai ao cliente</caption>
+                  <caption id="tabela-procedencia-titulo" data-en="Accuracy on the same test set (64 images), using the runtime delivered to the client">Acurácia no mesmo conjunto de teste (64 imagens), sob o runtime que vai ao cliente</caption>
                   <thead>
-                    <tr><th scope="col">Checkpoint</th><th scope="col">Acurácia</th><th scope="col">Situação</th></tr>
+                    <tr data-en="&lt;th scope=&quot;col&quot;&gt;Checkpoint&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Accuracy&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Status&lt;/th&gt;"><th scope="col">Checkpoint</th><th scope="col">Acurácia</th><th scope="col">Situação</th></tr>
                   </thead>
                   <tbody>
-                    <tr class="case-table-highlight"><th scope="row">Promovido, registrado no checksum</th><td>95,31% (61/64)</td><td>o que deveria ser entregue</td></tr>
-                    <tr><th scope="row">Experimento que sobrescreveu</th><td>76,56% (49/64)</td><td>o que estava no pacote</td></tr>
+                    <tr class="case-table-highlight"><th scope="row" data-en="Promoted, recorded in the checksum">Promovido, registrado no checksum</th><td data-en="95.31% (61/64)">95,31% (61/64)</td><td data-en="what should have been delivered">o que deveria ser entregue</td></tr>
+                    <tr><th scope="row" data-en="Experiment that overwrote the model">Experimento que sobrescreveu</th><td data-en="76.56% (49/64)">76,56% (49/64)</td><td data-en="what was in the package">o que estava no pacote</td></tr>
                   </tbody>
                 </table>
               </div>
-              <figcaption>
+              <figcaption data-en="Measured inside the packaged image loaded from the delivery &lt;code&gt;tar&lt;/code&gt;, rather than in the training environment.">
                 Medido dentro da própria imagem empacotada, carregada do <code>tar</code> de
                 entrega — não no ambiente de treino.
               </figcaption>
@@ -478,7 +478,7 @@
             <p>
               O comando documentado de exportação falhava por dependências não declaradas, favorecendo exportações manuais sem rastreabilidade.
             </p>
-            <ul class="case-list" aria-label="Correções de integridade da entrega">
+            <ul class="case-list" aria-label="Correções de integridade da entrega" data-en-aria-label="Delivery integrity fixes">
               <li><strong>Validação de release:</strong> o gate passou a verificar checksums e abortar em caso de divergência.</li>
               <li><strong>Linhagem:</strong> a exportação registra o vínculo entre checkpoint e ONNX, verificado no release.</li>
               <li><strong>Reprodutibilidade:</strong> declarei as dependências e obtive duas exportações idênticas byte a byte.</li>
@@ -496,7 +496,7 @@
             <p class="lead">
               Identifiquei cinco falhas que os testes de código e o console do navegador não detectavam.
             </p>
-            <div class="case-results" aria-label="Indicadores do diagnóstico de interface">
+            <div class="case-results" aria-label="Indicadores do diagnóstico de interface" data-en-aria-label="Interface diagnosis indicators">
               <div class="case-result">
                 <strong>~48&nbsp;MiB</strong>
                 <span>de imagem decodificada por miniatura de 120&nbsp;px, dez por tela</span>
@@ -516,12 +516,12 @@
             <div class="case-formula">
               <p class="section-kicker">O controle de acesso que a folha de estilo desfazia</p>
               <p><strong>O atributo que esconde um elemento perde por especificidade para qualquer regra de classe.</strong></p>
-              <code>[hidden]{display:none} &lt; .cartao{display:flex} → o elemento oculto aparece</code>
+              <code data-en="[hidden]{display:none} &amp;lt; .cartao{display:flex} → the hidden element appears">[hidden]{display:none} &lt; .cartao{display:flex} → o elemento oculto aparece</code>
               <p>
                 Regras CSS de classe sobrepunham o atributo de ocultação e exibiam cards restritos. Substituí cinco correções locais por uma regra geral, verificada por teste nas folhas com controle de acesso.
               </p>
             </div>
-            <ul class="case-list" aria-label="Defeitos e o instrumento que passou a encontrá-los">
+            <ul class="case-list" aria-label="Defeitos e o instrumento que passou a encontrá-los" data-en-aria-label="Defects and the tools used to detect them">
               <li>
                 <strong>Layout:</strong> três telas perderam o container de menu e conteúdo. A comparação por captura de tela revelou o defeito, apesar de HTTP 200 e console sem erros.
               </li>
@@ -600,13 +600,13 @@
                 partida em vez de depender do registro.
               </figcaption>
             </figure>
-            <div class="case-results" aria-label="Diferença entre a primeira entrega e a atual">
+            <div class="case-results" aria-label="Diferença entre a primeira entrega e a atual" data-en-aria-label="Difference between the first and current delivery">
               <div class="case-result">
-                <strong>~9,48&nbsp;GB</strong>
+                <strong data-en="~9.48&amp;nbsp;GB">~9,48&nbsp;GB</strong>
                 <span>entre a primeira entrega e a atual, somando as duas imagens</span>
               </div>
               <div class="case-result">
-                <strong>9,5×</strong>
+                <strong data-en="9.5×">9,5×</strong>
                 <span>menor no total; a imagem de inferência, sozinha, ficou 19× menor</span>
               </div>
               <div class="case-result">
@@ -640,7 +640,7 @@
             <p>
               Medi <strong>disco</strong> e <strong>memória</strong> separadamente. CUDA concentrava o custo em disco; na RAM, o pacote facial carregava cinco modelos para usar dois, replicados por processo do servidor.
             </p>
-            <div class="case-results" aria-label="Resultado do dimensionamento">
+            <div class="case-results" aria-label="Resultado do dimensionamento" data-en-aria-label="Capacity planning results">
               <div class="case-result">
                 <strong>&minus;2&nbsp;GB</strong>
                 <span>de RAM devolvidos ao sistema, cerca de um quarto da máquina</span>
