@@ -2687,3 +2687,7 @@ html[data-page="home"] .hero h1 {
 @media print {
   .evidence-detail:not([open]) > :not(summary) { display: block; }
 }
+
+/* P8: lower emphasis for the project still in development. */
+.project-card.project-secondary { min-height: auto; padding: 1.25rem; background: transparent; }
+.project-secondary h3 { font-size: 1.15rem; }
