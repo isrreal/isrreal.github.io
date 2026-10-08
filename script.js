@@ -104,7 +104,7 @@ const englishPages = {
       ["#metodo .case-result:nth-child(1) span", "documents triaged automatically using objective quality signals"],
       ["#metodo .case-result:nth-child(2) span", "images reached the model rotated because of an ignored EXIF metadata tag"],
       ["#metodo .case-result:nth-child(3) span", "lines removed after concluding that an experiment’s premise did not hold"],
-      ["#metodo .case-list li:nth-child(1)", "<strong>EXIF orientation:</strong> the pipeline ignored the <code>Orientation</code> tag and sent rotated documents to the network and OCR. In the checked samples, orientation normalization restored document identification."],
+      ["#metodo .case-list li:nth-child(1)", "<strong>EXIF orientation:</strong> the pipeline ignored the <code>Orientation</code> tag and sent rotated documents to the network and OCR. [DECISÃO: supply the correct result of EXIF orientation normalization]."],
       ["#metodo .case-list li:nth-child(2)", "<strong>Hypothesis validation:</strong> the orientation detector flagged 45% of the data; 91 of 109 “180°” cases were screenshots. EXIF metadata distinguished actual rotation from detector noise."],
       ["#metodo .case-list li:nth-child(3)", "<strong>Training/inference consistency:</strong> I centralized normalization in image loading and the training loader to avoid <em>train/serve skew</em>. After retraining, the classifier effect was neutral."],
       ["#metodo .case-list li:nth-child(4)", "<strong>Paired metrics:</strong> I rejected Jensen-Shannon after demonstrating zero marginal divergence in a case with 100% document-level disagreement. I adopted document-by-document comparisons."],
