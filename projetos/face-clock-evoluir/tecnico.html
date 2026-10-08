@@ -25,7 +25,7 @@
   <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../../styles.css">
-  <script src="../../script.js?v=1cc32454462a" defer></script>
+  <script src="../../script.js?v=dbf4b81b63c3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -406,6 +406,7 @@
           </details>
         </article>
 
+<p data-en="[DECISÃO: which security details has the client authorized for disclosure?].">[DECISÃO: quais itens de segurança o cliente autorizou divulgar?].</p>
         <article class="case-block" id="engenharia">
           <div>
             <p class="section-kicker">Engenharia e segurança</p>
@@ -418,21 +419,21 @@
             <div class="case-formula auth-summary">
               <p class="section-kicker">Em termos simples</p>
               <p><strong>O login gera uma credencial temporária assinada; as rotas protegidas validam essa credencial antes de executar qualquer ação.</strong></p>
-              <code>Login → JWT assinado → Bearer token → claims validadas → rota autorizada</code>
+              <code>Login → credencial validada → acesso autorizado</code>
               <p>
                 O <code>OAuth2PasswordBearer</code> do FastAPI padroniza como a API recebe o token.
                 Neste projeto, ele não representa login social por Google ou Microsoft.
               </p>
             </div>
             <ul class="case-list security-list" aria-label="Camadas de segurança da aplicação">
-              <li><strong>JWT com claims tipadas:</strong> o token assinado carrega identidade, perfil de acesso, modalidade de trabalho e expiração, sem confiar em um <code>user_id</code> enviado pelo cliente.</li>
-              <li><strong>Logout persistente:</strong> tokens revogados ficam no PostgreSQL, permanecendo inválidos após reinícios e entre múltiplos processos da aplicação.</li>
-              <li><strong>Senhas com bcrypt:</strong> hashes são produzidos pelo Passlib com custo computacional deliberado; a senha original nunca é armazenada ou recuperada.</li>
+              <li><strong>Credencial assinada:</strong> a autenticação valida a credencial antes de autorizar o acesso.</li>
+              <li><strong>Revogação:</strong> tokens revogados permanecem inválidos.</li>
+              <li><strong>Hash de senha:</strong> a senha original nunca é armazenada ou recuperada.</li>
               <li><strong>Recuperação controlada:</strong> redefinições usam tokens de uso único, com expiração e marcação de utilização.</li>
               <li><strong>Autorização e anti-IDOR:</strong> além de autenticar, a API verifica se o usuário pode acessar cada recurso, inclusive documentos médicos sensíveis.</li>
-              <li><strong>Totem provisionado:</strong> cada dispositivo usa API key obtida por ativação com PIN e proteção contra força bruta; a chave não é incorporada ao HTML público.</li>
-              <li><strong>Biometria protegida:</strong> múltiplos frames, vivacidade, impressão SHA-256 anti-replay e controles técnicos para dados biométricos e médicos; a avaliação jurídica de conformidade é externa ao projeto.</li>
-              <li><strong>Implantação restrita:</strong> backend exposto apenas localmente, HTTPS por túnel, migrações versionadas e volumes persistentes.</li>
+              <li><strong>Controle de dispositivos:</strong> o acesso dos dispositivos integra a defesa em camadas.</li>
+              <li><strong>Biometria protegida:</strong> controles técnicos protegem dados biométricos e médicos; a avaliação jurídica de conformidade é externa ao projeto.</li>
+              <li><strong>Implantação:</strong> controles de acesso integram a defesa em camadas.</li>
               <li><strong>Prevenção de XSS:</strong> substituí marcação com dados do usuário por nós DOM, <code>textContent</code> e <code>addEventListener</code>, evitando interpolação em <code>onclick</code>.</li>
               <li><strong>Healthcheck de schema:</strong> passei a comparar a migração aplicada com a revisão esperada pelo código, além de verificar a conexão com o banco.</li>
             </ul>
