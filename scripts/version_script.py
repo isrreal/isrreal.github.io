@@ -15,9 +15,9 @@ def main():
     version = hashlib.sha256((root / 'script.js').read_bytes()).hexdigest()[:12]
     resume_urls = {}
     for language, code in [('portugues', 'pt'), ('english', 'en')]:
-        path = f'assets/israel-cv-{language}.pdf'
+        path = 'assets/israel_cv_pt.pdf' if code == 'pt' else 'assets/israel-cv-english.pdf'
         pdf = (root / path).read_bytes()
-        if pdf != (root / f'assets/israel_cv_{code}.pdf').read_bytes():
+        if code == 'en' and pdf != (root / 'assets/israel_cv_en.pdf').read_bytes():
             raise SystemExit(f'As duas cópias do PDF {language} devem ser idênticas')
         resume_urls[code] = f'{path}?v={hashlib.sha256(pdf).hexdigest()[:12]}'
     pages = [root / 'index.html', root / '404.html', *sorted((root / 'projetos').rglob('*.html'))]

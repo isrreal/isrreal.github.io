@@ -530,7 +530,7 @@ function applyLanguage(language) {
         download: 'Israel-Souza-Ferreira-Resume.pdf',
       }
     : {
-        pdf: root.dataset.resumePdfPt || 'assets/israel-cv-portugues.pdf',
+        pdf: root.dataset.resumePdfPt || 'assets/israel_cv_pt.pdf',
         tex: 'assets/israel-cv-portugues.tex',
         text: 'assets/israel-cv-portugues.txt',
         download: 'Israel-Souza-Ferreira-Curriculo.pdf',

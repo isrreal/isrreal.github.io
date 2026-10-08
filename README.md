@@ -64,11 +64,10 @@ Compile em diretório temporário, preservando a pasta pública livre de interme
 mkdir -p .cv-build
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory=.cv-build assets/israel-cv-portugues.tex
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory=.cv-build assets/israel-cv-english.tex
-cp .cv-build/israel-cv-portugues.pdf assets/israel-cv-portugues.pdf
+cp .cv-build/israel-cv-portugues.pdf assets/israel_cv_pt.pdf
 cp .cv-build/israel-cv-english.pdf assets/israel-cv-english.pdf
-cp assets/israel-cv-portugues.pdf assets/israel_cv_pt.pdf
 cp assets/israel-cv-english.pdf assets/israel_cv_en.pdf
-pdftotext assets/israel-cv-portugues.pdf assets/israel-cv-portugues.txt
+pdftotext assets/israel_cv_pt.pdf assets/israel-cv-portugues.txt
 pdftotext assets/israel-cv-english.pdf assets/israel-cv-english.txt
 python3 - <<'PY'
 from pathlib import Path
@@ -82,7 +81,7 @@ PY
 Alternativa testada: `tectonic --outdir .cv-build assets/israel-cv-portugues.tex`, repetindo
 para inglês e copiando os arquivos como acima. As versões `.txt` publicadas normalizam
 ligaturas Unicode e removem separadores de página para facilitar a leitura do texto extraído.
-Cada idioma tem dois nomes PDF por compatibilidade com links externos; mantenha as cópias idênticas.
+O PDF em português usa apenas `assets/israel_cv_pt.pdf`. Em inglês, os dois nomes PDF são mantidos por compatibilidade com links externos; mantenha essas cópias idênticas.
 O botão "Fonte LaTeX (.tex)" acompanha o idioma selecionado e permite baixar o arquivo usado
 na compilação. Depois de copiar os PDFs, atualize seus links com `python3 scripts/version_script.py`.
 
