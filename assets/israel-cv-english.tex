@@ -1,0 +1,107 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[a4paper,margin=1.4cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{microtype}
+\DisableLigatures{encoding=*,family=*}
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+\hypersetup{hidelinks,pdftitle={Israel Souza Ferreira - Resume},pdfauthor={Israel Souza Ferreira}}
+\urlstyle{same}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\raggedright
+\setlist[itemize]{leftmargin=1.3em,itemsep=2pt,topsep=3pt,parsep=0pt}
+\newcommand{\entry}[4]{\vspace{4pt}\textbf{#1}\par #2 --- #3\par #4\par}
+\begin{document}
+{\LARGE\textbf{Israel Souza Ferreira}}\par
+\textbf{Data Scientist | Machine Learning Engineer}\par
+Fortaleza, Brazil --- Remote\par
+Email: \href{mailto:israel.souza.dev@gmail.com}{israel.souza.dev@gmail.com} | Phone: +55 85 98433-2790\par
+LinkedIn: \url{https://www.linkedin.com/in/isrreal/} | GitHub: \url{https://github.com/isrreal}\par
+Portfolio: \url{https://israelsouza.speculummaius.com.br/}\par
+
+\section*{Professional Summary}
+Computer Science graduate with experience in applied Machine Learning research, computer vision,
+and systems development. I run experiments, calibration, testing, workflow design, and deployment
+preparation, communicating evidence and limitations clearly.
+
+\section*{Education}
+\textbf{Bachelor of Science in Computer Science}\par
+Federal University of Ceará (UFC) --- Quixadá Campus, Brazil\par
+Dates: 2021 -- August 2026. Completed on August 19, 2026.\par
+Undergraduate thesis: Metaheuristics and Integer Linear Programming for Triple Roman Domination
+in Graphs; developed in 2024--2025 and defended in February 2025.
+
+\section*{Technical Skills}
+\textbf{Languages and data:} Python, SQL, C++, Bash, Pandas, NumPy, PostgreSQL, pgvector.\par
+\textbf{Machine Learning and computer vision:} PyTorch, scikit-learn, SciPy, OpenCV, YuNet, SFace,
+ONNX Runtime, OCR, embeddings, cross-validation, calibration, and ablation.\par
+\textbf{Engineering and quality:} FastAPI, SQLAlchemy, Alembic, Docker, GitHub Actions, Git, pytest,
+PWA, design systems, accessibility, and operational documentation.
+
+\section*{Professional Experience}
+\entry{Research and Development (R\&D) Researcher}
+{Tieta.ai}{Remote, Brazil}{July 2026 -- Present}
+Research Fellow in the Research and Innovation Training Program.
+\begin{itemize}
+\item Contribute to research software development and maintenance, including validation and automated tests.
+\item Automate technical activities and produce versioned documentation for reproducibility and traceability.
+\end{itemize}
+
+\entry{Full Stack Developer and Machine Learning Engineer}
+{Independent consulting for an educational institution}{Remote, Brazil}{March 2026 -- Present}
+Project: Face Clock Evoluir. Contracted system; v1.3.0-rc.3 is an institutional supervised-pilot candidate.
+\begin{itemize}
+\item Built models, FastAPI APIs, PostgreSQL/pgvector persistence, security, tests, a design system, and operational documentation for facial attendance and medical-document triage.
+\item Refined the kiosk with camera feedback, identification stages, accessibility, and understandable failure recovery; simplified facial-photo selection, rotation, detection validation, and profile cropping.
+\item Expanded administrative workflows with an institutional calendar, collective remote work, holiday transfers, hour-bank HR review, calendar-based records, and management of employees, access, and archiving.
+\item Added readable, filterable audit trails, documented data-retention and deletion practices, and session-safe navigation cache, consistent transitions, and an offline PWA screen.
+\item Implemented a seven-step institutional setup with progressive validation, delegated IT permissions, separation of local preparation from domain publication, and HTTPS on the local network.
+\item Prepared and recorded three release candidates; carried out the test-environment deployment, following institutional configuration, device preparation, and hands-on flow validation.
+\end{itemize}
+
+\entry{Machine Learning Researcher}
+{Tieta.ai}{Remote, Brazil}{April 2025 -- June 2026}
+CNPq RHAE Research Fellow, part-time.
+\begin{itemize}
+\item Conducted applied Machine Learning research, developing and evaluating computational solutions.
+\item Ran experiments and analyzed results; established reproducible development and evaluation processes.
+\end{itemize}
+
+\entry{Teaching Assistant --- Algorithm Design and Analysis}
+{Federal University of Ceará --- Quixadá Campus}{Quixadá, Brazil}{March 7, 2023 -- November 30, 2023}
+\begin{itemize}
+\item Supported undergraduate students in algorithms and complexity analysis.
+\end{itemize}
+
+\entry{Teaching Assistant --- Calculus}
+{Federal University of Ceará --- Quixadá Campus}{Quixadá, Brazil}{April 2022 -- July 2022}
+\begin{itemize}
+\item Supported undergraduate students with Calculus concepts and exercises.
+\end{itemize}
+
+\section*{Selected Projects}
+\textbf{Triple Roman Domination in Graphs --- Undergraduate Thesis | 2024--2025}\par
+\begin{itemize}
+\item Implemented genetic algorithm (GA) and ant colony optimization (ACO) metaheuristics in C++, with a Python/Pyomo integer linear programming model. Proposed correcting a published formulation that accepted invalid solutions; evaluated 362 graphs with one run per instance.
+\end{itemize}
+Code: \url{https://github.com/isrreal/Triple-Roman-Domination-in-graphs}\par
+
+\textbf{Brazilian Emergency Aid --- Data Engineering | In development}\par
+\begin{itemize}
+\item Implemented Pandas and asyncpg COPY chunked ingestion for a 31.6 GB public source. On subsets of up to 5 million rows, measured post-cleanup RSS growth from about 182 to 750 MiB, using fixed 100-thousand-row chunks and three measured runs.
+\item Observed an association between RSS and retained IDs (r approximately 0.991); correlation does not establish causality. PostgreSQL staging-based deduplication is the next experiment, with no published improvement yet.
+\end{itemize}
+Code: \url{https://github.com/isrreal/AuxilioEmergencialQueries}
+
+\section*{Languages}
+Portuguese: native. English: good communication; fluent technical reading of research papers and documentation.
+\end{document}

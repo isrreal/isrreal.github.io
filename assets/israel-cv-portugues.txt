@@ -1,0 +1,99 @@
+Israel Souza Ferreira
+Cientista de Dados | Engenheiro de Machine Learning
+Fortaleza, CE, Brasil --- Remoto
+E-mail: israel.souza.dev@gmail.com | Telefone: +55 85 98433-2790
+LinkedIn: https://www.linkedin.com/in/isrreal/ | GitHub: https://github.com/isrreal
+Portfólio: https://israelsouza.speculummaius.com.br/
+
+
+Resumo Profissional
+Bacharel em Ciência da Computação com experiência em pesquisa aplicada de Machine Learning, visão
+computacional e desenvolvimento de sistemas. Conduzo experimentos, calibração, testes, design de fluxos e
+preparação de implantação, comunicando evidências e limites de forma clara.
+
+
+Formação Acadêmica
+Bacharelado em Ciência da Computação
+Universidade Federal do Ceará (UFC) --- Campus Quixadá, Brasil
+Período: 2021 -- agosto de 2026. Concluído em 19/08/2026.
+TCC: Meta-Heurísticas e Programação Linear Inteira para o Problema da Dominação Romana Tripla em
+Grafos; desenvolvido em 2024--2025 e defendido em fevereiro de 2025.
+
+
+Competências Técnicas
+Linguagens e dados: Python, SQL, C++, Bash, Pandas, NumPy, PostgreSQL, pgvector.
+Machine Learning e visão computacional: PyTorch, scikit-learn, SciPy, OpenCV, YuNet, SFace, ONNX
+Runtime, OCR, embeddings, validação cruzada, calibração e ablação.
+Engenharia e qualidade: FastAPI, SQLAlchemy, Alembic, Docker, GitHub Actions, Git, pytest, PWA,
+design system, acessibilidade e documentação operacional.
+
+
+Experiência Profissional
+
+Pesquisador de Pesquisa e Desenvolvimento (P&D)
+Tieta.ai --- Remoto, Brasil
+Julho de 2026 -- Presente
+Bolsista do Programa de Formação em Pesquisa e Inovação.
+• Contribuo para o desenvolvimento e a manutenção de software de pesquisa, com validação e testes
+  automatizados.
+• Automatizo atividades técnicas e produzo documentação versionada para apoiar reprodutibilidade e
+  rastreabilidade.
+
+Desenvolvedor Full Stack e Engenheiro de Machine Learning
+Consultoria autônoma para instituição de ensino --- Remoto, Brasil
+Março de 2026 -- Presente
+Projeto: Face Clock Evoluir. Sistema contratado; a v1.3.0-rc.3 é candidata a piloto institucional
+acompanhado.
+• Desenvolvi modelos, APIs FastAPI, PostgreSQL/pgvector, segurança, testes, design system e
+  documentação operacional para controle de jornada com biometria facial e triagem de atestados.
+• Refinei o totem com feedback de câmera, etapas de identificação, acessibilidade e falhas compreensíveis;
+  também simplifiquei seleção, rotação, validação de detecção e recorte de fotos faciais.
+• Ampliei as rotinas administrativas com calendário institucional, home office coletivo, transferência de
+  feriados, banco de horas com revisão de RH, registros por calendário e gestão de funcionários, acessos e
+  arquivamento.
+• Estruturei auditoria com filtros e detalhes legíveis, políticas documentadas de retenção e exclusão de dados
+  e navegação com cache seguro por sessão, transições consistentes e tela offline da PWA.
+• Implementei setup institucional em sete etapas, com validações progressivas, permissões técnicas para TI,
+  separação entre preparação local e publicação em domínio e HTTPS também na rede local.
+• Preparei e registrei três release candidates; realizei a implantação no ambiente de testes, acompanhando
+  configuração institucional, preparação de dispositivos e validação prática dos fluxos.
+
+Pesquisador de Machine Learning
+Tieta.ai --- Remoto, Brasil
+Abril de 2025 -- Junho de 2026
+Bolsista CNPq RHAE, meio período.
+• Conduzi pesquisa aplicada de Machine Learning com desenvolvimento e avaliação de soluções
+  computacionais.
+• Realizei experimentação e análise de resultados e estruturei processos reproduzíveis de desenvolvimento e
+  avaliação.
+
+Monitor de Projeto e Análise de Algoritmos (PAA)
+Universidade Federal do Ceará --- Campus Quixadá --- Quixadá, Brasil
+07/03/2023 -- 30/11/2023
+• Apoiei alunos de graduação em algoritmos e análise de complexidade.
+
+Monitor de Cálculo
+Universidade Federal do Ceará --- Campus Quixadá --- Quixadá, Brasil
+Abril de 2022 -- Julho de 2022
+• Apoiei alunos de graduação em conceitos e exercícios de Cálculo.
+
+
+Projetos Selecionados
+Dominação Romana Tripla em Grafos --- TCC | 2024--2025
+• Implementei meta-heurísticas de algoritmo genético (GA) e colônia de formigas (ACO) em C++, com
+  modelo de programação linear inteira em Python/Pyomo. Propus corrigir uma formulação publicada que
+  aceitava soluções inválidas; avaliei 362 grafos, com uma execução por instância.
+Código: https://github.com/isrreal/Triple-Roman-Domination-in-graphs
+Auxílio Emergencial --- Engenharia de Dados | Em desenvolvimento
+• Implementei ingestão em blocos com Pandas e asyncpg COPY para uma fonte pública de 31,6 GB. Em
+  recortes de até 5 milhões de linhas, medi crescimento de RSS após limpeza de cerca de 182 para 750 MiB,
+  com blocos fixos de 100 mil linhas e três execuções medidas.
+• Observei associação entre RSS e IDs retidos (r aproximadamente 0,991); a correlação não prova
+  causalidade. Deduplicação por staging no PostgreSQL é o próximo experimento, ainda sem ganho
+  publicado.
+Código: https://github.com/isrreal/AuxilioEmergencialQueries
+
+
+Idiomas
+Português: nativo. Inglês: boa comunicação; leitura técnica fluente de artigos e documentação.
+

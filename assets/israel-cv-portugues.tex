@@ -1,0 +1,107 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[a4paper,margin=1.4cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[portuguese]{babel}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{microtype}
+\DisableLigatures{encoding=*,family=*}
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+\hypersetup{hidelinks,pdftitle={Israel Souza Ferreira - Currículo},pdfauthor={Israel Souza Ferreira}}
+\urlstyle{same}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\raggedright
+\setlist[itemize]{leftmargin=1.3em,itemsep=2pt,topsep=3pt,parsep=0pt}
+\newcommand{\entry}[4]{\vspace{4pt}\textbf{#1}\par #2 --- #3\par #4\par}
+\begin{document}
+{\LARGE\textbf{Israel Souza Ferreira}}\par
+\textbf{Cientista de Dados | Engenheiro de Machine Learning}\par
+Fortaleza, CE, Brasil --- Remoto\par
+E-mail: \href{mailto:israel.souza.dev@gmail.com}{israel.souza.dev@gmail.com} | Telefone: +55 85 98433-2790\par
+LinkedIn: \url{https://www.linkedin.com/in/isrreal/} | GitHub: \url{https://github.com/isrreal}\par
+Portfólio: \url{https://israelsouza.speculummaius.com.br/}\par
+
+\section*{Resumo Profissional}
+Bacharel em Ciência da Computação com experiência em pesquisa aplicada de Machine Learning,
+visão computacional e desenvolvimento de sistemas. Conduzo experimentos, calibração, testes,
+design de fluxos e preparação de implantação, comunicando evidências e limites de forma clara.
+
+\section*{Formação Acadêmica}
+\textbf{Bacharelado em Ciência da Computação}\par
+Universidade Federal do Ceará (UFC) --- Campus Quixadá, Brasil\par
+Período: 2021 -- agosto de 2026. Concluído em 19/08/2026.\par
+TCC: Meta-Heurísticas e Programação Linear Inteira para o Problema da Dominação Romana Tripla
+em Grafos; desenvolvido em 2024--2025 e defendido em fevereiro de 2025.
+
+\section*{Competências Técnicas}
+\textbf{Linguagens e dados:} Python, SQL, C++, Bash, Pandas, NumPy, PostgreSQL, pgvector.\par
+\textbf{Machine Learning e visão computacional:} PyTorch, scikit-learn, SciPy, OpenCV,
+YuNet, SFace, ONNX Runtime, OCR, embeddings, validação cruzada, calibração e ablação.\par
+\textbf{Engenharia e qualidade:} FastAPI, SQLAlchemy, Alembic, Docker, GitHub Actions, Git, pytest,
+PWA, design system, acessibilidade e documentação operacional.
+
+\section*{Experiência Profissional}
+\entry{Pesquisador de Pesquisa e Desenvolvimento (P\&D)}
+{Tieta.ai}{Remoto, Brasil}{Julho de 2026 -- Presente}
+Bolsista do Programa de Formação em Pesquisa e Inovação.
+\begin{itemize}
+\item Contribuo para o desenvolvimento e a manutenção de software de pesquisa, com validação e testes automatizados.
+\item Automatizo atividades técnicas e produzo documentação versionada para apoiar reprodutibilidade e rastreabilidade.
+\end{itemize}
+
+\entry{Desenvolvedor Full Stack e Engenheiro de Machine Learning}
+{Consultoria autônoma para instituição de ensino}{Remoto, Brasil}{Março de 2026 -- Presente}
+Projeto: Face Clock Evoluir. Sistema contratado; a v1.3.0-rc.3 é candidata a piloto institucional acompanhado.
+\begin{itemize}
+\item Desenvolvi modelos, APIs FastAPI, PostgreSQL/pgvector, segurança, testes, design system e documentação operacional para controle de jornada com biometria facial e triagem de atestados.
+\item Refinei o totem com feedback de câmera, etapas de identificação, acessibilidade e falhas compreensíveis; também simplifiquei seleção, rotação, validação de detecção e recorte de fotos faciais.
+\item Ampliei as rotinas administrativas com calendário institucional, home office coletivo, transferência de feriados, banco de horas com revisão de RH, registros por calendário e gestão de funcionários, acessos e arquivamento.
+\item Estruturei auditoria com filtros e detalhes legíveis, políticas documentadas de retenção e exclusão de dados e navegação com cache seguro por sessão, transições consistentes e tela offline da PWA.
+\item Implementei setup institucional em sete etapas, com validações progressivas, permissões técnicas para TI, separação entre preparação local e publicação em domínio e HTTPS também na rede local.
+\item Preparei e registrei três release candidates; realizei a implantação no ambiente de testes, acompanhando configuração institucional, preparação de dispositivos e validação prática dos fluxos.
+\end{itemize}
+
+\entry{Pesquisador de Machine Learning}
+{Tieta.ai}{Remoto, Brasil}{Abril de 2025 -- Junho de 2026}
+Bolsista CNPq RHAE, meio período.
+\begin{itemize}
+\item Conduzi pesquisa aplicada de Machine Learning com desenvolvimento e avaliação de soluções computacionais.
+\item Realizei experimentação e análise de resultados e estruturei processos reproduzíveis de desenvolvimento e avaliação.
+\end{itemize}
+
+\entry{Monitor de Projeto e Análise de Algoritmos (PAA)}
+{Universidade Federal do Ceará --- Campus Quixadá}{Quixadá, Brasil}{07/03/2023 -- 30/11/2023}
+\begin{itemize}
+\item Apoiei alunos de graduação em algoritmos e análise de complexidade.
+\end{itemize}
+
+\entry{Monitor de Cálculo}
+{Universidade Federal do Ceará --- Campus Quixadá}{Quixadá, Brasil}{Abril de 2022 -- Julho de 2022}
+\begin{itemize}
+\item Apoiei alunos de graduação em conceitos e exercícios de Cálculo.
+\end{itemize}
+
+\section*{Projetos Selecionados}
+\textbf{Dominação Romana Tripla em Grafos --- TCC | 2024--2025}\par
+\begin{itemize}
+\item Implementei meta-heurísticas de algoritmo genético (GA) e colônia de formigas (ACO) em C++, com modelo de programação linear inteira em Python/Pyomo. Propus corrigir uma formulação publicada que aceitava soluções inválidas; avaliei 362 grafos, com uma execução por instância.
+\end{itemize}
+Código: \url{https://github.com/isrreal/Triple-Roman-Domination-in-graphs}\par
+
+\textbf{Auxílio Emergencial --- Engenharia de Dados | Em desenvolvimento}\par
+\begin{itemize}
+\item Implementei ingestão em blocos com Pandas e asyncpg COPY para uma fonte pública de 31,6 GB. Em recortes de até 5 milhões de linhas, medi crescimento de RSS após limpeza de cerca de 182 para 750 MiB, com blocos fixos de 100 mil linhas e três execuções medidas.
+\item Observei associação entre RSS e IDs retidos (r aproximadamente 0,991); a correlação não prova causalidade. Deduplicação por staging no PostgreSQL é o próximo experimento, ainda sem ganho publicado.
+\end{itemize}
+Código: \url{https://github.com/isrreal/AuxilioEmergencialQueries}
+
+\section*{Idiomas}
+Português: nativo. Inglês: boa comunicação; leitura técnica fluente de artigos e documentação.
+\end{document}

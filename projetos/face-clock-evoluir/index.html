@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Face Clock Evoluir: sistema de ponto com biometria facial e triagem de atestados, apresentado do impacto aos experimentos de limiar, frames, FAISS e concorrência.">
+  <meta name="description" content="Face Clock Evoluir: controle de jornada com biometria facial, UX refinada, operação administrativa e implantação preparada para piloto institucional acompanhado.">
   <meta name="author" content="Israel Souza Ferreira">
   <meta name="theme-color" content="#071417">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="Face Clock Evoluir | Israel Souza Ferreira">
-  <meta property="og:description" content="Um sistema de ML aplicado em homologação, com decisões de reconhecimento facial e entrega sustentadas por medições.">
+  <meta property="og:description" content="Uma candidata a piloto institucional que combina biometria facial, operação administrativa, PWA e implantação segura.">
   <meta property="og:url" content="https://israelsouza.speculummaius.com.br/projetos/face-clock-evoluir/">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:image" content="https://israelsouza.speculummaius.com.br/assets/og-portfolio.jpg">
@@ -25,7 +25,7 @@
   <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../../styles.css">
-  <script src="../../script.js?v=dec3fba5dfd4" defer></script>
+  <script src="../../script.js?v=86630832a503" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -63,66 +63,64 @@
   <main id="conteudo">
 <section class="case-hero face-case-hero">
     <div class="container"><a href="../../index.html#projetos" class="case-breadcrumb"  data-en="← Back to projects">← Voltar aos projetos</a>
-    <p class="eyebrow" data-en="Contracted project · 03/2026 — present · Final acceptance testing">Projeto contratado · 03/2026 — presente · Homologação final</p>
+    <p class="eyebrow" data-en="Contracted project · 03/2026 — present · v1.3.0-rc.3 · Institutional pilot candidate">Projeto contratado · 03/2026 — presente · v1.3.0-rc.3 · Candidata a piloto institucional</p>
     <div class="case-brand"><img class="case-logo" src="../../assets/face-clock-evoluir-logo.png" alt="" width="80" height="80">
     <h1 class="case-title">Face Clock Evoluir</h1>
     </div>
-    <p class="hero-description" data-en="Identify employees and organize medical-document review on a GPU-less server. I built the system from modeling to the deployment package.">Reconhecer funcionários e organizar a revisão de atestados, em um servidor sem GPU. Desenvolvi o sistema da modelagem ao pacote de implantação.</p>
-    <div class="hero-actions"><a href="#resultados" class="button button-primary"  data-en="Understand the results">Entender os resultados</a><a href="tecnico.html" class="button button-secondary"  data-en="Inspect the experiments">Examinar os experimentos</a>
+    <p class="hero-description" data-en="A facial-attendance system designed for a real institution: an accessible kiosk, administrative routines, PWA resilience, and a safer path to a supervised pilot.">Um sistema de controle de jornada com biometria facial pensado para uma instituição real: totem acessível, rotinas administrativas, resiliência PWA e um caminho mais seguro para piloto acompanhado.</p>
+    <div class="hero-actions"><a href="#pronto-para-piloto" class="button button-primary"  data-en="See what is pilot-ready">Ver o que está pronto para o piloto</a><a href="tecnico.html" class="button button-secondary"  data-en="Inspect the experiments">Examinar os experimentos</a>
     </div>
     </div>
     </section>
     <section class="section section-alt" id="problema">
     <div class="container narrow">
     <p class="section-kicker" data-en="The problem">O problema</p>
-    <h2  data-en="A simple flow with verifiable decisions.">Um fluxo simples, com decisões verificáveis.</h2>
-    <p class="lead" data-en="An educational institution needed individual and kiosk attendance, location validation, and medical-document submission. The solution integrates working schedules, hour balances, and human document review.">Uma instituição de ensino precisava registrar ponto individual e em totem, validar localização e receber atestados. A solução integra jornada, banco de horas e revisão humana dos documentos.</p>
-    <p  data-en="&lt;strong&gt;My role:&lt;/strong&gt; consultant responsible for computer vision, APIs, PostgreSQL, security, testing, and delivery preparation."><strong>Meu papel:</strong> consultor responsável por visão computacional, APIs, PostgreSQL, segurança, testes e preparação da entrega.</p>
+    <h2  data-en="A complete routine, not just a recognition model.">Uma rotina completa, não apenas um modelo de reconhecimento.</h2>
+    <p class="lead" data-en="An educational institution needs more than a facial match: a clear employee flow, exceptions that HR can operate, traceable decisions, and an installation that the local team can actually run.">Uma instituição de ensino precisa de mais que uma correspondência facial: fluxo claro para a pessoa, exceções que o RH consegue operar, decisões rastreáveis e uma instalação que a equipe local consegue conduzir.</p>
+    <p  data-en="&lt;strong&gt;My role:&lt;/strong&gt; I led the product and engineering loop — computer vision, APIs, PostgreSQL, security, testing, interface system, operational documentation, and hands-on deployment in the test environment."><strong>Meu papel:</strong> conduzi o ciclo de produto e engenharia — visão computacional, APIs, PostgreSQL, segurança, testes, sistema de interfaces, documentação operacional e implantação prática no ambiente de testes.</p>
     </div>
     </section>
     <section class="section " id="como-funciona">
     <div class="container narrow">
-    <p class="section-kicker" data-en="How it works">Como funciona</p>
-    <h2  data-en="From the camera to the record.">Da câmera ao registro.</h2>
+    <p class="section-kicker" data-en="The daily experience">A experiência cotidiana</p>
+    <h2  data-en="From the camera to a comprehensible decision.">Da câmera a uma decisão compreensível.</h2>
     <ol class="system-flow flow-three">
     <li class="flow-step"><span class="flow-index">01</span><strong  data-en="Capture">Capturar</strong>
-    <p  data-en="The camera captures three frames and the system checks liveness signals.">Câmera captura três frames e o sistema verifica sinais de vivacidade.</p></li>
+    <p  data-en="Camera feedback, identification stages, accessible guidance, and clear recovery from failures make the kiosk legible before the recognition step.">Feedback de câmera, etapas de identificação, orientação acessível e recuperação clara de falhas tornam o totem compreensível antes mesmo do reconhecimento.</p></li>
     <li class="flow-step"><span class="flow-index">02</span><strong  data-en="Identify">Identificar</strong>
-    <p  data-en="The face is compared with enrollment records; a threshold allows rejecting unknown people.">O rosto é comparado aos cadastros; o limiar permite rejeitar desconhecidos.</p></li>
-    <li class="flow-step"><span class="flow-index">03</span><strong  data-en="Record and review">Registrar e revisar</strong>
-    <p  data-en="Attendance validates schedule rules. Document triage assists review; approval is human.">O ponto valida as regras de jornada. A triagem de atestados auxilia a fila; a aprovação é humana.</p></li>
+    <p  data-en="Facial-photo management now has simpler selection, rotation, detection validation, and profile-photo cropping — improving the enrollment path that feeds recognition.">O gerenciamento de fotos ganhou seleção simples, rotação, validação de detecção e recorte da foto de perfil — melhorando o cadastro que alimenta o reconhecimento.</p></li>
+    <li class="flow-step"><span class="flow-index">03</span><strong  data-en="Record, review, and resolve">Registrar, revisar e resolver</strong>
+    <p  data-en="Attendance connects to schedules and hour balances; HR can review missed-punch days, while calendar, holiday, and collective remote-work routines handle institutional exceptions.">O registro se conecta a jornadas e banco de horas; o RH revisa dias sem marcação, enquanto calendário, feriados e home office coletivo acomodam exceções institucionais.</p></li>
     </ol>
     </div>
     </section>
-    <section class="section section-alt" id="resultados">
+    <section class="section section-alt" id="pronto-para-piloto">
     <div class="container narrow">
-    <p class="section-kicker" data-en="What changed">O que mudou</p>
-    <h2  data-en="Each number answers a decision.">Cada número responde a uma decisão.</h2>
+    <p class="section-kicker" data-en="v1.3.0-rc.3">v1.3.0-rc.3</p>
+    <h2  data-en="More operationally ready, without overstating the status.">Mais pronta para operar, sem exagerar o status.</h2>
     <div class="decision-grid">
     <article class="decision-card">
-    <h3  data-en="Fewer unknown people accepted">Menos desconhecidos aceitos</h3>
-    <p  data-en="From 45.4% to 0.2% on public-data testing after threshold calibration. Better at rejecting unenrolled people; rejection of enrolled people must be evaluated on the real population.">De 45,4% para 0,2% no ensaio público ao calibrar o limiar. É melhor para rejeitar quem não está cadastrado; o custo em rejeições de cadastrados precisa ser avaliado na população real.</p><a href="tecnico.html#reconhecimento" class="text-link"  data-en="See how I measured →">Ver como medi →</a>
+    <h3  data-en="Administrative work that follows the real calendar">Operação administrativa que acompanha o calendário real</h3>
+    <p  data-en="Calendar day types, collective remote work, holiday transfers, calendar-based record selection, and HR review of missed-punch days make routine exceptions manageable instead of informal.">Tipos de dia no calendário, home office coletivo, transferência de feriados, seleção de registros por calendário e revisão de RH para dias sem marcação tornam as exceções de rotina operáveis, em vez de informais.</p>
     </article>
     <article class="decision-card">
-    <h3  data-en="Fewer incorrect alerts">Menos alertas indevidos</h3>
-    <p  data-en="False positives from 9 to 2, still detecting the same 14 of 20 medical documents among 64 test documents. Better precision (60.9% → 87.5%); 6 missed medical documents still require human review.">Falsos positivos de 9 para 2, detectando os mesmos 14 de 20 atestados em 64 documentos. Melhor precisão (60,9% → 87,5%); os 6 atestados não detectados mantêm a necessidade de revisão humana.</p><a href="tecnico.html#atestados" class="text-link"  data-en="See how I measured →">Ver como medi →</a>
+    <h3  data-en="Safer access and explainable audit trails">Acesso mais seguro e auditoria explicável</h3>
+    <p  data-en="Employee management separates access, employment relationship, and archiving. Auditing adds filters, readable details, and documented data-retention and deletion practices.">A gestão de funcionários separa acesso, vínculo e arquivamento. A auditoria ganha filtros, detalhes legíveis e práticas documentadas de retenção e exclusão de dados.</p>
     </article>
     <article class="decision-card">
-    <h3  data-en="9.5× smaller delivery">Entrega 9,5× menor</h3>
-    <p  data-en="Images from 10.59 to 1.11 GB, about 89.5% less disk. Removing unused dependencies simplifies installation; disk size does not measure RAM or speed.">Imagens de 10,59 para 1,11 GB, cerca de 89,5% menos disco. A remoção de dependências sem uso facilita a instalação; tamanho em disco não mede RAM nem velocidade.</p><a href="tecnico.html#progressao" class="text-link"  data-en="See how I measured →">Ver como medi →</a>
+    <h3  data-en="A deployment path designed for the institution">Um caminho de implantação pensado para a instituição</h3>
+    <p  data-en="A seven-step institutional setup validates progressively, delegates technical permissions to IT, separates local preparation from domain publication, and supports HTTPS on the local network.">Um setup institucional em sete etapas valida progressivamente, delega permissões técnicas à TI, separa preparação local de publicação em domínio e oferece HTTPS também na rede local.</p>
     </article>
     </div>
-    <p class="interpretation" data-en="74 ms p95 with one simultaneous identification; 1.87 s with 20. Response is fast at low load and worsens under concurrency: capacity planning requires testing on the target server.">74 ms de p95 com uma identificação simultânea; 1,87 s com 20. A resposta é rápida com baixa carga e piora sob concorrência: o dimensionamento depende de teste no servidor-alvo.</p>
+    <p class="interpretation" data-en="The release also makes the application more dependable between sessions and connections: consistent navigation transitions, safe session cache, offline screen, and PWA update checking after reconnecting.">A release também torna a aplicação mais confiável entre sessões e conexões: transições consistentes de navegação, cache seguro por sessão, tela offline e verificação de atualização da PWA ao reconectar.</p>
     </div>
     </section>
     <section class="section " id="status">
     <div class="container narrow">
     <p class="section-kicker" data-en="Delivery and limits">Entrega e limites</p>
-    <h2  data-en="Functional system in final acceptance testing.">Sistema funcional, em homologação final.</h2>
-<p data-en="[DECISÃO: confirm automated test count and count date (DD/MM/YYYY)].">[DECISÃO: confirmar número de testes automatizados e data da contagem (DD/MM/AAAA)].</p>
-    <p  data-en="574 automated tests in the delivery record verify behaviors; the count does not establish full coverage. Controlled benchmarks are not measured production impact.">574 testes automatizados no registro da entrega verificam comportamentos; a contagem não demonstra cobertura completa. Os benchmarks são controlados e não equivalem a impacto medido em produção.</p>
-<p data-en="[DECISÃO: confirm current facial pipeline and embedding dimension; values below are existing unconfirmed records].">[DECISÃO: confirmar pipeline facial atual e dimensão do embedding; os valores abaixo são registros existentes não confirmados].</p>
-    <p  data-en="The public repository contains documentation, without client code, tests, or data. It also describes the historical InsightFace architecture (512 dimensions); the package reported here uses YuNet + SFace (128 dimensions). These are different versions.">O repositório público contém documentação, sem código, testes ou dados do cliente. Ele descreve também a arquitetura histórica com InsightFace (512 dimensões); o pacote aqui relatado usa YuNet + SFace (128 dimensões). São versões diferentes.</p>
+    <h2  data-en="Prepared for an accompanied pilot — not presented as a certified time clock.">Preparada para um piloto acompanhado — não apresentada como relógio de ponto certificado.</h2>
+    <p data-en="I prepared and recorded three release candidates, with targeted setup, page, responsive, and security validations, plus a PDF report. I also carried out the test-environment deployment, following institutional configuration, device preparation, and practical flow validation.">Preparei e registrei três release candidates, com validações direcionadas de setup, páginas, responsividade e segurança, além de relatório em PDF. Também realizei a implantação no ambiente de testes, acompanhando a configuração institucional, a preparação dos dispositivos e a validação prática dos fluxos.</p>
+    <p data-en="The result is a more mature, testable system ready for a monitored pilot. It is not positioned as a substitute for a certified REP-P; real-population calibration, capacity testing on the target server, and the institution’s legal and operational decisions remain part of a responsible rollout.">O resultado é um sistema mais maduro, testável e preparado para piloto acompanhado. Ele não é apresentado como substituto de um REP-P homologado; a calibração na população real, os testes de capacidade no servidor-alvo e as decisões jurídicas e operacionais da instituição continuam sendo parte de uma implantação responsável.</p>
     <div class="hero-actions"><a href="tecnico.html" class="button button-primary"  data-en="See protocols, decisions, and limits">Ver protocolos, decisões e limites</a><a href="https://github.com/isrreal/face-clock-evoluir-public" class="button button-secondary" target="_blank" rel="noopener noreferrer" data-en="Public documentation">Documentação pública</a>
     </div>
     </div>

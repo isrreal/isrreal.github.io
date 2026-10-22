@@ -56,7 +56,7 @@ const englishPages = {
   },
   "face-clock": {
     title: "Face Clock Evoluir | Israel Souza Ferreira",
-    description: "Face Clock Evoluir: contracted facial attendance and medical-document triage, with interpreted experimental results and delivery limitations.",
+    description: "Face Clock Evoluir: facial attendance, administrative workflows, and PWA resilience prepared for a supervised institutional pilot.",
     content: [
       [".skip-link", "Skip to content"],
       [".nav-menu a[href=\"../../index.html#projetos\"]", "Projects"],
@@ -72,7 +72,7 @@ const englishPages = {
   },
   "face-clock-tecnico": {
     title: "Face Clock Evoluir — technical breakdown | Israel Souza Ferreira",
-    description: "Face Clock Evoluir: controlled recognition and classification experiments, security, delivery audits, and explicit limitations.",
+    description: "Face Clock Evoluir: controlled recognition and classification experiments, security, delivery audits, and explicit limitations for a supervised pilot candidate.",
     content: [
       [".skip-link", "Skip to content"],
       [".nav-menu a[href=\"index.html\"]", "Case study"],
