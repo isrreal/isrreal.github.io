@@ -25,7 +25,7 @@
   <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../../styles.css">
-  <script src="../../script.js?v=86630832a503" defer></script>
+  <script src="../../script.js?v=35cfcf566192" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -61,7 +61,7 @@
     <div class="container"><a href="../../index.html#projetos" class="case-breadcrumb"  data-en="← Back to projects">← Voltar aos projetos</a>
     <p class="eyebrow" data-en="Data engineering · In development">Engenharia de dados · Em desenvolvimento</p>
     <h1  data-en="Emergency Aid: data within process limits">Auxílio Emergencial: dados que cabem no processo</h1>
-    <p class="hero-description" data-en="Chunking reduces temporary data, but does not guarantee stable memory. I measured state retained between chunks before choosing the next change.">Processar em blocos reduz dados temporários, mas não garante memória estável. Medi o estado que permanece entre blocos antes de escolher a próxima mudança.</p>
+    <p class="hero-description" data-en="Chunking reduces temporary data, but retained state can still grow. I measured it before choosing the next change.">Blocos reduzem dados temporários, mas o estado retido ainda pode crescer. Medi isso antes da próxima mudança.</p>
     <div class="hero-actions"><a href="#resultados" class="button button-primary"  data-en="Understand the results">Entender os resultados</a><a href="https://github.com/isrreal/AuxilioEmergencialQueries" class="button button-secondary" target="_blank" rel="noopener noreferrer" data-en="Code and notebooks">Código e notebooks</a>
     </div>
     </div>
@@ -70,7 +70,7 @@
     <div class="container narrow">
     <p class="section-kicker" data-en="The problem">O problema</p>
     <h2  data-en="Ingest data without exhausting memory.">Ingerir dados sem esgotar a memória.</h2>
-    <p class="lead" data-en="The full public source is 31.6 GB. I built a pipeline with chunked reading, normalization, and PostgreSQL binary COPY ingestion. Published experiments use controlled subsets, including 5 million rows; they do not demonstrate full ingestion of the 31.6 GB source.">A fonte pública completa tem 31,6 GB. Desenvolvi um pipeline com leitura em blocos, normalização e carga binária COPY no PostgreSQL. Os experimentos publicados usam recortes controlados, incluindo 5 milhões de linhas; não demonstram a ingestão completa dos 31,6 GB.</p>
+    <p class="lead" data-en="The source is 31.6 GB. The pipeline reads in chunks, normalizes data, and uses PostgreSQL binary COPY; published tests cover controlled subsets up to 5 million rows.">A fonte tem 31,6 GB. O pipeline lê em blocos, normaliza dados e usa COPY binário no PostgreSQL; os testes publicados cobrem recortes de até 5 milhões de linhas.</p>
     </div>
     </section>
     <section class="section " id="resultados">
@@ -80,11 +80,11 @@
     <div class="decision-grid">
     <article class="decision-card">
     <h3  data-en="What worsened">O que piorou</h3>
-    <p  data-en="With fixed 100-thousand-row chunks, post-cleanup memory grew from about 182 to 750 MiB over 5 million rows. This is worse for scaling: retained state grows even with equal-sized chunks.">Com blocos fixos de 100 mil linhas, a memória após limpeza cresceu de cerca de 182 para 750 MiB em 5 milhões de linhas. Isso é pior para escalar: o estado retido aumenta mesmo com blocos iguais.</p>
+    <p  data-en="With fixed 100-thousand-row chunks, post-cleanup memory rose from about 182 to 750 MiB over 5 million rows.">Com blocos fixos de 100 mil linhas, a memória após limpeza subiu de cerca de 182 para 750 MiB em 5 milhões de linhas.</p>
     </article>
     <article class="decision-card">
     <h3  data-en="What the diagnosis suggests">O que o diagnóstico sugere</h3>
-    <p  data-en="Correlation of about 0.99 with accumulated IDs is consistent with deduplication-set retention. It does not prove they cause all growth; the allocator may also retain memory.">A correlação de aproximadamente 0,99 com os IDs acumulados é compatível com retenção nos conjuntos de deduplicação. Não prova que eles causam todo o aumento; o alocador também pode reter memória.</p>
+    <p  data-en="A correlation of about 0.99 with accumulated IDs points to deduplication sets; it does not establish the sole cause.">Correlação de aproximadamente 0,99 com IDs acumulados aponta para os conjuntos de deduplicação, mas não prova causa única.</p>
     </article>
     <article class="decision-card">
     <h3  data-en="The next decision">Qual é a próxima decisão</h3>
@@ -97,7 +97,7 @@
     <div class="container narrow">
     <p class="section-kicker" data-en="My role">Meu papel</p>
     <h2  data-en="Pipeline, instrumentation, and analysis.">Pipeline, instrumentação e análise.</h2>
-    <p  data-en="I implemented Python/Pandas/asyncpg ingestion, an Alembic-managed schema, and per-stage instrumentation. The runner uses an isolated database for each run; notebooks and aggregate tables record results and limitations.">Implementei ingestão em Python/Pandas/asyncpg, esquema com Alembic e instrumentação por etapa. O runner usa um banco isolado por execução; notebooks e tabelas agregadas registram resultados e limitações.</p>
+    <p  data-en="Python/Pandas/asyncpg ingestion, Alembic schema, per-stage instrumentation, isolated runs, and notebooks support the investigation.">Ingestão com Python/Pandas/asyncpg, esquema Alembic, instrumentação por etapa, execuções isoladas e notebooks sustentam a investigação.</p>
     <p  data-en="An API and dashboard support query exploration. Index, chunk-size, Polars, and PySpark comparisons remain planned work.">API e dashboard permitem explorar consultas. Comparações de índices, tamanhos de bloco, Polars ou PySpark ainda são trabalho planejado.</p><a href="tecnico.html" class="text-link"  data-en="Explore the experiments →">Aprofundar os experimentos →</a>
     </div>
     </section>

@@ -25,7 +25,7 @@
   <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../../styles.css">
-  <script src="../../script.js?v=86630832a503" defer></script>
+  <script src="../../script.js?v=35cfcf566192" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -66,9 +66,7 @@
         <a class="case-breadcrumb" href="index.html">← Voltar à visão geral</a>
         <p class="eyebrow">Aprofundamento técnico · Dominação Romana Tripla</p>
         <h1 class="case-title">Modelo, algoritmos e experimentos.</h1>
-        <p class="hero-description case-intro" id="trdt-intro">
-          Definição formal, correção da formulação PLI, meta-heurísticas GA e ACO e resultados em 362 grafos.
-        </p>
+        <p class="hero-description case-intro" id="trdt-intro">Modelo corrigido, GA, ACO e resultados em 362 grafos.</p>
         <div class="hero-actions">
           <a class="button button-secondary" href="#pli">Ver a correção do modelo exato</a>
           <a class="button button-secondary" href="#algoritmos">Ver os algoritmos</a>
@@ -92,36 +90,14 @@
             <h2 id="trdt-def-titulo">O problema, formalmente.</h2>
           </div>
           <div class="case-prose">
-            <p class="lead" id="trdt-def-lead">
-              Dado um grafo <em>G</em> e uma função <em>h</em> que atribui a cada vértice um
-              rótulo em {0, 1, 2, 3, 4}, um vértice é <strong>ativo</strong> quando seu rótulo
-              é maior que zero. A vizinhança ativa de <em>v</em>, escrita <em>AN(v)</em>, é o
-              conjunto dos vizinhos ativos de <em>v</em>.
-            </p>
+            <p class="lead" id="trdt-def-lead">Em um grafo <em>G</em>, <em>h</em> atribui a cada vértice um rótulo em {0, 1, 2, 3, 4}; <em>AN(v)</em> reúne os vizinhos ativos de <em>v</em>.</p>
             <div class="case-formula">
               <p class="section-kicker" id="trdt-def-formula-kicker">Função de Dominação Romana Tripla</p>
               <code>Σ<sub>u ∈ N[v]</sub> h(u) ≥ 3 + |AN(v)|,  ∀ v ∈ V(G)</code>
-              <p id="trdt-def-formula-nota">
-                O peso de <em>h</em> é a soma dos rótulos. O número de dominação romana tripla
-                γ<sub>3R</sub>(G) é o menor peso possível de uma função válida, e o problema
-                consiste em determiná-lo. A versão de decisão é NP-completa, inclusive
-                restrita a grafos bipartidos e cordais.
-              </p>
+              <p id="trdt-def-formula-nota">O peso de <em>h</em> é a soma dos rótulos; γ<sub>3R</sub>(G) é o menor peso válido. A versão de decisão é NP-completa.</p>
             </div>
-            <p id="trdt-def-equivalencia">
-              Subtrair |AN(v)| dos dois lados dá a forma usada na visão geral: cada vizinho
-              ativo contribui com <em>h(u) − 1</em>, isto é, envia tudo menos uma legião,
-              enquanto o próprio vértice contribui com <em>h(v)</em> integral. As duas escritas
-              são a mesma desigualdade.
-            </p>
-            <p id="trdt-def-teorema">
-              <strong>Um resultado que enxuga o modelo:</strong> para todo grafo conexo não
-              trivial existe uma função ótima que não usa o rótulo 1 (Abdollahzadeh Ahangar
-              <em>et al.</em>, 2021). Se um vértice recebe 1, é sempre possível zerá-lo e
-              promover um vizinho sem aumentar o peso. Por isso tanto a formulação exata
-              quanto as meta-heurísticas trabalham apenas com {0, 2, 3, 4} — uma variável a
-              menos por vértice.
-            </p>
+            <p id="trdt-def-equivalencia">A forma da visão geral é a mesma desigualdade: cada vizinho ativo contribui com <em>h(u) − 1</em> e o próprio vértice com <em>h(v)</em>.</p>
+            <p id="trdt-def-teorema"><strong>Redução:</strong> há solução ótima sem rótulo 1; por isso o trabalho usa apenas {0, 2, 3, 4}.</p>
             <p id="trdt-def-limites">
               Os limitantes usados como referência no trabalho:
               γ<sub>3R</sub>(G) ≥ ⌈4n / (Δ+1)⌉ para grafos conexos com Δ ≥ 3 e n ≥ 2
@@ -215,11 +191,7 @@
           <div class="case-section-heading">
             <p class="section-kicker" id="trdt-alg-kicker">Algoritmos</p>
             <h2 id="trdt-alg-titulo">Duas meta-heurísticas, o mesmo formato de solução.</h2>
-            <p class="lead" id="trdt-alg-lead">
-              Nos dois algoritmos, uma solução é um vetor de <em>n</em> posições com valores em
-              {0, 2, 3, 4}, e o custo a minimizar é a soma das posições. O que muda é como o
-              espaço de busca é percorrido.
-            </p>
+            <p class="lead" id="trdt-alg-lead">Ambos buscam vetores em {0, 2, 3, 4}<sup>n</sup> e minimizam sua soma; muda a exploração do espaço.</p>
           </div>
         </article>
 
@@ -381,13 +353,7 @@
             <h2 id="trdt-res-titulo">ACO-FL e FLGA, comparados à referência exata quando disponível.</h2>
           </div>
           <div class="case-prose">
-            <p class="lead" id="trdt-res-lead">
-              O gap relativo compara a melhor solução encontrada pelas meta-heurísticas com a
-              solução do modelo exato. Na execução relatada, o ACO-FL obteve a melhor combinação
-              observada na maioria das instâncias, mas a vantagem não é uniforme: em grafos pequenos
-              e densos, e em alguns grafos com
-              muitos ótimos locais, o FLGA chega mais perto.
-            </p>
+            <p class="lead" id="trdt-res-lead">O gap compara a melhor meta-heurística com a referência PLI. ACO-FL foi melhor na maioria observada, mas FLGA vence em parte dos grafos.</p>
 
             <figure class="case-table-wrapper">
               <div class="case-table-scroll">
@@ -444,9 +410,7 @@
             <h2 id="trdt-met-titulo">As três métricas que sustentam cada afirmação.</h2>
           </div>
           <div class="case-prose">
-            <p class="lead" id="trdt-met-lead">
-              Tempo, fitness e gap foram definidos antes dos experimentos e aplicados aos dois algoritmos e ao modelo exato.
-            </p>
+            <p class="lead" id="trdt-met-lead">Tempo, fitness e gap foram aplicados aos dois algoritmos e à referência exata.</p>
             <div class="architecture-grid">
               <section class="architecture-card">
                 <span id="trdt-met1-tag">Critério 1</span>

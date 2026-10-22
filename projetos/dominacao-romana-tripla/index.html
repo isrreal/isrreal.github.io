@@ -25,7 +25,7 @@
   <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../../styles.css">
-  <script src="../../script.js?v=86630832a503" defer></script>
+  <script src="../../script.js?v=35cfcf566192" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -65,7 +65,7 @@
     <div class="container"><a href="../../index.html#projetos" class="case-breadcrumb"  data-en="← Back to projects">← Voltar aos projetos</a>
     <p class="eyebrow" data-en="Undergraduate thesis · 2024–2025 · Defended in February 2025">TCC · 2024–2025 · Defendido em fevereiro de 2025</p>
     <h1 class="case-title" data-en="Triple Roman Domination">Dominação Romana Tripla</h1>
-    <p class="hero-description" data-en="Distribute resources at minimum cost while keeping every region protected. I compared two search strategies and proposed a correction to a published model that accepted invalid solutions.">Distribuir recursos pelo menor custo, mantendo cada região protegida. Comparei duas estratégias de busca e propus corrigir um modelo da literatura que aceitava soluções inválidas.</p>
+    <p class="hero-description" data-en="Minimum-cost resource distribution with protection constraints. I compared two search strategies and corrected a published invalid model.">Distribuição de recursos ao menor custo com restrições de proteção. Comparei duas estratégias e corrigi um modelo publicado inválido.</p>
     <div class="hero-actions"><a href="#resultados" class="button button-primary"  data-en="Understand the results">Entender os resultados</a><a href="tecnico.html" class="button button-secondary"  data-en="See model and experiments">Ver modelo e experimentos</a>
     </div>
     </div>
@@ -74,8 +74,8 @@
     <div class="container narrow">
     <p class="section-kicker" data-en="The challenge">O desafio</p>
     <h2  data-en="Save resources while maintaining protection.">Economizar sem perder a proteção.</h2>
-    <p class="lead" data-en="Imagine regions that can support their neighbors. Each receives 0, 2, 3, or 4 legions; we seek the cheapest distribution satisfying defense rules. The military metaphor explains a graph-optimization problem.">Imagine regiões que podem apoiar as vizinhas. Cada uma recebe 0, 2, 3 ou 4 legiões; buscamos a distribuição mais barata que respeita as regras de defesa. A metáfora militar explica um problema de otimização em grafos.</p>
-    <p  data-en="Checking a solution is easy; finding the best becomes difficult as the graph grows. I compared a genetic algorithm (FLGA), ant colony optimization with local search (ACO-FL), and an integer linear programming (ILP) reference.">Validar uma solução é fácil; encontrar a melhor fica difícil à medida que o grafo cresce. Comparei algoritmo genético (FLGA), colônia de formigas com busca local (ACO-FL) e uma referência de programação linear inteira (PLI).</p>
+    <p class="lead" data-en="Each region receives 0, 2, 3, or 4 legions; the goal is the cheapest protected graph.">Cada região recebe 0, 2, 3 ou 4 legiões; o objetivo é o grafo protegido mais barato.</p>
+    <p  data-en="I compared a genetic algorithm (FLGA), ant colony optimization with local search (ACO-FL), and an integer linear programming (ILP) reference.">Comparei algoritmo genético (FLGA), colônia de formigas com busca local (ACO-FL) e referência de programação linear inteira (PLI).</p>
     </div>
     </section>
     <section class="section " id="resultados">
@@ -85,18 +85,18 @@
     <div class="decision-grid">
     <article class="decision-card">
     <h3  data-en="Correctness before speed">Correção antes da velocidade</h3>
-    <p  data-en="I constructed a counterexample: the published formulation accepted a distribution with insufficient defense. I proposed correcting constraints so a cheap solution would also be valid.">Construí um contraexemplo: a formulação publicada aceitava uma distribuição sem defesa suficiente. Propus corrigir as restrições para que uma solução barata também fosse válida.</p>
+    <p  data-en="A counterexample showed the published formulation accepted insufficient defense; I corrected its constraints.">Um contraexemplo mostrou que a formulação publicada aceitava defesa insuficiente; corrigi as restrições.</p>
     </article>
     <article class="decision-card">
     <h3  data-en="ACO-FL wins on some graphs">ACO-FL ganha em alguns grafos</h3>
-    <p  data-en="On g75-.2, it costs 34 versus FLGA’s 39: lower is better. It remains 21.43% above the proven optimum of 28; beating the competitor does not mean reaching the optimum.">Em g75-.2, custa 34 contra 39 do FLGA: menor é melhor. Ainda fica 21,43% acima do ótimo comprovado de 28; vencer o concorrente não significa atingir o ótimo.</p>
+    <p  data-en="On g75-.2, ACO-FL costs 34 versus FLGA’s 39, but remains above the proven optimum of 28.">Em g75-.2, o ACO-FL custa 34 contra 39 do FLGA, mas fica acima do ótimo comprovado de 28.</p>
     </article>
     <article class="decision-card">
     <h3  data-en="FLGA also has an advantage">FLGA também tem vantagem</h3>
-    <p  data-en="On g225-.8, FLGA costs 8 and reaches the optimum; ACO-FL costs 12, 50% more. Graph structure changes which strategy works best.">Em g225-.8, o FLGA custa 8 e atinge o ótimo; ACO-FL custa 12, 50% a mais. A estrutura do grafo muda qual estratégia funciona melhor.</p>
+    <p  data-en="On g225-.8, FLGA reaches the optimum at 8; ACO-FL costs 12. The best strategy depends on graph structure.">Em g225-.8, o FLGA atinge o ótimo com 8; ACO-FL custa 12. A melhor estratégia depende do grafo.</p>
     </article>
     </div>
-    <p class="interpretation" data-en="362 graphs broaden the evaluated variety. One run per instance describes observed results, but cannot establish statistical superiority of stochastic algorithms.">362 grafos ampliam a variedade avaliada. Uma execução por instância permite descrever o resultado observado, mas não provar superioridade estatística de algoritmos estocásticos.</p><a href="tecnico.html#resultados" class="text-link"  data-en="Compare results and references →">Comparar resultados e referências →</a>
+    <p class="interpretation" data-en="Results cover 362 graphs; one run per instance is descriptive, not statistical proof.">Os resultados cobrem 362 grafos; uma execução por instância é descritiva, não prova estatística.</p><a href="tecnico.html#resultados" class="text-link"  data-en="Compare results and references →">Comparar resultados e referências →</a>
     </div>
     </section>
     <section class="section section-alt">
@@ -216,8 +216,8 @@
     <div class="container narrow">
     <p class="section-kicker" data-en="My role and evidence">Meu papel e evidência</p>
     <h2  data-en="Reproducible implementation and evaluation.">Implementação e avaliação reproduzíveis.</h2>
-    <p  data-en="I implemented the metaheuristics in C++ and the ILP model in Python; evaluated 362 graphs and used irace for parameter tuning. The repository contains code, instances, and experimental outputs.">Implementei as meta-heurísticas em C++ e o modelo PLI em Python; avaliei 362 grafos e usei irace para ajuste de parâmetros. O repositório contém código, instâncias e saídas experimentais.</p>
-    <p  data-en="The thesis was defended in 02/2025; the degree was completed on August 19, 2026. These are distinct milestones. Without solver proof of optimality, the gap compares found solutions and does not measure distance to the optimum.">O TCC foi defendido em 02/2025; a graduação foi concluída em 19/08/2026. São marcos distintos. Sem prova de otimalidade do solver, o gap compara soluções encontradas e não mede a distância ao ótimo.</p>
+    <p  data-en="I implemented the metaheuristics in C++ and the ILP model in Python, evaluated 362 graphs, and used irace for tuning. The repository has code, instances, and outputs.">Implementei as meta-heurísticas em C++ e o PLI em Python, avaliei 362 grafos e usei irace. O repositório reúne código, instâncias e saídas.</p>
+    <p  data-en="The thesis was defended in 02/2025 and the degree completed on 19 August 2026. A gap without optimality proof compares found solutions, not distance to optimum.">O TCC foi defendido em 02/2025 e a graduação concluída em 19/08/2026. Gap sem prova de otimalidade compara soluções encontradas, não a distância ao ótimo.</p>
     <div class="hero-actions"><a href="tecnico.html" class="button button-primary"  data-en="Explore the technical study">Aprofundar o estudo</a><a href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" class="button button-secondary" target="_blank" rel="noopener noreferrer" data-en="Code and experiments">Código e experimentos</a><a href="https://drive.google.com/file/d/1IxBw_odR99kklE6b3ANmi-9bubvGC4mp/view?usp=sharing" class="button button-secondary" target="_blank" rel="noopener noreferrer" data-en="Read thesis">Ler TCC</a>
     </div>
     </div>

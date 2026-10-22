@@ -25,7 +25,7 @@
   <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../../styles.css">
-  <script src="../../script.js?v=86630832a503" defer></script>
+  <script src="../../script.js?v=35cfcf566192" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -90,8 +90,8 @@
       </div>
     </section>
 
-<section class="section " id="leitura"><div class="container narrow"><p class="section-kicker" data-en="Evidence map">Mapa das evidências</p><h2  data-en="Current results and historical investigations.">Resultados atuais e investigações históricas.</h2><p  data-en="Start with recognition and the document benchmark. Open the records below for diagnostics, integrity, and packaging. Each protocol has its own data; metrics from different splits are not comparable.">Comece pelo reconhecimento e pelo benchmark de atestados. Abra os registros abaixo para estudar diagnósticos, integridade e empacotamento. Cada protocolo tem seus próprios dados; números de splits diferentes não são comparáveis.</p><p data-en="[DECISÃO: confirm current facial pipeline and embedding dimension; values below are existing unconfirmed records].">[DECISÃO: confirmar pipeline facial atual e dimensão do embedding; os valores abaixo são registros existentes não confirmados].</p>
-<p class="interpretation" data-en="This delivery uses YuNet + SFace (128 dimensions). Public documentation still describes InsightFace (512 dimensions) and uses production terminology for the architecture; the current status is v1.3.0-rc.3, an institutional supervised-pilot candidate. Delivery code and detailed evidence remain private.">Esta entrega usa YuNet + SFace (128 dimensões). A documentação pública ainda descreve InsightFace (512 dimensões) e usa o termo produção para a arquitetura; o status atual é v1.3.0-rc.3, candidata a piloto institucional acompanhado. Código e evidências detalhadas da entrega permanecem privados.</p></div></section>
+<section class="section " id="leitura"><div class="container narrow"><p class="section-kicker" data-en="Evidence map">Mapa das evidências</p><h2  data-en="Current results and historical investigations.">Resultados atuais e investigações históricas.</h2><p  data-en="Recognition and document benchmarks are current; diagnostics and packaging records are historical. Metrics from different splits are not comparable.">Reconhecimento e atestados trazem benchmarks atuais; diagnósticos e empacotamento são históricos. Métricas de splits diferentes não são comparáveis.</p>
+<p class="interpretation" data-en="This delivery uses YuNet + SFace (128 dimensions); public documentation also describes historical InsightFace. v1.3.0-rc.3 is an institutional supervised-pilot candidate.">Esta entrega usa YuNet + SFace (128 dimensões); a documentação pública também descreve o InsightFace histórico. A v1.3.0-rc.3 é candidata a piloto institucional acompanhado.</p></div></section>
     <section class="section">
       <div class="container case-content">
         <article class="case-block" id="reconhecimento">
@@ -101,7 +101,7 @@
           </div>
           <div class="case-prose">
             <p class="lead" id="reconhecimento-lead">
-              Reproduzi o pipeline do totem para avaliar limiar, número de frames, índice vetorial e troca de modelo.
+              Avaliei limiar, frames, índice vetorial e troca de modelo no pipeline do totem.
             </p>
             <p class="table-scroll-hint" id="reconhecimento-scroll">Deslize a tabela para comparar as quatro colunas →</p>
             <figure class="case-table-wrapper">
@@ -124,10 +124,7 @@
                   </tbody>
                 </table>
               </div>
-              <figcaption id="tabela-reconhecimento-nota">
-                Limiar e frames foram medidos sobre população pública/sessões sintéticas controladas;
-                são evidência de direção, não substitutos para a calibração no totem e na população do cliente.
-              </figcaption><p class="interpretation" data-en="Lower latency is better, but p95 of 74 ms with one identification rises to 1.87 s with 20 (about 25×). These are two load levels of the same benchmark; 74 ms is not general capacity. The ~1.2-million-vector estimate is an extrapolation, not tested scale.">Latência menor é melhor, mas p95 de 74 ms com uma identificação sobe para 1,87 s com 20 (cerca de 25×). São dois níveis de carga do mesmo benchmark; não se pode anunciar 74 ms como capacidade geral. A projeção de ~1,2 milhão de vetores é extrapolação, não escala testada.</p>
+              <figcaption id="tabela-reconhecimento-nota">Limiar e frames foram medidos em dados públicos e sessões sintéticas; a calibração no cliente continua necessária.</figcaption><p class="interpretation" data-en="p95 rises from 74 ms with one identification to 1.87 s with 20. The ~1.2-million-vector estimate is extrapolated, not tested.">p95 sobe de 74 ms com uma identificação para 1,87 s com 20. A projeção de ~1,2 milhão de vetores é extrapolada, não testada.</p>
             </figure>
             <div class="case-results" aria-label="Latência atual do reconhecimento facial">
               <div class="case-result">
@@ -146,15 +143,9 @@
             <div class="case-formula" id="reconhecimento-concorrencia">
               <p class="section-kicker">Achado não planejado</p>
               <p><strong>Duas batidas simultâneas faziam 6 de 6 extrações falharem.</strong></p>
-              <p>
-                Detector e reconhecedor compartilhavam estado no threadpool: 8 batidas causaram 24 falhas em 24 extrações. Serializei o acesso ao modelo e adicionei regressão com 8 threads × 3 frames.
-              </p>
+              <p>Detector e reconhecedor compartilhavam estado: 8 batidas causaram 24 falhas. Serializei o acesso e adicionei regressão com 8 threads × 3 frames.</p>
             </div>
-            <p id="reconhecimento-reproducao">
-              A reprodução está nos notebooks 15–18 e em <code>ml/face_bench.py</code>: mesma
-              extração, normalização e limiares do serviço de inferência, com fontes de dados e
-              limitações declaradas.
-            </p>
+            <p id="reconhecimento-reproducao">Notebooks 15–18 e <code>ml/face_bench.py</code> reproduzem extração, normalização e limiares.</p>
           </div>
         </article>
 
@@ -168,9 +159,9 @@
               Comparei classificadores triviais, clássicos, neurais e híbridos sob o mesmo protocolo de seleção e teste.
             </p>
             <p id="atestado-dados">
-              Serviço próprio com fine-tuning seletivo. Partição estratificada, versionada e gerada com semente fixa: 297 documentos de treino, 64 de validação e 64 de teste. O teste não participou do early stopping nem da seleção de hiperparâmetros.
+              Serviço próprio: 297 documentos de treino, 64 de validação e 64 de teste, em partição estratificada e versionada. O teste ficou fora da seleção.
             </p>
-            <p id="atestado-metodo" data-en="Selected hyperparameters using grid search with five-fold stratified cross-validation within training, optimizing medical-document F1 (31% of the dataset). The majority baseline has 68.8% accuracy and zero F1: apparently high accuracy, but misses all medical documents. The test was held out for the reported comparison; it is not a fresh test for each historical investigation.">Selecionei hiperparâmetros por busca em grade com validação cruzada estratificada de cinco dobras dentro do treino, otimizando F1 da classe atestado (31% da base). O baseline majoritário tem 68,8% de acurácia e F1 zero: parece acertar muito, mas perde todos os atestados. O teste foi reservado para a comparação relatada; não é um novo teste para cada investigação histórica.</p>
+            <p id="atestado-metodo" data-en="Grid search with five-fold stratified validation optimized medical-document F1. The majority baseline has 68.8% accuracy and zero F1; the held-out test supports this comparison only.">Busca em grade com validação estratificada de cinco dobras otimizou F1 de atestado. O baseline majoritário tem 68,8% de acurácia e F1 zero; o teste reservado sustenta apenas esta comparação.</p>
             <figure class="case-table-wrapper">
               <div class="case-table-scroll">
                 <table class="case-table" id="tabela-baselines">
@@ -225,8 +216,7 @@
               HOG + SVM alcançou F1 0,636, abaixo da cabeça neural original (0,651). A solução selecionada combina embeddings de 1.280 dimensões da EfficientNet com Regressão Logística. O OCR atua na revisão por regras.
             </p>
             <p id="atestado-precisao" data-en="Both heads detect 14 of 20 medical documents: 6 false negatives each. False positives fall from 9 to 2; accuracy is 49/64 versus 56/64. ROC AUC from 0.814 to 0.892 and PR AUC from 0.697 to 0.823 indicate better observed ranking; they do not choose the operational threshold by themselves.">Ambas as cabeças detectam 14 dos 20 atestados: 6 falsos negativos em cada uma. Os falsos positivos caem de 9 para 2; acurácia é 49/64 contra 56/64. ROC AUC de 0,814 para 0,892 e PR AUC de 0,697 para 0,823 indicam melhor ordenação observada; não escolhem sozinhas o limiar operacional.</p>
-<p data-en="The table presents five approaches, including the majority baseline, and only one embedding classifier. [DECISÃO: supply rows for the other two classifiers or confirm correction of the text about three classifiers].">A tabela apresenta cinco abordagens, incluindo o baseline majoritário, e apenas um classificador sobre embeddings. [DECISÃO: fornecer as linhas dos outros dois classificadores ou confirmar a correção do texto sobre três classificadores].</p>
-            <p id="atestado-ressalvas" data-en="64 test documents limit estimate precision; one error changes accuracy by 1.56 percentage points. Embeddings come from a backbone fitted on training images, so head-only cross-validation may be optimistic. The three embedding classifiers had validation F1 of 0.904–0.908; small differences do not support ranking. Later audits reusing a set are not independent evaluations.">64 documentos de teste limitam a precisão da estimativa; um erro altera a acurácia em 1,56 ponto percentual. Embeddings vêm de um backbone ajustado nas imagens de treino, de modo que a validação cruzada só da cabeça pode ser otimista. Os três classificadores sobre embeddings ficaram em F1 de 0,904–0,908 na validação; diferenças pequenas não sustentam ranking. Auditorias posteriores que reutilizam um conjunto não são avaliações independentes.</p>
+            <p id="atestado-ressalvas" data-en="With 64 test documents, one error changes accuracy by 1.56 points; small validation differences do not justify ranking embedding classifiers.">Com 64 documentos de teste, um erro altera a acurácia em 1,56 ponto; pequenas diferenças de validação não justificam ranquear classificadores por embeddings.</p>
           </div>
         </article>
 
@@ -255,7 +245,7 @@
             </div>
             <ul class="case-list" aria-label="Decisões técnicas da investigação">
               <li>
-                <strong>Orientação EXIF:</strong> o pipeline ignorava a tag <code>Orientation</code> e enviava documentos rotacionados à rede e ao OCR. [DECISÃO: fornecer o resultado correto da normalização EXIF].
+                <strong>Orientação EXIF:</strong> o pipeline ignorava a tag <code>Orientation</code> e enviava documentos rotacionados à rede e ao OCR; a normalização foi centralizada no carregamento.
               </li>
               <li>
                 <strong>Validação da hipótese:</strong> o detector de orientação sinalizava 45% da base; 91 dos 109 casos de “180°” eram capturas de tela. O metadado EXIF permitiu distinguir rotação real de ruído do detector.
@@ -401,12 +391,10 @@
                 <span>imagens no teste que gerou o alarme inicial — variância grande demais para sustentar uma conclusão sozinha</span>
               </div>
             </div>
-<p data-en="[DECISÃO: explain dataset composition and the difference between 297/64/64 and 406 training images in 5-fold].">[DECISÃO: explicar a composição e a diferença entre 297/64/64 e 406 imagens de treino no 5-fold].</p>
             <p id="congelamento-conclusao" data-en="Two unfrozen blocks: 84.2% ± 1.7, versus 67.0% ± 3.9 for the head alone and 74.9% ± 6.7 for one block. Higher mean and lower fold dispersion favor configuration C in this protocol; they do not prove configuration A lacks capacity. This study uses 406 training images and a historical 40-image test: it is not the 297/64/64 final benchmark split.">Dois blocos descongelados: 84,2% ± 1,7, contra 67,0% ± 3,9 só com a cabeça e 74,9% ± 6,7 com um bloco. Melhor média e menor dispersão entre dobras favorecem a configuração C neste protocolo; não provam falta de capacidade da configuração A. Este estudo usa 406 imagens de treino e teste histórico de 40: não é o split 297/64/64 do benchmark final.</p>
           </details>
         </article>
 
-<p data-en="[DECISÃO: which security details has the client authorized for disclosure?].">[DECISÃO: quais itens de segurança o cliente autorizou divulgar?].</p>
         <article class="case-block" id="engenharia">
           <div>
             <p class="section-kicker">Engenharia e segurança</p>
