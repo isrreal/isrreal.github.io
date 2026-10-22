@@ -26,7 +26,7 @@
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../../styles.css?v=cc23507fe5e0">
   <script defer data-domain="israelsouza.speculummaius.com.br" src="https://plausible.io/js/script.js"></script>
-  <script src="../../script.js?v=f2a7619ba8d8" defer></script>
+  <script src="../../script.js?v=297e9eaa0a9b" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -475,53 +475,11 @@
 
         <article class="case-block" id="camada-errada">
           <div>
-            <p class="section-kicker">Diagnóstico de interface</p>
-            <h2>Cinco falhas identificadas na interface e no pacote.</h2>
+            <p class="section-kicker" data-en="Interface diagnosis">Diagnóstico de interface</p>
+            <h2 data-en="Browser memory, access feedback, and delivery checks.">Memória no navegador, feedback de acesso e verificações de entrega.</h2>
           </div>
-          <details class="case-prose evidence-detail"><summary><span  data-en="Inspect interface diagnostics">Consultar diagnósticos de interface</span></summary>
-            <p class="lead">
-              Identifiquei cinco falhas que os testes de código e o console do navegador não detectavam.
-            </p>
-            <div class="case-results" aria-label="Indicadores do diagnóstico de interface" data-en-aria-label="Interface diagnosis indicators">
-              <div class="case-result">
-                <strong>~48&nbsp;MiB</strong>
-                <span>de imagem decodificada por miniatura de 120&nbsp;px, dez por tela</span>
-              </div>
-              <div class="case-result">
-                <strong>2.356 → 10&nbsp;KiB</strong>
-                <span>por amostra depois de gerar a miniatura no servidor, em 33&nbsp;ms</span>
-              </div>
-              <div class="case-result">
-                <strong>3</strong>
-                <span>páginas com o mesmo layout quebrado sob HTTP&nbsp;200 e console sem erro</span>
-              </div>
-            </div>
-            <p>
-              <strong>Memória no navegador:</strong> fotos de 4080 × 3060 (2,3 MB) preenchiam cards de 120 px, consumindo cerca de 48 MiB de bitmap cada. As URLs <code>blob:</code> não eram liberadas. O endpoint retornava a imagem correta, mas os testes não verificavam seu custo de memória.
-            </p>
-            <div class="case-formula">
-              <p class="section-kicker">O controle de acesso que a folha de estilo desfazia</p>
-              <p><strong>O atributo que esconde um elemento perde por especificidade para qualquer regra de classe.</strong></p>
-              <code data-en="[hidden]{display:none} &amp;lt; .cartao{display:flex} → the hidden element appears">[hidden]{display:none} &lt; .cartao{display:flex} → o elemento oculto aparece</code>
-              <p>
-                Regras CSS de classe sobrepunham o atributo de ocultação e exibiam cards restritos. Substituí cinco correções locais por uma regra geral, verificada por teste nas folhas com controle de acesso.
-              </p>
-            </div>
-            <ul class="case-list" aria-label="Defeitos e o instrumento que passou a encontrá-los" data-en-aria-label="Defects and the tools used to detect them">
-              <li>
-                <strong>Layout:</strong> três telas perderam o container de menu e conteúdo. A comparação por captura de tela revelou o defeito, apesar de HTTP 200 e console sem erros.
-              </li>
-              <li>
-                <strong>Autorização na interface:</strong> a tela solicitava fotos restritas ao diretor e apresentava o 403 como falha de carregamento. Passei a explicar a restrição e evitar a requisição sem permissão.
-              </li>
-              <li>
-                <strong>Guia de entrega:</strong> as instruções citavam um diretório ausente no pacote. Vinculei o guia à variável de versão e passei a verificar o <code>tar</code> extraído.
-              </li>
-            </ul>
-            <p>
-              Três correções receberam testes automatizados. Para alterações visuais e de entrega, adotei capturas de tela e inspeção do pacote extraído.
-            </p>
-          </details>
+          <div class="case-prose"><p data-en="Thumbnails reduced browser memory cost; interface and package checks also exposed defects missed by HTTP and console checks.">Miniaturas reduziram o custo de memória; verificações de interface e pacote também revelaram falhas invisíveis em HTTP e no console.</p>
+            <p><a href="https://github.com/isrreal/face-clock-evoluir-public/blob/main/docs/engineering-notes.md" target="_blank" rel="noopener noreferrer" data-en="Read engineering notes →">Ler notas de engenharia →</a></p></div>
         </article>
 
         <article class="case-block" id="multi-stage">
