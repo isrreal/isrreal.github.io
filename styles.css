@@ -2687,7 +2687,7 @@ html[data-page="home"] .hero h1 {
 
 /* Face Clock: on narrow screens, each result becomes a labelled card rather
    than a table that requires horizontal scrolling. */
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
   html[data-page="face-clock-tecnico"] .case-table-scroll {
     overflow: visible;
     border: 0;

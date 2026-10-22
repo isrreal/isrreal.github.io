@@ -13,6 +13,7 @@ def main():
     args = parser.parse_args()
     root = Path(__file__).resolve().parent.parent
     version = hashlib.sha256((root / 'script.js').read_bytes()).hexdigest()[:12]
+    styles_version = hashlib.sha256((root / 'styles.css').read_bytes()).hexdigest()[:12]
     resume_urls = {}
     for language, code in [('portugues', 'pt'), ('english', 'en')]:
         path = 'assets/israel_cv_pt.pdf' if code == 'pt' else 'assets/israel-cv-english.pdf'
@@ -22,12 +23,18 @@ def main():
         resume_urls[code] = f'{path}?v={hashlib.sha256(pdf).hexdigest()[:12]}'
     pages = [root / 'index.html', root / '404.html', *sorted((root / 'projetos').rglob('*.html'))]
     pattern = re.compile(r'(src="[^"]*script\.js)(?:\?v=[a-f0-9]+)?(")')
+    styles_pattern = re.compile(r'(href="[^"]*styles\.css)(?:\?v=[a-f0-9]+)?(")')
     outdated = []
     for page in pages:
         content = page.read_text()
         updated, count = pattern.subn(lambda m: f'{m[1]}?v={version}{m[2]}', content)
         if count != 1:
             raise SystemExit(f'{page.relative_to(root)}: esperado um carregamento de script.js')
+        updated, styles_count = styles_pattern.subn(
+            lambda m: f'{m[1]}?v={styles_version}{m[2]}', updated
+        )
+        if styles_count != 1:
+            raise SystemExit(f'{page.relative_to(root)}: esperado um carregamento de styles.css')
         if page == root / 'index.html':
             for code, url in resume_urls.items():
                 attribute = f'data-resume-pdf-{code}'

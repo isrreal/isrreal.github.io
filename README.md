@@ -40,8 +40,8 @@ e `data-en-placeholder`, mantendo o atributo original em português. Componentes
 acompanham o evento `portfolio:languagechange`. Para botões de navegação, prefira seletores
 pelo `href` em vez da posição, para que o texto continue associado ao destino correto.
 
-Após alterar `script.js` ou recompilar os currículos, execute `python3 scripts/version_script.py`.
-O comando versiona o JavaScript em todas as páginas e os links dos PDFs em português e inglês
+Após alterar `styles.css`, `script.js` ou recompilar os currículos, execute `python3 scripts/version_script.py`.
+O comando versiona o CSS, o JavaScript em todas as páginas e os links dos PDFs em português e inglês
 a partir do conteúdo dos arquivos, para que o navegador carregue as traduções e os currículos
 atuais em vez de reutilizar arquivos antigos em cache.
 Verifique antes de publicar com `python3 scripts/version_script.py --check`.
