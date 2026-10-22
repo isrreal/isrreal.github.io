@@ -410,6 +410,11 @@ html[data-page="home"] .hero {
   padding-block: clamp(3rem, 6vw, 5rem);
 }
 
+html[data-page="home"] .hero > .container {
+  position: relative;
+  z-index: 2;
+}
+
 html[data-page="home"] .hero h1 {
   max-width: 900px;
 }
