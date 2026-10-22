@@ -99,10 +99,18 @@ Mantenha esses períodos sincronizados entre HTML, LaTeX, PDFs e texto simples.
 ## Verificações antes de publicar
 
 Os cálculos estatísticos ficam em `scripts/stats_ci.py` e exigem contagens verificadas ou
-predições salvas por documento. Execute `python3 -m unittest discover -s scripts -p 'test_stats_ci.py'`.
+predições salvas por documento. Execute `python3 -m unittest discover -s scripts -p 'test_*.py'`.
 Use `python3 scripts/stats_ci.py --help` para os formatos CSV. Não publique McNemar sem
 os pares por documento nem limite de FAR sem o número de comparações impostoras e o
 tamanho da galeria.
+
+`data/facts.yaml` guarda os fatos canônicos confirmados e as lacunas explícitas. Execute
+`python3 scripts/check_consistency.py` para conferir metadados, links internos, paridade
+numérica PT/EN e rótulos de tecnologias históricas. Para instalar a verificação local
+antes de cada commit, rode `git config core.hooksPath .githooks`; o hook também executa
+os testes da pasta `scripts/` e confere as versões de cache dos arquivos publicados.
+O repositório público complementar pode ser preparado localmente em
+`.related/face-clock-evoluir-public/` (ignorado por este Git), sem push automático.
 
 Não há CI configurado. O mínimo recomendado a cada alteração:
 

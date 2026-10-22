@@ -1,0 +1,15 @@
+{
+  "source": "Face Clock private repository: app/services/face_service.py, docker/backend.Dockerfile, ml/notebooks/13_baselines_hog_sklearn.ipynb and 14_embeddings_efficientnet_sklearn.ipynb; portfolio text for status/version",
+  "current_model": "YuNet + SFace",
+  "embedding_dimensions": 128,
+  "test_count": null,
+  "test_count_note": "A contagem de testes da release candidate não foi confirmada em artefato versionado.",
+  "split_train_validation_test": [297, 64, 64],
+  "test_positive_negative": [20, 44],
+  "hybrid_tp_fp": [14, 2],
+  "hybrid_f1": "0.778",
+  "hybrid_accuracy": "0.875",
+  "version": "v1.3.0-rc.3",
+  "status_pt": "candidata a piloto institucional acompanhado",
+  "status_en": "supervised institutional pilot candidate"
+}

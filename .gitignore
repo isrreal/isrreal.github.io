@@ -8,6 +8,10 @@ guia-entrevista.local.md
 
 # LaTeX intermediates and local build output.
 .cv-build/
+__pycache__/
 assets/*.aux
 assets/*.log
 assets/*.out
+
+# Local companion repository; its commits are kept separate from this portfolio.
+.related/
