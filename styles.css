@@ -2684,6 +2684,112 @@ html[data-page="home"] .hero h1 {
   .evidence-detail { padding: 1rem; }
   .section { padding-block: 3rem; }
 }
+
+/* Face Clock: on narrow screens, each result becomes a labelled card rather
+   than a table that requires horizontal scrolling. */
+@media (max-width: 720px) {
+  html[data-page="face-clock-tecnico"] .case-table-scroll {
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  html[data-page="face-clock-tecnico"] .case-table {
+    display: block;
+    min-width: 0;
+    font-size: 0.875rem;
+    text-align: left;
+  }
+
+  html[data-page="face-clock-tecnico"] .case-table caption {
+    display: block;
+    padding: 0 0 0.75rem;
+  }
+
+  html[data-page="face-clock-tecnico"] .case-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  html[data-page="face-clock-tecnico"] .case-table tbody {
+    display: grid;
+    gap: 12px;
+  }
+
+  html[data-page="face-clock-tecnico"] .case-table tbody tr {
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+  }
+
+  html[data-page="face-clock-tecnico"] .case-table th,
+  html[data-page="face-clock-tecnico"] .case-table td {
+    display: grid;
+    grid-template-columns: minmax(104px, 38%) minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+    text-align: left;
+    white-space: normal;
+  }
+
+  html[data-page="face-clock-tecnico"] .case-table tbody tr + tr th,
+  html[data-page="face-clock-tecnico"] .case-table tbody tr + tr td {
+    border-top: 0;
+  }
+
+  html[data-page="face-clock-tecnico"] .case-table tbody td {
+    border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  }
+
+  html[data-page="face-clock-tecnico"] .case-table tbody th::before,
+  html[data-page="face-clock-tecnico"] .case-table tbody td::before {
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-weight: 750;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  html[data-page="face-clock-tecnico"] .case-table tbody th::before { content: "Item"; }
+  html[data-page="face-clock-tecnico"] #tabela-reconhecimento td:nth-child(2)::before { content: "Antes"; }
+  html[data-page="face-clock-tecnico"] #tabela-reconhecimento td:nth-child(3)::before { content: "Medição"; }
+  html[data-page="face-clock-tecnico"] #tabela-reconhecimento td:nth-child(4)::before { content: "Decisão"; }
+  html[data-page="face-clock-tecnico"] #tabela-baselines td:nth-child(2)::before { content: "Acurácia"; }
+  html[data-page="face-clock-tecnico"] #tabela-baselines td:nth-child(3)::before { content: "Precisão"; }
+  html[data-page="face-clock-tecnico"] #tabela-baselines td:nth-child(4)::before { content: "Recall"; }
+  html[data-page="face-clock-tecnico"] #tabela-baselines td:nth-child(5)::before { content: "F1"; }
+  html[data-page="face-clock-tecnico"] #tabela-baselines td:nth-child(6)::before { content: "Leitura"; }
+  html[data-page="face-clock-tecnico"] #tabela-procedencia td:nth-child(2)::before { content: "Acurácia"; }
+  html[data-page="face-clock-tecnico"] #tabela-procedencia td:nth-child(3)::before { content: "Situação"; }
+  html[data-page="face-clock-tecnico"] #tabela-multi-stage td:nth-child(2)::before { content: "Tamanho"; }
+  html[data-page="face-clock-tecnico"] #tabela-multi-stage td:nth-child(3)::before { content: "Diferença"; }
+  html[data-page="face-clock-tecnico"] #tabela-progressao td:nth-child(2)::before { content: "Backend"; }
+  html[data-page="face-clock-tecnico"] #tabela-progressao td:nth-child(3)::before { content: "Inferência"; }
+  html[data-page="face-clock-tecnico"] #tabela-progressao td:nth-child(4)::before { content: "Total"; }
+  html[data-page="face-clock-tecnico"] #tabela-progressao td:nth-child(5)::before { content: "Mudança"; }
+
+  html[lang="en"][data-page="face-clock-tecnico"] .case-table tbody th::before { content: "Item"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-reconhecimento td:nth-child(2)::before { content: "Before"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-reconhecimento td:nth-child(3)::before { content: "Measurement"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-reconhecimento td:nth-child(4)::before { content: "Decision"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-baselines td:nth-child(2)::before { content: "Accuracy"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-baselines td:nth-child(3)::before { content: "Precision"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-baselines td:nth-child(4)::before { content: "Recall"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-baselines td:nth-child(6)::before { content: "Reading"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-procedencia td:nth-child(2)::before { content: "Accuracy"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-procedencia td:nth-child(3)::before { content: "Status"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-multi-stage td:nth-child(2)::before { content: "Size"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-multi-stage td:nth-child(3)::before { content: "Difference"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-progressao td:nth-child(3)::before { content: "Inference"; }
+  html[lang="en"][data-page="face-clock-tecnico"] #tabela-progressao td:nth-child(5)::before { content: "Change"; }
+}
 @media print {
   .evidence-detail:not([open]) > :not(summary) { display: block; }
 }
