@@ -22,7 +22,7 @@ def main():
             raise SystemExit(f'As duas cópias do PDF {language} devem ser idênticas')
         resume_urls[code] = f'{path}?v={hashlib.sha256(pdf).hexdigest()[:12]}'
     pages = [root / 'index.html', root / '404.html', *sorted((root / 'projetos').rglob('*.html'))]
-    pattern = re.compile(r'(src="[^"]*script\.js)(?:\?v=[a-f0-9]+)?(")')
+    pattern = re.compile(r'(src="(?:(?:\.\./)+|/)?script\.js)(?:\?v=[a-f0-9]+)?(")')
     styles_pattern = re.compile(r'(href="[^"]*styles\.css)(?:\?v=[a-f0-9]+)?(")')
     outdated = []
     for page in pages:

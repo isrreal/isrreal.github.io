@@ -24,8 +24,9 @@
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="../../styles.css?v=7f3994254931">
-  <script src="../../script.js?v=35cfcf566192" defer></script>
+  <link rel="stylesheet" href="../../styles.css?v=cc23507fe5e0">
+  <script defer data-domain="israelsouza.speculummaius.com.br" src="https://plausible.io/js/script.js"></script>
+  <script src="../../script.js?v=754827be8039" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -67,60 +68,64 @@
     <div class="case-brand"><img class="case-logo" src="../../assets/face-clock-evoluir-logo.png" alt="" width="80" height="80">
     <h1 class="case-title">Face Clock Evoluir</h1>
     </div>
-    <p class="hero-description" data-en="Facial attendance for an educational institution, with an accessible kiosk, administrative workflows, and PWA resilience for a supervised pilot.">Controle de jornada com biometria facial, totem acessível, rotinas administrativas e PWA resiliente para piloto acompanhado.</p>
+    <p class="hero-description" data-en="Contracted facial-attendance system for an educational institution, prepared for a supervised pilot after test-environment deployment.">Sistema contratado de jornada com biometria facial para uma instituição de ensino, preparado para piloto acompanhado após implantação de testes.</p>
     <div class="hero-actions"><a href="#pronto-para-piloto" class="button button-primary"  data-en="See what is pilot-ready">Ver o que está pronto para o piloto</a><a href="tecnico.html" class="button button-secondary"  data-en="Inspect the experiments">Examinar os experimentos</a>
     </div>
     </div>
     </section>
     <section class="section section-alt" id="problema">
     <div class="container narrow">
-    <p class="section-kicker" data-en="The problem">O problema</p>
-    <h2  data-en="A complete routine, not just a recognition model.">Uma rotina completa, não apenas um modelo de reconhecimento.</h2>
-    <p class="lead" data-en="The institution needs a clear employee flow, operable HR exceptions, traceable decisions, and an installation the local team can run.">A instituição precisa de fluxo claro, exceções operáveis pelo RH, decisões rastreáveis e uma instalação executável pela equipe local.</p>
-    <p  data-en="&lt;strong&gt;My role:&lt;/strong&gt; product and engineering — computer vision, APIs, PostgreSQL, security, testing, interfaces, documentation, and test deployment."><strong>Meu papel:</strong> produto e engenharia — visão computacional, APIs, PostgreSQL, segurança, testes, interfaces, documentação e implantação de testes.</p>
+    <p class="section-kicker" data-en="Problem and constraints">Problema e restrições</p>
+    <h2 data-en="Recognition must work within an operational routine.">O reconhecimento precisa funcionar na rotina.</h2>
+    <p class="lead" data-en="The institution needs 1:N facial identification, understandable kiosk feedback, HR review, auditability, and deployment on its CPU-only server.">A instituição precisa de identificação facial 1:N, totem compreensível, revisão de RH, auditoria e implantação em servidor apenas com CPU.</p>
+    <p data-en="I developed the models, FastAPI APIs, PostgreSQL/pgvector persistence, tests, interfaces, and test-environment deployment.">Desenvolvi modelos, APIs FastAPI, persistência PostgreSQL/pgvector, testes, interfaces e implantação no ambiente de testes.</p>
     </div>
     </section>
     <section class="section " id="como-funciona">
     <div class="container narrow">
-    <p class="section-kicker" data-en="The daily experience">A experiência cotidiana</p>
-    <h2  data-en="From the camera to a comprehensible decision.">Da câmera a uma decisão compreensível.</h2>
+    <p class="section-kicker" data-en="Solution">Solução</p>
+    <h2 data-en="From capture to an auditable record.">Da captura ao registro auditável.</h2>
     <ol class="system-flow flow-three">
     <li class="flow-step"><span class="flow-index">01</span><strong  data-en="Capture">Capturar</strong>
-    <p  data-en="Camera feedback, accessible guidance, and clear recovery make the kiosk understandable before recognition.">Feedback de câmera, orientação acessível e recuperação clara tornam o totem compreensível antes do reconhecimento.</p></li>
+    <p data-en="The kiosk guides the employee through the camera and recovery states.">O totem orienta o funcionário durante captura e falhas.</p></li>
     <li class="flow-step"><span class="flow-index">02</span><strong  data-en="Identify">Identificar</strong>
-    <p  data-en="Simpler selection, rotation, detection validation, and profile cropping improve facial enrollment.">Seleção simples, rotação, validação de detecção e recorte melhoram o cadastro facial.</p></li>
+    <p data-en="YuNet and SFace run through ONNX Runtime; pgvector stores embeddings for 1:N search.">YuNet e SFace rodam via ONNX Runtime; pgvector armazena embeddings para busca 1:N.</p></li>
     <li class="flow-step"><span class="flow-index">03</span><strong  data-en="Record, review, and resolve">Registrar, revisar e resolver</strong>
-    <p  data-en="Schedules, hour balances, HR review, and calendar exceptions keep the record actionable.">Jornadas, banco de horas, revisão de RH e exceções de calendário tornam o registro operável.</p></li>
+    <p data-en="Calendars, hour balances, HR review, and audit trails support exceptions.">Calendário, banco de horas, revisão de RH e auditoria tratam exceções.</p></li>
     </ol>
     </div>
     </section>
     <section class="section section-alt" id="pronto-para-piloto">
     <div class="container narrow">
-    <p class="section-kicker" data-en="v1.3.0-rc.3">v1.3.0-rc.3</p>
-    <h2  data-en="More operationally ready, without overstating the status.">Mais pronta para operar, sem exagerar o status.</h2>
+    <p class="section-kicker" data-en="Engineering decisions">Decisões de engenharia</p>
+    <h2 data-en="Benchmarks changed the implementation.">Benchmarks mudaram a implementação.</h2>
     <div class="decision-grid">
     <article class="decision-card">
-    <h3  data-en="Administrative work that follows the real calendar">Operação administrativa que acompanha o calendário real</h3>
-    <p  data-en="Calendar day types, collective remote work, holiday transfers, calendar records, and HR review cover routine exceptions.">Tipos de dia, home office coletivo, feriados, registros por calendário e revisão de RH cobrem as exceções de rotina.</p>
+    <h3 data-en="Recalibrated the threshold">Recalibrei o limiar</h3>
+    <p data-en="Unknown people accepted fell from 45.4% to 0.2% in a controlled test; rejection of enrolled users still needs measurement at the institution.">Desconhecidos aceitos caíram de 45,4% para 0,2% em teste controlado; ainda é preciso medir rejeições de cadastrados na instituição.</p>
     </article>
     <article class="decision-card">
-    <h3  data-en="Safer access and explainable audit trails">Acesso mais seguro e auditoria explicável</h3>
-    <p  data-en="Employee management separates access, employment relationship, and archiving; audit trails add filters, readable details, and documented retention.">A gestão separa acesso, vínculo e arquivamento; a auditoria ganha filtros, detalhes legíveis e retenção documentada.</p>
+    <h3 data-en="Reduced frames after measurement">Reduzi frames após medição</h3>
+    <p data-en="The benchmark showed that processing more frames increased latency; the kiosk uses the measured configuration.">O benchmark mostrou que processar mais frames aumentava a latência; o totem usa a configuração medida.</p>
     </article>
     <article class="decision-card">
-    <h3  data-en="A deployment path designed for the institution">Um caminho de implantação pensado para a instituição</h3>
-    <p  data-en="A seven-step setup validates progressively, delegates technical permissions to IT, and supports local HTTPS.">Um setup em sete etapas valida progressivamente, delega permissões técnicas à TI e oferece HTTPS local.</p>
+    <h3 data-en="Kept exact search">Mantive a busca exata</h3>
+    <p data-en="At 1,000 vectors, exact search took 0.076 ms; the tested HNSW variant gained little time with recall@1 of 0.915. I kept transactional pgvector.">Em 1.000 vetores, a busca exata levou 0,076 ms; o HNSW testado ganhou pouco tempo com recall@1 de 0,915. Mantive pgvector transacional.</p>
+    </article>
+    <article class="decision-card">
+    <h3 data-en="Fixed a race condition">Corrigi uma condição de corrida</h3>
+    <p data-en="Concurrent recognition caused extraction failures because the detector and recognizer shared state. I serialized access and added a regression test with eight threads.">Reconhecimentos simultâneos falhavam porque detector e reconhecedor compartilhavam estado. Serializei o acesso e adicionei regressão com oito threads.</p>
     </article>
     </div>
-    <p class="interpretation" data-en="Consistent navigation, session-safe cache, offline state, and reconnect update checks make the PWA more dependable.">Navegação consistente, cache seguro por sessão, estado offline e atualização ao reconectar tornam a PWA mais confiável.</p>
+    <p class="interpretation" data-en="The CPU-only target and the delivered package were tested separately from model metrics; see the technical protocols.">O servidor apenas com CPU e o pacote entregue foram testados separadamente das métricas do modelo; veja os protocolos técnicos.</p>
     </div>
     </section>
     <section class="section " id="status">
     <div class="container narrow">
     <p class="section-kicker" data-en="Delivery and limits">Entrega e limites</p>
-    <h2  data-en="Prepared for an accompanied pilot — not presented as a certified time clock.">Preparada para um piloto acompanhado — não apresentada como relógio de ponto certificado.</h2>
-    <p data-en="Three release candidates, targeted validation, a PDF report, and hands-on test deployment prepared the system for a monitored pilot.">Três release candidates, validações direcionadas, relatório em PDF e implantação de testes prepararam o sistema para um piloto acompanhado.</p>
-    <p data-en="It is not a substitute for a certified REP-P; rollout still requires real-population calibration, target-server testing, and institutional decisions.">Não substitui um REP-P homologado: a implantação ainda requer calibração na população real, testes no servidor-alvo e decisões institucionais.</p>
+    <h2 data-en="Pilot candidate, with limits documented.">Candidata a piloto, com limites documentados.</h2>
+    <p data-en="The project reached v1.3.0-rc.3 after three release candidates, targeted validation, and hands-on deployment in a test environment.">O projeto chegou à v1.3.0-rc.3 após três release candidates, validações direcionadas e implantação acompanhada em ambiente de testes.</p>
+    <p data-en="It does not replace a certified REP-P. Calibration with the institution's population and operational approval remain pending.">Não substitui um REP-P homologado. Faltam calibração com a população da instituição e aprovação operacional.</p>
     <div class="hero-actions"><a href="tecnico.html" class="button button-primary"  data-en="See protocols, decisions, and limits">Ver protocolos, decisões e limites</a><a href="https://github.com/isrreal/face-clock-evoluir-public" class="button button-secondary" target="_blank" rel="noopener noreferrer" data-en="Public documentation">Documentação pública</a>
     </div>
     </div>

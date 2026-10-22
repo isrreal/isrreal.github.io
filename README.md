@@ -50,11 +50,18 @@ A navegação segue apresentação → resumo do projeto → evidências técnic
 Registros históricos extensos usam `<details>` nativo; links para âncoras revelam automaticamente
 o registro correspondente. Resultados devem conter comparação, interpretação e limite.
 
+## Métricas de visitas
+
+O site carrega o script leve da [Plausible Analytics](https://plausible.io/) em todas as páginas.
+Ele mede visualizações no painel externo; não há contador público no portfólio. Para ativá-lo,
+crie uma conta na Plausible e cadastre `israelsouza.speculummaius.com.br` como site. O snippet
+publicado usa esse domínio como identificador. Depois do deploy, valide a coleta pelo teste de
+instalação da própria Plausible antes de usar os números.
+
 ## Currículos
 
-Os fontes LaTeX e PDFs estão em `assets/`. Os currículos usam uma coluna, cargos e datas
-em ordem linear, contatos visíveis e seções padronizadas. A versão atual tem duas páginas
-para preservar legibilidade. Isso facilita parsing; não promete aprovação em qualquer ATS.
+Os fontes LaTeX e PDFs estão em `assets/`. Os currículos usam uma página, uma coluna, cargos e datas
+em ordem linear, contatos visíveis e seções padronizadas. Isso facilita parsing; não promete aprovação em qualquer ATS.
 A [documentação do Greenhouse](https://support.greenhouse.io/hc/en-us/articles/200989175-Unsuccessful-resume-parse)
 explica limitações com colunas, tabelas, imagens e cabeçalhos complexos.
 

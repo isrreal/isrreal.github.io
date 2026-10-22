@@ -51,6 +51,7 @@ const englishPages = {
       [".impact-band", "aria-label", "Highlighted results"],
       ["#projetos .project-card:nth-child(1) .tag-list", "aria-label", "Project technologies"],
       ["#projetos .project-card:nth-child(2) .tag-list", "aria-label", "Project technologies"],
+      ["#projetos .project-card:nth-child(3) .tag-list", "aria-label", "Project technologies"],
       ["#curriculo .contact-actions", "aria-label", "Résumé actions"],
     ],
   },

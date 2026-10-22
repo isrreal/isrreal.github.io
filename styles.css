@@ -406,6 +406,45 @@ h3 {
   max-width: 720px;
 }
 
+html[data-page="home"] .hero {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+html[data-page="home"] .hero h1 {
+  max-width: 900px;
+}
+
+.hero-proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--card-gap);
+  max-width: var(--container);
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-proof li {
+  min-width: 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+}
+
+.hero-proof strong {
+  display: block;
+  color: var(--text);
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  line-height: 1.2;
+}
+
+.hero-proof span {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
 .hero-actions,
 .contact-actions,
 .project-links {
@@ -741,6 +780,10 @@ h3 {
   min-height: 320px;
 }
 
+html[data-page="home"] .project-wide {
+  min-height: 0;
+}
+
 .project-flagship {
   min-height: auto;
   background:
@@ -757,7 +800,7 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .project-featured .project-topline {
@@ -1889,6 +1932,9 @@ h3 {
 }
 
 @media (max-width: 900px) {
+  .hero-proof {
+    grid-template-columns: 1fr;
+  }
   .hero-grid,
   .skills-layout,
   .experience-layout,
@@ -2162,6 +2208,12 @@ h3 {
 
 .system-flow.flow-three {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .system-flow.flow-three {
+    grid-template-columns: 1fr;
+  }
 }
 
 .trd-lab {
