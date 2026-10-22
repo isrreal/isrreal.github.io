@@ -98,6 +98,12 @@ Mantenha esses períodos sincronizados entre HTML, LaTeX, PDFs e texto simples.
 
 ## Verificações antes de publicar
 
+Os cálculos estatísticos ficam em `scripts/stats_ci.py` e exigem contagens verificadas ou
+predições salvas por documento. Execute `python3 -m unittest discover -s scripts -p 'test_stats_ci.py'`.
+Use `python3 scripts/stats_ci.py --help` para os formatos CSV. Não publique McNemar sem
+os pares por documento nem limite de FAR sem o número de comparações impostoras e o
+tamanho da galeria.
+
 Não há CI configurado. O mínimo recomendado a cada alteração:
 
 - todos os arquivos referenciados existem (`src`, `href`, `link`);
