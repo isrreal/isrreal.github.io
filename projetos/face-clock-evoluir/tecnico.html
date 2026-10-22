@@ -26,7 +26,7 @@
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../../styles.css?v=cc23507fe5e0">
   <script defer data-domain="israelsouza.speculummaius.com.br" src="https://plausible.io/js/script.js"></script>
-  <script src="../../script.js?v=33763311ec26" defer></script>
+  <script src="../../script.js?v=f2a7619ba8d8" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -399,7 +399,7 @@
         <article class="case-block" id="engenharia">
           <div>
             <p class="section-kicker">Engenharia e segurança</p>
-            <h2>Confiabilidade construída em camadas.</h2>
+            <h2>Autenticação e limites da documentação pública.</h2>
           </div>
           <div class="case-prose">
             <p class="lead">
@@ -414,18 +414,8 @@
                 Neste projeto, ele não representa login social por Google ou Microsoft.
               </p>
             </div>
-            <ul class="case-list security-list" aria-label="Camadas de segurança da aplicação">
-              <li><strong>Credencial assinada:</strong> a autenticação valida a credencial antes de autorizar o acesso.</li>
-              <li><strong>Revogação:</strong> tokens revogados permanecem inválidos.</li>
-              <li><strong>Hash de senha:</strong> a senha original nunca é armazenada ou recuperada.</li>
-              <li><strong>Recuperação controlada:</strong> redefinições usam tokens de uso único, com expiração e marcação de utilização.</li>
-              <li><strong>Autorização e anti-IDOR:</strong> além de autenticar, a API verifica se o usuário pode acessar cada recurso, inclusive documentos médicos sensíveis.</li>
-              <li><strong>Controle de dispositivos:</strong> o acesso dos dispositivos integra a defesa em camadas.</li>
-              <li><strong>Biometria protegida:</strong> controles técnicos protegem dados biométricos e médicos; a avaliação jurídica de conformidade é externa ao projeto.</li>
-              <li><strong>Implantação:</strong> controles de acesso integram a defesa em camadas.</li>
-              <li><strong>Prevenção de XSS:</strong> substituí marcação com dados do usuário por nós DOM, <code>textContent</code> e <code>addEventListener</code>, evitando interpolação em <code>onclick</code>.</li>
-              <li><strong>Healthcheck de schema:</strong> passei a comparar a migração aplicada com a revisão esperada pelo código, além de verificar a conexão com o banco.</li>
-            </ul>
+            <p data-en="The public documentation summarizes the security controls. Implementation details require validation against the private code; legal compliance assessment remains outside this project.">A documentação pública resume os controles de segurança. Detalhes de implementação exigem validação no código privado; a avaliação jurídica de conformidade continua externa ao projeto.</p>
+            <p><a class="text-link" href="https://github.com/isrreal/face-clock-evoluir-public#security-controls" target="_blank" rel="noopener noreferrer" data-en="Read the public documentation →">Consultar a documentação pública →</a></p>
           </div>
         </article>
 
