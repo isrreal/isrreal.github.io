@@ -42,15 +42,22 @@ def main():
         for script in soup.select('script[type="application/ld+json"]'):
             json.loads(script.string)
     profile = json.loads((ROOT/'data/profile.json').read_text())
-    sensitive = re.compile(r'\b(?:DSPy|Mixture of Experts|gating|cross.attention|RelRep|FAISS)\b',re.I)
+    # General method/framework names are part of the requested professional copy.
+    # Still reject detailed architecture terms withheld by the disclosure review.
+    sensitive = re.compile(r'\b(?:Mixture of Experts|gating|cross.attention|RelRep|FAISS)\b',re.I)
     for lang, home in [('pt',ROOT/'index.html'),('en',ROOT/'en/index.html')]:
         tieta = BeautifulSoup(home.read_text(),'html.parser').select_one('#tieta')
         if sensitive.search(tieta.get_text()): failures.append(f'{home}: sensitive detail linked to Tieta')
         if profile['tieta']['summary_'+lang] not in tieta.get_text():
             failures.append(f'{home}: canonical Tieta summary differs')
+        if not tieta.select_one('[data-tieta-period="2025-04/2026-06"]'):
+            failures.append(f'{home}: fellowship contribution period missing')
     for role,lang in VARIANTS:
         stem = ROOT/f'assets/israel-cv-{role}-{lang}'
         expected = paragraphs(role,lang)
+        fellow = next(i for i,(_,t) in enumerate(expected) if 'CNPq RHAE' in t)
+        if [kind for kind,_ in expected[fellow+1:fellow+5]] != ['bullet']*4:
+            failures.append(f'{stem.name}: expected four contribution bullets under fellowship role')
         extracted = subprocess.check_output(['pdftotext','-enc','UTF-8',str(stem.with_suffix('.pdf')),'-'],text=True)
         cursor = 0
         content = normalized(extracted)

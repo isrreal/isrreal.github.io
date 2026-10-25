@@ -25,17 +25,17 @@ def paragraphs(role, lang):
             ('body', PROFILE['linkedin'] + ' | ' + PROFILE['github']),
             ('body', PROFILE['portfolio'] + ('en/' if not pt else ''))]
     summaries = {
-        ('ml', 'pt'): 'Bacharel em Ciência da Computação com atuação em P&D de Machine Learning, representações vetoriais e modelos multimodais. Experiência em avaliação experimental, componentes baseados em LLMs e sistemas com APIs e busca vetorial.',
-        ('ml', 'en'): 'Computer Science graduate working in machine learning R&D, vector representations, and multimodal modeling. Experience includes experimental evaluation, LLM-based components, and systems with APIs and vector search.',
-        ('ds', 'pt'): 'Bacharel em Ciência da Computação com experiência em P&D de Machine Learning multimodal, representação de dados e avaliação de modelos. Combino modelagem, experimentação quantitativa e implementação de sistemas para investigar hipóteses.',
-        ('ds', 'en'): 'Computer Science graduate with experience in multimodal machine learning R&D, data representations, and model evaluation. Combines modeling, quantitative experimentation, and system implementation to investigate hypotheses.',
-        ('applied-ai', 'en'): 'Computer Science graduate contributing to multimodal machine learning R&D, representation learning, and experiments with LLM-based components. Experience includes baseline implementation, quantitative evaluation, and research software.'
+        ('ml', 'pt'): 'Bacharel em Ciência da Computação com experiência em P&D de ML multimodal: representation learning, embeddings, busca vetorial e deep learning multitarefa. Atuação colaborativa em componentes com LLMs e DSPy, avaliação experimental e sistemas com APIs.',
+        ('ml', 'en'): 'Computer Science graduate with multimodal ML R&D experience spanning representation learning, embeddings, vector search, and multi-task deep learning. Collaborative work on LLM and DSPy components, experimental evaluation, and API-based systems.',
+        ('ds', 'pt'): 'Bacharel em Ciência da Computação com experiência em modelagem multimodal e multitarefa, representações vetoriais e componentes com LLMs e DSPy. Combino baselines, métricas e literatura científica para investigar hipóteses e avaliar abordagens de ML.',
+        ('ds', 'en'): 'Computer Science graduate with experience in multimodal and multi-task modeling, vector representations, and LLM and DSPy components. Uses baselines, evaluation metrics, and scientific literature to investigate hypotheses and compare ML approaches.',
+        ('applied-ai', 'en'): 'Computer Science graduate contributing to multimodal ML R&D: representation learning, vector retrieval, multi-task deep learning, and LLM components with DSPy. Experience implementing research ideas and comparing approaches through metrics and baselines.'
     }
     rows += [('section', 'Resumo Profissional' if pt else 'Professional Summary'), ('body', summaries[(role, lang)]),
              ('section', 'Experiência Profissional' if pt else 'Professional Experience'),
              ('entry', 'Tieta.ai · P&D em Machine Learning · Remoto' if pt else 'Tieta.ai · Machine Learning R&D · Remote'),
-             ('body', 'Pesquisador de P&D: 07/2026–presente | Pesquisador de ML, CNPq RHAE (meio período): 04/2025–06/2026' if pt else 'R&D Researcher: Jul 2026–present | ML Researcher, CNPq RHAE Fellow (part-time): Apr 2025–Jun 2026'),
-             ('body', PROFILE['tieta']['summary_' + lang])]
+             ('body', 'Pesquisador de P&D · 07/2026–presente' if pt else 'R&D Researcher · Jul 2026–present'),
+             ('entry', 'Pesquisador de ML · Bolsista CNPq RHAE (meio período) · 04/2025–06/2026' if pt else 'ML Researcher · CNPq RHAE Fellow (part-time) · Apr 2025–Jun 2026')]
     bullets = PROFILE['tieta']['bullets_' + lang]
     order = [3, 1, 0, 2] if role == 'ds' else ([1, 0, 2, 3] if role == 'applied-ai' else [0, 1, 2, 3])
     rows += [('bullet', bullets[i]) for i in order]

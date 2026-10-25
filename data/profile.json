@@ -6,26 +6,26 @@
   "linkedin": "https://www.linkedin.com/in/isrreal/",
   "github": "https://github.com/isrreal",
   "tieta": {
-    "evidence": "Author-supplied technical documentation, jointly authored activity report and confidentiality agreement reviewed on 2026-10-25. Existing CV supplies dates and fellowship. Public wording describes professional competencies and collaborative contributions only; private review records source references and material withheld. Source availability is not disclosure authorization.",
-    "summary_pt": "P&D colaborativo em Machine Learning multimodal e representation learning para análise educacional, com experimentação de modelos e componentes baseados em LLMs.",
-    "summary_en": "Collaborative R&D in multimodal machine learning and representation learning for educational analysis, including model experimentation and LLM-based components.",
+    "evidence": "Author-supplied activity report, technical documentation and confidentiality agreement rechecked on 2026-10-25. Collaborative contributions are attributed to the Apr 2025–Jun 2026 fellowship at the author's explicit instruction. Wording names general methods/frameworks without reproducing the internal design, settings, data or results. Source references and disclosure review remain private; no written release was found in the supplied files.",
+    "summary_pt": "P&D em Machine Learning multimodal para análise educacional, com embeddings, busca vetorial e representation learning de texto e imagem. Colaboração em deep learning multitarefa, componentes com LLMs e DSPy e avaliação experimental orientada por métricas e literatura científica.",
+    "summary_en": "Multimodal machine learning R&D for educational analysis, using embeddings, vector search, and representation learning for text and images. Contributions to multi-task deep learning, LLM components with DSPy, and experiments guided by evaluation metrics and scientific literature.",
     "bullets_pt": [
-      "Colaborei no desenvolvimento e na avaliação de representações vetoriais e recuperação de informação, investigando embeddings e medidas de similaridade para texto e imagem.",
-      "Participei da implementação e avaliação de modelos de deep learning multimodal, comparando alternativas de representação e combinação de modalidades.",
-      "Atuei na experimentação de componentes baseados em modelos de linguagem (LLMs), com foco em extração estruturada de informação e representação semântica.",
-      "Colaborei na investigação de hipóteses, implementação de baselines e análise quantitativa de experimentos, com apoio da literatura científica para orientar a modelagem."
+      "Colaborei no desenvolvimento e na avaliação de representação e recuperação multimodal com embeddings, busca vetorial e medidas de similaridade, comparando representações de texto e imagem em espaços vetoriais.",
+      "Participei da implementação e experimentação de arquiteturas de deep learning multitarefa, combinando representações multimodais para tarefas de regressão e classificação.",
+      "Atuei na experimentação de componentes baseados em LLMs e DSPy para extração estruturada de informação e construção de representações semânticas.",
+      "Colaborei na investigação de hipóteses, implementação de baselines e comparação de abordagens por métricas de regressão e classificação, utilizando literatura científica para orientar experimentos e decisões de modelagem."
     ],
     "bullets_en": [
-      "Contributed to developing and evaluating vector representations and information retrieval, investigating embeddings and similarity measures for text and images.",
-      "Collaborated on implementing and evaluating multimodal deep learning models, comparing representation and modality-combination approaches.",
-      "Contributed to experiments with large language model (LLM) components for structured information extraction and semantic representation.",
-      "Collaborated on hypothesis testing, baseline implementation, and quantitative experiment analysis, using scientific literature to inform modeling decisions."
+      "Contributed to developing and evaluating multimodal representations and retrieval using embeddings, vector search, and similarity measures, comparing text and image representations in vector spaces.",
+      "Collaborated on implementing and experimenting with multi-task deep learning architectures, combining multimodal representations for regression and classification tasks.",
+      "Contributed to experiments with LLM and DSPy components for structured information extraction and semantic representation construction.",
+      "Collaborated on hypothesis testing, baseline implementation, and approach comparisons using regression and classification metrics, drawing on scientific literature to guide experiments and modeling decisions."
     ]
   },
   "skills": {
     "ml": {
-      "pt": "Python, PyTorch, scikit-learn; deep learning multimodal, representation learning, embeddings, recuperação de informação, LLMs.",
-      "en": "Python, PyTorch, scikit-learn; multimodal deep learning, representation learning, embeddings, information retrieval, LLMs."
+      "pt": "Python, PyTorch, scikit-learn; deep learning multimodal e multitarefa, representation learning, embeddings, busca vetorial, LLMs, DSPy.",
+      "en": "Python, PyTorch, scikit-learn; multimodal and multi-task deep learning, representation learning, embeddings, vector search, LLMs, DSPy."
     },
     "evaluation": {
       "pt": "Validação cruzada, calibração, ablação, métricas de classificação; C++, GA, ACO, Python/Pyomo.",

@@ -120,7 +120,7 @@ def main():
     home = (ROOT/'index.html').read_text()
     t = profile['tieta']
     # The home gets a short overview; the four detailed bullets belong in the CV.
-    public_copy = f'<p data-en="{escape(t["summary_en"], quote=True)}">{t["summary_pt"]}</p>'
+    public_copy = f'<p data-tieta-period="2025-04/2026-06" data-en="{escape(t["summary_en"], quote=True)}">{t["summary_pt"]}</p>'
     home = re.sub(r'(<!-- TIETA:START -->).*?(<!-- TIETA:END -->)', lambda m:m[1]+'\n'+public_copy+'\n    '+m[2],home,flags=re.S)
     generated[ROOT/'index.html'] = home
     if not args.check: (ROOT/'index.html').write_text(home)

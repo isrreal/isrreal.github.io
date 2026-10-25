@@ -5,15 +5,15 @@ israel.souza.dev@gmail.com | +55 85 98433-2790
 https://www.linkedin.com/in/isrreal/ | https://github.com/isrreal
 https://israelsouza.speculummaius.com.br/
 Resumo Profissional
-Bacharel em Ciência da Computação com atuação em P&D de Machine Learning, representações vetoriais e modelos multimodais. Experiência em avaliação experimental, componentes baseados em LLMs e sistemas com APIs e busca vetorial.
+Bacharel em Ciência da Computação com experiência em P&D de ML multimodal: representation learning, embeddings, busca vetorial e deep learning multitarefa. Atuação colaborativa em componentes com LLMs e DSPy, avaliação experimental e sistemas com APIs.
 Experiência Profissional
 Tieta.ai · P&D em Machine Learning · Remoto
-Pesquisador de P&D: 07/2026–presente | Pesquisador de ML, CNPq RHAE (meio período): 04/2025–06/2026
-P&D colaborativo em Machine Learning multimodal e representation learning para análise educacional, com experimentação de modelos e componentes baseados em LLMs.
-- Colaborei no desenvolvimento e na avaliação de representações vetoriais e recuperação de informação, investigando embeddings e medidas de similaridade para texto e imagem.
-- Participei da implementação e avaliação de modelos de deep learning multimodal, comparando alternativas de representação e combinação de modalidades.
-- Atuei na experimentação de componentes baseados em modelos de linguagem (LLMs), com foco em extração estruturada de informação e representação semântica.
-- Colaborei na investigação de hipóteses, implementação de baselines e análise quantitativa de experimentos, com apoio da literatura científica para orientar a modelagem.
+Pesquisador de P&D · 07/2026–presente
+Pesquisador de ML · Bolsista CNPq RHAE (meio período) · 04/2025–06/2026
+- Colaborei no desenvolvimento e na avaliação de representação e recuperação multimodal com embeddings, busca vetorial e medidas de similaridade, comparando representações de texto e imagem em espaços vetoriais.
+- Participei da implementação e experimentação de arquiteturas de deep learning multitarefa, combinando representações multimodais para tarefas de regressão e classificação.
+- Atuei na experimentação de componentes baseados em LLMs e DSPy para extração estruturada de informação e construção de representações semânticas.
+- Colaborei na investigação de hipóteses, implementação de baselines e comparação de abordagens por métricas de regressão e classificação, utilizando literatura científica para orientar experimentos e decisões de modelagem.
 Consultoria autônoma · Instituição de ensino · 03/2026–presente
 Desenvolvedor Full Stack e Engenheiro de ML · Face Clock Evoluir
 v1.3.0-rc.3: candidata a piloto institucional acompanhado, implantada em ambiente de testes.
@@ -24,7 +24,7 @@ Pesquisa e Projetos
 Dominação Romana Tripla em Grafos · TCC · 2024–2025
 - Identifiquei contraexemplo de uma formulação PLI publicada e implementei formulação corrigida, GA e ACO (C++, Python/Pyomo). Avaliei 362 grafos; uma execução por instância limita as conclusões.
 Competências Técnicas
-Python, PyTorch, scikit-learn; deep learning multimodal, representation learning, embeddings, recuperação de informação, LLMs.
+Python, PyTorch, scikit-learn; deep learning multimodal e multitarefa, representation learning, embeddings, busca vetorial, LLMs, DSPy.
 FastAPI, PostgreSQL/pgvector, Docker, ONNX Runtime, Git, pytest; SQL, Pandas, NumPy.
 Validação cruzada, calibração, ablação, métricas de classificação; C++, GA, ACO, Python/Pyomo.
 Formação Acadêmica
