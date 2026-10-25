@@ -5,15 +5,15 @@ israel.souza.dev@gmail.com | +55 85 98433-2790
 https://www.linkedin.com/in/isrreal/ | https://github.com/isrreal
 https://israelsouza.speculummaius.com.br/
 Resumo Profissional
-Bacharel em Ciência da Computação com experiência em P&D de Machine Learning, avaliação de modelos e experimentação. Combino pesquisa em otimização, análise quantitativa e implementação de sistemas para testar hipóteses.
+Bacharel em Ciência da Computação com experiência em P&D de Machine Learning multimodal, representação de dados e avaliação de modelos. Combino modelagem, experimentação quantitativa e implementação de sistemas para investigar hipóteses.
 Experiência Profissional
 Tieta.ai · P&D em Machine Learning · Remoto
 Pesquisador de P&D: 07/2026–presente | Pesquisador de ML, CNPq RHAE (meio período): 04/2025–06/2026
-P&D aplicado em Machine Learning multimodal e sistemas de representação para análise educacional.
-- Contribuí com leitura de literatura científica, implementação de experimentos e avaliação quantitativa de alternativas de modelagem.
-- Participei da implementação e experimentação de modelos de deep learning para combinar informações de texto e imagem e investigar alternativas de representação.
-- Colaborei no desenvolvimento e na avaliação de embeddings, representações vetoriais e busca por similaridade para conteúdo educacional multimodal.
-- Colaborei na integração experimental de LLMs a pipelines de Machine Learning para extração estruturada de informação e enriquecimento de representações semânticas.
+P&D colaborativo em Machine Learning multimodal e representation learning para análise educacional, com experimentação de modelos e componentes baseados em LLMs.
+- Colaborei na investigação de hipóteses, implementação de baselines e análise quantitativa de experimentos, com apoio da literatura científica para orientar a modelagem.
+- Participei da implementação e avaliação de modelos de deep learning multimodal, comparando alternativas de representação e combinação de modalidades.
+- Colaborei no desenvolvimento e na avaliação de representações vetoriais e recuperação de informação, investigando embeddings e medidas de similaridade para texto e imagem.
+- Atuei na experimentação de componentes baseados em modelos de linguagem (LLMs), com foco em extração estruturada de informação e representação semântica.
 Consultoria autônoma · Instituição de ensino · 03/2026–presente
 Desenvolvedor Full Stack e Engenheiro de ML · Face Clock Evoluir
 v1.3.0-rc.3: candidata a piloto institucional acompanhado, implantada em ambiente de testes.
@@ -26,7 +26,7 @@ Auxílio Emergencial · Em desenvolvimento
 - Implementei ingestão em blocos com Pandas e PostgreSQL COPY. Profiling em recortes de até 5 milhões de linhas mostrou memória crescente; a correção por staging ainda não foi validada.
 Competências Técnicas
 Validação cruzada, calibração, ablação, métricas de classificação; C++, GA, ACO, Python/Pyomo.
-Python, PyTorch, scikit-learn; embeddings, busca vetorial, deep learning, integração de LLMs.
+Python, PyTorch, scikit-learn; deep learning multimodal, representation learning, embeddings, recuperação de informação, LLMs.
 FastAPI, PostgreSQL/pgvector, Docker, ONNX Runtime, Git, pytest; SQL, Pandas, NumPy.
 Formação Acadêmica
 Bacharelado em Ciência da Computação · Universidade Federal do Ceará (UFC), Quixadá

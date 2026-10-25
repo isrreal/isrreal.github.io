@@ -119,9 +119,8 @@ def main():
     profile = json.loads((ROOT/'data/profile.json').read_text())
     home = (ROOT/'index.html').read_text()
     t = profile['tieta']
-    public_copy = f'<p data-en="{escape(t["summary_en"], quote=True)}">{t["summary_pt"]}</p>\n<ul class="experience-list">\n'
-    public_copy += '\n'.join(f'<li data-en="{escape(en, quote=True)}">{pt}</li>' for pt,en in zip(t['bullets_pt'],t['bullets_en']))
-    public_copy += '\n</ul>'
+    # The home gets a short overview; the four detailed bullets belong in the CV.
+    public_copy = f'<p data-en="{escape(t["summary_en"], quote=True)}">{t["summary_pt"]}</p>'
     home = re.sub(r'(<!-- TIETA:START -->).*?(<!-- TIETA:END -->)', lambda m:m[1]+'\n'+public_copy+'\n    '+m[2],home,flags=re.S)
     generated[ROOT/'index.html'] = home
     if not args.check: (ROOT/'index.html').write_text(home)

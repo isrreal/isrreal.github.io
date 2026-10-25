@@ -50,3 +50,31 @@ Os comandos e limites de execução estão documentados no README. O checker de
 publicação verifica fronteiras editoriais, links de idioma, uma página por PDF,
 ordem dos parágrafos extraídos e aliases antigos. Ele não substitui revisão
 humana de NDA, autoria e currículo.
+
+## Revisão específica da experiência Tieta — 25/10/2026
+
+Foram conferidos também o relatório de atividades de autoria conjunta e o termo
+assinado fornecidos pelo autor. O relatório sustenta colaboração em representação,
+modelagem, baselines e avaliação, sem atribuição exclusiva das implementações.
+A documentação técnica sustenta competências em componentes de linguagem.
+Não foi encontrada liberação escrita específica entre os documentos fornecidos.
+Disponibilidade de evidência técnica não foi tratada como autorização de divulgação.
+
+As alterações desta revisão se limitam à descrição e competências da Tieta na
+home, aos resumos/skills/bullets dos cinco currículos, às versões inglesas e aos
+geradores/checks correspondentes. A home contém agora uma descrição curta; os
+quatro bullets detalhados ficam nos CVs. Não foram alterados os estudos de caso,
+imagens, estilos, cargos, datas ou resultados dos projetos públicos.
+
+O vínculo explícito entre saída de LLM e modelos posteriores foi retirado do novo
+bullet. Stack privada, estratégias arquiteturais, configurações, métricas e
+conclusões experimentais específicas permanecem fora dos artefatos públicos.
+Classificação editorial A não equivale a permissão contratual. A comparação
+completa antes/depois, referências por seção e o pedido de aprovação estão nos
+dois documentos privados ignorados pelo Git. Nenhum trecho do termo ou documento
+técnico, identificador pessoal ou assinatura foi copiado para os assets públicos.
+
+Regeneração dos cinco PDFs/TXT/TeX e aliases concluída. Testes unitários,
+consistência, links, metadados, extração ordenada dos PDFs, uma página por CV,
+geração/cache e whitespace verificados novamente nesta revisão. Não há
+lint/typecheck ou build de framework configurado. Nenhum push ou deploy foi feito.

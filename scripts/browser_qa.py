@@ -98,7 +98,7 @@ def main():
         plain = nojs.new_page()
         plain.goto(args.url+'/en/',wait_until='networkidle')
         assert 'research' in plain.locator('h1').inner_text()
-        assert 'experimental integration of LLMs' in plain.locator('#tieta').inner_text()
+        assert 'LLM-based components' in plain.locator('#tieta').inner_text()
         assert plain.locator('.language-toggle').get_attribute('href') == '/'
         assert plain.locator('a[href*="/en/projetos/face-clock-evoluir/tecnico.html"]').count() > 0
         browser.close()

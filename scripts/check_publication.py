@@ -46,8 +46,8 @@ def main():
     for lang, home in [('pt',ROOT/'index.html'),('en',ROOT/'en/index.html')]:
         tieta = BeautifulSoup(home.read_text(),'html.parser').select_one('#tieta')
         if sensitive.search(tieta.get_text()): failures.append(f'{home}: sensitive detail linked to Tieta')
-        for bullet in profile['tieta']['bullets_'+lang]:
-            if bullet not in tieta.get_text(): failures.append(f'{home}: canonical Tieta copy differs')
+        if profile['tieta']['summary_'+lang] not in tieta.get_text():
+            failures.append(f'{home}: canonical Tieta summary differs')
     for role,lang in VARIANTS:
         stem = ROOT/f'assets/israel-cv-{role}-{lang}'
         expected = paragraphs(role,lang)

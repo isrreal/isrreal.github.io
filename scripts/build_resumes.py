@@ -25,11 +25,11 @@ def paragraphs(role, lang):
             ('body', PROFILE['linkedin'] + ' | ' + PROFILE['github']),
             ('body', PROFILE['portfolio'] + ('en/' if not pt else ''))]
     summaries = {
-        ('ml', 'pt'): 'Bacharel em Ciência da Computação com atuação em P&D de ML multimodal, representações e integração experimental de LLMs. Desenvolvo sistemas com APIs, busca vetorial e avaliação de desempenho em CPU.',
-        ('ml', 'en'): 'Computer Science graduate working on multimodal ML research, representations, and experimental LLM integration. Builds ML systems with APIs, vector search, and measured CPU performance.',
-        ('ds', 'pt'): 'Bacharel em Ciência da Computação com experiência em P&D de Machine Learning, avaliação de modelos e experimentação. Combino pesquisa em otimização, análise quantitativa e implementação de sistemas para testar hipóteses.',
-        ('ds', 'en'): 'Computer Science graduate with applied ML research, model evaluation, and experimentation experience. Combines optimization research, quantitative analysis, and system implementation to investigate hypotheses.',
-        ('applied-ai', 'en'): 'Computer Science graduate contributing to multimodal ML research, semantic representations, and experimental LLM integration. Experience spans research software, model evaluation, and algorithmic optimization.'
+        ('ml', 'pt'): 'Bacharel em Ciência da Computação com atuação em P&D de Machine Learning, representações vetoriais e modelos multimodais. Experiência em avaliação experimental, componentes baseados em LLMs e sistemas com APIs e busca vetorial.',
+        ('ml', 'en'): 'Computer Science graduate working in machine learning R&D, vector representations, and multimodal modeling. Experience includes experimental evaluation, LLM-based components, and systems with APIs and vector search.',
+        ('ds', 'pt'): 'Bacharel em Ciência da Computação com experiência em P&D de Machine Learning multimodal, representação de dados e avaliação de modelos. Combino modelagem, experimentação quantitativa e implementação de sistemas para investigar hipóteses.',
+        ('ds', 'en'): 'Computer Science graduate with experience in multimodal machine learning R&D, data representations, and model evaluation. Combines modeling, quantitative experimentation, and system implementation to investigate hypotheses.',
+        ('applied-ai', 'en'): 'Computer Science graduate contributing to multimodal machine learning R&D, representation learning, and experiments with LLM-based components. Experience includes baseline implementation, quantitative evaluation, and research software.'
     }
     rows += [('section', 'Resumo Profissional' if pt else 'Professional Summary'), ('body', summaries[(role, lang)]),
              ('section', 'Experiência Profissional' if pt else 'Professional Experience'),

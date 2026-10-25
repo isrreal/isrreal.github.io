@@ -5,15 +5,15 @@ israel.souza.dev@gmail.com | +55 85 98433-2790
 https://www.linkedin.com/in/isrreal/ | https://github.com/isrreal
 https://israelsouza.speculummaius.com.br/en/
 Professional Summary
-Computer Science graduate with applied ML research, model evaluation, and experimentation experience. Combines optimization research, quantitative analysis, and system implementation to investigate hypotheses.
+Computer Science graduate with experience in multimodal machine learning R&D, data representations, and model evaluation. Combines modeling, quantitative experimentation, and system implementation to investigate hypotheses.
 Professional Experience
 Tieta.ai · Machine Learning R&D · Remote
 R&D Researcher: Jul 2026–present | ML Researcher, CNPq RHAE Fellow (part-time): Apr 2025–Jun 2026
-Applied R&D in multimodal machine learning and representation systems for educational analysis.
-- Supported applied research through scientific literature review, experiment implementation, and quantitative evaluation of modeling alternatives.
-- Collaborated on deep learning implementations and experiments combining text and image information and investigating representation alternatives.
-- Contributed to developing and evaluating embeddings, vector representations, and similarity search for multimodal educational content.
-- Contributed to experimental integration of LLMs into machine learning pipelines for structured information extraction and semantic representation enrichment.
+Collaborative R&D in multimodal machine learning and representation learning for educational analysis, including model experimentation and LLM-based components.
+- Collaborated on hypothesis testing, baseline implementation, and quantitative experiment analysis, using scientific literature to inform modeling decisions.
+- Collaborated on implementing and evaluating multimodal deep learning models, comparing representation and modality-combination approaches.
+- Contributed to developing and evaluating vector representations and information retrieval, investigating embeddings and similarity measures for text and images.
+- Contributed to experiments with large language model (LLM) components for structured information extraction and semantic representation.
 Independent consulting · Educational institution · Mar 2026–present
 Full Stack Developer and ML Engineer · Face Clock Evoluir
 v1.3.0-rc.3: supervised institutional pilot candidate deployed to a test environment.
@@ -26,7 +26,7 @@ Brazilian Emergency Aid · In development
 - Implemented chunked Pandas and PostgreSQL COPY ingestion. Profiling on subsets up to 5 million rows exposed growing memory use; the staging-based fix remains unvalidated.
 Technical Skills
 Cross-validation, calibration, ablation, classification metrics; C++, GA, ACO, Python/Pyomo.
-Python, PyTorch, scikit-learn; embeddings, vector search, deep learning, LLM integration.
+Python, PyTorch, scikit-learn; multimodal deep learning, representation learning, embeddings, information retrieval, LLMs.
 FastAPI, PostgreSQL/pgvector, Docker, ONNX Runtime, Git, pytest; SQL, Pandas, NumPy.
 Education
 B.Sc. in Computer Science · Federal University of Ceará (UFC), Quixadá, Brazil
