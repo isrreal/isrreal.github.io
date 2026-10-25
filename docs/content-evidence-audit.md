@@ -14,7 +14,7 @@ página neste ambiente; nenhum outro site pessoal foi utilizado como fonte.
 | Busca por similaridade | Declaração do autor; PDF documenta similaridade em representações | Sem inferir FAISS ou arquitetura de retrieval a partir do PDF |
 | Literatura, implementação experimental e avaliação quantitativa | Declaração do autor; PDF cap. 13 e apêndice A documenta infraestrutura | Sem ganho, métrica ou conclusão experimental específica |
 | Contribuição colaborativa na Tieta | Pedido explicita colaboração; PDF não individualiza autoria | “Colaborei”, “participei”, “contribuí”; nenhum “liderei” |
-| Dois cargos na Tieta, bolsa CNPq RHAE e período parcial da etapa anterior | CVs anteriores e home do checkout inicial | Datas 04/2025–06/2026 e 07/2026–presente preservadas; bullets relativos ao conjunto da experiência |
+| Dois cargos na Tieta, bolsa CNPq RHAE e período parcial da etapa anterior | CVs anteriores e home do checkout inicial | Datas preservadas; quatro bullets atribuídos à bolsa de 04/2025–06/2026, com cabeçalho separado para o cargo atual |
 | Face Clock para instituição de ensino, 1:N, FastAPI, PostgreSQL/pgvector, CPU-only | Estudo de caso e página técnica existentes, `#problema`, `#reconhecimento`, `#entrega` | Hero, arquitetura HTML acessível e CVs |
 | YuNet + SFace via OpenCV DNN; triagem separada ONNX Runtime + OCR | Estudo de caso `#como-funciona`; técnico `#isolamento`, `#entrega` | Diagrama separa reconhecimento e triagem documental |
 | Ambiente de testes e candidata a piloto v1.3.0-rc.3 | Home, páginas Face Clock, CV anterior e `data/facts.yaml` | Sem alegar produção ou piloto já aprovado |
@@ -51,30 +51,28 @@ publicação verifica fronteiras editoriais, links de idioma, uma página por PD
 ordem dos parágrafos extraídos e aliases antigos. Ele não substitui revisão
 humana de NDA, autoria e currículo.
 
-## Revisão específica da experiência Tieta — 25/10/2026
+## Revisão substantiva da Tieta — 25/10/2026
 
-Foram conferidos também o relatório de atividades de autoria conjunta e o termo
-assinado fornecidos pelo autor. O relatório sustenta colaboração em representação,
-modelagem, baselines e avaliação, sem atribuição exclusiva das implementações.
-A documentação técnica sustenta competências em componentes de linguagem.
-Não foi encontrada liberação escrita específica entre os documentos fornecidos.
-Disponibilidade de evidência técnica não foi tratada como autorização de divulgação.
+A home do domínio autorizado e o PDF vinculado foram consultados para registrar
+o antes real: correspondiam ao último commit local. A nova redação explicita
+embeddings/busca vetorial, representações de texto/imagem, deep learning
+multitarefa, LLMs/DSPy e avaliação por métricas e baselines. Os quatro bullets são
+atribuídos ao cargo/bolsa de 04/2025–06/2026; o cargo atual tem cabeçalho separado.
 
-As alterações desta revisão se limitam à descrição e competências da Tieta na
-home, aos resumos/skills/bullets dos cinco currículos, às versões inglesas e aos
-geradores/checks correspondentes. A home contém agora uma descrição curta; os
-quatro bullets detalhados ficam nos CVs. Não foram alterados os estudos de caso,
-imagens, estilos, cargos, datas ou resultados dos projetos públicos.
+Relatório de atividades §1–3 e documentação técnica cap. 3–8 sustentam os métodos
+gerais de representação e modelagem; §3.5 da documentação sustenta DSPy; relatório
+§3–5 e documentação §13.9 sustentam avaliação. Retrieval e literatura contam também
+com declaração do autor. A autoria do relatório é conjunta. Não se inferiu autoria
+exclusiva, ganho consolidado, operação em produção ou liberação contratual.
 
-O vínculo explícito entre saída de LLM e modelos posteriores foi retirado do novo
-bullet. Stack privada, estratégias arquiteturais, configurações, métricas e
-conclusões experimentais específicas permanecem fora dos artefatos públicos.
-Classificação editorial A não equivale a permissão contratual. A comparação
-completa antes/depois, referências por seção e o pedido de aprovação estão nos
-dois documentos privados ignorados pelo Git. Nenhum trecho do termo ou documento
-técnico, identificador pessoal ou assinatura foi copiado para os assets públicos.
+Nomes gerais de métodos e DSPy entram como descrição de contribuição, sem expor
+configuração, topologia, dados, prompts, outputs, alvos internos ou resultados.
+As cláusulas 4.1–4.2 do termo não foram tratadas como autorização. Nenhuma liberação
+escrita foi apresentada. A revisão e o pedido de confirmação dos textos exatos
+permanecem nos dois documentos privados ignorados pelo Git. Não se concluiu
+juridicamente que um texto abstrato está liberado.
 
-Regeneração dos cinco PDFs/TXT/TeX e aliases concluída. Testes unitários,
-consistência, links, metadados, extração ordenada dos PDFs, uma página por CV,
-geração/cache e whitespace verificados novamente nesta revisão. Não há
-lint/typecheck ou build de framework configurado. Nenhum push ou deploy foi feito.
+Nenhum estudo de caso, imagem, CSS, estrutura visual, cargo ou data foi alterado.
+Apenas home/competências da Tieta, resumos/bullets/skills dos cinco CVs, versões
+inglesas e os geradores/checks correspondentes foram atualizados. Não houve
+commit, push, deploy ou envio de mensagem à empresa nesta revisão.
