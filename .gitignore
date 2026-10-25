@@ -15,3 +15,7 @@ assets/*.out
 
 # Local companion repository; its commits are kept separate from this portfolio.
 .related/
+
+# Human review only: never include NDA review drafts in the public repository.
+docs/tieta-public-disclosure-review.md
+docs/tieta-disclosure-request.md

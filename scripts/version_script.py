@@ -21,7 +21,7 @@ def main():
         if code == 'en' and pdf != (root / 'assets/israel_cv_en.pdf').read_bytes():
             raise SystemExit(f'As duas cópias do PDF {language} devem ser idênticas')
         resume_urls[code] = f'{path}?v={hashlib.sha256(pdf).hexdigest()[:12]}'
-    pages = [root / 'index.html', root / '404.html', *sorted((root / 'projetos').rglob('*.html'))]
+    pages = [root / 'index.html', root / '404.html', *sorted((root / 'projetos').rglob('*.html')), *sorted((root / 'en').rglob('*.html'))]
     pattern = re.compile(r'(src="(?:(?:\.\./)+|/)?script\.js)(?:\?v=[a-f0-9]+)?(")')
     styles_pattern = re.compile(r'(href="[^"]*styles\.css)(?:\?v=[a-f0-9]+)?(")')
     outdated = []
@@ -39,9 +39,15 @@ def main():
             for code, url in resume_urls.items():
                 attribute = f'data-resume-pdf-{code}'
                 updated = re.sub(rf'\s{attribute}="[^"]*"', '', updated)
-                updated = updated.replace('data-page="home"', f'data-page="home" {attribute}="{url}"', 1)
+                updated = updated.replace('data-page="home"', f'data-page="home" {attribute}="/{url}"', 1)
             updated = re.sub(r'href="assets/(?:israel_cv_pt|israel-cv-portugues)\.pdf(?:\?v=[a-f0-9]+)?"',
                              lambda _: f'href="{resume_urls["pt"]}"', updated)
+        # Version every résumé variant, including the generated English pages.
+        def version_pdf(match):
+            path = root / match[1].lstrip('/')
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()[:12]
+            return f'href="{match[1]}?v={digest}"'
+        updated = re.sub(r'href="(/?assets/israel[^"?]+\.pdf)(?:\?v=[a-f0-9]+)?"', version_pdf, updated)
         if updated != content:
             outdated.append(str(page.relative_to(root)))
             if not args.check:

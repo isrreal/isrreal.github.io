@@ -1,52 +1,34 @@
 Israel Souza Ferreira
-Machine Learning Engineer | Data Scientist
-Fortaleza, Brazil --- Remote
-Email: israel.souza.dev@gmail.com | Phone: +55 85 98433-2790
-LinkedIn: https://www.linkedin.com/in/isrreal/ | GitHub: https://github.com/isrreal
-Portfolio: https://israelsouza.speculummaius.com.br/
-
+Machine Learning Engineer / Applied ML
+Fortaleza, Brazil · Remote
+israel.souza.dev@gmail.com | +55 85 98433-2790
+https://www.linkedin.com/in/isrreal/ | https://github.com/isrreal
+https://israelsouza.speculummaius.com.br/en/
 Professional Summary
-Computer Science graduate building ML systems and evaluating models. Work spans computer vision, data ingestion,
-and graph optimization, with measured performance and documented limitations.
-
-Education
-Bachelor of Science in Computer Science
-Federal University of Ceará (UFC) --- Quixadá Campus, Brazil
-2021 -- August 2026; completed August 19, 2026.
-Thesis in graph optimization with GA, ACO, and integer linear programming; defended February 2025.
-
-Technical Skills
-Programming and data: Python, SQL, C++, Pandas, NumPy, PostgreSQL/pgvector.
-ML and evaluation: scikit-learn, PyTorch, OpenCV, ONNX Runtime, cross-validation, calibration.
-Engineering: FastAPI, Docker, GitHub Actions, pytest, SQLAlchemy, Alembic.
-
+Computer Science graduate working on multimodal ML research, representations, and experimental LLM integration. Builds ML systems with APIs, vector search, and measured CPU performance.
 Professional Experience
-Research and Development (R&D) Researcher
-Tieta.ai --- Remote, Brazil | July 2026 -- Present
-• Develop and maintain research software with validation, automated tests, and versioned documentation.
-Full Stack Developer and Machine Learning Engineer
-Independent consulting for an educational institution --- Remote, Brazil | March 2026 -- Present
-Face Clock Evoluir: v1.3.0-rc.3 is a supervised institutional pilot candidate deployed to a test environment.
-• Built 1:N facial recognition, FastAPI APIs, and PostgreSQL/pgvector persistence; recalibration reduced unknown
-people accepted from 45.4% to 0.2% in a controlled test, with institutional calibration still pending.
-• Used benchmarks to reduce frames and retain exact search (0.076 ms/1,000 vectors; tested HNSW recall@1 0.915);
-fixed extraction failures under concurrency.
-• Implemented a seven-step institutional setup, audit trail, and HR workflows; prepared three release candidates and
-deployed to a test environment.
-Machine Learning Researcher
-Tieta.ai --- Remote, Brazil | April 2025 -- June 2026
-• As a part-time CNPq RHAE fellow, developed and evaluated applied ML solutions with reproducible experiments.
-UFC teaching assistant: Algorithm Design and Analysis (March--November 2023) and Calculus (April--July 2022).
-
-Selected Projects
-Triple Roman Domination in Graphs --- Undergraduate Thesis | 2024--2025
-• Implemented GA and ACO in C++ and an ILP model in Python/Pyomo; a counterexample exposed an invalid
-published formulation. Evaluated 362 graphs, one run per instance.
-Code: https://github.com/isrreal/Triple-Roman-Domination-in-graphs
-Brazilian Emergency Aid --- Data Engineering | In development
-• Built chunked Pandas and PostgreSQL binary COPY ingestion for a 31.6 GB public source. On subsets up to 5 million
-rows, post-cleanup RSS grew from 182 to 750 MiB; retained IDs correlated at r 0.991, without proving causality.
-Code: https://github.com/isrreal/AuxilioEmergencialQueries
-
+Tieta.ai · Machine Learning R&D · Remote
+R&D Researcher: Jul 2026–present | ML Researcher, CNPq RHAE Fellow (part-time): Apr 2025–Jun 2026
+Applied R&D in multimodal machine learning and representation systems for educational analysis.
+- Contributed to developing and evaluating embeddings, vector representations, and similarity search for multimodal educational content.
+- Collaborated on deep learning implementations and experiments combining text and image information and investigating representation alternatives.
+- Contributed to experimental integration of LLMs into machine learning pipelines for structured information extraction and semantic representation enrichment.
+- Supported applied research through scientific literature review, experiment implementation, and quantitative evaluation of modeling alternatives.
+Independent consulting · Educational institution · Mar 2026–present
+Full Stack Developer and ML Engineer · Face Clock Evoluir
+v1.3.0-rc.3: supervised institutional pilot candidate deployed to a test environment.
+- Built 1:N facial identification, FastAPI APIs, and PostgreSQL/pgvector persistence for a CPU-only server; fixed concurrent extraction failures.
+- Recalibrated the facial threshold: unknown-person acceptance fell from 45.4% to 0.2% in a controlled test. Calibration on the institution’s population remains pending.
+- Used benchmarks to retain exact search and reduce frames; migrated document-classifier inference to ONNX Runtime with decision-parity checks on the held-out test.
+Research and Projects
+Triple Roman Domination in Graphs · Undergraduate thesis · 2024–2025
+- Identified a counterexample to a published ILP formulation; implemented a corrected model, GA, and ACO (C++, Python/Pyomo). Evaluated 362 graphs; one run per instance limits conclusions.
+Technical Skills
+Python, PyTorch, scikit-learn; embeddings, vector search, deep learning, LLM integration.
+FastAPI, PostgreSQL/pgvector, Docker, ONNX Runtime, Git, pytest; SQL, Pandas, NumPy.
+Cross-validation, calibration, ablation, classification metrics; C++, GA, ACO, Python/Pyomo.
+Education
+B.Sc. in Computer Science · Federal University of Ceará (UFC), Quixadá, Brazil
+2021–19 Aug 2026 · Thesis defended in Feb 2025.
 Languages
-Portuguese: native. English: good communication; fluent technical reading of research papers and documentation.
+Native Portuguese. English: good communication; fluent technical reading of papers and documentation.

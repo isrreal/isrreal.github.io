@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-theme="dark" data-page="face-clock">
+<html lang="pt-BR" data-theme="dark" data-static-language="pt" data-page="face-clock">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,13 +20,16 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <title>Face Clock Evoluir | Israel Souza Ferreira</title>
+  <link rel="alternate" hreflang="pt-BR" href="https://israelsouza.speculummaius.com.br/projetos/face-clock-evoluir/">
+  <link rel="alternate" hreflang="en" href="https://israelsouza.speculummaius.com.br/en/projetos/face-clock-evoluir/">
+  <link rel="alternate" hreflang="x-default" href="https://israelsouza.speculummaius.com.br/projetos/face-clock-evoluir/">
   <link rel="canonical" href="https://israelsouza.speculummaius.com.br/projetos/face-clock-evoluir/">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="../../styles.css?v=d4760f4f4008">
-  <script defer data-domain="israelsouza.speculummaius.com.br" src="https://plausible.io/js/script.js"></script>
-  <script src="../../script.js?v=297e9eaa0a9b" defer></script>
+  <link rel="stylesheet" href="../../styles.css?v=0ec6e9a37761">
+  <script defer data-domain="israelsouza.speculummaius.com.br" src="https://plausible.io/js/script.tagged-events.js"></script>
+  <script src="../../script.js?v=5c9b13380dd7" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -49,11 +52,11 @@
         <a href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Repositório público</a>
       </div>
       <div class="nav-actions">
-        <button class="language-toggle" type="button" aria-label="Mudar para inglês" title="Mudar para inglês">
+        <a class="language-toggle" href="/en/projetos/face-clock-evoluir/" hreflang="en" lang="en" aria-label="Mudar para inglês" title="Mudar para inglês">
           <span class="language-label" aria-hidden="true">Idioma</span>
           <span class="language-code" aria-hidden="true">EN</span>
           <span class="language-arrow" aria-hidden="true">↔</span>
-        </button>
+        </a>
         <button class="theme-toggle" type="button" aria-label="Alternar tema" title="Alternar tema">
           <span class="theme-icon" aria-hidden="true">☀</span>
         </button>
@@ -68,7 +71,7 @@
     <div class="case-brand"><img class="case-logo" src="../../assets/face-clock-evoluir-logo.png" alt="" width="80" height="80">
     <h1 class="case-title">Face Clock Evoluir</h1>
     </div>
-    <p class="hero-description" data-en="Facial-attendance system for an educational institution, deployed to a test environment. The delivery is a supervised institutional pilot candidate.">Sistema de jornada com biometria facial para uma instituição de ensino, implantado em ambiente de testes. A entrega é candidata a piloto institucional acompanhado.</p>
+    <p class="hero-description" data-en="Built for an educational institution: 1:N facial identification, a FastAPI backend, and PostgreSQL/pgvector on CPU-only hardware. Deployed to a test environment; a supervised institutional pilot candidate. Institutional calibration and operational approval remain pending.">Sistema para instituição de ensino: identificação facial 1:N, backend FastAPI e PostgreSQL/pgvector em servidor CPU-only. Implantado em ambiente de testes; candidata a piloto institucional acompanhado. Calibração institucional e aprovação operacional pendentes.</p>
     <div class="hero-actions"><a href="#pronto-para-piloto" class="button button-primary"  data-en="See what is pilot-ready">Ver o que está pronto para o piloto</a><a href="tecnico.html" class="button button-secondary"  data-en="Inspect the experiments">Examinar os experimentos</a>
     </div>
     </div>
@@ -85,6 +88,16 @@
     <div class="container narrow">
     <p class="section-kicker" data-en="Solution">Solução</p>
     <h2 data-en="From capture to an auditable record.">Da captura ao registro auditável.</h2>
+<figure class="architecture" id="arquitetura">
+<figcaption data-en="Documented architecture · CPU-only target">Arquitetura documentada · servidor CPU-only</figcaption>
+<ol class="architecture-flow">
+<li><strong data-en="Kiosk / PWA">Totem / PWA</strong><span data-en="Camera capture">Captura da câmera</span></li>
+<li><strong>FastAPI</strong><span data-en="Authentication, attendance, HR">Autenticação, jornada, RH</span></li>
+<li><strong>OpenCV DNN</strong><span data-en="YuNet + SFace · 1:N identification">YuNet + SFace · identificação 1:N</span></li>
+<li><strong>PostgreSQL / pgvector</strong><span data-en="Embeddings, exact search, records">Embeddings, busca exata, registros</span></li>
+</ol>
+<p data-en="Document triage runs in a separate service: ONNX Runtime classifier and OCR. It is distinct from the facial-recognition path.">Triagem documental em serviço separado: classificador ONNX Runtime e OCR. É um fluxo distinto do reconhecimento facial.</p>
+</figure>
     <ol class="system-flow flow-three">
     <li class="flow-step"><span class="flow-index">01</span><strong  data-en="Capture">Capturar</strong>
     <p data-en="The kiosk guides the employee through the camera and recovery states.">O totem orienta o funcionário durante captura e falhas.</p></li>
@@ -98,25 +111,17 @@
     <section class="section section-alt" id="pronto-para-piloto">
     <div class="container narrow">
     <p class="section-kicker" data-en="Engineering decisions">Decisões de engenharia</p>
-    <h2 data-en="Benchmarks changed the implementation.">Benchmarks mudaram a implementação.</h2>
+    <h2 data-en="Measured engineering decisions">Decisões de engenharia medidas</h2>
+<p data-en="Problem → Measurement → Decision → Limitation. Each link opens its protocol.">Problema → Medição → Decisão → Limitação. Cada link abre seu protocolo.</p>
     <div class="decision-grid">
-    <article class="decision-card">
-    <h3 data-en="Recalibrated the threshold">Recalibrei o limiar</h3>
-    <p data-en="Unknown people accepted fell from 45.4% to 0.2% in a controlled test; rejection of enrolled users still needs measurement at the institution.">Desconhecidos aceitos caíram de 45,4% para 0,2% em teste controlado; ainda é preciso medir rejeições de cadastrados na instituição.</p>
-    </article>
-    <article class="decision-card">
-    <h3 data-en="Reduced frames after measurement">Reduzi frames após medição</h3>
-    <p data-en="The benchmark showed that processing more frames increased latency; the kiosk uses the measured configuration.">O benchmark mostrou que processar mais frames aumentava a latência; o totem usa a configuração medida.</p>
-    </article>
-    <article class="decision-card">
-    <h3 data-en="Kept exact search">Mantive a busca exata</h3>
-    <p data-en="At 1,000 vectors, exact search took 0.076 ms; the tested HNSW variant gained little time with recall@1 of 0.915. I kept transactional pgvector.">Em 1.000 vetores, a busca exata levou 0,076 ms; o HNSW testado ganhou pouco tempo com recall@1 de 0,915. Mantive pgvector transacional.</p>
-    </article>
-    <article class="decision-card">
-    <h3 data-en="Fixed a race condition">Corrigi uma condição de corrida</h3>
-    <p data-en="Concurrent recognition caused extraction failures because the detector and recognizer shared state. I serialized access and added a regression test with eight threads.">Reconhecimentos simultâneos falhavam porque detector e reconhecedor compartilhavam estado. Serializei o acesso e adicionei regressão com oito threads.</p>
-    </article>
-    </div>
+<article class="decision-card"><h3  data-en="Threshold for 1:N identification">Limiar para identificação 1:N</h3><p  data-en="Inherited 1:1 threshold → 45.4% unknown-person acceptance; at 0.50, 0.2% → recalibrate → enrolled-user rejection and gallery effects need institutional measurement.">Limiar herdado de 1:1 → 45,4% de desconhecidos aceitos; em 0,50, 0,2% → recalibrar → medir rejeições e efeito da galeria na instituição.</p><a class="text-link" href="tecnico.html#reconhecimento-limiar" data-en="See measurement and limit →">Ver medição e limite →</a></article>
+<article class="decision-card"><h3  data-en="Exact or approximate search">Busca exata ou aproximada</h3><p  data-en="1,000 vectors → exact search 0.076 ms; HNSW 0.04 ms, recall@1 0.915 → keep exact pgvector search → the trial does not establish larger-scale performance.">1.000 vetores → busca exata 0,076 ms; HNSW 0,04 ms e recall@1 0,915 → manter pgvector exato → ensaio não comprova escala maior.</p><a class="text-link" href="tecnico.html#reconhecimento-faiss" data-en="See measurement and limit →">Ver medição e limite →</a></article>
+<article class="decision-card"><h3  data-en="Concurrent extraction">Concorrência na extração</h3><p  data-en="Shared state → two concurrent attendance attempts caused 6/6 failures → serialize access and test eight threads → capacity still depends on server hardware.">Estado compartilhado → duas batidas simultâneas causavam 6/6 falhas → serializar acesso e testar oito threads → capacidade continua dependente do servidor.</p><a class="text-link" href="tecnico.html#reconhecimento-concorrencia" data-en="See measurement and limit →">Ver medição e limite →</a></article>
+<article class="decision-card"><h3  data-en="CPU latency">Latência em CPU</h3><p  data-en="Three-frame burst → p95 of 74 ms with one identification and 1.87 s with twenty → size concurrency → controlled benchmark, without institutional operational validation.">Rajada de três frames → p95 de 74 ms com uma identificação e 1,87 s com vinte → dimensionar concorrência → benchmark controlado, sem validação operacional na instituição.</p><a class="text-link" href="tecnico.html#reconhecimento" data-en="See measurement and limit →">Ver medição e limite →</a></article>
+<article class="decision-card"><h3  data-en="Runtime and image size">Runtime e tamanho das imagens</h3><p  data-en="Heavy inference image → historical change from 8.1 GB to 433 MB, with no changed test decisions → ONNX Runtime → disk, RAM, and multi-stage gains are separate measurements.">Imagem de inferência pesada → 8,1 GB para 433 MB no histórico, sem mudança de decisões no teste → ONNX Runtime → disco, RAM e ganhos de multi-stage são medições distintas.</p><a class="text-link" href="tecnico.html#entrega" data-en="See measurement and limit →">Ver medição e limite →</a></article>
+<article class="decision-card"><h3  data-en="Model lineage">Rastreabilidade de modelos</h3><p  data-en="Mismatched packaged artifact → checkpoint and ONNX audit → checksums and lineage verified at release → separate from the classifier benchmark.">Artefato empacotado divergente → auditoria do checkpoint e ONNX → checksums e vínculo verificado no release → auditoria distinta do benchmark de classificação.</p><a class="text-link" href="tecnico.html#procedencia" data-en="See measurement and limit →">Ver medição e limite →</a></article>
+<article class="decision-card"><h3  data-en="Inference isolation">Isolamento de inferência</h3><p  data-en="OCR dominates processing → 909 ms versus 14 ms for the network → separate triage service → environment-specific cost, without a throughput claim.">OCR domina o processamento → 909 ms contra 14 ms da rede → triagem em serviço separado → custo medido nesse ambiente, sem promessa de throughput.</p><a class="text-link" href="tecnico.html#isolamento" data-en="See measurement and limit →">Ver medição e limite →</a></article>
+</div>
     <p class="interpretation" data-en="The CPU-only target and the delivered package were tested separately from model metrics; see the technical protocols.">O servidor apenas com CPU e o pacote entregue foram testados separadamente das métricas do modelo; veja os protocolos técnicos.</p>
     </div>
     </section>

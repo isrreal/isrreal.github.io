@@ -1,0 +1,34 @@
+Israel Souza Ferreira
+Applied AI / Research Engineer
+Fortaleza, Brazil · Remote
+israel.souza.dev@gmail.com | +55 85 98433-2790
+https://www.linkedin.com/in/isrreal/ | https://github.com/isrreal
+https://israelsouza.speculummaius.com.br/en/
+Professional Summary
+Computer Science graduate contributing to multimodal ML research, semantic representations, and experimental LLM integration. Experience spans research software, model evaluation, and algorithmic optimization.
+Professional Experience
+Tieta.ai · Machine Learning R&D · Remote
+R&D Researcher: Jul 2026–present | ML Researcher, CNPq RHAE Fellow (part-time): Apr 2025–Jun 2026
+Applied R&D in multimodal machine learning and representation systems for educational analysis.
+- Collaborated on deep learning implementations and experiments combining text and image information and investigating representation alternatives.
+- Contributed to developing and evaluating embeddings, vector representations, and similarity search for multimodal educational content.
+- Contributed to experimental integration of LLMs into machine learning pipelines for structured information extraction and semantic representation enrichment.
+- Supported applied research through scientific literature review, experiment implementation, and quantitative evaluation of modeling alternatives.
+Independent consulting · Educational institution · Mar 2026–present
+Full Stack Developer and ML Engineer · Face Clock Evoluir
+v1.3.0-rc.3: supervised institutional pilot candidate deployed to a test environment.
+- Built 1:N facial identification, FastAPI APIs, and PostgreSQL/pgvector persistence for a CPU-only server; fixed concurrent extraction failures.
+- Recalibrated the facial threshold: unknown-person acceptance fell from 45.4% to 0.2% in a controlled test. Calibration on the institution’s population remains pending.
+- Used benchmarks to retain exact search and reduce frames; migrated document-classifier inference to ONNX Runtime with decision-parity checks on the held-out test.
+Research and Projects
+Triple Roman Domination in Graphs · Undergraduate thesis · 2024–2025
+- Identified a counterexample to a published ILP formulation; implemented a corrected model, GA, and ACO (C++, Python/Pyomo). Evaluated 362 graphs; one run per instance limits conclusions.
+Technical Skills
+Python, PyTorch, scikit-learn; embeddings, vector search, deep learning, LLM integration.
+FastAPI, PostgreSQL/pgvector, Docker, ONNX Runtime, Git, pytest; SQL, Pandas, NumPy.
+Cross-validation, calibration, ablation, classification metrics; C++, GA, ACO, Python/Pyomo.
+Education
+B.Sc. in Computer Science · Federal University of Ceará (UFC), Quixadá, Brazil
+2021–19 Aug 2026 · Thesis defended in Feb 2025.
+Languages
+Native Portuguese. English: good communication; fluent technical reading of papers and documentation.

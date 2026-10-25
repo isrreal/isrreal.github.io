@@ -1,88 +1,45 @@
 \documentclass[a4paper,10pt]{article}
-\usepackage[a4paper,margin=1.25cm]{geometry}
+\usepackage[margin=1.2cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage[english]{babel}
-\usepackage{enumitem}
-\usepackage{hyperref}
-\usepackage{microtype}
-\DisableLigatures{encoding=*,family=*}
-\ifdefined\pdfgentounicode
-  \input{glyphtounicode}
-  \pdfgentounicode=1
-\fi
-\hypersetup{hidelinks,pdftitle={Israel Souza Ferreira - Resume},pdfauthor={Israel Souza Ferreira}}
-\urlstyle{same}
+\usepackage[hidelinks]{hyperref}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1pt}
-\raggedright
-\setlist[itemize]{leftmargin=1.3em,itemsep=0pt,topsep=1pt,parsep=0pt}
-\makeatletter
-\renewcommand\section{\@startsection{section}{1}{0pt}{7pt}{3pt}{\normalfont\large\bfseries}}
-\makeatother
-\newcommand{\entry}[4]{\vspace{2pt}\textbf{#1}\par #2 --- #3 | #4\par}
+\setlength{\parskip}{2pt}
 \begin{document}
-{\LARGE\textbf{Israel Souza Ferreira}}\par
-\textbf{Machine Learning Engineer | Data Scientist}\par
-Fortaleza, Brazil --- Remote\par
-Email: \href{mailto:israel.souza.dev@gmail.com}{israel.souza.dev@gmail.com} | Phone: +55 85 98433-2790\par
-LinkedIn: \url{https://www.linkedin.com/in/isrreal/} | GitHub: \url{https://github.com/isrreal}\par
-Portfolio: \url{https://israelsouza.speculummaius.com.br/}\par
-
-\section*{Professional Summary}
-Computer Science graduate building ML systems and evaluating models. Work spans computer vision,
-data ingestion, and graph optimization, with measured performance and documented limitations.
-
-\section*{Education}
-\textbf{Bachelor of Science in Computer Science}\par
-Federal University of Ceará (UFC) --- Quixadá Campus, Brazil\par
-2021 -- August 2026; completed August 19, 2026.\par
-Thesis in graph optimization with GA, ACO, and integer linear programming; defended February 2025.
-
-\section*{Technical Skills}
-\textbf{Programming and data:} Python, SQL, C++, Pandas, NumPy, PostgreSQL/pgvector.\par
-\textbf{ML and evaluation:} scikit-learn, PyTorch, OpenCV, ONNX Runtime, cross-validation, calibration.\par
-\textbf{Engineering:} FastAPI, Docker, GitHub Actions, pytest, SQLAlchemy, Alembic.
-
-\section*{Professional Experience}
-\entry{Research and Development (R\&D) Researcher}
-{Tieta.ai}{Remote, Brazil}{July 2026 -- Present}
-\begin{itemize}
-\item Develop and maintain research software with validation, automated tests, and versioned documentation.
-\end{itemize}
-
-\entry{Full Stack Developer and Machine Learning Engineer}
-{Independent consulting for an educational institution}{Remote, Brazil}{March 2026 -- Present}
-Face Clock Evoluir: v1.3.0-rc.3 is a supervised institutional pilot candidate deployed to a test environment.
-\begin{itemize}
-\item Built 1:N facial recognition, FastAPI APIs, and PostgreSQL/pgvector persistence; recalibration reduced unknown people accepted from 45.4\% to 0.2\% in a controlled test, with institutional calibration still pending.
-\item Used benchmarks to reduce frames and retain exact search (0.076 ms/1,000 vectors; tested HNSW recall@1 0.915); fixed extraction failures under concurrency.
-\item Implemented a seven-step institutional setup, audit trail, and HR workflows; prepared three release candidates and deployed to a test environment.
-\end{itemize}
-
-\entry{Machine Learning Researcher}
-{Tieta.ai}{Remote, Brazil}{April 2025 -- June 2026}
-\begin{itemize}
-\item As a part-time CNPq RHAE fellow, developed and evaluated applied ML solutions with reproducible experiments.
-\end{itemize}
-
-\textbf{UFC teaching assistant:} Algorithm Design and Analysis (March--November 2023) and Calculus (April--July 2022).
-
-\section*{Selected Projects}
-\textbf{Triple Roman Domination in Graphs --- Undergraduate Thesis | 2024--2025}\par
-\begin{itemize}
-\item Implemented GA and ACO in C++ and an ILP model in Python/Pyomo; a counterexample exposed an invalid published formulation. Evaluated 362 graphs, one run per instance.
-\end{itemize}
-Code: \url{https://github.com/isrreal/Triple-Roman-Domination-in-graphs}\par
-
-\textbf{Brazilian Emergency Aid --- Data Engineering | In development}\par
-\begin{itemize}
-\item Built chunked Pandas and PostgreSQL binary COPY ingestion for a 31.6 GB public source. On subsets up to 5 million rows, post-cleanup RSS grew from 182 to 750 MiB; retained IDs correlated at r~0.991, without proving causality.
-\end{itemize}
-Code: \url{https://github.com/isrreal/AuxilioEmergencialQueries}
-
-\section*{Languages}
-Portuguese: native. English: good communication; fluent technical reading of research papers and documentation.
+\textbf{Israel Souza Ferreira}\par
+\textbf{Machine Learning Engineer / Applied ML}\par
+Fortaleza, Brazil · Remote\par
+israel.souza.dev@gmail.com | +55 85 98433-2790\par
+https://www.linkedin.com/in/isrreal/ | https://github.com/isrreal\par
+https://israelsouza.speculummaius.com.br/en/\par
+\vspace{5pt}\textbf{Professional Summary}\par
+Computer Science graduate working on multimodal ML research, representations, and experimental LLM integration. Builds ML systems with APIs, vector search, and measured CPU performance.\par
+\vspace{5pt}\textbf{Professional Experience}\par
+\textbf{Tieta.ai · Machine Learning R\&D · Remote}\par
+R\&D Researcher: Jul 2026–present | ML Researcher, CNPq RHAE Fellow (part-time): Apr 2025–Jun 2026\par
+Applied R\&D in multimodal machine learning and representation systems for educational analysis.\par
+\hangindent=1em\textbullet\ Contributed to developing and evaluating embeddings, vector representations, and similarity search for multimodal educational content.\par
+\hangindent=1em\textbullet\ Collaborated on deep learning implementations and experiments combining text and image information and investigating representation alternatives.\par
+\hangindent=1em\textbullet\ Contributed to experimental integration of LLMs into machine learning pipelines for structured information extraction and semantic representation enrichment.\par
+\hangindent=1em\textbullet\ Supported applied research through scientific literature review, experiment implementation, and quantitative evaluation of modeling alternatives.\par
+\textbf{Independent consulting · Educational institution · Mar 2026–present}\par
+Full Stack Developer and ML Engineer · Face Clock Evoluir\par
+v1.3.0-rc.3: supervised institutional pilot candidate deployed to a test environment.\par
+\hangindent=1em\textbullet\ Built 1:N facial identification, FastAPI APIs, and PostgreSQL/pgvector persistence for a CPU-only server; fixed concurrent extraction failures.\par
+\hangindent=1em\textbullet\ Recalibrated the facial threshold: unknown-person acceptance fell from 45.4\% to 0.2\% in a controlled test. Calibration on the institution’s population remains pending.\par
+\hangindent=1em\textbullet\ Used benchmarks to retain exact search and reduce frames; migrated document-classifier inference to ONNX Runtime with decision-parity checks on the held-out test.\par
+\vspace{5pt}\textbf{Research and Projects}\par
+\textbf{Triple Roman Domination in Graphs · Undergraduate thesis · 2024–2025}\par
+\hangindent=1em\textbullet\ Identified a counterexample to a published ILP formulation; implemented a corrected model, GA, and ACO (C++, Python/Pyomo). Evaluated 362 graphs; one run per instance limits conclusions.\par
+\vspace{5pt}\textbf{Technical Skills}\par
+Python, PyTorch, scikit-learn; embeddings, vector search, deep learning, LLM integration.\par
+FastAPI, PostgreSQL/pgvector, Docker, ONNX Runtime, Git, pytest; SQL, Pandas, NumPy.\par
+Cross-validation, calibration, ablation, classification metrics; C++, GA, ACO, Python/Pyomo.\par
+\vspace{5pt}\textbf{Education}\par
+\textbf{B.Sc. in Computer Science · Federal University of Ceará (UFC), Quixadá, Brazil}\par
+2021–19 Aug 2026 · Thesis defended in Feb 2025.\par
+\vspace{5pt}\textbf{Languages}\par
+Native Portuguese. English: good communication; fluent technical reading of papers and documentation.\par
 \end{document}

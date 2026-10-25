@@ -1,0 +1,8 @@
+# GitHub Pages/Jekyll: keep authoring and review material out of the public site.
+exclude:
+  - docs
+  - data
+  - scripts
+  - README.md
+  - RELATORIO-CONSISTENCIA.md
+  - guia-entrevista.local.md

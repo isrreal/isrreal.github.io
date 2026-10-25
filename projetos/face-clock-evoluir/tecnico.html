@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-theme="dark" data-page="face-clock-tecnico">
+<html lang="pt-BR" data-theme="dark" data-static-language="pt" data-page="face-clock-tecnico">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,13 +20,16 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <title>Face Clock Evoluir — estrutura técnica | Israel Souza Ferreira</title>
+  <link rel="alternate" hreflang="pt-BR" href="https://israelsouza.speculummaius.com.br/projetos/face-clock-evoluir/tecnico.html">
+  <link rel="alternate" hreflang="en" href="https://israelsouza.speculummaius.com.br/en/projetos/face-clock-evoluir/tecnico.html">
+  <link rel="alternate" hreflang="x-default" href="https://israelsouza.speculummaius.com.br/projetos/face-clock-evoluir/tecnico.html">
   <link rel="canonical" href="https://israelsouza.speculummaius.com.br/projetos/face-clock-evoluir/tecnico.html">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="../../styles.css?v=d4760f4f4008">
-  <script defer data-domain="israelsouza.speculummaius.com.br" src="https://plausible.io/js/script.js"></script>
-  <script src="../../script.js?v=297e9eaa0a9b" defer></script>
+  <link rel="stylesheet" href="../../styles.css?v=0ec6e9a37761">
+  <script defer data-domain="israelsouza.speculummaius.com.br" src="https://plausible.io/js/script.tagged-events.js"></script>
+  <script src="../../script.js?v=5c9b13380dd7" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -49,11 +52,11 @@
         <a href="https://github.com/isrreal/face-clock-evoluir-public" target="_blank" rel="noreferrer">Repositório público</a>
       </div>
       <div class="nav-actions">
-        <button class="language-toggle" type="button" aria-label="Mudar para inglês" title="Mudar para inglês">
+        <a class="language-toggle" href="/en/projetos/face-clock-evoluir/tecnico.html" hreflang="en" lang="en" aria-label="Mudar para inglês" title="Mudar para inglês">
           <span class="language-label" aria-hidden="true">Idioma</span>
           <span class="language-code" aria-hidden="true">EN</span>
           <span class="language-arrow" aria-hidden="true">↔</span>
-        </button>
+        </a>
         <button class="theme-toggle" type="button" aria-label="Alternar tema" title="Alternar tema">
           <span class="theme-icon" aria-hidden="true">☀</span>
         </button>
@@ -91,6 +94,29 @@
       </div>
     </section>
 
+<section class="section section-alt" id="resumo-tecnico"><div class="container narrow">
+<p class="section-kicker">TL;DR</p><h2 data-en="A CPU-only ML system, with testable decisions.">Sistema de ML em CPU, com decisões verificáveis.</h2>
+<p data-en="FastAPI + PostgreSQL/pgvector; YuNet + SFace for 1:N identification; a separate ONNX Runtime + OCR document service. Deployed to a test environment. v1.3.0-rc.3 is a supervised institutional pilot candidate.">FastAPI + PostgreSQL/pgvector; YuNet + SFace para identificação 1:N; serviço separado de documentos com ONNX Runtime + OCR. Implantado em ambiente de testes. v1.3.0-rc.3 é candidata a piloto institucional acompanhado.</p>
+<p data-en="Current recognition benchmark: p95 74 ms with one identification, 1.87 s with 20. Document classification: F1 0.778 on a 297/64/64 split. These measure different tasks; historical diagnostics use other splits.">Benchmark atual de reconhecimento: p95 de 74 ms com uma identificação e 1,87 s com 20. Classificação documental: F1 0,778 no split 297/64/64. São tarefas distintas; diagnósticos históricos usam outros splits.</p>
+<p class="interpretation" data-en="Limits: institutional calibration and operational approval pending; small document test; one environment for load benchmarks; sample FAR=0 is not evidence of zero risk.">Limites: calibração institucional e aprovação operacional pendentes; teste documental pequeno; carga medida em um ambiente; FAR=0 na amostra não comprova risco zero.</p>
+<figure class="architecture" id="arquitetura-tecnica">
+<figcaption data-en="Documented architecture · CPU-only target">Arquitetura documentada · servidor CPU-only</figcaption>
+<ol class="architecture-flow">
+<li><strong data-en="Kiosk / PWA">Totem / PWA</strong><span data-en="Camera capture">Captura da câmera</span></li>
+<li><strong>FastAPI</strong><span data-en="Authentication, attendance, HR">Autenticação, jornada, RH</span></li>
+<li><strong>OpenCV DNN</strong><span data-en="YuNet + SFace · 1:N identification">YuNet + SFace · identificação 1:N</span></li>
+<li><strong>PostgreSQL / pgvector</strong><span data-en="Embeddings, exact search, records">Embeddings, busca exata, registros</span></li>
+</ol>
+<p data-en="Document triage runs in a separate service: ONNX Runtime classifier and OCR. It is distinct from the facial-recognition path.">Triagem documental em serviço separado: classificador ONNX Runtime e OCR. É um fluxo distinto do reconhecimento facial.</p>
+</figure>
+<nav class="evidence-map" aria-label="Mapa técnico" data-en-aria-label="Technical evidence map">
+<a href="#reconhecimento" data-en="A · Facial recognition · current benchmark">A · Reconhecimento facial · benchmark atual</a>
+<a href="#atestados" data-en="B · Document triage · current split">B · Triagem documental · split atual</a>
+<a href="#metodo" data-en="C · Experimental investigation · historical, different splits">C · Investigação experimental · histórica, splits distintos</a>
+<a href="#engenharia" data-en="D · Backend and security">D · Backend e segurança</a>
+<a href="#procedencia" data-en="E · Model lineage and release integrity · separate audit">E · Model lineage e integridade do release · auditoria distinta</a>
+<a href="#entrega" data-en="F · Performance and deployment · historical measurements">F · Performance e deployment · medições históricas</a>
+</nav></div></section>
 <section class="section " id="leitura"><div class="container narrow"><p class="section-kicker" data-en="Evidence map">Mapa das evidências</p><h2  data-en="Current results and historical investigations.">Resultados atuais e investigações históricas.</h2><p  data-en="Recognition and document benchmarks are current; diagnostics and packaging records are historical. Metrics from different splits are not comparable.">Reconhecimento e atestados trazem benchmarks atuais; diagnósticos e empacotamento são históricos. Métricas de splits diferentes não são comparáveis.</p>
 <p class="interpretation" data-en="This delivery uses YuNet + SFace (128 dimensions); public documentation also describes historical InsightFace. v1.3.0-rc.3 is an institutional supervised-pilot candidate.">Esta entrega usa YuNet + SFace (128 dimensões); a documentação pública também descreve o InsightFace histórico. A v1.3.0-rc.3 é candidata a piloto institucional acompanhado.</p></div></section>
     <section class="section">
@@ -500,7 +526,7 @@
                   </thead>
                   <tbody>
                     <tr id="tabela-multi-stage-single"><th scope="row">Referência single-stage</th><td>446,2 MiB</td><td>—</td></tr>
-                    <tr class="case-table-highlight" id="tabela-multi-stage-multi"><th scope="row">Multi-stage de produção</th><td>413,3 MiB</td><td>−32,9 MiB (−7,4%)</td></tr>
+                    <tr class="case-table-highlight" id="tabela-multi-stage-multi"><th scope="row">Multi-stage de entrega</th><td>413,3 MiB</td><td>−32,9 MiB (−7,4%)</td></tr>
                   </tbody>
                 </table>
               </div>

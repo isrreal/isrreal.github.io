@@ -11,6 +11,64 @@ const languageCode = document.querySelector('.language-code');
 const languageName = document.querySelector('.language-label');
 const page = root.dataset.page;
 
+// Reuse Plausible's existing installation. Only allowlisted, non-personal
+// properties are emitted; destinations, emails and arbitrary query data are not.
+window.plausible = window.plausible || function () {
+  (window.plausible.q = window.plausible.q || []).push(arguments);
+};
+function trackPortfolioEvent(name, props = {}) {
+  window.plausible(name, { props: { language: root.lang, ...props } });
+}
+
+const incomingCampaign = new URLSearchParams(window.location.search);
+const campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+function preserveCampaign(link) {
+  // Fragment-only links already retain the current query. Keep their selectors
+  // intact for section navigation, the active-section observer and translations.
+  if (link.getAttribute('href')?.startsWith('#')) return;
+  const target = new URL(link.href, window.location.href);
+  if (target.origin !== window.location.origin || !/\/$|\.html$/.test(target.pathname)) return;
+  let changed = false;
+  campaignKeys.forEach((key) => {
+    if (incomingCampaign.has(key) && !target.searchParams.has(key)) {
+      target.searchParams.set(key, incomingCampaign.get(key));
+      changed = true;
+    }
+  });
+  if (link.classList.contains('language-toggle') && !target.hash && window.location.hash) {
+    target.hash = window.location.hash;
+    changed = true;
+  }
+  if (changed) link.href = target.href;
+}
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href]');
+  if (!link) return;
+  const target = new URL(link.href, window.location.href);
+  if (target.protocol === 'mailto:') trackPortfolioEvent('email_click');
+  else if (target.hostname === 'www.linkedin.com') trackPortfolioEvent('linkedin_click');
+  else if (/\.pdf$/.test(target.pathname)) {
+    trackPortfolioEvent(link.hasAttribute('download') ? 'cv_download' : 'cv_open', {
+      role: link.dataset.cvRole || 'ml', cv_language: link.dataset.cvLanguage || currentLanguage,
+    });
+  } else if (target.origin === location.origin && /\/projetos\//.test(target.pathname)) {
+    const technical = target.pathname.endsWith('/tecnico.html');
+    trackPortfolioEvent(technical ? 'technical_evidence_open' : 'project_open', {
+      project: target.pathname.match(/\/projetos\/([^/]+)/)?.[1] || 'project',
+    });
+  }
+  preserveCampaign(link);
+}, true);
+
+// Precompute URLs so keyboard activation, middle-click and copied links retain UTM.
+document.querySelectorAll('a[href]').forEach(preserveCampaign);
+document.querySelectorAll('details.evidence-detail').forEach((detail) => {
+  detail.addEventListener('toggle', () => {
+    if (detail.open) trackPortfolioEvent('technical_evidence_open', { section: detail.id || detail.closest('[id]')?.id || 'evidence' });
+  });
+});
+
 const interfaceText = {
   pt: {
     openMenu: 'Abrir menu',
@@ -31,9 +89,29 @@ const interfaceText = {
 };
 
 const englishPages = {
+  "404": {
+    title: "Page not found | Israel Souza Ferreira",
+    description: "Page not found on Israel Souza Ferreira’s portfolio.",
+    content: [
+      [".skip-link", "Skip to content"],
+      [".nav-menu a[href=\"/#projetos\"]", "Projects"],
+      [".nav-menu a[href=\"/#curriculo\"]", "Résumé"],
+      [".nav-menu a[href=\"/#contato\"]", "Contact"],
+      [".case-hero .eyebrow", "Error 404"],
+      [".case-title", "This page does not exist."],
+      ["#erro-texto", "The address may have changed, or the link you followed is out of date. The projects are all one click away from here."],
+      [".hero-actions a:nth-child(1)", "Go to the homepage"],
+      [".hero-actions a:nth-child(2)", "View projects"],
+      ["footer .text-link", "Back to portfolio"],
+    ],
+    attributes: [
+      ["nav", "aria-label", "Main navigation"],
+      [".brand", "aria-label", "Back to portfolio"],
+    ],
+  },
   "home": {
-    title: "Israel Souza Ferreira | Data Scientist and ML Engineer",
-    description: "Portfolio of Israel Souza Ferreira — a computer scientist with experience in applied research, experimentation, computer vision, and ML-enabled systems.",
+    title: "Israel Souza Ferreira | Machine Learning Engineer / Applied ML",
+    description: "Multimodal ML research, representations, experimental LLM integration, and CPU-based ML systems. Explore documented projects, technical evidence, and tailored résumés.",
     content: [
       [".skip-link", "Skip to content"],
       [".nav-menu a[href=\"#experiencia\"]", "Experience"],
@@ -57,7 +135,7 @@ const englishPages = {
   },
   "face-clock": {
     title: "Face Clock Evoluir | Israel Souza Ferreira",
-    description: "Face Clock Evoluir: facial attendance, administrative workflows, and PWA resilience prepared for a supervised institutional pilot.",
+    description: "1:N facial identification, FastAPI, PostgreSQL/pgvector, and CPU-only engineering. Deployed to a test environment; institutional calibration and operational approval pending.",
     content: [
       [".skip-link", "Skip to content"],
       [".nav-menu a[href=\"../../index.html#projetos\"]", "Projects"],
@@ -123,7 +201,7 @@ const englishPages = {
       ["#congelamento-lead", "The training (97%) versus test (70%, 40 images) gap prompted a cross-validation comparison of three unfreezing depths."],
       ["#congelamento-contexto", "With ImageNet weights, I compared head only, head + last block, and head + last two blocks. Protocol: stratified 5-fold on 406 training images, up to 30 epochs, patience 7, the same seed and class balancing."],
       ["#congelamento-svg-titulo", "Validation accuracy by unfreezing depth, 5-fold"],
-      ["#congelamento-svg-desc", "Column chart with error bars (standard deviation) comparing three configurations: A, 67.0% plus or minus 3.9; B, 74.9% plus or minus 6.7; C, the production configuration, 84.2% plus or minus 1.7."],
+      ["#congelamento-svg-desc", "Column chart with error bars (standard deviation) comparing three configurations: A, 67.0% plus or minus 3.9; B, 74.9% plus or minus 6.7; C, the selected configuration, 84.2% plus or minus 1.7."],
       ["#congelamento-tip-a", "Configuration A: 67.0% average validation accuracy, discarded."],
       ["#congelamento-tip-b", "Configuration B: 74.9% average validation accuracy, discarded."],
       ["#congelamento-tip-c", "Configuration C: 84.2% average validation accuracy, kept in the pipeline."],
@@ -137,7 +215,7 @@ const englishPages = {
       ["#congelamento-status-b", "discarded"],
       ["#congelamento-status-c", "kept in the pipeline"],
       ["#congelamento-figura-legenda", "Mean validation accuracy and standard deviation across five folds."],
-      ["#congelamento .case-result:nth-child(1) span", "average validation accuracy of the production configuration — the highest and most stable of the three"],
+      ["#congelamento .case-result:nth-child(1) span", "average validation accuracy of the selected configuration — the highest and most stable of the three"],
       ["#congelamento .case-result:nth-child(3) span", "images in the test set that triggered the initial alarm — too much variance to support a conclusion on its own"],
       ["#engenharia .section-kicker", "Engineering and security"],
       ["#engenharia h2", "Authentication and public-documentation limits."],
@@ -160,7 +238,7 @@ const englishPages = {
       ["#tabela-multi-stage-titulo", "Equivalent ONNX image, measured on the same host and commit"],
       ["#tabela-multi-stage-cabecalho", "<tr><th scope=\"col\">Build</th><th scope=\"col\">Size</th><th scope=\"col\">Difference</th></tr>"],
       ["#tabela-multi-stage-single", "<th scope=\"row\">Single-stage reference</th><td>446.2 MiB</td><td>—</td>"],
-      ["#tabela-multi-stage-multi", "<th scope=\"row\">Production multi-stage</th><td>413.3 MiB</td><td>−32.9 MiB (−7.4%)</td>"],
+      ["#tabela-multi-stage-multi", "<th scope=\"row\">Delivery multi-stage</th><td>413.3 MiB</td><td>−32.9 MiB (−7.4%)</td>"],
       ["#tabela-multi-stage-nota", "Both images loaded the ONNX model and returned <code>200</code> from <code>/health</code>. The benchmark is reproducible through the project Dockerfiles and scripts."],
       ["#progressao .section-kicker", "Delivery trajectory"],
       ["#progressao h2", "From 10.59&nbsp;GB to 1.11&nbsp;GB across releases."],
@@ -395,26 +473,6 @@ const englishPages = {
       [".brand", "aria-label", "Home page"],
     ],
   },
-  "404": {
-    title: "Page not found | Israel Souza Ferreira",
-    description: "Page not found on Israel Souza Ferreira’s portfolio.",
-    content: [
-      [".skip-link", "Skip to content"],
-      [".nav-menu a[href=\"/#projetos\"]", "Projects"],
-      [".nav-menu a[href=\"/#curriculo\"]", "Résumé"],
-      [".nav-menu a[href=\"/#contato\"]", "Contact"],
-      [".case-hero .eyebrow", "Error 404"],
-      [".case-title", "This page does not exist."],
-      ["#erro-texto", "The address may have changed, or the link you followed is out of date. The projects are all one click away from here."],
-      [".hero-actions a:nth-child(1)", "Go to the homepage"],
-      [".hero-actions a:nth-child(2)", "View projects"],
-      ["footer .text-link", "Back to portfolio"],
-    ],
-    attributes: [
-      ["nav", "aria-label", "Main navigation"],
-      [".brand", "aria-label", "Back to portfolio"],
-    ],
-  },
 };
 
 const inlineTranslations = [...document.querySelectorAll("[data-en]")].map((element) => ({
@@ -501,14 +559,14 @@ function applyLanguage(language) {
   const resumeFiles = language === 'en'
     ? {
         pdf: root.dataset.resumePdfEn || 'assets/israel-cv-english.pdf',
-        tex: 'assets/israel-cv-english.tex',
-        text: 'assets/israel-cv-english.txt',
+        tex: '/assets/israel-cv-english.tex',
+        text: '/assets/israel-cv-english.txt',
         download: 'Israel-Souza-Ferreira-Resume.pdf',
       }
     : {
         pdf: root.dataset.resumePdfPt || 'assets/israel_cv_pt.pdf',
-        tex: 'assets/israel-cv-portugues.tex',
-        text: 'assets/israel-cv-portugues.txt',
+        tex: '/assets/israel-cv-portugues.tex',
+        text: '/assets/israel-cv-portugues.txt',
         download: 'Israel-Souza-Ferreira-Curriculo.pdf',
       };
 
@@ -564,13 +622,8 @@ function applyLanguage(language) {
   document.dispatchEvent(new CustomEvent('portfolio:languagechange', { detail: { language } }));
 }
 
-let savedLanguage;
-try {
-  savedLanguage = localStorage.getItem('portfolio-language');
-} catch {
-  savedLanguage = null;
-}
-applyLanguage(savedLanguage === 'en' ? 'en' : 'pt');
+// The URL defines the language so indexed pages and no-JS content agree.
+applyLanguage(root.dataset.staticLanguage === 'en' ? 'en' : 'pt');
 
 function setTheme(theme) {
   root.dataset.theme = theme;
@@ -601,9 +654,7 @@ themeToggle.addEventListener('click', () => {
 });
 
 languageToggle.addEventListener('click', () => {
-  applyLanguage(currentLanguage === 'pt' ? 'en' : 'pt');
-  setTheme(root.dataset.theme);
-  closeMenu();
+  trackPortfolioEvent('language_change', { language: currentLanguage === 'pt' ? 'en' : 'pt' });
 });
 
 function closeMenu() {

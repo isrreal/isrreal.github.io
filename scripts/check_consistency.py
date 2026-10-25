@@ -152,10 +152,14 @@ def main():
             failures.append(f"{path}: version differs")
     if facts["test_count"] is not None and str(facts["test_count"]) not in summary + detail:
         failures.append("test count missing")
-    for path in (ROOT / "script.js",):
-        for line_no, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-            if BANNED.search(line) and not (re.search(r"hist[oó]ric|historical", line, re.I) or any(f"#{x}" in line for x in HISTORICAL) or "#tabela-progressao" in line):
-                failures.append(f"{path}:{line_no}: unlabelled historical technology")
+    # Validate selector + translation together, independent of generated JS layout.
+    translations = json.loads((ROOT / 'data/translations.json').read_text())
+    for page_name, values in translations.items():
+        for selector, text in values['content']:
+            labelled = re.search(r"hist[oó]ric|historical", text, re.I)
+            historical = any(f"#{x}" in selector for x in HISTORICAL) or '#tabela-progressao' in selector
+            if BANNED.search(text) and not (labelled or historical):
+                failures.append(f"{page_name}: unlabelled historical translation at {selector}")
     if failures:
         print("\n".join(failures))
         raise SystemExit(1)

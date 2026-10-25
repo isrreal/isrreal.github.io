@@ -1,0 +1,39 @@
+{
+  "name": "Israel Souza Ferreira",
+  "email": "israel.souza.dev@gmail.com",
+  "phone": "+55 85 98433-2790",
+  "portfolio": "https://israelsouza.speculummaius.com.br/",
+  "linkedin": "https://www.linkedin.com/in/isrreal/",
+  "github": "https://github.com/isrreal",
+  "tieta": {
+    "evidence": "User-provided brief and technical PDF supplied on 2026-10-25 (82 PDF pages; printed chapters 1, 3–6, 8, 13 and appendix A). Existing CV supplies dates/fellowship. Technical documentation supports system capabilities, not individual authorship or benchmark outcomes. Public copy uses collaborative, high-level abstractions.",
+    "summary_pt": "P&D aplicado em Machine Learning multimodal e sistemas de representação para análise educacional.",
+    "summary_en": "Applied R&D in multimodal machine learning and representation systems for educational analysis.",
+    "bullets_pt": [
+      "Colaborei no desenvolvimento e na avaliação de embeddings, representações vetoriais e busca por similaridade para conteúdo educacional multimodal.",
+      "Participei da implementação e experimentação de modelos de deep learning para combinar informações de texto e imagem e investigar alternativas de representação.",
+      "Colaborei na integração experimental de LLMs a pipelines de Machine Learning para extração estruturada de informação e enriquecimento de representações semânticas.",
+      "Contribuí com leitura de literatura científica, implementação de experimentos e avaliação quantitativa de alternativas de modelagem."
+    ],
+    "bullets_en": [
+      "Contributed to developing and evaluating embeddings, vector representations, and similarity search for multimodal educational content.",
+      "Collaborated on deep learning implementations and experiments combining text and image information and investigating representation alternatives.",
+      "Contributed to experimental integration of LLMs into machine learning pipelines for structured information extraction and semantic representation enrichment.",
+      "Supported applied research through scientific literature review, experiment implementation, and quantitative evaluation of modeling alternatives."
+    ]
+  },
+  "skills": {
+    "ml": {
+      "pt": "Python, PyTorch, scikit-learn; embeddings, busca vetorial, deep learning, integração de LLMs.",
+      "en": "Python, PyTorch, scikit-learn; embeddings, vector search, deep learning, LLM integration."
+    },
+    "evaluation": {
+      "pt": "Validação cruzada, calibração, ablação, métricas de classificação; C++, GA, ACO, Python/Pyomo.",
+      "en": "Cross-validation, calibration, ablation, classification metrics; C++, GA, ACO, Python/Pyomo."
+    },
+    "systems": {
+      "pt": "FastAPI, PostgreSQL/pgvector, Docker, ONNX Runtime, Git, pytest; SQL, Pandas, NumPy.",
+      "en": "FastAPI, PostgreSQL/pgvector, Docker, ONNX Runtime, Git, pytest; SQL, Pandas, NumPy."
+    }
+  }
+}

@@ -1,54 +1,34 @@
 Israel Souza Ferreira
-Machine Learning Engineer | Data Scientist
-Fortaleza, CE, Brasil --- Remoto
-E-mail: israel.souza.dev@gmail.com | Telefone: +55 85 98433-2790
-LinkedIn: https://www.linkedin.com/in/isrreal/ | GitHub: https://github.com/isrreal
-Portfólio: https://israelsouza.speculummaius.com.br/
-
+Machine Learning Engineer / Applied ML
+Fortaleza, CE, Brasil · Remoto
+israel.souza.dev@gmail.com | +55 85 98433-2790
+https://www.linkedin.com/in/isrreal/ | https://github.com/isrreal
+https://israelsouza.speculummaius.com.br/
 Resumo Profissional
-Bacharel em Ciência da Computação. Desenvolvo sistemas de ML, avalio modelos e investigo desempenho em visão
-computacional, ingestão de dados e otimização.
-
-Formação Acadêmica
-Bacharelado em Ciência da Computação
-Universidade Federal do Ceará (UFC) --- Campus Quixadá, Brasil
-2021 -- 08/2026; concluído em 19/08/2026.
-TCC em otimização de grafos com GA, ACO e programação linear inteira; defendido em 02/2025.
-
-Competências Técnicas
-Programação e dados: Python, SQL, C++, Pandas, NumPy, PostgreSQL/pgvector.
-ML e avaliação: scikit-learn, PyTorch, OpenCV, ONNX Runtime, validação cruzada, calibração.
-Engenharia: FastAPI, Docker, GitHub Actions, pytest, SQLAlchemy, Alembic.
-
+Bacharel em Ciência da Computação com atuação em P&D de ML multimodal, representações e integração experimental de LLMs. Desenvolvo sistemas com APIs, busca vetorial e avaliação de desempenho em CPU.
 Experiência Profissional
-Pesquisador de Pesquisa e Desenvolvimento (P&D)
-Tieta.ai --- Remoto, Brasil | Julho de 2026 -- Presente
-• Desenvolvo e mantenho software de pesquisa com validação, testes automatizados e documentação versionada.
-Desenvolvedor Full Stack e Engenheiro de Machine Learning
-Consultoria autônoma para instituição de ensino --- Remoto, Brasil | Março de 2026 -- Presente
-Face Clock Evoluir: v1.3.0-rc.3 candidata a piloto institucional acompanhado, implantada em ambiente de testes.
-• Desenvolvi reconhecimento facial 1:N, APIs FastAPI e persistência PostgreSQL/pgvector; recalibração reduziu
-desconhecidos aceitos de 45,4% para 0,2% em teste controlado, ainda sem calibração na instituição.
-• Usei benchmarks para reduzir frames e manter busca exata (0,076 ms/1.000 vetores; HNSW com recall@1 de 0,915);
-corrigi falha de extração sob concorrência.
-• Implementei setup institucional em sete etapas, auditoria e rotinas de RH; preparei três release candidates e implantei
-o sistema no ambiente de testes.
-Pesquisador de Machine Learning
-Tieta.ai --- Remoto, Brasil | Abril de 2025 -- Junho de 2026
-• Como bolsista CNPq RHAE, desenvolvi e avaliei soluções de ML em pesquisa aplicada, com experimentos
-reproduzíveis.
-Monitoria na UFC: Projeto e Análise de Algoritmos (03--11/2023) e Cálculo (04--07/2022).
-
-Projetos Selecionados
-Dominação Romana Tripla em Grafos --- TCC | 2024--2025
-• Implementei GA e ACO em C++ e modelo PLI em Python/Pyomo; um contraexemplo expôs formulação publicada
-inválida. Avaliei 362 grafos, uma execução por instância.
-Código: https://github.com/isrreal/Triple-Roman-Domination-in-graphs
-Auxílio Emergencial --- Engenharia de Dados | Em desenvolvimento
-• Implementei ingestão em blocos com Pandas e PostgreSQL COPY binário para fonte pública de 31,6 GB. Em recortes
-de até 5 milhões de linhas, RSS após limpeza cresceu de 182 para 750 MiB; IDs retidos tiveram correlação r 0,991, sem
-comprovar causalidade.
-Código: https://github.com/isrreal/AuxilioEmergencialQueries
-
+Tieta.ai · P&D em Machine Learning · Remoto
+Pesquisador de P&D: 07/2026–presente | Pesquisador de ML, CNPq RHAE (meio período): 04/2025–06/2026
+P&D aplicado em Machine Learning multimodal e sistemas de representação para análise educacional.
+- Colaborei no desenvolvimento e na avaliação de embeddings, representações vetoriais e busca por similaridade para conteúdo educacional multimodal.
+- Participei da implementação e experimentação de modelos de deep learning para combinar informações de texto e imagem e investigar alternativas de representação.
+- Colaborei na integração experimental de LLMs a pipelines de Machine Learning para extração estruturada de informação e enriquecimento de representações semânticas.
+- Contribuí com leitura de literatura científica, implementação de experimentos e avaliação quantitativa de alternativas de modelagem.
+Consultoria autônoma · Instituição de ensino · 03/2026–presente
+Desenvolvedor Full Stack e Engenheiro de ML · Face Clock Evoluir
+v1.3.0-rc.3: candidata a piloto institucional acompanhado, implantada em ambiente de testes.
+- Desenvolvi identificação facial 1:N, APIs FastAPI e persistência PostgreSQL/pgvector para servidor CPU-only; corrigi falhas de extração sob concorrência.
+- Recalibrei o limiar facial: desconhecidos aceitos passaram de 45,4% a 0,2% em teste controlado. Calibração com a população da instituição permanece pendente.
+- Usei benchmarks para manter busca exata e reduzir frames; migrei o classificador documental para ONNX Runtime, verificando paridade de decisões no teste reservado.
+Pesquisa e Projetos
+Dominação Romana Tripla em Grafos · TCC · 2024–2025
+- Identifiquei contraexemplo de uma formulação PLI publicada e implementei formulação corrigida, GA e ACO (C++, Python/Pyomo). Avaliei 362 grafos; uma execução por instância limita as conclusões.
+Competências Técnicas
+Python, PyTorch, scikit-learn; embeddings, busca vetorial, deep learning, integração de LLMs.
+FastAPI, PostgreSQL/pgvector, Docker, ONNX Runtime, Git, pytest; SQL, Pandas, NumPy.
+Validação cruzada, calibração, ablação, métricas de classificação; C++, GA, ACO, Python/Pyomo.
+Formação Acadêmica
+Bacharelado em Ciência da Computação · Universidade Federal do Ceará (UFC), Quixadá
+2021–19/08/2026 · TCC defendido em 02/2025.
 Idiomas
-Português: nativo. Inglês: boa comunicação; leitura técnica fluente de artigos e documentação.
+Português nativo. Inglês: boa comunicação; leitura técnica fluente de artigos e documentação.

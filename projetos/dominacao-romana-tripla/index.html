@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-theme="dark" data-page="triple-roman">
+<html lang="pt-BR" data-theme="dark" data-static-language="pt" data-page="triple-roman">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,13 +20,16 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <title>Dominação Romana Tripla | Israel Souza Ferreira</title>
+  <link rel="alternate" hreflang="pt-BR" href="https://israelsouza.speculummaius.com.br/projetos/dominacao-romana-tripla/">
+  <link rel="alternate" hreflang="en" href="https://israelsouza.speculummaius.com.br/en/projetos/dominacao-romana-tripla/">
+  <link rel="alternate" hreflang="x-default" href="https://israelsouza.speculummaius.com.br/projetos/dominacao-romana-tripla/">
   <link rel="canonical" href="https://israelsouza.speculummaius.com.br/projetos/dominacao-romana-tripla/">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="../../styles.css?v=d4760f4f4008">
-  <script defer data-domain="israelsouza.speculummaius.com.br" src="https://plausible.io/js/script.js"></script>
-  <script src="../../script.js?v=297e9eaa0a9b" defer></script>
+  <link rel="stylesheet" href="../../styles.css?v=0ec6e9a37761">
+  <script defer data-domain="israelsouza.speculummaius.com.br" src="https://plausible.io/js/script.tagged-events.js"></script>
+  <script src="../../script.js?v=5c9b13380dd7" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -49,11 +52,11 @@
         <a href="https://github.com/isrreal/Triple-Roman-Domination-in-graphs" target="_blank" rel="noreferrer">Repositório</a>
       </div>
       <div class="nav-actions">
-        <button class="language-toggle" type="button" aria-label="Mudar para inglês" title="Mudar para inglês">
+        <a class="language-toggle" href="/en/projetos/dominacao-romana-tripla/" hreflang="en" lang="en" aria-label="Mudar para inglês" title="Mudar para inglês">
           <span class="language-label" aria-hidden="true">Idioma</span>
           <span class="language-code" aria-hidden="true">EN</span>
           <span class="language-arrow" aria-hidden="true">↔</span>
-        </button>
+        </a>
         <button class="theme-toggle" type="button" aria-label="Alternar tema" title="Alternar tema">
           <span class="theme-icon" aria-hidden="true">☀</span>
         </button>
@@ -66,11 +69,20 @@
     <div class="container"><a href="../../index.html#projetos" class="case-breadcrumb"  data-en="← Back to projects">← Voltar aos projetos</a>
     <p class="eyebrow" data-en="Undergraduate thesis · 2024–2025 · Defended in February 2025">TCC · 2024–2025 · Defendido em fevereiro de 2025</p>
     <h1 class="case-title" data-en="Triple Roman Domination">Dominação Romana Tripla</h1>
-    <p class="hero-description" data-en="Minimum-cost resource distribution with protection constraints. I compared two search strategies and corrected a published invalid model.">Distribuição de recursos ao menor custo com restrições de proteção. Comparei duas estratégias e corrigi um modelo publicado inválido.</p>
+    <p class="hero-description" data-en="Research into correctness and graph optimization: identified a counterexample, corrected an ILP formulation, and implemented GA and ACO for experimental evaluation.">Uma investigação de correção e otimização em grafos: identifiquei um contraexemplo, corrigi uma formulação PLI e implementei GA e ACO para avaliação experimental.</p>
     <div class="hero-actions"><a href="#resultados" class="button button-primary"  data-en="Understand the results">Entender os resultados</a><a href="tecnico.html" class="button button-secondary"  data-en="See model and experiments">Ver modelo e experimentos</a>
     </div>
     </div>
     </section>
+<section class="section" id="contribuicao"><div class="container narrow">
+<p class="section-kicker" data-en="Scientific contribution">Contribuição científica</p>
+<h2 data-en="A counterexample before an optimization claim.">Um contraexemplo antes de uma promessa de otimização.</h2>
+<dl class="contribution-list">
+<dt data-en="Contribution">Contribuição</dt><dd data-en="Identified an invalid solution accepted by a published ILP formulation; implemented a corrected, reduced formulation.">Identificação de solução inválida aceita por formulação PLI publicada; implementação de formulação corrigida e reduzida.</dd>
+<dt data-en="Method">Método</dt><dd data-en="Formal constraint analysis, a counterexample, Python/Pyomo modeling, and GA and ACO implementations in C++.">Análise formal de restrições, contraexemplo, modelagem Python/Pyomo e implementações de GA e ACO em C++.</dd>
+<dt data-en="Evidence">Evidência</dt><dd><a class="text-link" href="tecnico.html#pli" data-en="Counterexample and formulation →">Contraexemplo e formulação →</a> <a class="text-link" href="tecnico.html#resultados" data-en="Experiments on 362 graphs →">Experimentos em 362 grafos →</a></dd>
+<dt data-en="Limitation">Limitação</dt><dd data-en="One run per instance; time-limited solvers may return a feasible solution without proving optimality. No general superiority claim for either metaheuristic.">Uma execução por instância; solvers com limite de tempo podem fornecer solução viável sem provar otimalidade. Sem conclusão de superioridade geral entre meta-heurísticas.</dd>
+</dl></div></section>
     <section class="section section-alt" id="problema">
     <div class="container narrow">
     <p class="section-kicker" data-en="The challenge">O desafio</p>

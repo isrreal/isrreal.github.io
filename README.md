@@ -25,76 +25,86 @@ de erro e do sitemap se comportem como em produção, prefira servir a pasta:
 python3 -m http.server 8000
 ```
 
-## Idiomas
+## Idiomas e fontes de conteúdo
 
-O site é bilíngue (português e inglês). O HTML contém português como padrão e funciona
-sem JavaScript. Nas páginas revisadas, cada trecho traduzido usa `data-en` com seu conteúdo
-em inglês; o script preserva o português original e alterna os textos. Não coloque trechos
-`data-en` dentro de outro trecho `data-en`, pois substituir o pai remove os filhos.
+PT usa `/` e `/projetos/...`; EN usa `/en/` e `/en/projetos/...`. As duas
+versões entregam conteúdo completo sem JavaScript, com canonical próprio e
+hreflang recíproco. O idioma vem da URL; o seletor é um link acessível e preserva
+UTM e âncora quando JavaScript está disponível.
 
-As páginas técnicas ainda mantêm parte das tabelas antigas de seletores em `script.js`.
-Traduções inline têm prioridade. Ao alterar um trecho legado, atualize sua tradução ou migre
-para `data-en`. Datas, unidades, denominadores e limitações devem coincidir nos dois idiomas.
-Rótulos de acessibilidade e dicas usam `data-en-aria-label`, `data-en-alt`, `data-en-title`
-e `data-en-placeholder`, mantendo o atributo original em português. Componentes dinâmicos
-acompanham o evento `portfolio:languagechange`. Para botões de navegação, prefira seletores
-pelo `href` em vez da posição, para que o texto continue associado ao destino correto.
+- HTML em português e `data-en`: conteúdo das páginas e traduções novas.
+- `data/translations.json`: traduções legadas por seletor e metadados ingleses.
+- `data/profile.json`: descrição pública e bullets da Tieta compartilhados pela home e CVs.
+- `data/facts.yaml`: fatos canônicos e lacunas dos benchmarks do Face Clock.
+- `scripts/build_resumes.py`: seleção/ordem de evidências e apresentação dos currículos.
+- `en/` e o bloco `englishPages` de `script.js`: gerados; não editar diretamente.
 
-Após alterar `styles.css`, `script.js` ou recompilar os currículos, execute `python3 scripts/version_script.py`.
-O comando versiona o CSS, o JavaScript em todas as páginas e os links dos PDFs em português e inglês
-a partir do conteúdo dos arquivos, para que o navegador carregue as traduções e os currículos
-atuais em vez de reutilizar arquivos antigos em cache.
-Verifique antes de publicar com `python3 scripts/version_script.py --check`.
+Não coloque `data-en` dentro de outro `data-en`: substituir o pai remove os filhos.
+Rótulos usam `data-en-aria-label`, `data-en-alt`, `data-en-title` e
+`data-en-placeholder`. Componentes dinâmicos recebem `portfolio:languagechange`.
 
-A navegação segue apresentação → resumo do projeto → evidências técnicas → documentação/código.
-Registros históricos extensos usam `<details>` nativo; links para âncoras revelam automaticamente
-o registro correspondente. Resultados devem conter comparação, interpretação e limite.
+A publicação continua estática, sem framework nem dependências de runtime.
+As ferramentas abaixo são apenas de autoria/QA. Em ambiente Python virtual:
+
+```bash
+python3 -m pip install -r scripts/requirements-dev.txt
+python3 scripts/build_resumes.py
+python3 scripts/build_site.py
+python3 scripts/version_script.py
+python3 scripts/build_site.py
+```
+
+A última geração propaga os hashes de CSS/JS/PDF para o HTML inglês. Verifique
+com `python3 scripts/build_site.py --check` e `python3 scripts/version_script.py --check`.
+Os documentos de revisão de confidencialidade em `docs/tieta-*.md` são privados,
+ignorados pelo Git e excluídos do GitHub Pages por `_config.yml`. O PDF interno
+fornecido pelo autor nunca foi copiado para este repositório. `robots.txt` não é
+controle de acesso: mantenha essas minutas fora de qualquer upload estático direto.
+
+A navegação segue experiência → projeto → evidências técnicas → documentação/código.
+Registros extensos usam `<details>`; âncoras revelam automaticamente o registro.
+Resultados devem conter comparação, interpretação e limite.
 
 ## Métricas de visitas
 
-O site carrega o script leve da [Plausible Analytics](https://plausible.io/) em todas as páginas.
-Ele mede visualizações no painel externo; não há contador público no portfólio. Para ativá-lo,
-crie uma conta na Plausible e cadastre `israelsouza.speculummaius.com.br` como site. O snippet
-publicado usa esse domínio como identificador. Depois do deploy, valide a coleta pelo teste de
-instalação da própria Plausible antes de usar os números.
+A instalação existente de [Plausible Analytics](https://plausible.io/) foi mantida,
+com suporte a eventos personalizados. O script usa o domínio
+`israelsouza.speculummaius.com.br`; não há contador público. Os eventos são:
+`project_open`, `technical_evidence_open`, `cv_open`, `cv_download`, `email_click`,
+`linkedin_click` e `language_change`. As propriedades enviam apenas idioma, função
+ou identificador de projeto/seção; não enviam endereço de e-mail nem destino pessoal.
+UTMs são propagadas apenas na navegação interna de páginas.
+
+O titular precisa confirmar a instalação e criar os objetivos de mesmo nome no
+painel da Plausible. Instrumentação local não comprova recebimento no serviço.
+Consulte a [documentação de eventos](https://plausible.io/docs/custom-event-goals).
+O QA de navegador bloqueia requisições externas e simula o coletor.
 
 ## Currículos
 
-Os fontes LaTeX e PDFs estão em `assets/`. Os currículos usam uma página, uma coluna, cargos e datas
-em ordem linear, contatos visíveis e seções padronizadas. Isso facilita parsing; não promete aprovação em qualquer ATS.
-A [documentação do Greenhouse](https://support.greenhouse.io/hc/en-us/articles/200989175-Unsuccessful-resume-parse)
-explica limitações com colunas, tabelas, imagens e cabeçalhos complexos.
+Cinco versões de uma página, uma coluna, fontes incorporadas e texto selecionável:
 
-Compile em diretório temporário, preservando a pasta pública livre de intermediários:
+| Perfil | Português | Inglês |
+| --- | --- | --- |
+| Machine Learning Engineer / Applied ML | `assets/israel-cv-ml-pt.pdf` | `assets/israel-cv-ml-en.pdf` |
+| Data Scientist | `assets/israel-cv-ds-pt.pdf` | `assets/israel-cv-ds-en.pdf` |
+| Applied AI / Research Engineer | — | `assets/israel-cv-applied-ai-en.pdf` |
 
-```bash
-mkdir -p .cv-build
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=.cv-build assets/israel-cv-portugues.tex
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=.cv-build assets/israel-cv-english.tex
-cp .cv-build/israel-cv-portugues.pdf assets/israel_cv_pt.pdf
-cp .cv-build/israel-cv-english.pdf assets/israel-cv-english.pdf
-cp assets/israel-cv-english.pdf assets/israel_cv_en.pdf
-pdftotext assets/israel_cv_pt.pdf assets/israel-cv-portugues.txt
-pdftotext assets/israel-cv-english.pdf assets/israel-cv-english.txt
-python3 - <<'PY'
-from pathlib import Path
-import unicodedata
-for name in ['portugues', 'english']:
-    path = Path(f'assets/israel-cv-{name}.txt')
-    path.write_text(unicodedata.normalize('NFKC', path.read_text()).replace('\f', '\n').strip() + '\n')
-PY
-```
+Cada PDF tem `.txt` e `.tex` equivalentes. O gerador usa ReportLab para os PDFs;
+LaTeX é fonte alternativa gerada da mesma sequência de parágrafos, não o motor
+utilizado para os PDFs atuais. A fonte padrão é DejaVu Sans de
+`/usr/share/fonts/truetype/dejavu/`. Não é necessário instalar TeX.
+Os nomes antigos `israel_cv_pt.pdf`, `israel_cv_en.pdf`, `israel-cv-english.pdf`
+e fontes `israel-cv-portugues/english` permanecem como aliases da versão ML.
 
-Alternativa testada: `tectonic --outdir .cv-build assets/israel-cv-portugues.tex`, repetindo
-para inglês e copiando os arquivos como acima. As versões `.txt` publicadas normalizam
-ligaturas Unicode e removem separadores de página para facilitar a leitura do texto extraído.
-O PDF em português usa apenas `assets/israel_cv_pt.pdf`. Em inglês, os dois nomes PDF são mantidos por compatibilidade com links externos; mantenha essas cópias idênticas.
-O botão "Fonte LaTeX (.tex)" acompanha o idioma selecionado e permite baixar o arquivo usado
-na compilação. Depois de copiar os PDFs, atualize seus links com `python3 scripts/version_script.py`.
+O parser check compara cada parágrafo esperado com `pdftotext`, na ordem, e
+confere uma página via `pdfinfo`. Isso facilita inspeção ATS; não promete aprovação
+em sistemas de recrutamento. Evite editar PDF/TXT/TeX individualmente.
 
-A graduação começou em 2021 (mês não informado), terminou em 19/08/2026 e não se confunde
-com a defesa do TCC em 02/2025. Datas da consultoria e das monitorias foram confirmadas pelo autor.
-Mantenha esses períodos sincronizados entre HTML, LaTeX, PDFs e texto simples.
+A graduação começou em 2021, terminou em 19/08/2026 e não se confunde com a defesa
+do TCC em 02/2025. Os cargos da Tieta mantêm os períodos 04/2025–06/2026 e
+07/2026–presente; contribuições colaborativas descrevem o conjunto da experiência,
+sem atribuir o projeto do relatório exclusivamente ao cargo atual.
 
 ## Verificações antes de publicar
 
@@ -112,7 +122,30 @@ os testes da pasta `scripts/` e confere as versões de cache dos arquivos public
 O repositório público complementar pode ser preparado localmente em
 `.related/face-clock-evoluir-public/` (ignorado por este Git), sem push automático.
 
-Não há CI configurado. O mínimo recomendado a cada alteração:
+Não há CI remoto configurado. Verificações locais:
+
+```bash
+python3 -m unittest discover -s scripts -p 'test_*.py'
+python3 scripts/check_consistency.py
+python3 scripts/check_publication.py
+python3 scripts/build_site.py --check
+python3 scripts/version_script.py --check
+git diff --check
+```
+
+Para QA visual, sirva a pasta na porta 8765 e execute, com Chromium/Brave instalado:
+
+```bash
+python3 -m http.server 8765 --bind 127.0.0.1
+# Em outro terminal:
+python3 scripts/browser_qa.py --browser /opt/brave.com/brave/brave
+```
+
+O QA cobre 16 páginas PT/EN a 360 e 1440 px, capturas adicionais a 320 px,
+disclosures abertos, erros JS, teclado, menu, UTM/âncoras, links de CV, eventos
+simulados, demonstração do TCC e inglês sem JavaScript. As capturas ficam em `/tmp`.
+
+O mínimo a cada alteração:
 
 - todos os arquivos referenciados existem (`src`, `href`, `link`);
 - âncoras internas (`#secao`) apontam para IDs que existem;

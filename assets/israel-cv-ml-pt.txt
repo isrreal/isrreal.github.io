@@ -1,0 +1,34 @@
+Israel Souza Ferreira
+Machine Learning Engineer / Applied ML
+Fortaleza, CE, Brasil · Remoto
+israel.souza.dev@gmail.com | +55 85 98433-2790
+https://www.linkedin.com/in/isrreal/ | https://github.com/isrreal
+https://israelsouza.speculummaius.com.br/
+Resumo Profissional
+Bacharel em Ciência da Computação com atuação em P&D de ML multimodal, representações e integração experimental de LLMs. Desenvolvo sistemas com APIs, busca vetorial e avaliação de desempenho em CPU.
+Experiência Profissional
+Tieta.ai · P&D em Machine Learning · Remoto
+Pesquisador de P&D: 07/2026–presente | Pesquisador de ML, CNPq RHAE (meio período): 04/2025–06/2026
+P&D aplicado em Machine Learning multimodal e sistemas de representação para análise educacional.
+- Colaborei no desenvolvimento e na avaliação de embeddings, representações vetoriais e busca por similaridade para conteúdo educacional multimodal.
+- Participei da implementação e experimentação de modelos de deep learning para combinar informações de texto e imagem e investigar alternativas de representação.
+- Colaborei na integração experimental de LLMs a pipelines de Machine Learning para extração estruturada de informação e enriquecimento de representações semânticas.
+- Contribuí com leitura de literatura científica, implementação de experimentos e avaliação quantitativa de alternativas de modelagem.
+Consultoria autônoma · Instituição de ensino · 03/2026–presente
+Desenvolvedor Full Stack e Engenheiro de ML · Face Clock Evoluir
+v1.3.0-rc.3: candidata a piloto institucional acompanhado, implantada em ambiente de testes.
+- Desenvolvi identificação facial 1:N, APIs FastAPI e persistência PostgreSQL/pgvector para servidor CPU-only; corrigi falhas de extração sob concorrência.
+- Recalibrei o limiar facial: desconhecidos aceitos passaram de 45,4% a 0,2% em teste controlado. Calibração com a população da instituição permanece pendente.
+- Usei benchmarks para manter busca exata e reduzir frames; migrei o classificador documental para ONNX Runtime, verificando paridade de decisões no teste reservado.
+Pesquisa e Projetos
+Dominação Romana Tripla em Grafos · TCC · 2024–2025
+- Identifiquei contraexemplo de uma formulação PLI publicada e implementei formulação corrigida, GA e ACO (C++, Python/Pyomo). Avaliei 362 grafos; uma execução por instância limita as conclusões.
+Competências Técnicas
+Python, PyTorch, scikit-learn; embeddings, busca vetorial, deep learning, integração de LLMs.
+FastAPI, PostgreSQL/pgvector, Docker, ONNX Runtime, Git, pytest; SQL, Pandas, NumPy.
+Validação cruzada, calibração, ablação, métricas de classificação; C++, GA, ACO, Python/Pyomo.
+Formação Acadêmica
+Bacharelado em Ciência da Computação · Universidade Federal do Ceará (UFC), Quixadá
+2021–19/08/2026 · TCC defendido em 02/2025.
+Idiomas
+Português nativo. Inglês: boa comunicação; leitura técnica fluente de artigos e documentação.

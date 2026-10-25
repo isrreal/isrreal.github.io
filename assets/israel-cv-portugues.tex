@@ -1,88 +1,45 @@
 \documentclass[a4paper,10pt]{article}
-\usepackage[a4paper,margin=1.25cm]{geometry}
+\usepackage[margin=1.2cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage[portuguese]{babel}
-\usepackage{enumitem}
-\usepackage{hyperref}
-\usepackage{microtype}
-\DisableLigatures{encoding=*,family=*}
-\ifdefined\pdfgentounicode
-  \input{glyphtounicode}
-  \pdfgentounicode=1
-\fi
-\hypersetup{hidelinks,pdftitle={Israel Souza Ferreira - Currículo},pdfauthor={Israel Souza Ferreira}}
-\urlstyle{same}
+\usepackage[hidelinks]{hyperref}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1pt}
-\raggedright
-\setlist[itemize]{leftmargin=1.3em,itemsep=0pt,topsep=1pt,parsep=0pt}
-\makeatletter
-\renewcommand\section{\@startsection{section}{1}{0pt}{7pt}{3pt}{\normalfont\large\bfseries}}
-\makeatother
-\newcommand{\entry}[4]{\vspace{2pt}\textbf{#1}\par #2 --- #3 | #4\par}
+\setlength{\parskip}{2pt}
 \begin{document}
-{\LARGE\textbf{Israel Souza Ferreira}}\par
-\textbf{Machine Learning Engineer | Data Scientist}\par
-Fortaleza, CE, Brasil --- Remoto\par
-E-mail: \href{mailto:israel.souza.dev@gmail.com}{israel.souza.dev@gmail.com} | Telefone: +55 85 98433-2790\par
-LinkedIn: \url{https://www.linkedin.com/in/isrreal/} | GitHub: \url{https://github.com/isrreal}\par
-Portfólio: \url{https://israelsouza.speculummaius.com.br/}\par
-
-\section*{Resumo Profissional}
-Bacharel em Ciência da Computação. Desenvolvo sistemas de ML, avalio modelos e investigo
-desempenho em visão computacional, ingestão de dados e otimização.
-
-\section*{Formação Acadêmica}
-\textbf{Bacharelado em Ciência da Computação}\par
-Universidade Federal do Ceará (UFC) --- Campus Quixadá, Brasil\par
-2021 -- 08/2026; concluído em 19/08/2026.\par
-TCC em otimização de grafos com GA, ACO e programação linear inteira; defendido em 02/2025.
-
-\section*{Competências Técnicas}
-\textbf{Programação e dados:} Python, SQL, C++, Pandas, NumPy, PostgreSQL/pgvector.\par
-\textbf{ML e avaliação:} scikit-learn, PyTorch, OpenCV, ONNX Runtime, validação cruzada, calibração.\par
-\textbf{Engenharia:} FastAPI, Docker, GitHub Actions, pytest, SQLAlchemy, Alembic.
-
-\section*{Experiência Profissional}
-\entry{Pesquisador de Pesquisa e Desenvolvimento (P\&D)}
-{Tieta.ai}{Remoto, Brasil}{Julho de 2026 -- Presente}
-\begin{itemize}
-\item Desenvolvo e mantenho software de pesquisa com validação, testes automatizados e documentação versionada.
-\end{itemize}
-
-\entry{Desenvolvedor Full Stack e Engenheiro de Machine Learning}
-{Consultoria autônoma para instituição de ensino}{Remoto, Brasil}{Março de 2026 -- Presente}
-Face Clock Evoluir: v1.3.0-rc.3 candidata a piloto institucional acompanhado, implantada em ambiente de testes.
-\begin{itemize}
-\item Desenvolvi reconhecimento facial 1:N, APIs FastAPI e persistência PostgreSQL/pgvector; recalibração reduziu desconhecidos aceitos de 45,4\% para 0,2\% em teste controlado, ainda sem calibração na instituição.
-\item Usei benchmarks para reduzir frames e manter busca exata (0,076 ms/1.000 vetores; HNSW com recall@1 de 0,915); corrigi falha de extração sob concorrência.
-\item Implementei setup institucional em sete etapas, auditoria e rotinas de RH; preparei três release candidates e implantei o sistema no ambiente de testes.
-\end{itemize}
-
-\entry{Pesquisador de Machine Learning}
-{Tieta.ai}{Remoto, Brasil}{Abril de 2025 -- Junho de 2026}
-\begin{itemize}
-\item Como bolsista CNPq RHAE, desenvolvi e avaliei soluções de ML em pesquisa aplicada, com experimentos reproduzíveis.
-\end{itemize}
-
-\textbf{Monitoria na UFC:} Projeto e Análise de Algoritmos (03--11/2023) e Cálculo (04--07/2022).
-
-\section*{Projetos Selecionados}
-\textbf{Dominação Romana Tripla em Grafos --- TCC | 2024--2025}\par
-\begin{itemize}
-\item Implementei GA e ACO em C++ e modelo PLI em Python/Pyomo; um contraexemplo expôs formulação publicada inválida. Avaliei 362 grafos, uma execução por instância.
-\end{itemize}
-Código: \url{https://github.com/isrreal/Triple-Roman-Domination-in-graphs}\par
-
-\textbf{Auxílio Emergencial --- Engenharia de Dados | Em desenvolvimento}\par
-\begin{itemize}
-\item Implementei ingestão em blocos com Pandas e PostgreSQL COPY binário para fonte pública de 31,6 GB. Em recortes de até 5 milhões de linhas, RSS após limpeza cresceu de 182 para 750 MiB; IDs retidos tiveram correlação r~0,991, sem comprovar causalidade.
-\end{itemize}
-Código: \url{https://github.com/isrreal/AuxilioEmergencialQueries}
-
-\section*{Idiomas}
-Português: nativo. Inglês: boa comunicação; leitura técnica fluente de artigos e documentação.
+\textbf{Israel Souza Ferreira}\par
+\textbf{Machine Learning Engineer / Applied ML}\par
+Fortaleza, CE, Brasil · Remoto\par
+israel.souza.dev@gmail.com | +55 85 98433-2790\par
+https://www.linkedin.com/in/isrreal/ | https://github.com/isrreal\par
+https://israelsouza.speculummaius.com.br/\par
+\vspace{5pt}\textbf{Resumo Profissional}\par
+Bacharel em Ciência da Computação com atuação em P\&D de ML multimodal, representações e integração experimental de LLMs. Desenvolvo sistemas com APIs, busca vetorial e avaliação de desempenho em CPU.\par
+\vspace{5pt}\textbf{Experiência Profissional}\par
+\textbf{Tieta.ai · P\&D em Machine Learning · Remoto}\par
+Pesquisador de P\&D: 07/2026–presente | Pesquisador de ML, CNPq RHAE (meio período): 04/2025–06/2026\par
+P\&D aplicado em Machine Learning multimodal e sistemas de representação para análise educacional.\par
+\hangindent=1em\textbullet\ Colaborei no desenvolvimento e na avaliação de embeddings, representações vetoriais e busca por similaridade para conteúdo educacional multimodal.\par
+\hangindent=1em\textbullet\ Participei da implementação e experimentação de modelos de deep learning para combinar informações de texto e imagem e investigar alternativas de representação.\par
+\hangindent=1em\textbullet\ Colaborei na integração experimental de LLMs a pipelines de Machine Learning para extração estruturada de informação e enriquecimento de representações semânticas.\par
+\hangindent=1em\textbullet\ Contribuí com leitura de literatura científica, implementação de experimentos e avaliação quantitativa de alternativas de modelagem.\par
+\textbf{Consultoria autônoma · Instituição de ensino · 03/2026–presente}\par
+Desenvolvedor Full Stack e Engenheiro de ML · Face Clock Evoluir\par
+v1.3.0-rc.3: candidata a piloto institucional acompanhado, implantada em ambiente de testes.\par
+\hangindent=1em\textbullet\ Desenvolvi identificação facial 1:N, APIs FastAPI e persistência PostgreSQL/pgvector para servidor CPU-only; corrigi falhas de extração sob concorrência.\par
+\hangindent=1em\textbullet\ Recalibrei o limiar facial: desconhecidos aceitos passaram de 45,4\% a 0,2\% em teste controlado. Calibração com a população da instituição permanece pendente.\par
+\hangindent=1em\textbullet\ Usei benchmarks para manter busca exata e reduzir frames; migrei o classificador documental para ONNX Runtime, verificando paridade de decisões no teste reservado.\par
+\vspace{5pt}\textbf{Pesquisa e Projetos}\par
+\textbf{Dominação Romana Tripla em Grafos · TCC · 2024–2025}\par
+\hangindent=1em\textbullet\ Identifiquei contraexemplo de uma formulação PLI publicada e implementei formulação corrigida, GA e ACO (C++, Python/Pyomo). Avaliei 362 grafos; uma execução por instância limita as conclusões.\par
+\vspace{5pt}\textbf{Competências Técnicas}\par
+Python, PyTorch, scikit-learn; embeddings, busca vetorial, deep learning, integração de LLMs.\par
+FastAPI, PostgreSQL/pgvector, Docker, ONNX Runtime, Git, pytest; SQL, Pandas, NumPy.\par
+Validação cruzada, calibração, ablação, métricas de classificação; C++, GA, ACO, Python/Pyomo.\par
+\vspace{5pt}\textbf{Formação Acadêmica}\par
+\textbf{Bacharelado em Ciência da Computação · Universidade Federal do Ceará (UFC), Quixadá}\par
+2021–19/08/2026 · TCC defendido em 02/2025.\par
+\vspace{5pt}\textbf{Idiomas}\par
+Português nativo. Inglês: boa comunicação; leitura técnica fluente de artigos e documentação.\par
 \end{document}
